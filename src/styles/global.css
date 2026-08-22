@@ -1,0 +1,710 @@
+/*
+  The CSS in this style tag is based off of Bear Blog's default CSS.
+  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
+  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
+ */
+
+:root {
+  --accent: #3984ff;
+  --accent-bright: #4d92ff;
+  --bg-primary: #05070d;
+  --bg-navbar: #071020;
+  --accent-blue: #3984ff;
+  --blue-dark-10: #10203a;
+  --blue-dark-15: #152b4d;
+  --blue-dark-1b: #1b355c;
+  --text-primary: #ffffff;
+  --text-secondary: #7d96c5;
+  --text-muted: #52698f;
+  --border-color: #263653;
+  --border-hover: #3984ff;
+  --gray-light: 38, 54, 83;
+  --gray-dark: 125, 150, 197;
+  --box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5), 0 8px 32px rgba(57, 132, 255, 0.1);
+}
+body {
+  font-family:
+    "Plus Jakarta Sans",
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+}
+main {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary);
+  line-height: 1.2;
+  font-weight: 700;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2.2rem;
+}
+h3 {
+  font-size: 1.953em;
+}
+h4 {
+  font-size: 1.563em;
+}
+h5 {
+  font-size: 1.25em;
+}
+strong,
+b {
+  font-weight: 700;
+}
+a {
+  color: var(--accent);
+}
+a:hover {
+  color: var(--accent);
+}
+p {
+  margin-bottom: 1em;
+}
+.prose p {
+  margin-bottom: 2em;
+}
+textarea {
+  width: 100%;
+  font-size: 16px;
+}
+input {
+  font-size: 16px;
+}
+table {
+  width: 100%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+code {
+  padding: 2px 5px;
+  background-color: rgb(var(--gray-light));
+  border-radius: 2px;
+}
+pre {
+  padding: 1.5em;
+  border-radius: 8px;
+}
+pre > code {
+  all: unset;
+}
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 0 0 0 20px;
+  margin: 0;
+  font-size: 1.333em;
+}
+hr {
+  border: none;
+  border-top: 1px solid rgb(var(--gray-light));
+}
+@media (max-width: 720px) {
+  body {
+    font-size: 18px;
+  }
+  main {
+    padding: 0 !important;
+  }
+}
+
+/* Global Mobile Padding Unification */
+@media (max-width: 768px) {
+  /* Remove section side padding to allow background colors/borders to stretch full-bleed */
+  .hero-section,
+  .trust-section,
+  .prob-sol-section,
+  .services-section,
+  .why-section,
+  .ind-section,
+  .hww-section,
+  .faq-section,
+  .cta-section,
+  .footer-area {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Unify container padding for consistent 20px side margins across the entire homepage */
+  .hero-container,
+  .trust-container,
+  .prob-sol-container,
+  .services-container,
+  .why-container,
+  .ind-container,
+  .hww-container,
+  .faq-container,
+  .cta-container,
+  .footer-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+.sr-only {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px 1px 1px 1px);
+  /* maybe deprecated but we need to support legacy browsers */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* modern browsers, clip-path works inwards from each corner */
+  clip-path: inset(50%);
+  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   LIGHT MODE PREMIUM B2B DESIGN SYSTEM OVERRIDES
+   ========================================================================== */
+
+html[data-theme="light"] {
+  /* Core Color Variables */
+  --bg-primary: #f8fafc;
+  --bg-navbar: rgba(255, 255, 255, 0.85);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --border-hover: #0055ff;
+  --gray-light: 226, 232, 240;
+  --gray-dark: 71, 85, 105;
+  --box-shadow:
+    0 4px 20px rgba(15, 23, 42, 0.05), 0 8px 32px rgba(0, 85, 255, 0.04);
+  --accent: #0055ff;
+  --accent-bright: #3984ff;
+  --accent-blue: #0055ff;
+  --blue-dark-10: #f1f5f9;
+  --blue-dark-15: #e2e8f0;
+
+  /* Global Body */
+  body {
+    color: #475569;
+    background-color: #f8fafc;
+  }
+
+  /* Specific typography updates for readability */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #0f172a !important;
+  }
+
+  a {
+    color: #0055ff;
+  }
+
+  /* ------------------ Component Overrides ------------------ */
+
+  /* 1. Navbar Light Theme */
+  .navbar-header {
+    background-color: rgba(255, 255, 255, 0.85) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    backdrop-filter: blur(12px) !important;
+  }
+
+  .nav-link {
+    color: #334155 !important;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: #0055ff !important;
+  }
+  .theme-btn {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+  }
+  .theme-btn:hover {
+    background: #e2e8f0 !important;
+    border-color: #0055ff !important;
+    color: #0055ff !important;
+  }
+
+  .nav-dropdown-panel {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+  }
+  .drop-left-col {
+    background: #f8fafc !important;
+    border-right-color: #e2e8f0 !important;
+  }
+  .drop-title {
+    color: #0f172a !important;
+  }
+  .drop-item-title {
+    color: #0f172a !important;
+  }
+  .drop-item:hover .drop-item-title {
+    color: #0055ff !important;
+  }
+
+  /* Mobile Drawer */
+  .mobile-drawer {
+    background: #ffffff !important;
+  }
+  .mobile-nav-link {
+    color: #334155 !important;
+    border-bottom-color: #f1f5f9 !important;
+  }
+  .mobile-dropdown-btn {
+    color: #334155 !important;
+    border-bottom-color: #f1f5f9 !important;
+  }
+  .mobile-dropdown-panel {
+    background: #f8fafc !important;
+  }
+  .mobile-dropdown-item {
+    color: #475569 !important;
+  }
+
+  /* 2. Hero Badge & Glows */
+  .hero-badge {
+    background: rgba(241, 245, 249, 0.8) !important;
+    border-color: #cbd5e1 !important;
+    backdrop-filter: blur(4px) !important;
+  }
+  .cta-secondary {
+    color: #334155 !important;
+    border-color: #94a3b8 !important;
+    background-color: #ffffff !important;
+  }
+  .cta-secondary:hover {
+    color: #0055ff !important;
+    background-color: #eff6ff !important;
+    border-color: #0055ff !important;
+  }
+  .hero-glow,
+  .footer-glow {
+    background: radial-gradient(
+      circle,
+      rgba(0, 85, 255, 0.04) 0%,
+      rgba(248, 250, 252, 0) 70%
+    ) !important;
+  }
+  .hero-section::before {
+    background-image:
+      linear-gradient(rgba(0, 85, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 85, 255, 0.045) 1px, transparent 1px);
+    opacity: 0.55;
+  }
+  .hero-glow {
+    background:
+      radial-gradient(
+        circle at 50% 42%,
+        rgba(0, 85, 255, 0.045) 0%,
+        transparent 48%
+      ),
+      radial-gradient(
+        circle at 20% 80%,
+        rgba(0, 140, 166, 0.025) 0%,
+        transparent 38%
+      ) !important;
+  }
+
+  /* 3. Problem & Solution Panels */
+  .problem-panel {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03) !important;
+  }
+  .problem-panel:hover {
+    border-color: #0055ff !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(0, 85, 255, 0.06) !important;
+  }
+  .problem-desc {
+    color: #475569 !important;
+  }
+  .solution-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03) !important;
+  }
+  .solution-card:hover {
+    border-color: #0055ff !important;
+    box-shadow: 0 10px 30px rgba(0, 85, 255, 0.06) !important;
+  }
+  .solution-desc {
+    color: #475569 !important;
+  }
+  .solution-link {
+    color: #475569 !important;
+  }
+  .solution-card:hover .solution-link {
+    color: #0055ff !important;
+  }
+  .transition-line {
+    background-color: #e2e8f0 !important;
+  }
+  .transition-title {
+    color: #0f172a !important;
+  }
+  .header-title,
+  .header-sub,
+  .header-intro {
+    color: #0f172a !important;
+  }
+  .header-sub,
+  .header-intro {
+    color: #475569 !important;
+  }
+  .problem-title {
+    color: #0f172a !important;
+  }
+  .problem-description {
+    color: #64748b !important;
+  }
+  .problem-tag {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+  }
+
+  /* 4. Services Section Cards */
+  .service-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03) !important;
+  }
+  .service-card:hover {
+    border-color: #0055ff !important;
+    box-shadow: 0 12px 30px rgba(0, 85, 255, 0.06) !important;
+  }
+  .card-desc {
+    color: #475569 !important;
+  }
+  .service-tag {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+  }
+  .service-tag:hover {
+    border-color: #0055ff !important;
+    color: #0055ff !important;
+  }
+  .card-cta-link {
+    color: #0055ff !important;
+  }
+  .card-cta-link.link-cyan {
+    color: #008aa6 !important;
+  }
+  .checklist-text {
+    color: #475569 !important;
+  }
+  .mock-nodes {
+    background-color: rgba(241, 245, 249, 0.6) !important;
+  }
+
+  /* 4b. Trust Metrics */
+  .trust-eyebrow {
+    color: #5273a8 !important;
+  }
+  .trust-statement {
+    color: #334155 !important;
+  }
+  .metric-value {
+    color: #0f172a !important;
+  }
+  .metric-label {
+    color: #5273a8 !important;
+  }
+
+  /* 5. Why Choose Rows */
+  .why-row {
+    border-bottom-color: #e2e8f0 !important;
+  }
+  .why-row:hover {
+    background-color: rgba(0, 85, 255, 0.015) !important;
+  }
+  .why-row:hover .row-title {
+    color: #0055ff !important;
+  }
+  .row-num {
+    color: #0055ff !important;
+  }
+  .row-description {
+    color: #475569 !important;
+  }
+  .row-label {
+    color: #475569 !important;
+  }
+  .why-row:hover .row-label {
+    color: #0055ff !important;
+  }
+  .row-title,
+  .closing-title {
+    color: #0f172a !important;
+  }
+  .closing-box {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03) !important;
+  }
+  .closing-arrow {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #0055ff !important;
+  }
+  .closing-box:hover .closing-arrow {
+    background-color: #0055ff !important;
+    color: #ffffff !important;
+  }
+
+  /* 6. Industries Section */
+  .ind-sidebar {
+    border-right-color: #e2e8f0 !important;
+  }
+  .ind-nav-item {
+    color: #475569 !important;
+    border-color: transparent !important;
+  }
+  .ind-nav-item:hover {
+    color: #0055ff !important;
+    background-color: rgba(0, 85, 255, 0.015) !important;
+  }
+  .ind-nav-item.active {
+    color: #0055ff !important;
+    background-color: #edf2fa !important;
+    border-right-color: #0055ff !important;
+  }
+  .ind-panel {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05) !important;
+  }
+  .panel-desc {
+    color: #475569 !important;
+  }
+  .solution-pill {
+    background-color: #f1f5f9 !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+  }
+  .ind-supporting {
+    border-top-color: #e2e8f0 !important;
+  }
+  .ind-mobile-pill {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #475569 !important;
+  }
+  .ind-mobile-pill.active {
+    background-color: #0055ff !important;
+    border-color: #0055ff !important;
+    color: #ffffff !important;
+  }
+  .ind-title,
+  .panel-title,
+  .support-question {
+    color: #0f172a !important;
+  }
+  .ind-intro,
+  .support-answer {
+    color: #475569 !important;
+  }
+  .ind-panel {
+    background-color: #ffffff !important;
+  }
+
+  /* 7. How We Work Timeline */
+  .hww-indicator {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #475569 !important;
+  }
+  .hww-step-block:hover .hww-indicator {
+    background: #0055ff !important;
+    border-color: #0055ff !important;
+    color: #ffffff !important;
+  }
+  .hww-connector {
+    background-color: #e2e8f0 !important;
+  }
+  .hww-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02) !important;
+  }
+  .hww-step-block:hover .hww-card {
+    border-color: #0055ff !important;
+    box-shadow: 0 10px 25px rgba(0, 85, 255, 0.05) !important;
+  }
+  .hww-card-desc {
+    color: #475569 !important;
+  }
+  .hww-step-block:hover .hww-card-title {
+    color: #0055ff !important;
+  }
+  .hww-title,
+  .hww-card-title,
+  .closing-headline {
+    color: #0f172a !important;
+  }
+  .hww-sub,
+  .hww-card-desc,
+  .closing-sub {
+    color: #475569 !important;
+  }
+  .hww-card {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+  }
+  .hww-indicator {
+    background: #ffffff !important;
+    color: #475569 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  /* 8. FAQ Section */
+  .faq-item {
+    border-bottom-color: #e2e8f0 !important;
+  }
+  .faq-item:hover {
+    background-color: rgba(0, 85, 255, 0.015) !important;
+    border-bottom-color: #cbd5e1 !important;
+  }
+  .faq-item.active {
+    background-color: rgba(0, 85, 255, 0.01) !important;
+  }
+  .faq-question {
+    color: #0f172a !important;
+  }
+  .faq-icon-symbol {
+    color: #64748b !important;
+  }
+  .faq-item:hover .faq-icon-symbol,
+  .faq-item.active .faq-icon-symbol {
+    color: #0055ff !important;
+  }
+  .faq-answer-text {
+    color: #475569 !important;
+  }
+  .faq-intro {
+    color: #475569 !important;
+  }
+  .faq-title,
+  .faq-question,
+  .trust-question {
+    color: #0f172a !important;
+  }
+  .faq-answer-text,
+  .trust-subtitle {
+    color: #475569 !important;
+  }
+
+  /* 9. Final CTA Card */
+  .cta-card {
+    background: linear-gradient(135deg, #f0f4fc 0%, #e2edfc 100%) !important;
+    border-color: rgba(0, 85, 255, 0.15) !important;
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06) !important;
+  }
+  .cta-glow-effect {
+    background: radial-gradient(
+      circle,
+      rgba(0, 85, 255, 0.08) 0%,
+      rgba(0, 85, 255, 0) 70%
+    ) !important;
+  }
+  .cta-headline {
+    color: #0f172a !important;
+  }
+  .cta-subheadline {
+    color: #475569 !important;
+  }
+  .btn-secondary {
+    color: #475569 !important;
+  }
+  .btn-secondary:hover {
+    color: #000000 !important;
+  }
+  .cta-micro-copy {
+    color: #64748b !important;
+  }
+
+  /* 10. Footer Section */
+  .footer-area {
+    background-color: #ffffff !important;
+    border-top: 1px solid #e2e8f0 !important;
+  }
+  .brand-tagline {
+    color: #475569 !important;
+  }
+  .footer-socials a {
+    color: #64748b !important;
+  }
+  .footer-socials a:hover {
+    color: #0055ff !important;
+  }
+  .col-title {
+    color: #0f172a !important;
+  }
+  .col-list a {
+    color: #475569 !important;
+  }
+  .col-list a:hover {
+    color: #0055ff !important;
+  }
+  .contact-prompt {
+    color: #475569 !important;
+  }
+  .contact-item {
+    color: #475569 !important;
+  }
+  .contact-label {
+    color: #64748b !important;
+  }
+  .footer-bottom {
+    border-top-color: #e2e8f0 !important;
+  }
+  .bottom-left span,
+  .bottom-link {
+    color: #64748b !important;
+  }
+  .bottom-link:hover {
+    color: #0055ff !important;
+  }
+  .bottom-dot {
+    color: #64748b !important;
+  }
+}

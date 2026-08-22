@@ -1,0 +1,136 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Filter to only include h2 and h3 headings for the TOC
+const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+{filteredHeadings.length > 0 && (
+  <nav class="toc-container" aria-label="Table of Contents">
+    <div class="toc-title">Daftar Isi</div>
+    <ul class="toc-list">
+      {filteredHeadings.map((heading) => (
+        <li class={`toc-item depth-h${heading.depth}`}>
+          <a href={`#${heading.slug}`} class="toc-link">
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .toc-container {
+    position: sticky;
+    top: 120px;
+    align-self: start;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .toc-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .toc-item {
+    line-height: 1.4;
+  }
+
+  .toc-item.depth-h3 {
+    padding-left: 12px;
+  }
+
+  .toc-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #52698F;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    display: inline-block;
+  }
+
+  .toc-link:hover {
+    color: var(--accent-blue);
+  }
+
+  .toc-link.active {
+    color: var(--accent-blue);
+    font-weight: 500;
+  }
+
+  /* Light theme overrides */
+  :global(html[data-theme="light"]) .toc-title {
+    border-bottom-color: #E2E8F0;
+  }
+  :global(html[data-theme="light"]) .toc-link {
+    color: #64748B;
+  }
+  :global(html[data-theme="light"]) .toc-link:hover,
+  :global(html[data-theme="light"]) .toc-link.active {
+    color: var(--accent-blue);
+  }
+</style>
+
+<script>
+  // Dynamic Scroll Active Heading Highlighter (Scroll-Spy)
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-10% 0px -75% 0px',
+      threshold: 0
+    };
+
+    const links = document.querySelectorAll('.toc-link');
+    const headings = Array.from(document.querySelectorAll('article h2, article h3'));
+
+    if (links.length === 0 || headings.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          if (!id) return;
+          
+          links.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach(heading => observer.observe(heading));
+  });
+</script>

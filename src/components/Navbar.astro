@@ -1,0 +1,748 @@
+---
+// Navbar.astro
+const pathname = Astro.url.pathname;
+const isBlog = pathname.startsWith('/blog');
+const isHome = pathname === '/' || pathname === '';
+---
+
+<header class="navbar-header">
+  <div class="navbar-container">
+    <!-- Logo Entercraft.id -->
+    <a href="/" class="logo-link">
+      <img src="/logo.svg" alt="Entercraft.id" class="logo-image" />
+    </a>
+
+    <!-- Navigation Menu (Desktop) -->
+    <nav class="desktop-nav">
+      <ul class="nav-list">
+        <li class="nav-item has-dropdown">
+          <button class="nav-link-btn" aria-haspopup="true" aria-expanded="false">
+            Layanan
+            <svg class="chevron-icon" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          
+          <!-- Mega Menu Dropdown -->
+          <div class="mega-menu" role="menu">
+            <div class="mega-menu-column">
+              <h4 class="column-title">AI & AUTOMATION</h4>
+              <ul class="column-links">
+                <li><a href="/layanan/ai-automation" class="dropdown-item">Jasa AI Automation</a></li>
+                <li><a href="/layanan/whatsapp-automation" class="dropdown-item">Jasa WhatsApp Automation</a></li>
+                <li><a href="/layanan/ai-chatbot" class="dropdown-item">Jasa AI Chatbot</a></li>
+                <li><a href="/layanan/workflow-automation" class="dropdown-item">Jasa Workflow Automation</a></li>
+              </ul>
+            </div>
+            
+            <div class="mega-menu-column">
+              <h4 class="column-title">SYSTEM WEB & MOBILE DEVELOPMENT</h4>
+              <ul class="column-links">
+                <li><a href="/layanan/website-company-profile" class="dropdown-item">Jasa Website Company Profile</a></li>
+                <li><a href="/layanan/website-development" class="dropdown-item">Jasa Website Development</a></li>
+                <li><a href="/layanan/mobile-app-development" class="dropdown-item">Jasa Mobile App Development</a></li>
+                <li><a href="/layanan/integrasi-sistem" class="dropdown-item">Jasa Integrasi Sistem</a></li>
+                <li><a href="/layanan/migrasi-database" class="dropdown-item">Jasa Migrasi Database</a></li>
+              </ul>
+            </div>
+            
+            <div class="mega-menu-column">
+              <h4 class="column-title">DIGITAL MARKETING</h4>
+              <ul class="column-links">
+                <li><a href="/layanan/seo-website" class="dropdown-item">Jasa SEO Website</a></li>
+                <li><a href="/layanan/content-seo" class="dropdown-item">Jasa Content SEO</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a href={isHome ? "#keunggulan" : "/#keunggulan"} class="nav-link">Keunggulan</a></li>
+        <li class="nav-item"><a href={isHome ? "#industri" : "/#industri"} class="nav-link">Industri</a></li>
+        <li class="nav-item"><a href={isHome ? "#mengapa-kami" : "/#mengapa-kami"} class="nav-link">Mengapa Kami</a></li>
+        <li class="nav-item"><a href="/blog" class={`nav-link ${isBlog ? 'active' : ''}`}>Blog</a></li>
+      </ul>
+    </nav>
+
+    <!-- Navbar Right (Desktop Actions) -->
+    <div class="navbar-actions">
+      <button class="theme-btn" aria-label="Toggle theme">
+        <!-- Sun Icon (visible in dark mode) -->
+        <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <!-- Moon Icon (visible in light mode) -->
+        <svg class="moon-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a href={isHome ? "#konsultasi" : "/#konsultasi"} class="nav-cta">Konsultasi Gratis</a>
+      
+      <!-- Hamburger Menu Button -->
+      <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-drawer">
+    <div class="mobile-drawer-content">
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li class="mobile-nav-item mobile-dropdown">
+            <button class="mobile-dropdown-btn">
+              Layanan
+              <svg class="chevron-icon" width="12" height="8" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="mobile-dropdown-panel">
+              <div class="mobile-panel-section">
+                <div class="mobile-panel-title">AI & AUTOMATION</div>
+                <a href="/layanan/ai-automation" class="mobile-dropdown-item">Jasa AI Automation</a>
+                <a href="/layanan/whatsapp-automation" class="mobile-dropdown-item">Jasa WhatsApp Automation</a>
+                <a href="/layanan/ai-chatbot" class="mobile-dropdown-item">Jasa AI Chatbot</a>
+                <a href="/layanan/workflow-automation" class="mobile-dropdown-item">Jasa Workflow Automation</a>
+              </div>
+              <div class="mobile-panel-section">
+                <div class="mobile-panel-title">SYSTEM WEB & MOBILE DEV</div>
+                <a href="/layanan/website-company-profile" class="mobile-dropdown-item">Jasa Website Company Profile</a>
+                <a href="/layanan/website-development" class="mobile-dropdown-item">Jasa Website Development</a>
+                <a href="/layanan/mobile-app-development" class="mobile-dropdown-item">Jasa Mobile App Development</a>
+                <a href="/layanan/integrasi-sistem" class="mobile-dropdown-item">Jasa Integrasi Sistem</a>
+                <a href="/layanan/migrasi-database" class="mobile-dropdown-item">Jasa Migrasi Database</a>
+              </div>
+              <div class="mobile-panel-section">
+                <div class="mobile-panel-title">DIGITAL MARKETING</div>
+                <a href="/layanan/seo-website" class="mobile-dropdown-item">Jasa SEO Website</a>
+                <a href="/layanan/content-seo" class="mobile-dropdown-item">Jasa Content SEO</a>
+              </div>
+            </div>
+          </li>
+          <li class="mobile-nav-item"><a href={isHome ? "#keunggulan" : "/#keunggulan"} class="mobile-nav-link">Keunggulan</a></li>
+          <li class="mobile-nav-item"><a href={isHome ? "#industri" : "/#industri"} class="mobile-nav-link">Industri</a></li>
+          <li class="mobile-nav-item"><a href={isHome ? "#mengapa-kami" : "/#mengapa-kami"} class="mobile-nav-link">Mengapa Kami</a></li>
+          <li class="mobile-nav-item"><a href="/blog" class={`mobile-nav-link ${isBlog ? 'active' : ''}`}>Blog</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-drawer-actions">
+        <button class="theme-btn mobile-theme-btn" aria-label="Toggle theme">
+          <!-- Sun Icon (visible in dark mode) -->
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- Moon Icon (visible in light mode) -->
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          Toggle Theme
+        </button>
+        <a href={isHome ? "#konsultasi" : "/#konsultasi"} class="mobile-nav-cta">Konsultasi Gratis</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Navbar Header */
+  .navbar-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--bg-navbar);
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+  }
+
+  .navbar-container {
+    max-width: 1320px;
+    height: 72px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Logo */
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-image {
+    width: 150px;
+    height: auto;
+    max-height: 46px;
+    object-fit: contain;
+    display: flex;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
+  }
+
+  :global(html[data-theme="light"]) .logo-image {
+    filter: none;
+  }
+
+  /* Navigation Links */
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    height: 100%;
+  }
+
+  .nav-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link, .nav-link-btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+  }
+
+  .nav-link,
+  .nav-cta,
+  .mobile-nav-link,
+  .mobile-nav-cta,
+  .dropdown-item,
+  .mobile-dropdown-item {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-link.is-clicked,
+  .nav-cta.is-clicked,
+  .mobile-nav-link.is-clicked,
+  .mobile-nav-cta.is-clicked,
+  .dropdown-item.is-clicked,
+  .mobile-dropdown-item.is-clicked {
+    animation: nav-click-feedback 0.32s ease-out;
+  }
+
+  @keyframes nav-click-feedback {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    45% {
+      opacity: 0.65;
+      transform: scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-link:hover, .nav-link-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .chevron-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .has-dropdown:hover .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--accent-blue);
+  }
+
+  /* Mega Menu Dropdown */
+  .mega-menu {
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    width: 620px;
+    background: var(--bg-navbar);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: var(--box-shadow);
+    padding: 28px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s ease;
+    z-index: 1100;
+  }
+
+  /* Dropdown arrow connector decoration */
+  .mega-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: var(--bg-navbar);
+    border-left: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .has-dropdown:hover .mega-menu,
+  .has-dropdown:focus-within .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .mega-menu-column:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+    padding-right: 16px;
+  }
+
+  .column-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--accent-blue);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    margin: 0;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .column-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dropdown-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 14px;
+    transition: color 0.15s ease;
+  }
+
+  .dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .dropdown-item:hover {
+    color: var(--text-primary);
+  }
+
+  .dropdown-item:hover::before {
+    background-color: var(--text-primary);
+    transform: translateY(-50%) scale(1.3);
+  }
+
+  /* Actions Kanan */
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Theme Button */
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue-dark-10);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 0;
+  }
+
+  .theme-btn:hover {
+    color: var(--text-primary);
+    background: var(--blue-dark-15);
+    border-color: var(--accent-blue);
+  }
+
+  .theme-btn .moon-icon {
+    display: none;
+  }
+  .theme-btn .sun-icon {
+    display: block;
+  }
+
+  :global(html[data-theme="light"]) .theme-btn .sun-icon {
+    display: none;
+  }
+  :global(html[data-theme="light"]) .theme-btn .moon-icon {
+    display: block;
+  }
+
+  /* CTA Button */
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-blue);
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 0 0 rgba(57, 132, 255, 0);
+  }
+
+  .nav-cta:hover {
+    background: var(--accent-bright);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(57, 132, 255, 0.3);
+  }
+
+  /* Mobile Toggle Hamburger */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+  }
+
+  .hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.2s ease;
+  }
+
+  /* Drawer Mobile */
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 72px);
+    background: var(--bg-navbar);
+    border-top: 1px solid var(--border-color);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .mobile-menu-drawer.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-drawer-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mobile-nav-link {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .nav-link.active,
+  .mobile-nav-link.active {
+    color: var(--accent-blue) !important;
+  }
+
+  .mobile-dropdown-btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    padding: 8px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .mobile-dropdown-btn .chevron-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-dropdown.active .mobile-dropdown-btn .chevron-icon {
+    transform: rotate(180deg);
+    color: var(--accent-blue);
+  }
+
+  .mobile-dropdown-panel {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    padding: 12px 0 12px 14px;
+    border-left: 1px solid var(--border-color);
+    margin-top: 8px;
+  }
+
+  .mobile-dropdown.active .mobile-dropdown-panel {
+    display: flex;
+  }
+
+  .mobile-panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-panel-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .mobile-dropdown-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 0;
+  }
+
+  .mobile-drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+  }
+
+  .mobile-theme-btn {
+    width: 100% !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .mobile-nav-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-blue);
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link.is-clicked,
+    .nav-cta.is-clicked,
+    .mobile-nav-link.is-clicked,
+    .mobile-nav-cta.is-clicked,
+    .dropdown-item.is-clicked,
+    .mobile-dropdown-item.is-clicked {
+      animation: none;
+    }
+  }
+
+  /* Media Queries Responsive */
+  @media (max-width: 991px) {
+    .desktop-nav, .navbar-actions .theme-btn, .navbar-actions .nav-cta {
+      display: none;
+    }
+
+    .mobile-toggle {
+      display: flex;
+    }
+
+    /* Hamburger Animation Active State */
+    .mobile-toggle.active .hamburger-bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .mobile-toggle.active .hamburger-bar:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-toggle.active .hamburger-bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .mobile-menu-drawer {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Handlers for responsive interactions
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mobileDrawer = document.querySelector('.mobile-menu-drawer');
+    const mobileDropdownBtn = document.querySelector('.mobile-dropdown-btn');
+    const mobileDropdown = document.querySelector('.mobile-dropdown');
+
+    // Hamburger toggle click
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('is-open');
+        mobileToggle.classList.toggle('active');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+    }
+
+    // Accordion toggle click inside Mobile Drawer
+    if (mobileDropdownBtn && mobileDropdown) {
+      mobileDropdownBtn.addEventListener('click', () => {
+        mobileDropdown.classList.toggle('active');
+      });
+    }
+
+    // Provide immediate visual feedback before following navigation links.
+    const navigationLinks = document.querySelectorAll(
+      '.nav-link, .nav-cta, .mobile-nav-link, .mobile-nav-cta, .dropdown-item, .mobile-dropdown-item'
+    );
+    navigationLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        link.classList.remove('is-clicked');
+        requestAnimationFrame(() => link.classList.add('is-clicked'));
+      });
+    });
+
+    // Theme Button Toggle Script
+    const themeBtns = document.querySelectorAll('.theme-btn');
+    themeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Scale animation feedback
+        btn.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          btn.style.transform = '';
+        }, 100);
+
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Toggle attribute
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        // Save preference
+        localStorage.setItem('theme', newTheme);
+      });
+    });
+  });
+</script>

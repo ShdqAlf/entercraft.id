@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+
+interface Props {
+  currentPostId: string;
+  category: string;
+  tags?: string[];
+}
+
+const { currentPostId, category, tags = [] } = Astro.props;
+
+// Fetch all public posts
+const allPosts = await getCollection('blog', ({ data }) => {
+  return !data.draft;
+});
+
+// Filter out current post
+const otherPosts = allPosts.filter(post => post.id !== currentPostId);
+
+// Rank posts based on category and tag matches
+const rankedPosts = otherPosts.map(post => {
+  let score = 0;
+  
+  // High score for matching category
+  if (post.data.category === category) {
+    score += 5;
+  }
+  
+  // Extra score for shared tags
+  if (post.data.tags && tags.length > 0) {
+    const shared = post.data.tags.filter(t => tags.includes(t));
+    score += shared.length * 2;
+  }
+  
+  return { post, score };
+});
+
+// Sort by score (descending), then by date (newest first)
+rankedPosts.sort((a, b) => {
+  if (b.score !== a.score) {
+    return b.score - a.score;
+  }
+  return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
+});
+
+// Take the top 3 related posts
+const relatedPosts = rankedPosts.slice(0, 3).map(item => item.post);
+---
+
+{relatedPosts.length > 0 && (
+  <section class="related-insights-section">
+    <div class="related-container">
+      <h3 class="related-heading">Related Insights</h3>
+      <div class="related-grid">
+        {relatedPosts.map(post => (
+          <BlogCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .related-insights-section {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--border-color);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .related-container {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .related-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 32px 0;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Responsive Grid overrides */
+  @media (max-width: 992px) {
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+    .related-insights-section {
+      margin-top: 60px;
+      padding-top: 40px;
+    }
+  }
+
+  /* Light theme overrides */
+  :global(html[data-theme="light"]) .related-insights-section {
+    border-top-color: #E2E8F0;
+  }
+  :global(html[data-theme="light"]) .related-heading {
+    color: #0F172A;
+  }
+</style>

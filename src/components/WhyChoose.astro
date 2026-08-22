@@ -1,0 +1,443 @@
+---
+// WhyChoose.astro
+
+const valueProps = [
+  {
+    id: "01",
+    title: "Berangkat dari Kebutuhan Bisnis",
+    description: "Kami tidak memulai dari teknologi. Kami memulai dari masalah, proses, dan tujuan bisnis yang ingin diselesaikan.",
+    label: "BUSINESS FIRST"
+  },
+  {
+    id: "02",
+    title: "Solusi Dibuat Sesuai Kebutuhan",
+    description: "Tidak semua bisnis membutuhkan solusi yang sama. Kami menyesuaikan teknologi dengan workflow, kebutuhan operasional, dan skala bisnis Anda.",
+    label: "CUSTOM & SCALABLE"
+  },
+  {
+    id: "03",
+    title: "Satu Partner untuk Kebutuhan Digital",
+    description: "Mulai dari AI & automation, software development, hingga digital marketing, kebutuhan digital dapat dikembangkan dalam satu ekosistem.",
+    label: "END-TO-END"
+  },
+  {
+    id: "04",
+    title: "Fokus pada Dampak, Bukan Sekadar Teknologi",
+    description: "Teknologi harus memberikan dampak nyata. Kami berfokus pada efisiensi proses, kemudahan operasional, digital visibility, dan peluang pertumbuhan bisnis.",
+    label: "BUSINESS IMPACT"
+  }
+];
+---
+
+<section class="why-section" id="mengapa-kami">
+  <!-- Subtle Technical Grid Pattern in the background -->
+  <div class="why-grid-bg">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#263653" stroke-width="0.75" stroke-opacity="0.15"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#gridPattern)" />
+    </svg>
+  </div>
+
+  <div class="why-container">
+    <!-- Header -->
+    <div class="why-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="why-eyebrow">
+        <span class="eyebrow-dot">●</span> WHY ENTERCRAFT.ID
+      </div>
+      <h2 class="why-title">
+        Bukan Sekadar Membuat Teknologi.<br />
+        Kami Memahami Bagaimana Teknologi<br />
+        Bekerja untuk Bisnis.
+      </h2>
+      <p class="why-intro">
+        Setiap bisnis memiliki proses, tantangan, dan tujuan yang berbeda. Kami merancang solusi digital berdasarkan kebutuhan nyata bisnis, bukan sekadar mengikuti tren teknologi.
+      </p>
+    </div>
+
+    <!-- Editorial Storytelling Rows -->
+    <div class="why-rows">
+      {valueProps.map((prop, index) => (
+        <div class="why-row animate-fade-scroll" style={`animation-delay: ${250 + (index * 80)}ms;`}>
+          <!-- Left: Number -->
+          <div class="row-num-col">
+            <span class="row-number">{prop.id}</span>
+          </div>
+          
+          <!-- Center: Content -->
+          <div class="row-content-col">
+            <h3 class="row-title">{prop.title}</h3>
+            <p class="row-description">{prop.description}</p>
+          </div>
+          
+          <!-- Right: Positioning Label -->
+          <div class="row-label-col">
+            <span class="row-label">
+              {prop.label}
+              <span class="row-arrow">→</span>
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Closing Statement -->
+    <div class="why-closing animate-fade-scroll" style="animation-delay: 650ms;">
+      <h3 class="closing-title">Pahami Bisnis. Bangun Solusi. Dorong Pertumbuhan.</h3>
+      <p class="closing-subtitle">
+        Teknologi yang tepat bukan hanya membuat proses menjadi digital. Teknologi yang tepat membuat bisnis bekerja lebih baik.
+      </p>
+      
+      <!-- Minimal Visual Sequence -->
+      <div class="seq-flow">
+        <span class="seq-step">BUSINESS</span>
+        <svg class="seq-arrow" width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 1V11M5 11L1 7M5 11L9 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="seq-step">TECHNOLOGY</span>
+        <svg class="seq-arrow" width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 1V11M5 11L1 7M5 11L9 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="seq-step">GROWTH</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Section base */
+  .why-section {
+    position: relative;
+    scroll-margin-top: 88px;
+    width: 100%;
+    background-color: var(--bg-primary); /* #05070D */
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Technical Grid background */
+  .why-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .why-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+
+  /* Left-aligned Header */
+  .why-header {
+    text-align: left;
+    margin-bottom: 64px;
+    max-width: 800px;
+  }
+
+  .why-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .why-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 46px; /* target: 44px – 52px */
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .why-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; /* target: 14px – 16px */
+    line-height: 1.7;
+    color: #7F95B8; /* target: #7F95B8 */
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Editorial Rows list */
+  .why-rows {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 90px;
+  }
+
+  .why-row {
+    display: flex;
+    align-items: flex-start;
+    padding: 36px 16px;
+    border-bottom: 1px solid #1B2A42; /* target: 1px solid #1B2A42 */
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  /* Insert top separator to the first element to frame the grid */
+  .why-row:first-child {
+    border-top: 1px solid #1B2A42;
+  }
+
+  /* Hover micro-interactions */
+  .why-row:hover {
+    background-color: rgba(57, 132, 255, 0.025); /* target: subtle blue tint */
+    border-bottom-color: #2b4169;
+    border-top-color: #2b4169;
+  }
+
+  /* Left Column: Number (10-15%) */
+  .row-num-col {
+    flex: 0 0 12%;
+    display: flex;
+    align-items: center;
+  }
+
+  .row-number {
+    font-family: 'Inter', monospace;
+    font-size: 13px; /* target: 12px – 14px */
+    font-weight: 600;
+    color: var(--accent-blue);
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+  }
+
+  .why-row:hover .row-number {
+    color: var(--accent-bright);
+    filter: drop-shadow(0 0 4px rgba(57, 132, 255, 0.3));
+  }
+
+  /* Center Column: Content (55-60%) */
+  .row-content-col {
+    flex: 0 0 63%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 24px;
+    box-sizing: border-box;
+  }
+
+  .row-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px; /* target: 22px – 28px */
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin: 0;
+    transition: color 0.2s ease;
+  }
+
+  .row-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px; /* target: 14px – 15px */
+    line-height: 1.65;
+    color: #7187AA; /* target: #7187AA */
+    max-width: 600px;
+    margin: 0;
+    transition: color 0.2s ease;
+  }
+
+  .why-row:hover .row-description {
+    color: #8da3c7;
+  }
+
+  /* Right Column: Label / Arrow (20-25%) */
+  .row-label-col {
+    flex: 0 0 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .row-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10.5px; /* target: 10px – 11px */
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+    text-transform: uppercase;
+  }
+
+  .row-arrow {
+    font-size: 13px;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  }
+
+  .why-row:hover .row-label {
+    color: var(--accent-blue);
+  }
+
+  .why-row:hover .row-arrow {
+    transform: translateX(4px); /* target: arrow moves 4px right */
+    color: var(--accent-blue);
+  }
+
+  /* Closing Statement Section */
+  .why-closing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .closing-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px; /* target: 24px – 30px */
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .closing-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px; /* target: 14px – 15px */
+    line-height: 1.6;
+    color: #7187AA;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  /* Minimal Visual Sequence flow */
+  .seq-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 48px; /* target: margin 48px */
+  }
+
+  .seq-step {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-blue);
+  }
+
+  .seq-arrow {
+    color: var(--text-muted);
+    opacity: 0.7;
+    animation: flowPulse 2s infinite alternate;
+  }
+
+  @keyframes flowPulse {
+    0% { transform: translateY(0); opacity: 0.5; }
+    100% { transform: translateY(3px); opacity: 0.9; }
+  }
+
+  /* Entrance Animation styling */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .why-row {
+      padding: 30px 10px;
+    }
+
+    .why-title {
+      font-size: 38px;
+      letter-spacing: -1px;
+    }
+
+    .row-num-col {
+      flex: 0 0 10%;
+    }
+
+    .row-content-col {
+      flex: 0 0 65%;
+    }
+
+    .row-label-col {
+      flex: 0 0 25%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .why-row {
+      flex-direction: column;
+      gap: 12px;
+      padding: 28px 12px;
+    }
+
+    .row-num-col, .row-content-col, .row-label-col {
+      flex: none;
+      width: 100%;
+    }
+
+    .row-label-col {
+      justify-content: flex-start;
+      margin-top: 6px;
+    }
+
+    .row-description {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .why-section {
+      padding: 80px 16px;
+    }
+
+    .why-title {
+      font-size: 30px; /* target mobile: 34px - 40px */
+      line-height: 1.15;
+    }
+
+    .row-title {
+      font-size: 20px;
+    }
+
+    .closing-title {
+      font-size: 22px;
+    }
+  }
+</style>

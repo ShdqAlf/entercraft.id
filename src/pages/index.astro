@@ -1,0 +1,37 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import TrustSection from '../components/TrustSection.astro';
+import ProblemSolution from '../components/ProblemSolution.astro';
+import Services from '../components/Services.astro';
+import WhyChoose from '../components/WhyChoose.astro';
+import Industries from '../components/Industries.astro';
+import HowWeWork from '../components/HowWeWork.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${SITE_TITLE} - Premium Digital Transformation Agency`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Navbar />
+		<main>
+			<Hero />
+			<TrustSection />
+			<ProblemSolution />
+			<Services />
+			<WhyChoose />
+			<Industries />
+			<HowWeWork />
+			<Faq />
+			<FinalCta />
+		</main>
+		<Footer />
+	</body>
+</html>

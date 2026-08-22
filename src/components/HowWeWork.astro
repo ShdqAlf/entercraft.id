@@ -1,0 +1,504 @@
+---
+// HowWeWork.astro
+
+const stepsData = [
+  {
+    num: "01",
+    label: "DISCOVER",
+    title: "Pahami Kebutuhan",
+    description: "Kami mempelajari bisnis, proses kerja, tantangan, dan tujuan yang ingin Anda capai.",
+    focus: "BUSINESS UNDERSTANDING"
+  },
+  {
+    num: "02",
+    label: "DEFINE",
+    title: "Tentukan Solusi",
+    description: "Kami mengidentifikasi kebutuhan teknis dan menyusun pendekatan solusi yang paling relevan dengan bisnis Anda.",
+    focus: "SOLUTION STRATEGY"
+  },
+  {
+    num: "03",
+    label: "BUILD",
+    title: "Bangun & Kembangkan",
+    description: "Tim kami mengembangkan solusi sesuai scope, workflow, dan kebutuhan yang telah disepakati.",
+    focus: "DEVELOPMENT"
+  },
+  {
+    num: "04",
+    label: "TEST & REFINE",
+    title: "Uji & Sempurnakan",
+    description: "Solusi diuji untuk memastikan fungsi, alur, dan pengalaman pengguna berjalan sesuai kebutuhan.",
+    focus: "QUALITY & REFINEMENT"
+  },
+  {
+    num: "05",
+    label: "LAUNCH & SUPPORT",
+    title: "Implementasi & Support",
+    description: "Solusi diterapkan ke lingkungan bisnis dan kami membantu memastikan proses berjalan dengan baik setelah implementasi.",
+    focus: "IMPLEMENTATION & SUPPORT"
+  }
+];
+---
+
+<section class="hww-section">
+  <!-- Subtle Grid Accent Overlay (opacity: 5-8%) -->
+  <div class="hww-grid-accent">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="hwwGrid" width="80" height="80" patternUnits="userSpaceOnUse">
+          <circle cx="40" cy="40" r="1" fill="#3984FF" fill-opacity="0.08"/>
+          <line x1="0" y1="40" x2="80" y2="40" stroke="#3984FF" stroke-width="0.5" stroke-opacity="0.04"/>
+          <line x1="40" y1="0" x2="40" y2="80" stroke="#3984FF" stroke-width="0.5" stroke-opacity="0.04"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hwwGrid)" />
+    </svg>
+  </div>
+
+  <div class="hww-container">
+    
+    <!-- Section Header (Left-aligned) -->
+    <div class="hww-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="hww-eyebrow">
+        <span class="eyebrow-dot">●</span> HOW WE WORK
+      </div>
+      <h2 class="hww-title">
+        Dari Tantangan Menjadi<br />
+        Solusi Digital
+      </h2>
+      <p class="hww-sub">
+        Kami memulai dari memahami kebutuhan bisnis, kemudian merancang solusi yang tepat hingga memastikan teknologi dapat berjalan sesuai tujuan yang telah ditetapkan.
+      </p>
+    </div>
+
+    <!-- Timeline Container (Horizontal Desktop, Vertical Mobile) -->
+    <div class="hww-timeline-container">
+      {stepsData.map((step, index) => (
+        <div class="hww-step-block animate-fade-scroll" style={`animation-delay: ${250 + (index * 80)}ms;`}>
+          
+          <!-- Node Indicator + Connector Line -->
+          <div class="hww-indicator-wrapper">
+            <div class="hww-indicator">
+              {step.num}
+            </div>
+            
+            {index < stepsData.length - 1 && (
+              <div class="hww-connector">
+                <svg class="hww-arrow" width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 4h8M9 4L6 1M9 4L6 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            )}
+          </div>
+
+          <!-- Content Card Box -->
+          <div class="hww-card">
+            <span class="hww-card-label">{step.label}</span>
+            <h4 class="hww-card-title">{step.title}</h4>
+            <p class="hww-card-desc">{step.description}</p>
+          </div>
+          
+        </div>
+      ))}
+    </div>
+
+    <!-- Closing Philosophy Statement -->
+    <div class="hww-closing animate-fade-scroll" style="animation-delay: 650ms;">
+      <h3 class="closing-headline">Dimulai dari Bisnis. Dibangun dengan Teknologi.</h3>
+      <p class="closing-sub">
+        Setiap keputusan teknologi kami arahkan kembali pada kebutuhan dan tujuan bisnis yang ingin dicapai.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Section base */
+  .hww-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary); /* #05070D */
+    border-top: 1px solid var(--border-color);
+    padding-top: 100px; /* target top padding: 90px – 110px */
+    padding-bottom: 100px; /* target bottom padding: 90px – 110px */
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Grid background */
+  .hww-grid-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hww-container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+
+  /* Left Header */
+  .hww-header {
+    text-align: left;
+    margin-bottom: 55px; /* target header -> timeline: 50px – 60px */
+    max-width: 800px;
+  }
+
+  .hww-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .hww-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 48px; /* target: 46px – 54px */
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .hww-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; /* target: 14px – 16px */
+    line-height: 1.7;
+    color: #7F95B8;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Horizontal Timeline Container */
+  .hww-timeline-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px; /* target: 16px gap between blocks */
+    margin-bottom: 70px; /* target timeline -> closing statement: 60px – 80px */
+    box-sizing: border-box;
+  }
+
+  .hww-step-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Indicator wrapper & node circle */
+  .hww-indicator-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    z-index: 5;
+  }
+
+  .hww-indicator {
+    width: 36px; /* target: 32px – 40px */
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #30415E; /* target: 1px solid #30415E */
+    background: #0A101C; /* target: #0A101C */
+    color: #60779D;
+    font-family: 'Inter', monospace;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    user-select: none;
+  }
+
+  /* Horizontal Connecting Line */
+  .hww-connector {
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    top: 18px; /* half of 36px indicator */
+    height: 1px;
+    background-color: #263653; /* target: #263653 */
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.22s ease;
+  }
+
+  /* Small directional arrow */
+  .hww-arrow {
+    color: var(--accent-blue);
+    opacity: 0.15; /* target: low opacity arrow */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.22s ease, color 0.22s ease, transform 0.22s ease;
+  }
+
+  /* Cards content styling */
+  .hww-card {
+    background-color: transparent; /* target: transparent / #080E19 */
+    border: 1px solid #1B2A42; /* target: 1px solid #1B2A42 */
+    border-radius: 10px; /* target: 8px – 10px */
+    padding: 24px 22px; /* target: 22px – 26px */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 160px;
+    text-align: left;
+  }
+
+  .hww-card-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .hww-card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+    transition: color 0.22s ease;
+  }
+
+  .hww-card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #7187AA; /* secondary text */
+    margin: 0;
+    transition: color 0.22s ease;
+  }
+
+  /* Hover step interactions */
+  .hww-step-block:hover .hww-indicator {
+    border-color: var(--accent-blue); /* target hover: border #3984FF */
+    background: var(--accent-blue); /* target hover: bg #3984FF */
+    color: #FFFFFF; /* target hover: number #FFFFFF */
+    transform: scale(1.03); /* target hover: scale 1.03 */
+    box-shadow: 0 0 12px rgba(57, 132, 255, 0.4);
+  }
+
+  .hww-step-block:hover .hww-connector {
+    background-color: var(--accent-blue); /* target: connecting line becomes blue */
+  }
+
+  .hww-step-block:hover .hww-arrow {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
+    color: #FFFFFF;
+  }
+
+  .hww-step-block:hover .hww-card {
+    border-color: #2b4169;
+    background-color: rgba(13, 20, 34, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .hww-step-block:hover .hww-card-title {
+    color: #FFFFFF;
+  }
+
+  .hww-step-block:hover .hww-card-desc {
+    color: #8da3c7;
+  }
+
+  /* Closing Statement */
+  .hww-closing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .closing-headline {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px; /* target: 24px – 30px */
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .closing-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px; /* target: 14px – 15px */
+    line-height: 1.6;
+    color: #7187AA;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  /* Minimal vertical flow sequence */
+  .seq-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .seq-step {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--accent-blue);
+  }
+
+  .seq-arrow {
+    color: var(--text-muted);
+    opacity: 0.7;
+    animation: bounceSlow 2s infinite alternate;
+  }
+
+  @keyframes bounceSlow {
+    0% { transform: translateY(0); opacity: 0.5; }
+    100% { transform: translateY(3px); opacity: 0.9; }
+  }
+
+  /* Entrance Animation CSS */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive styling */
+  @media (max-width: 991px) {
+    .hww-timeline-container {
+      gap: 12px;
+    }
+
+    .hww-card {
+      padding: 18px 14px;
+      min-height: 180px;
+    }
+
+    .hww-card-title {
+      font-size: 16px;
+    }
+
+    .hww-title {
+      font-size: 38px;
+      letter-spacing: -1px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* MOBILE Layout: Vertical Timeline */
+    .hww-timeline-container {
+      flex-direction: column;
+      gap: 0;
+      padding-left: 20px;
+    }
+
+    .hww-step-block {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+      padding-bottom: 40px; /* mobile spacing between steps: 32px – 40px */
+    }
+
+    .hww-indicator-wrapper {
+      width: 36px;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    /* Vertical connector line */
+    .hww-connector {
+      left: 18px; /* center of 36px indicator */
+      top: 36px;
+      width: 1px;
+      height: calc(100% + 40px); /* spans to next indicator */
+      background-color: #263653; /* target vertical line: 1px solid #263653 */
+    }
+
+    .hww-step-block:last-child .hww-connector {
+      display: none; /* Hide connector on last child */
+    }
+
+    .hww-arrow {
+      display: none; /* Hide arrows on vertical mobile line */
+    }
+
+    .hww-card {
+      min-height: auto;
+    }
+
+    .closing-headline {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .hww-section {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .hww-title {
+      font-size: 30px; /* target mobile: 34px - 40px */
+    }
+
+    .hww-card-title {
+      font-size: 18px; /* target mobile step title: 20px - 22px */
+    }
+
+    .hww-card-desc {
+      font-size: 13.5px; /* target mobile description: 13px - 14px */
+    }
+
+    .hww-card-label {
+      font-size: 10.5px; /* target mobile label: 10px - 11px */
+    }
+  }
+</style>

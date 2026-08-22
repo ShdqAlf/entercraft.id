@@ -1,0 +1,250 @@
+---
+// TrustSection.astro
+
+const trustMetrics = [
+  {
+    value: "[50+]",
+    label: "Proyek Digital"
+  },
+  {
+    value: "[30+]",
+    label: "Bisnis Dibantu"
+  },
+  {
+    value: "[10+]",
+    label: "Industri"
+  },
+  {
+    value: "[5+]",
+    label: "Tahun Pengalaman"
+  }
+];
+---
+
+<section class="trust-section">
+  <div class="trust-container">
+    <!-- Trust Eyebrow -->
+    <div class="trust-eyebrow animate-fade" style="animation-delay: 700ms;">
+      <span class="eyebrow-dot">●</span>
+      SOLUSI DIGITAL UNTUK BISNIS YANG TERUS BERKEMBANG
+    </div>
+
+    <!-- Trust Statement -->
+    <h2 class="trust-statement animate-fade" style="animation-delay: 850ms;">
+      Menggabungkan teknologi, strategi, dan automation untuk membantu bisnis bekerja lebih efisien dan berkembang lebih cepat.
+    </h2>
+
+    <!-- Capability Label -->
+    <div class="capability-label animate-fade" style="animation-delay: 1000ms;">
+      PENGALAMAN & CAPABILITY
+    </div>
+
+    <!-- Metrics Row -->
+    <div class="metrics-grid">
+      {trustMetrics.map((metric, index) => {
+        // Dynamically style brackets and plus signs for a futuristic aesthetic
+        const formattedValue = metric.value
+          .replace('[', '<span class="metric-bracket">[</span>')
+          .replace(']', '<span class="metric-bracket">]</span>')
+          .replace('+', '<span class="metric-plus">+</span>');
+        
+        return (
+          <>
+            <div class="metric-block animate-fade" style={`animation-delay: ${1100 + (index * 100)}ms;`}>
+              <div class="metric-value" set:html={formattedValue} />
+              <div class="metric-label">{metric.label}</div>
+            </div>
+            {index < trustMetrics.length - 1 && (
+              <div class="metric-divider" style={`animation-delay: ${1150 + (index * 100)}ms;`}></div>
+            )}
+          </>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Trust Section Outer */
+  .trust-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding-top: 60px; /* target: 55px – 70px */
+    padding-bottom: 80px; /* target: 70px – 90px */
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .trust-container {
+    max-width: 1200px; /* target: 1200px – 1280px */
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  /* Trust Eyebrow */
+  .trust-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px; /* target: 10px - 12px */
+    font-weight: 700; /* target: 600 - 700 */
+    letter-spacing: 1.5px;
+    color: #6682B3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px; /* target eyebrow -> statement: 18px – 24px */
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* Trust Statement */
+  .trust-statement {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px; /* target: 18px – 22px */
+    font-weight: 500;
+    line-height: 1.5;
+    color: #D7E0F0;
+    max-width: 650px; /* target: 650px */
+    margin: 0 auto 36px auto; /* target statement -> capability label: 32px – 40px */
+    text-transform: none;
+  }
+
+  /* Capability Label */
+  .capability-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--text-muted); /* #52698F */
+    margin-bottom: 22px; /* target capability label -> metrics: 20px – 24px */
+    text-transform: uppercase;
+  }
+
+  /* Metrics Grid & Blocks */
+  .metrics-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .metric-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .metric-value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 34px; /* target: 32px – 38px */
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  /* Custom HTML parsed styles inside metric-value */
+  :global(.metric-bracket) {
+    color: var(--text-muted); /* #52698F */
+    font-weight: 400;
+    font-size: 28px;
+    vertical-align: middle;
+    opacity: 0.7;
+    margin: 0 1px;
+  }
+
+  :global(.metric-plus) {
+    color: var(--accent-blue); /* #3984FF */
+    font-weight: 700;
+  }
+
+  .metric-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px; /* target: 12px – 13px */
+    font-weight: 500;
+    color: #617AA7; /* secondary text color */
+    line-height: 1.4;
+    white-space: pre-line;
+  }
+
+  /* Vertical Divider */
+  .metric-divider {
+    width: 1px;
+    height: 32px;
+    background-color: var(--border-color); /* #263653 */
+    opacity: 0.4; /* target: 40% */
+    flex-shrink: 0;
+  }
+
+  /* Animations */
+  .animate-fade {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 20px;
+    }
+
+    .metric-divider {
+      display: none;
+    }
+    
+    .metric-block {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .trust-section {
+      padding-top: 50px;
+      padding-bottom: 60px;
+    }
+    
+    .trust-statement {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .metrics-grid {
+      gap: 28px 12px;
+    }
+
+    .metric-value {
+      font-size: 30px;
+    }
+
+    :global(.metric-bracket) {
+      font-size: 24px;
+    }
+  }
+</style>

@@ -1,0 +1,478 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import TableOfContents from '../../components/blog/TableOfContents.astro';
+import ShareArticle from '../../components/blog/ShareArticle.astro';
+import RelatedArticles from '../../components/blog/RelatedArticles.astro';
+
+// Generate static paths for dynamic routing in Astro
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    // Filter out drafts in production environments
+    return import.meta.env.PROD ? !data.draft : true;
+  });
+  
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { title, description, pubDate, category, heroImage, readingTime, author, tags, seoTitle, seoDescription } = post.data;
+
+// Render Markdown Content & Headings
+const { Content, headings } = await render(post);
+
+// SEO Canonical and OG configurations
+const ogImage = heroImage ? new URL(heroImage, Astro.url.origin).toString() : '';
+
+// JSON-LD Structured Data Schema for Search Engines
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": seoTitle || title,
+  "description": seoDescription || description,
+  "image": ogImage,
+  "datePublished": pubDate.toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": author || "Entercraft.id",
+    "url": "https://entercraft.id"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Entercraft.id",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL('/favicon.svg', Astro.url.origin).toString()
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": Astro.url.toString()
+  }
+};
+---
+
+<BlogLayout title={`${seoTitle || title} | Entercraft.id`} description={seoDescription || description} image={heroImage}>
+  <!-- Inject JSON-LD to Head -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <article class="article-page-container">
+    <!-- Centered Editorial Header -->
+    <header class="article-header">
+      <span class="article-category">{category}</span>
+      <h1 class="article-title">{title}</h1>
+      <p class="article-description">{description}</p>
+      
+      <div class="article-meta">
+        <span class="meta-item"><FormattedDate date={pubDate} /></span>
+        <span class="meta-dot">·</span>
+        <span class="meta-item">{readingTime}</span>
+        <span class="meta-dot">·</span>
+        <span class="meta-item">{author}</span>
+      </div>
+    </header>
+
+    <!-- Large Hero Image -->
+    {heroImage && (
+      <div class="article-hero-image-wrapper">
+        <img src={typeof heroImage === 'string' ? heroImage : heroImage.src} alt={title} class="article-hero-image" />
+      </div>
+    )}
+
+    <!-- Content Grid (Desktop: TOC Left, Prose Right) -->
+    <div class="article-grid">
+      <!-- Left Column: Table of Contents -->
+      <aside class="article-toc-col">
+        <TableOfContents headings={headings} />
+      </aside>
+
+      <!-- Right Column: Content Body -->
+      <div class="article-content-col">
+        <div class="prose">
+          <Content />
+        </div>
+
+        <!-- Share Trigger -->
+        <ShareArticle title={title} />
+
+        <!-- Compact B2B Call to Action -->
+        <div class="compact-cta-box">
+          <h4 class="compact-cta-title">Got a business challenge in mind?</h4>
+          <p class="compact-cta-text">
+            Ceritakan tantangan bisnis Anda dan mari cari tahu bagaimana teknologi dapat membantu.
+          </p>
+          <a href="/#konsultasi" class="compact-cta-btn">Diskusikan Kebutuhan Anda <span class="arrow">→</span></a>
+        </div>
+
+        <!-- Related Articles -->
+        <RelatedArticles currentPostId={post.id} category={category} tags={tags} />
+      </div>
+    </div>
+  </article>
+</BlogLayout>
+
+<style>
+  .article-page-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 20px 90px 20px;
+    box-sizing: border-box;
+  }
+
+  /* Centered Header */
+  .article-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 48px;
+    box-sizing: border-box;
+  }
+
+  .article-category {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    margin-bottom: 16px;
+  }
+
+  .article-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 52px; /* desktop: 52px – 64px */
+    font-weight: 800;
+    line-height: 1.05;
+    color: #FFFFFF;
+    max-width: 900px;
+    margin: 0 0 20px 0;
+    letter-spacing: -1.5px;
+  }
+
+  .article-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 0 24px 0;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .meta-dot {
+    color: rgba(125, 150, 197, 0.4);
+  }
+
+  /* Aspect Ratio Optimized Hero Image */
+  .article-hero-image-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    aspect-ratio: 16/7; /* target aspect ratio 16:7 / 16:8 */
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    background-color: #080E19;
+    box-sizing: border-box;
+  }
+
+  .article-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Grid Layout (Desktop: 25% TOC / 75% Content) */
+  .article-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 7.5fr; /* 25% / 75% split */
+    gap: 40px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .article-toc-col {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .article-content-col {
+    max-width: 760px; /* target content max-width */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Compact B2B CTA Box */
+  .compact-cta-box {
+    background-color: #080E19;
+    border: 1px solid #263653;
+    border-radius: 10px;
+    padding: 32px;
+    margin: 60px 0;
+    box-sizing: border-box;
+  }
+
+  .compact-cta-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+  }
+
+  .compact-cta-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 20px 0;
+  }
+
+  .compact-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--accent-blue);
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  .compact-cta-btn:hover {
+    background-color: var(--accent-bright);
+    transform: translateY(-1px);
+  }
+
+  .compact-cta-btn .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .compact-cta-btn:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  /* Dynamic Markdown Styles (Applied inside .prose) */
+  .prose :global(p) {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px; /* target font-size 16px – 18px */
+    line-height: 1.8; /* line-height 1.8 */
+    color: #B5C3D8; /* color #B5C3D8 */
+    margin: 0 0 24px 0;
+  }
+
+  .prose :global(h2) {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 32px; /* target H2: 30px – 34px */
+    font-weight: 700;
+    color: #FFFFFF; /* color #FFFFFF */
+    margin: 44px 0 20px 0;
+    letter-spacing: -0.75px;
+    scroll-margin-top: 100px; /* offset for sticky navbar headers */
+  }
+
+  .prose :global(h3) {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px; /* target H3: 22px – 26px */
+    font-weight: 700;
+    color: #FFFFFF; /* color #FFFFFF */
+    margin: 36px 0 16px 0;
+    letter-spacing: -0.5px;
+    scroll-margin-top: 100px;
+  }
+
+  .prose :global(ul) {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0 0 24px 0;
+  }
+
+  .prose :global(ol) {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin: 0 0 24px 0;
+  }
+
+  .prose :global(li) {
+    font-family: 'Inter', sans-serif;
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: #B5C3D8;
+    margin-bottom: 8px;
+  }
+
+  .prose :global(a) {
+    color: var(--accent-blue); /* links color #3984FF */
+    text-decoration: underline;
+    transition: color 0.15s ease;
+  }
+
+  .prose :global(a:hover) {
+    color: var(--accent-bright);
+  }
+
+  .prose :global(strong) {
+    color: #FFFFFF; /* strong color #FFFFFF */
+    font-weight: 700;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 4px solid var(--accent-blue);
+    background-color: rgba(57, 132, 255, 0.04);
+    padding: 16px 24px;
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .prose :global(blockquote p) {
+    margin: 0;
+    font-style: italic;
+    color: #E2E8F0;
+  }
+
+  .prose :global(pre) {
+    background-color: #070C15 !important; /* dark code block */
+    border: 1px solid #263653; /* border #263653 */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 32px 0;
+    overflow-x: auto;
+  }
+
+  .prose :global(code) {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+  }
+
+  .prose :global(:not(pre) > code) {
+    background-color: #0B1322;
+    border: 1px solid #1C2E4A;
+    border-radius: 4px;
+    padding: 2px 6px;
+    color: #E2E8F0;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .article-grid {
+      grid-template-columns: 1fr; /* mobile: hide TOC or stack */
+    }
+    .article-toc-col {
+      display: none; /* hide sticky TOC on mobile/tablet */
+    }
+    .article-title {
+      font-size: 40px; /* mobile font scale: 34px - 40px */
+    }
+    .article-page-container {
+      padding: 100px 20px 60px 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .article-title {
+      font-size: 34px;
+    }
+    .article-description {
+      font-size: 15px;
+    }
+    .prose :global(p) {
+      font-size: 16px; /* mobile body: 16px */
+    }
+    .prose :global(h2) {
+      font-size: 26px;
+    }
+    .prose :global(h3) {
+      font-size: 20px;
+    }
+    .compact-cta-box {
+      padding: 24px;
+    }
+    .compact-cta-title {
+      font-size: 18px;
+    }
+    .compact-cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* Light Theme Specific Component Overrides */
+  :global(html[data-theme="light"]) .article-title {
+    color: #0F172A;
+  }
+  :global(html[data-theme="light"]) .article-description {
+    color: #475569;
+  }
+  :global(html[data-theme="light"]) .meta-dot {
+    color: rgba(71, 85, 105, 0.3);
+  }
+  :global(html[data-theme="light"]) .article-meta {
+    color: #64748B;
+  }
+  :global(html[data-theme="light"]) .compact-cta-box {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.02);
+  }
+  :global(html[data-theme="light"]) .compact-cta-title {
+    color: #0F172A;
+  }
+  :global(html[data-theme="light"]) .compact-cta-text {
+    color: #475569;
+  }
+  :global(html[data-theme="light"] .prose p) {
+    color: #334155;
+  }
+  :global(html[data-theme="light"] .prose li) {
+    color: #334155;
+  }
+  :global(html[data-theme="light"] .prose h2) {
+    color: #0F172A;
+  }
+  :global(html[data-theme="light"] .prose h3) {
+    color: #0F172A;
+  }
+  :global(html[data-theme="light"] .prose strong) {
+    color: #0F172A;
+  }
+  :global(html[data-theme="light"] .prose blockquote) {
+    background-color: rgba(0, 85, 255, 0.02);
+  }
+  :global(html[data-theme="light"] .prose blockquote p) {
+    color: #334155;
+  }
+  :global(html[data-theme="light"] .prose pre) {
+    background-color: #F8FAFC !important;
+    border-color: #E2E8F0;
+  }
+  :global(html[data-theme="light"] .prose code) {
+    color: #0F172A;
+  }
+  :global(html[data-theme="light"] .prose :not(pre) > code) {
+    background-color: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #0F172A;
+  }
+</style>

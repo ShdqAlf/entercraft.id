@@ -1,0 +1,513 @@
+---
+// Faq.astro
+
+const faqData = [
+  {
+    id: "01",
+    question: "Entercraft.id melayani bisnis seperti apa?",
+    answer: "Entercraft.id berfokus pada kebutuhan digital bisnis B2B non-IT dari berbagai industri. Solusi dapat disesuaikan dengan proses, kebutuhan operasional, dan tujuan bisnis masing-masing perusahaan."
+  },
+  {
+    id: "02",
+    question: "Apakah Entercraft.id hanya mengerjakan proyek dari nol?",
+    answer: "Tidak. Kami dapat membantu membangun solusi baru maupun mengembangkan, mengintegrasikan, atau mengoptimalkan sistem yang sudah digunakan bisnis Anda."
+  },
+  {
+    id: "03",
+    question: "Apakah solusi yang dibuat bisa disesuaikan dengan kebutuhan bisnis?",
+    answer: "Ya. Kami tidak menggunakan pendekatan one-size-fits-all. Solusi dirancang berdasarkan workflow, kebutuhan operasional, dan scope proyek yang telah disepakati."
+  },
+  {
+    id: "04",
+    question: "Apakah Entercraft.id bisa mengintegrasikan sistem yang sudah ada?",
+    answer: "Bisa. Kami dapat membantu menghubungkan sistem, database, aplikasi, atau platform yang sudah digunakan agar data dan proses dapat bekerja lebih terintegrasi. Kebutuhan integrasi akan dievaluasi berdasarkan sistem yang digunakan."
+  },
+  {
+    id: "05",
+    question: "Bagaimana proses memulai kerja sama dengan Entercraft.id?",
+    answer: "Anda dapat memulai dengan menghubungi tim Entercraft.id dan menjelaskan kebutuhan atau tantangan bisnis yang ingin diselesaikan. Kami kemudian mempelajari kebutuhan tersebut sebelum menentukan pendekatan dan scope solusi yang sesuai.",
+    hasLink: true,
+    linkText: "Diskusikan Kebutuhan Anda →",
+    linkUrl: "#konsultasi"
+  },
+  {
+    id: "06",
+    question: "Berapa biaya pembuatan solusi digital?",
+    answer: "Biaya bergantung pada jenis solusi, kompleksitas, fitur, integrasi, dan scope pekerjaan. Setelah kebutuhan bisnis dipahami, kami dapat menyusun scope dan estimasi biaya yang lebih sesuai."
+  },
+  {
+    id: "07",
+    question: "Berapa lama proses pengerjaan proyek?",
+    answer: "Durasi proyek bergantung pada scope, kompleksitas, jumlah fitur, integrasi, serta kebutuhan implementasi. Estimasi timeline akan dibahas setelah kebutuhan dan scope proyek ditentukan."
+  },
+  {
+    id: "08",
+    question: "Apakah Entercraft.id hanya menggunakan AI untuk solusi baru?",
+    answer: "Tidak. AI merupakan salah satu teknologi yang dapat digunakan ketika memang relevan dengan kebutuhan bisnis. Kami mempertimbangkan proses, tujuan, dan kondisi sistem terlebih dahulu sebelum menentukan apakah AI, automation, software development, atau kombinasi beberapa teknologi merupakan pendekatan yang tepat."
+  }
+];
+---
+
+<section class="faq-section" aria-labelledby="faq-section-title">
+  <!-- Subtle Blueprint Dot Network background visual (opacity: 5-8%) -->
+  <div class="faq-bg-visual">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="faqPattern" width="100" height="100" patternUnits="userSpaceOnUse">
+          <circle cx="50" cy="50" r="1.5" fill="#3984FF" fill-opacity="0.12"/>
+          <line x1="0" y1="50" x2="100" y2="50" stroke="#3984FF" stroke-width="0.5" stroke-opacity="0.03" stroke-dasharray="2 4"/>
+          <line x1="50" y1="0" x2="50" y2="100" stroke="#3984FF" stroke-width="0.5" stroke-opacity="0.03" stroke-dasharray="2 4"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#faqPattern)" />
+    </svg>
+  </div>
+
+  <div class="faq-container">
+    
+    <!-- Left Column: Header (35%) -->
+    <div class="faq-left-col animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="faq-eyebrow">
+        <span class="eyebrow-dot">●</span> FAQ
+      </div>
+      <h2 class="faq-title" id="faq-section-title">
+        Pertanyaan yang<br />
+        Sering Ditanyakan
+      </h2>
+      <p class="faq-intro">
+        Masih punya pertanyaan sebelum memulai? Temukan jawaban atas beberapa hal yang paling sering ditanyakan tentang layanan dan proses kerja Entercraft.id.
+      </p>
+    </div>
+
+    <!-- Right Column: Accordion List (65%) -->
+    <div class="faq-right-col">
+      <div class="faq-accordion-list" role="presentation">
+        {faqData.map((faq, index) => (
+          <div 
+            class={`faq-item animate-fade-scroll ${index === 0 ? 'active' : ''}`}
+            style={`animation-delay: ${200 + (index * 60)}ms;`}
+          >
+            <!-- Question Trigger Button -->
+            <button 
+              type="button"
+              class="faq-trigger"
+              id={`faq-btn-${faq.id}`}
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-controls={`faq-panel-${faq.id}`}
+            >
+              <span class="faq-question">{faq.question}</span>
+              <span class="faq-icon-box" aria-hidden="true">
+                <span class="faq-icon-symbol">{index === 0 ? '−' : '+'}</span>
+              </span>
+            </button>
+            
+            <!-- Expandable Answer Panel -->
+            <div 
+              class="faq-answer-wrapper"
+              id={`faq-panel-${faq.id}`}
+              role="region"
+              aria-labelledby={`faq-btn-${faq.id}`}
+            >
+              <div class="faq-answer-content">
+                <p class="faq-answer-text">{faq.answer}</p>
+                {faq.hasLink && (
+                  <a href={faq.linkUrl} class="faq-inline-link">
+                    {faq.linkText}
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Micro Trust Element under list -->
+      <div class="faq-micro-trust animate-fade-scroll" style="animation-delay: 750ms;">
+        <p class="trust-question">Belum menemukan jawaban yang Anda cari?</p>
+        <p class="trust-subtitle">Diskusikan kebutuhan bisnis Anda dengan tim Entercraft.id.</p>
+        <a href="#hubungi" class="trust-cta">
+          Hubungi Entercraft.id <span class="trust-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Section base */
+  .faq-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary); /* #05070D */
+    border-top: 1px solid var(--border-color);
+    padding-top: 100px;
+    padding-bottom: 110px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* SVG Dot Network overlay */
+  .faq-bg-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr; /* target ratio: 35% / 65% */
+    gap: 75px; /* target gap: 60px – 90px */
+    position: relative;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+
+  /* Left Column: Heading */
+  .faq-left-col {
+    text-align: left;
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+  }
+
+  .faq-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .faq-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 44px; /* target: 46px – 52px */
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .faq-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px; /* target: 14px – 16px */
+    line-height: 1.7;
+    color: #7F95B8; /* secondary text */
+    max-width: 620px; /* target max-width: 620px */
+    margin: 0;
+  }
+
+  /* Right Column: Accordion */
+  .faq-right-col {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .faq-accordion-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* FAQ Accordion Item base */
+  .faq-item {
+    width: 100%;
+    border-bottom: 1px solid #263653; /* target: 1px solid #263653, no side/top borders */
+    box-sizing: border-box;
+    transition: background-color 0.22s ease, border-color 0.22s ease;
+  }
+
+  .faq-item:hover {
+    background-color: rgba(57, 132, 255, 0.025); /* target hover: rgba(57,132,255,0.025) */
+    border-bottom-color: #3b527d;
+  }
+
+  /* Accordion Trigger button */
+  .faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 16px; /* target vertical padding: 22px – 26px */
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box;
+    gap: 20px;
+  }
+
+  /* Trigger Accessible focus indicators */
+  .faq-trigger:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: -2px;
+    background-color: rgba(57, 132, 255, 0.04);
+  }
+
+  .faq-question {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px; /* target: 16px – 18px */
+    font-weight: 600; /* target: 600 */
+    color: #FFFFFF; /* target: #FFFFFF */
+    line-height: 1.4;
+    transition: color 0.2s ease;
+  }
+
+  /* Hover symbol trigger */
+  .faq-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: #7F95B8; /* closed state: #7F95B8 */
+    transition: color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+  }
+
+  .faq-icon-symbol {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px; /* target: 20px */
+    font-weight: 300; /* target: 300 - 400 */
+    line-height: 1;
+  }
+
+  .faq-trigger:hover .faq-icon-box {
+    color: var(--accent-blue); /* target hover: #3984FF */
+  }
+
+  /* Active state class selectors */
+  .faq-item.active .faq-icon-box {
+    color: var(--accent-blue); /* target open icon: #3984FF */
+    transform: rotate(0);
+  }
+
+  /* Expandable content wrapper using CSS Grid */
+  .faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  .faq-item.active .faq-answer-wrapper {
+    grid-template-rows: 1fr;
+    opacity: 1; /* target active: opacity 0 -> 1 */
+  }
+
+  .faq-answer-content {
+    min-height: 0;
+    padding: 0 16px 26px 16px; /* target padding bottom: 24px – 28px */
+    box-sizing: border-box;
+    transform: translateY(-4px); /* target transition: translateY -4px -> 0 */
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.active .faq-answer-content {
+    transform: translateY(0);
+  }
+
+  .faq-answer-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px; /* target answer: 14px – 15px */
+    line-height: 1.7; /* target: 1.7 */
+    color: #7F95B8; /* target: #7F95B8 */
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Inline text link inside FAQ #05 */
+  .faq-inline-link {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 14px;
+    transition: color 0.18s ease;
+  }
+
+  .faq-inline-link:hover {
+    color: var(--accent-bright);
+  }
+
+  /* Micro trust supporting block */
+  .faq-micro-trust {
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 36px;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .trust-question {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 6px 0;
+  }
+
+  .trust-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; /* target: 13px - 14px */
+    color: #7F95B8; /* target: #7F95B8 */
+    margin: 0 0 16px 0;
+  }
+
+  .trust-cta {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent-blue); /* target: color #3984FF */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .trust-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .trust-cta:hover {
+    color: var(--accent-bright);
+  }
+
+  .trust-cta:hover .trust-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Entrance Animation CSS */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive styling */
+  @media (max-width: 991px) {
+    .faq-container {
+      grid-template-columns: 0.6fr 1.4fr; /* target ratio tablet: 30% / 70% */
+      gap: 40px;
+    }
+
+    .faq-title {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    /* Stack vertical columns on tablet/mobile */
+    .faq-container {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .faq-left-col {
+      position: relative;
+      top: 0;
+    }
+
+    .faq-title {
+      font-size: 38px;
+      line-height: 1.1;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .faq-section {
+      padding-top: 80px;
+      padding-bottom: 90px;
+    }
+
+    .faq-title {
+      font-size: 32px; /* target mobile: 34px - 40px */
+    }
+
+    .faq-trigger {
+      padding: 20px 10px; /* target vertical padding mobile: 18px – 22px */
+    }
+
+    .faq-question {
+      font-size: 15.5px; /* target mobile question: 15px – 16px */
+    }
+
+    .faq-answer-text {
+      font-size: 13.5px; /* target mobile answer: 13px – 14px */
+    }
+
+    .faq-answer-content {
+      padding: 0 10px 22px 10px;
+    }
+  }
+</style>
+
+<script>
+  // Accordion Toggle handlers
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-accordion-list .faq-item');
+
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const symbol = item.querySelector('.faq-icon-symbol');
+
+      if (!trigger || !symbol) return;
+
+      trigger.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Deactivate other open items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            const otherTrigger = otherItem.querySelector('.faq-trigger');
+            const otherSymbol = otherItem.querySelector('.faq-icon-symbol');
+            if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+            if (otherSymbol) otherSymbol.textContent = '+';
+          }
+        });
+
+        // Toggle current item
+        if (isActive) {
+          item.classList.remove('active');
+          trigger.setAttribute('aria-expanded', 'false');
+          symbol.textContent = '+';
+        } else {
+          item.classList.add('active');
+          trigger.setAttribute('aria-expanded', 'true');
+          symbol.textContent = '−';
+        }
+      });
+    });
+  });
+</script>
