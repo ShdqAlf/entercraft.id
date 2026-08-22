@@ -197,7 +197,7 @@ hr {
 html[data-theme="light"] {
   /* Core Color Variables */
   --bg-primary: #f8fafc;
-  --bg-navbar: rgba(255, 255, 255, 0.85);
+  --bg-navbar: #ffffff;
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
@@ -237,9 +237,9 @@ html[data-theme="light"] {
 
   /* 1. Navbar Light Theme */
   .navbar-header {
-    background-color: rgba(255, 255, 255, 0.85) !important;
+    background-color: #ffffff !important;
     border-bottom: 1px solid #e2e8f0 !important;
-    backdrop-filter: blur(12px) !important;
+    backdrop-filter: none !important;
   }
 
   .nav-link {
@@ -663,9 +663,12 @@ html[data-theme="light"] {
   }
 
   /* 10. Footer Section */
-  .footer-area {
+  html[data-theme="light"] footer.footer-area {
     background-color: #ffffff !important;
     border-top: 1px solid #e2e8f0 !important;
+  }
+  .brand-logo {
+    color: #0f172a !important;
   }
   .brand-tagline {
     color: #475569 !important;
@@ -705,6 +708,12 @@ html[data-theme="light"] {
     color: #0055ff !important;
   }
   .bottom-dot {
+    color: #64748b !important;
+  }
+  .footer-col {
+    border-bottom-color: #e2e8f0 !important;
+  }
+  .mobile-chevron {
     color: #64748b !important;
   }
 }
