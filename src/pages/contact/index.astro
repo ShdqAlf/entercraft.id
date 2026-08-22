@@ -1,0 +1,58 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Navbar from '../../components/Navbar.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { SITE_TITLE } from '../../consts';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <BaseHead
+      title={`Diskusikan Kebutuhan Bisnis Anda | ${SITE_TITLE}`}
+      description="Ceritakan tantangan bisnis Anda kepada Entercraft.id dan temukan pendekatan teknologi yang sesuai dengan kebutuhan bisnis Anda."
+    />
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <section class="contact-hero" aria-labelledby="contact-page-title">
+        <div class="contact-hero-grid"></div>
+        <div class="contact-hero-glow"></div>
+        <div class="contact-hero-content">
+          <div class="contact-hero-eyebrow"><span>●</span> LET'S TALK</div>
+          <h1 id="contact-page-title">Ceritakan Tantangan Bisnis Anda.</h1>
+          <p>Anda tidak perlu tahu solusi teknologinya terlebih dahulu. Ceritakan apa yang ingin Anda perbaiki, dan kami akan membantu mengeksplorasi pendekatan yang paling sesuai.</p>
+          <div class="contact-hero-note">From business challenges to digital solutions.</div>
+        </div>
+      </section>
+      <ContactForm />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .contact-hero {
+    position: relative;
+    min-height: 430px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 72px 24px 58px;
+    background: var(--bg-primary);
+    text-align: center;
+  }
+  .contact-hero-content { position: relative; z-index: 2; max-width: 760px; animation: contact-hero-in 650ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .contact-hero-eyebrow { color: var(--accent-blue); font: 700 11px/1.2 'Plus Jakarta Sans', sans-serif; letter-spacing: 1.7px; }
+  .contact-hero-eyebrow span { margin-right: 6px; font-size: 8px; }
+  .contact-hero h1 { margin: 22px 0 20px; color: var(--text-primary); font: 800 54px/1.05 'Plus Jakarta Sans', sans-serif; letter-spacing: -1.8px; }
+  .contact-hero p { max-width: 670px; margin: 0 auto; color: var(--text-secondary); font: 16px/1.75 'Inter', sans-serif; }
+  .contact-hero-note { margin-top: 30px; color: var(--text-muted); font: 11px/1.4 'Inter', sans-serif; letter-spacing: 0.7px; }
+  .contact-hero-grid { position: absolute; inset: 0; opacity: 0.45; background-image: linear-gradient(rgba(57,132,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(57,132,255,0.035) 1px, transparent 1px); background-size: 58px 58px; }
+  .contact-hero-glow { position: absolute; width: 660px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(57,132,255,0.08), transparent 68%); pointer-events: none; }
+  @keyframes contact-hero-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .contact-hero { min-height: 370px; padding: 62px 20px 48px; } .contact-hero h1 { font-size: 38px; letter-spacing: -1px; } .contact-hero p { font-size: 14px; } }
+  @media (prefers-reduced-motion: reduce) { .contact-hero-content, .contact-hero-grid, .contact-hero-glow { animation: none; } }
+</style>

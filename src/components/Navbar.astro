@@ -2,6 +2,7 @@
 // Navbar.astro
 const pathname = Astro.url.pathname;
 const isBlog = pathname.startsWith('/blog');
+const isContact = pathname.startsWith('/contact');
 const isHome = pathname === '/' || pathname === '';
 ---
 
@@ -82,7 +83,7 @@ const isHome = pathname === '/' || pathname === '';
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
-      <a href={isHome ? "#konsultasi" : "/#konsultasi"} class="nav-cta">Konsultasi Gratis</a>
+      <a href="/contact/" class={`nav-cta ${isContact ? 'active' : ''}`} aria-current={isContact ? 'page' : undefined}>Konsultasi Gratis</a>
       
       <!-- Hamburger Menu Button -->
       <button class="mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
@@ -154,7 +155,7 @@ const isHome = pathname === '/' || pathname === '';
           </svg>
           Toggle Theme
         </button>
-        <a href={isHome ? "#konsultasi" : "/#konsultasi"} class="mobile-nav-cta">Konsultasi Gratis</a>
+        <a href="/contact/" class={`mobile-nav-cta ${isContact ? 'active' : ''}`} aria-current={isContact ? 'page' : undefined}>Konsultasi Gratis</a>
       </div>
     </div>
   </div>
@@ -725,7 +726,7 @@ const isHome = pathname === '/' || pathname === '';
     });
 
     // Theme Button Toggle Script
-    const themeBtns = document.querySelectorAll('.theme-btn');
+    const themeBtns = document.querySelectorAll<HTMLButtonElement>('.theme-btn');
     themeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         // Scale animation feedback
