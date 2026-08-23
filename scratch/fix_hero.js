@@ -1,4 +1,6 @@
----
+const fs = require('fs');
+
+const heroContent = `---
 // Hero.astro
 ---
 
@@ -50,7 +52,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="12 2 2 7 12 12 22 7 12 2"/>
           <polyline points="2 17 12 22 22 17"/>
-          <polyline points="2 12 12 17 22 12"/>
+          <polyline points="2 12 17 22 12"/>
         </svg>
       </div>
       <div class="tech-card-info">
@@ -229,7 +231,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.06;
+    opacity: 0.06; /* Highly lowered opacity to prevent text clashing */
   }
 
   .hero-bg-img {
@@ -430,7 +432,7 @@
     background: rgba(7, 16, 32, 0.5);
     border: 1px solid #25436c;
     border-radius: 999px;
-    margin-bottom: 34px;
+    margin-bottom: 34px; /* spacing: 30px-36px */
     backdrop-filter: blur(4px);
     box-sizing: border-box;
   }
@@ -452,12 +454,12 @@
   /* Large Typography Heading */
   .hero-heading {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 70px;
+    font-size: 70px; /* target desktop: 64px - 72px */
     font-weight: 800;
-    line-height: 1;
-    letter-spacing: -2.5px;
+    line-height: 1; /* target: 0.95 - 1.05 */
+    letter-spacing: -2.5px; /* target: -2px to -3px */
     color: var(--text-primary);
-    margin: 0 0 25px 0;
+    margin: 0 0 25px 0; /* spacing: 22px-28px */
     text-transform: none;
     text-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
   }
@@ -469,11 +471,11 @@
   /* Description */
   .hero-description {
     font-family: "Inter", sans-serif;
-    font-size: 15px;
-    line-height: 1.8;
-    color: #6682b3;
-    max-width: 600px;
-    margin: 0 0 35px 0;
+    font-size: 15px; /* target: 14px - 16px */
+    line-height: 1.8; /* target: 1.8 */
+    color: #6682b3; /* muted blue-gray */
+    max-width: 600px; /* target: 600px */
+    margin: 0 0 35px 0; /* spacing: 32px-38px */
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   }
 
@@ -482,7 +484,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 12px; /* target: 12px gap */
     width: 100%;
   }
 
@@ -564,34 +566,10 @@
   
   :global(html[data-theme="light"]) .hero-bg-img {
     mix-blend-mode: multiply;
-    opacity: 0.28; /* Increased opacity from 0.15 to make the brain more visible */
+    opacity: 0.15;
     filter: invert(1);
     mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 65%);
     -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 65%);
-  }
-
-  /* Make radial glows stronger in light mode to avoid looking plain */
-  :global(html[data-theme="light"]) .hero-glow {
-    background:
-      radial-gradient(
-        circle at 50% 45%,
-        rgba(57, 132, 255, 0.18) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        circle at 20% 75%,
-        rgba(57, 213, 232, 0.12) 0%,
-        transparent 40%
-      );
-  }
-
-  :global(html[data-theme="light"]) .hero-glow-secondary {
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
-  }
-
-  /* Make the SVG circuit lines slightly more visible in light mode */
-  :global(html[data-theme="light"]) .bg-circuit-svg {
-    opacity: 0.85;
   }
   
   :global(html[data-theme="light"]) .hero-heading {
@@ -612,7 +590,7 @@
 
   @media (max-width: 991px) {
     .hero-heading {
-      font-size: 56px;
+      font-size: 56px; /* tablet: 52px - 60px */
       letter-spacing: -1.5px;
     }
 
@@ -629,7 +607,7 @@
 
   @media (max-width: 767px) {
     .floating-tech-card {
-      display: none;
+      display: none; /* Hide floating cards on small screens to keep typography unobstructed */
     }
 
     .bg-circuit-svg {
@@ -647,7 +625,7 @@
     }
 
     .hero-heading {
-      font-size: 40px;
+      font-size: 40px; /* mobile: 40px - 48px */
       letter-spacing: -1px;
       margin-bottom: 20px;
     }
@@ -669,3 +647,6 @@
     }
   }
 </style>
+\`;
+
+fs.writeFileSync('src/components/Hero.astro', heroContent);
