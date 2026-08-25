@@ -1,43 +1,67 @@
 ---
 // HowWeWork.astro
 
-const stepsData = [
-  {
-    num: "01",
-    label: "DISCOVER",
-    title: "Pahami Kebutuhan",
-    description: "Kami mempelajari bisnis, proses kerja, tantangan, dan tujuan yang ingin Anda capai.",
-    focus: "BUSINESS UNDERSTANDING"
-  },
-  {
-    num: "02",
-    label: "DEFINE",
-    title: "Tentukan Solusi",
-    description: "Kami mengidentifikasi kebutuhan teknis dan menyusun pendekatan solusi yang paling relevan dengan bisnis Anda.",
-    focus: "SOLUTION STRATEGY"
-  },
-  {
-    num: "03",
-    label: "BUILD",
-    title: "Bangun & Kembangkan",
-    description: "Tim kami mengembangkan solusi sesuai scope, workflow, dan kebutuhan yang telah disepakati.",
-    focus: "DEVELOPMENT"
-  },
-  {
-    num: "04",
-    label: "TEST & REFINE",
-    title: "Uji & Sempurnakan",
-    description: "Solusi diuji untuk memastikan fungsi, alur, dan pengalaman pengguna berjalan sesuai kebutuhan.",
-    focus: "QUALITY & REFINEMENT"
-  },
-  {
-    num: "05",
-    label: "LAUNCH & SUPPORT",
-    title: "Implementasi & Support",
-    description: "Solusi diterapkan ke lingkungan bisnis dan kami membantu memastikan proses berjalan dengan baik setelah implementasi.",
-    focus: "IMPLEMENTATION & SUPPORT"
-  }
-];
+interface StepData {
+  num: string;
+  label: string;
+  title: string;
+  description: string;
+  focus: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  titleHtml?: string;
+  intro?: string;
+  stepsData?: StepData[];
+  closingTitle?: string;
+  closingSubtitle?: string;
+}
+
+const {
+  eyebrow = "HOW WE WORK",
+  titleHtml = "Dari Tantangan Menjadi<br />Solusi Digital",
+  intro = "Kami memulai dari memahami kebutuhan bisnis, kemudian merancang solusi yang tepat hingga memastikan teknologi dapat berjalan sesuai tujuan yang telah ditetapkan.",
+  stepsData = [
+    {
+      num: "01",
+      label: "DISCOVER",
+      title: "Pahami Kebutuhan",
+      description: "Kami mempelajari bisnis, proses kerja, tantangan, dan tujuan yang ingin Anda capai.",
+      focus: "BUSINESS UNDERSTANDING"
+    },
+    {
+      num: "02",
+      label: "DEFINE",
+      title: "Tentukan Solusi",
+      description: "Kami mengidentifikasi kebutuhan teknis dan menyusun pendekatan solusi yang paling relevan dengan bisnis Anda.",
+      focus: "SOLUTION STRATEGY"
+    },
+    {
+      num: "03",
+      label: "BUILD",
+      title: "Bangun & Kembangkan",
+      description: "Tim kami mengembangkan solusi sesuai scope, workflow, dan kebutuhan yang telah disepakati.",
+      focus: "DEVELOPMENT"
+    },
+    {
+      num: "04",
+      label: "TEST & REFINE",
+      title: "Uji & Sempurnakan",
+      description: "Solusi diuji untuk memastikan fungsi, alur, dan pengalaman pengguna berjalan sesuai kebutuhan.",
+      focus: "QUALITY & REFINEMENT"
+    },
+    {
+      num: "05",
+      label: "LAUNCH & SUPPORT",
+      title: "Implementasi & Support",
+      description: "Solusi diterapkan ke lingkungan bisnis dan kami membantu memastikan proses berjalan dengan baik setelah implementasi.",
+      focus: "IMPLEMENTATION & SUPPORT"
+    }
+  ],
+  closingTitle = "Dimulai dari Bisnis. Dibangun dengan Teknologi.",
+  closingSubtitle = "Setiap keputusan teknologi kami arahkan kembali pada kebutuhan dan tujuan bisnis yang ingin dicapai."
+} = Astro.props;
 ---
 
 <section class="hww-section">
@@ -60,14 +84,11 @@ const stepsData = [
     <!-- Section Header (Left-aligned) -->
     <div class="hww-header animate-fade-scroll" style="animation-delay: 100ms;">
       <div class="hww-eyebrow">
-        <span class="eyebrow-dot">●</span> HOW WE WORK
+        <span class="eyebrow-dot">●</span> {eyebrow}
       </div>
-      <h2 class="hww-title">
-        Dari Tantangan Menjadi<br />
-        Solusi Digital
-      </h2>
+      <h2 class="hww-title" set:html={titleHtml}></h2>
       <p class="hww-sub">
-        Kami memulai dari memahami kebutuhan bisnis, kemudian merancang solusi yang tepat hingga memastikan teknologi dapat berjalan sesuai tujuan yang telah ditetapkan.
+        {intro}
       </p>
     </div>
 
@@ -104,9 +125,9 @@ const stepsData = [
 
     <!-- Closing Philosophy Statement -->
     <div class="hww-closing animate-fade-scroll" style="animation-delay: 650ms;">
-      <h3 class="closing-headline">Dimulai dari Bisnis. Dibangun dengan Teknologi.</h3>
+      <h3 class="closing-headline">{closingTitle}</h3>
       <p class="closing-sub">
-        Setiap keputusan teknologi kami arahkan kembali pada kebutuhan dan tujuan bisnis yang ingin dicapai.
+        {closingSubtitle}
       </p>
     </div>
 

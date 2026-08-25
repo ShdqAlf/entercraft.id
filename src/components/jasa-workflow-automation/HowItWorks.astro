@@ -1,0 +1,293 @@
+---
+// HowItWorks.astro (Jasa Workflow Automation)
+
+const steps = [
+  {
+    title: "TRIGGER",
+    subtitle: "Apa yang memulai workflow?",
+    examples: ["Form submitted", "New lead", "New order", "Payment confirmed", "Status changed"],
+    color: "blue"
+  },
+  {
+    title: "CONDITION",
+    subtitle: "Apa yang harus diperiksa?",
+    examples: ["Amount > threshold", "Lead qualified", "Payment verified", "Request approved"],
+    color: "yellow"
+  },
+  {
+    title: "ACTION",
+    subtitle: "Apa yang harus dilakukan?",
+    examples: ["Create task", "Update CRM", "Send email / WA", "Assign team"],
+    color: "green"
+  },
+  {
+    title: "RESULT",
+    subtitle: "Apa hasilnya?",
+    examples: ["Next process starts", "Team notified", "Customer receives update", "Data updated"],
+    color: "purple"
+  }
+];
+---
+
+<section class="how-section" id="how-it-works">
+  <div class="how-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Bagaimana Workflow Automation Bekerja?</h2>
+      <p class="header-intro">
+        Inti dari otomasi alur kerja adalah logika sederhana yang dieksekusi secara instan dan tanpa henti oleh sistem.
+      </p>
+    </div>
+
+    <div class="how-flow animate-fade-scroll" style="animation-delay: 250ms;">
+      {steps.map((step, index) => (
+        <div class="how-step-wrapper">
+          <div class={`how-card border-${step.color}`}>
+            <div class={`card-head bg-${step.color}`}>
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-subtitle">{step.subtitle}</p>
+            </div>
+            <div class="card-body">
+              <ul class="example-list">
+                {step.examples.map(ex => (
+                  <li>
+                    <span class="bullet">•</span>
+                    {ex}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          {index < steps.length - 1 && (
+            <div class="how-arrow">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .how-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .how-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .how-flow {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .how-step-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .how-card {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-top-width: 4px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .border-blue { border-top-color: #3b82f6; }
+  .border-yellow { border-top-color: #eab308; }
+  .border-green { border-top-color: #22c55e; }
+  .border-purple { border-top-color: #a855f7; }
+
+  .bg-blue { background: rgba(59, 130, 246, 0.1); }
+  .bg-yellow { background: rgba(234, 179, 8, 0.1); }
+  .bg-green { background: rgba(34, 197, 94, 0.1); }
+  .bg-purple { background: rgba(168, 85, 247, 0.1); }
+
+  .card-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid #1B2A42;
+  }
+
+  .step-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 4px 0;
+    letter-spacing: 1px;
+  }
+
+  .step-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #A0B2D2;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .card-body {
+    padding: 20px;
+    flex: 1;
+  }
+
+  .example-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .example-list li {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #D7E0F0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+
+  .bullet {
+    color: #4b5a7a;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .how-arrow {
+    color: #4b5a7a;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .how-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .how-card {
+    background: #F8FAFC;
+    border-left-color: #E2E8F0;
+    border-right-color: #E2E8F0;
+    border-bottom-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .card-head {
+    border-bottom-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .step-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .step-subtitle {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .example-list li {
+    color: #1E293B;
+  }
+
+  :global(html[data-theme="light"]) .how-arrow {
+    color: #94A3B8;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .how-flow {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .how-step-wrapper {
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .how-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .how-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+  }
+</style>

@@ -1,0 +1,271 @@
+---
+// WhatCanBeAutomated.astro (Jasa Workflow Automation)
+
+const automations = [
+  {
+    title: "Data Entry",
+    workflow: ["Form / Input", "Validation", "Database", "Notification"],
+    desc: "Menghilangkan entri data ganda dan memastikan data masuk ke sistem dengan validasi."
+  },
+  {
+    title: "Approval Workflow",
+    workflow: ["Request", "Approval", "Next Step", "Notification"],
+    desc: "Menyederhanakan pengajuan persetujuan internal dengan notifikasi instan ke pihak terkait."
+  },
+  {
+    title: "Lead Processing",
+    workflow: ["Lead Masuk", "Qualification", "Assignment", "CRM Update"],
+    desc: "Memastikan tidak ada calon pelanggan potensial yang terabaikan oleh tim Sales."
+  },
+  {
+    title: "Order Processing",
+    workflow: ["Order", "Payment Check", "Fulfillment", "Customer Alert"],
+    desc: "Mengawal pesanan dari mulai pembayaran diverifikasi hingga masuk ke operasional."
+  },
+  {
+    title: "Document Workflow",
+    workflow: ["Upload", "Extraction", "Approval", "Storage"],
+    desc: "Mengelola arus dokumen secara tersentralisasi tanpa perpindahan fisik/email manual."
+  },
+  {
+    title: "Reporting Workflow",
+    workflow: ["Data Source", "Aggregation", "Processing", "Report"],
+    desc: "Menyatukan data dari berbagai sumber untuk dikirimkan secara otomatis setiap periode."
+  }
+];
+---
+
+<section class="what-section" id="what-can-be-automated">
+  <div class="what-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Proses Bisnis Apa Saja yang Bisa Diotomatisasi?</h2>
+      <p class="header-intro">
+        Apabila sebuah proses memiliki pola berulang dan langkah yang jelas, proses tersebut dapat dibentuk menjadi workflow terstruktur.
+      </p>
+    </div>
+
+    <div class="what-grid">
+      {automations.map((auto, index) => (
+        <div class="auto-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <h3 class="auto-title">{auto.title}</h3>
+          
+          <div class="mini-workflow">
+            {auto.workflow.map((step, stepIndex) => (
+              <div class="mw-step-container">
+                <div class="mw-step">{step}</div>
+                {stepIndex < auto.workflow.length - 1 && (
+                  <div class="mw-arrow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <p class="auto-desc">{auto.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .what-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .what-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Grid Layout */
+  .what-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .auto-card {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  .auto-card:hover {
+    background: rgba(10, 22, 44, 0.8);
+    border-color: rgba(57, 132, 255, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .auto-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 24px 0;
+  }
+
+  /* Mini Workflow */
+  .mini-workflow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(4, 9, 20, 0.5);
+    border-radius: 8px;
+    border: 1px dashed #1B2A42;
+  }
+
+  .mw-step-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mw-step {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #A0B2D2;
+    background: #1B2A42;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .mw-arrow {
+    color: #4b5a7a;
+    display: flex;
+    align-items: center;
+  }
+
+  .auto-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+    margin-top: auto;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .what-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .auto-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .auto-card:hover {
+    background: #FFFFFF;
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .auto-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .mini-workflow {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .mw-step {
+    background: #E2E8F0;
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .mw-arrow {
+    color: #94A3B8;
+  }
+
+  :global(html[data-theme="light"]) .auto-desc {
+    color: #475569;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .what-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .what-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+
+    .what-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

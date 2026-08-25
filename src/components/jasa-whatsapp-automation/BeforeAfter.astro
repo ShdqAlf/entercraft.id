@@ -1,0 +1,410 @@
+---
+// BeforeAfter.astro
+
+const beforeSteps = [
+  "Customer message",
+  "Admin membaca pesan",
+  "Admin mencari informasi",
+  "Admin mengetik response",
+  "Admin input data ke sistem",
+  "Admin melakukan follow-up"
+];
+
+const afterSteps = [
+  "Customer message",
+  "WhatsApp Automation membaca intent",
+  "Workflow memproses request",
+  "Data diperbarui otomatis ke sistem",
+  "Response dikirim dengan cepat",
+  "Tim menerima notifikasi jika perlu"
+];
+---
+
+<section class="before-after-section">
+  <div class="ba-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Dari Proses Manual Menjadi Workflow yang Lebih Terstruktur</h2>
+      <p class="header-intro">
+        Otomasi bukan berarti menghilangkan peran manusia sepenuhnya. Tujuannya adalah mengelola <strong>proses repetitif</strong> secara otomatis, dan memberikan ruang bagi tim Anda untuk menangani <strong>kasus yang membutuhkan keputusan manusia</strong>.
+      </p>
+    </div>
+
+    <div class="ba-comparison">
+      
+      <!-- BEFORE CARD -->
+      <div class="ba-card before-card animate-fade-scroll" style="animation-delay: 250ms;">
+        <div class="card-header">
+          <span class="badge badge-before">SEBELUM</span>
+          <h3 class="card-title">Proses Manual yang Lambat</h3>
+        </div>
+        
+        <div class="flow-list">
+          {beforeSteps.map((step, index) => (
+            <div class="flow-step">
+              <div class="step-dot dot-red"></div>
+              <span class="step-text">{step}</span>
+            </div>
+          ))}
+        </div>
+        
+        <div class="card-footer footer-red">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Sangat menyita waktu tim & rentan human error
+        </div>
+      </div>
+
+      <!-- VS CIRCLE -->
+      <div class="vs-circle animate-fade-scroll" style="animation-delay: 400ms;">VS</div>
+
+      <!-- AFTER CARD -->
+      <div class="ba-card after-card animate-fade-scroll" style="animation-delay: 550ms;">
+        <div class="card-header">
+          <span class="badge badge-after">SESUDAH</span>
+          <h3 class="card-title">Workflow Otomatis</h3>
+        </div>
+        
+        <div class="flow-list">
+          {afterSteps.map((step, index) => (
+            <div class="flow-step">
+              <div class="step-dot dot-green"></div>
+              <span class="step-text">{step}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="card-footer footer-green">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Lebih cepat, terstruktur, & tim fokus pada hal strategis
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .before-after-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .ba-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .header-intro strong {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  /* Comparison Layout */
+  .ba-comparison {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 32px;
+    position: relative;
+  }
+
+  /* Cards */
+  .ba-card {
+    flex: 1;
+    background-color: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+  
+  .ba-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .before-card {
+    border-top: 3px solid #ef4444; /* Red accent */
+  }
+
+  .after-card {
+    border-top: 3px solid #22c55e; /* Green accent */
+    background-color: rgba(10, 22, 44, 0.8);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Headers */
+  .card-header {
+    margin-bottom: 32px;
+  }
+
+  .badge {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .badge-before {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+  }
+
+  .badge-after {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+  }
+
+  .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* Steps List */
+  .flow-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .flow-list::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 4px;
+    width: 1px;
+    background-color: #1B2A42;
+    z-index: 1;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .step-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-red { background-color: #ef4444; box-shadow: 0 0 6px #ef4444; }
+  .dot-green { background-color: #22c55e; box-shadow: 0 0 6px #22c55e; }
+
+  .step-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #A0B2D2;
+    line-height: 1.4;
+  }
+
+  .after-card .step-text {
+    color: #D7E0F0;
+  }
+
+  /* Footer Note */
+  .card-footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .footer-red {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+  }
+
+  .footer-green {
+    background: rgba(34, 197, 94, 0.1);
+    color: #86efac;
+  }
+
+  .card-footer svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* VS Circle */
+  .vs-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: #0A1326;
+    border: 1px solid #263653;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #7D96C5;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specifics */
+  :global(html[data-theme="light"]) .before-after-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .card-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .header-intro strong {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .ba-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .after-card {
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .flow-list::before {
+    background-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .step-text {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .after-card .step-text {
+    color: #1E293B;
+  }
+
+  :global(html[data-theme="light"]) .footer-red {
+    color: #991B1B;
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .footer-green {
+    color: #166534;
+    background: rgba(34, 197, 94, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .vs-circle {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    color: #64748B;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .header-title {
+      font-size: 34px;
+    }
+    .ba-card {
+      padding: 30px;
+    }
+    .card-title {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .before-after-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 30px;
+    }
+
+    .ba-comparison {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .ba-card {
+      width: 100%;
+    }
+
+    .vs-circle {
+      display: none;
+    }
+  }
+</style>

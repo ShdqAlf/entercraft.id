@@ -1,0 +1,406 @@
+---
+// HumanHandover.astro (Jasa AI Chatbot)
+
+const routing = [
+  { intent: "FAQ", action: "AI", class: "ai" },
+  { intent: "Product Information", action: "AI", class: "ai" },
+  { intent: "Lead Qualification", action: "AI + Sales", class: "hybrid" },
+  { intent: "Quotation", action: "Sales", class: "human" },
+  { intent: "Complaint", action: "Customer Service", class: "human" },
+  { intent: "Technical Issue", action: "Support Team", class: "human" }
+];
+---
+
+<section class="handover-section">
+  <div class="handover-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">AI Menangani Percakapan Rutin, Tim Anda Tetap Menangani Hal yang Membutuhkan Manusia</h2>
+      <p class="header-intro">
+        Konsep terbaik untuk efisiensi bisnis adalah <strong class="text-white">Automation + Human Expertise</strong>. Chatbot menyaring 80% pertanyaan repetitif, dan mengarahkan 20% percakapan kompleks kepada ahlinya.
+      </p>
+    </div>
+
+    <div class="handover-visual animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <!-- Flow Column -->
+      <div class="flow-col">
+        <div class="flow-node customer-node">Customer</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node ai-node">AI Chatbot</div>
+        
+        <div class="split-path">
+          <div class="path-branch">
+            <div class="path-label">Simple Question?</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-node answer-node">AI Menjawab</div>
+          </div>
+          <div class="path-branch">
+            <div class="path-label">Complex Request?</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-node human-node">Human Agent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Routing Examples Column -->
+      <div class="routing-col">
+        <h3 class="routing-title">Contoh Aturan Routing:</h3>
+        <div class="routing-list">
+          {routing.map(item => (
+            <div class="routing-item">
+              <div class="r-intent">{item.intent}</div>
+              <div class="r-arrow">→</div>
+              <div class={`r-action r-${item.class}`}>{item.action}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .handover-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .handover-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .text-white {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+
+  /* Visual Layout */
+  .handover-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 40px;
+  }
+
+  /* Flow Column */
+  .flow-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flow-node {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    min-width: 140px;
+    border: 1px solid transparent;
+  }
+
+  .customer-node {
+    background: #1B2A42;
+    color: #FFFFFF;
+    border-color: #2b3e5b;
+  }
+
+  .ai-node {
+    background: rgba(57, 132, 255, 0.15);
+    color: #93c5fd;
+    border-color: rgba(57, 132, 255, 0.4);
+  }
+
+  .answer-node {
+    background: rgba(34, 197, 94, 0.1);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .human-node {
+    background: rgba(139, 92, 246, 0.15);
+    color: #c4b5fd;
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+
+  .flow-arrow {
+    color: #4b5a7a;
+    font-size: 16px;
+    margin: 8px 0;
+  }
+
+  .split-path {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  /* Connection Line above split paths */
+  .split-path::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background: #4b5a7a;
+  }
+
+  .path-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Connectors from top line to branches */
+  .path-branch::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 1px;
+    height: 12px;
+    background: #4b5a7a;
+  }
+
+  .path-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #A0B2D2;
+    margin-bottom: 4px;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Routing Column */
+  .routing-col {
+    background: rgba(4, 9, 20, 0.4);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #1B2A42;
+  }
+
+  .routing-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .routing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .routing-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    border-bottom: 1px dashed #1B2A42;
+    padding-bottom: 12px;
+  }
+
+  .routing-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .r-intent {
+    color: #D7E0F0;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .r-arrow {
+    color: #4b5a7a;
+    margin: 0 16px;
+  }
+
+  .r-action {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .r-ai {
+    background: rgba(57, 132, 255, 0.1);
+    color: #93c5fd;
+  }
+
+  .r-hybrid {
+    background: linear-gradient(90deg, rgba(57,132,255,0.1) 0%, rgba(139,92,246,0.1) 100%);
+    color: #e2e8f0;
+  }
+
+  .r-human {
+    background: rgba(139, 92, 246, 0.1);
+    color: #c4b5fd;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .handover-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .text-white,
+  :global(html[data-theme="light"]) .routing-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .handover-visual {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .customer-node {
+    background: #E2E8F0;
+    color: #1E293B;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .ai-node {
+    color: #1d4ed8;
+  }
+
+  :global(html[data-theme="light"]) .answer-node {
+    color: #15803d;
+  }
+
+  :global(html[data-theme="light"]) .human-node {
+    color: #6d28d9;
+  }
+
+  :global(html[data-theme="light"]) .path-label {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .routing-col {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .r-intent {
+    color: #1E293B;
+  }
+
+  :global(html[data-theme="light"]) .routing-item {
+    border-bottom-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .r-ai {
+    color: #1d4ed8;
+  }
+
+  :global(html[data-theme="light"]) .r-hybrid {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .r-human {
+    color: #6d28d9;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 850px) {
+    .handover-visual {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .handover-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 30px;
+    }
+
+    .split-path {
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .split-path::before, .path-branch::before {
+      display: none;
+    }
+    
+    .routing-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .r-arrow {
+      display: none;
+    }
+  }
+</style>

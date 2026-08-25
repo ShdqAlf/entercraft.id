@@ -1,0 +1,209 @@
+---
+// Problem.astro (Jasa Workflow Automation)
+
+const problems = [
+  {
+    title: "Copy-Paste Antar Sistem",
+    desc: "Data dipindahkan secara manual dari form, spreadsheet, CRM, database, atau perangkat lunak satu ke yang lainnya.",
+    icon: "clipboard"
+  },
+  {
+    title: "Approval Lambat",
+    desc: "Pekerjaan terhenti karena harus menunggu persetujuan manual dari orang tertentu melalui email atau chat.",
+    icon: "clock"
+  },
+  {
+    title: "Follow-up Terlewat",
+    desc: "Tidak ada alur yang secara otomatis memastikan tugas selanjutnya berjalan ketika suatu proses selesai.",
+    icon: "alert-circle"
+  },
+  {
+    title: "Proses Terputus-putus",
+    desc: "Setiap departemen bekerja dengan sistem dan prosedurnya masing-masing, menyebabkan silo informasi.",
+    icon: "unlink"
+  }
+];
+---
+
+<section class="problem-section" id="problem">
+  <div class="problem-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Berapa Banyak Tahapan Kerja yang Masih Bergantung pada Proses Manual?</h2>
+      <p class="header-intro">
+        Meskipun telah banyak berinvestasi pada perangkat lunak, seringkali eksekusi alur data antar langkah masih sangat bergantung pada rutinitas administratif manual.
+      </p>
+    </div>
+
+    <div class="problem-grid">
+      {problems.map((prob, index) => (
+        <div class="problem-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="card-icon">
+            {prob.icon === 'clipboard' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>}
+            {prob.icon === 'clock' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>}
+            {prob.icon === 'alert-circle' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>}
+            {prob.icon === 'unlink' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>}
+          </div>
+          <h3 class="card-title">{prob.title}</h3>
+          <p class="card-desc">{prob.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .problem-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .problem-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Grid Layout */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .problem-card {
+    background: rgba(7, 16, 32, 0.3);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .problem-card:hover {
+    background: rgba(7, 16, 32, 0.6);
+    border-color: rgba(239, 68, 68, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(239, 68, 68, 0.05);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .problem-card:hover .card-icon {
+    background: #ef4444;
+    color: #ffffff;
+  }
+
+  .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .card-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #A0B2D2;
+    margin: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .problem-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .problem-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .card-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .card-desc {
+    color: #475569;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .problem-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+
+    .problem-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

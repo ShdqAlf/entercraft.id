@@ -1,51 +1,72 @@
 ---
 // Faq.astro
 
-const faqData = [
-  {
-    id: "01",
-    question: "Entercraft.id melayani bisnis seperti apa?",
-    answer: "Entercraft.id berfokus pada kebutuhan digital bisnis B2B non-IT dari berbagai industri. Solusi dapat disesuaikan dengan proses, kebutuhan operasional, dan tujuan bisnis masing-masing perusahaan."
-  },
-  {
-    id: "02",
-    question: "Apakah Entercraft.id hanya mengerjakan proyek dari nol?",
-    answer: "Tidak. Kami dapat membantu membangun solusi baru maupun mengembangkan, mengintegrasikan, atau mengoptimalkan sistem yang sudah digunakan bisnis Anda."
-  },
-  {
-    id: "03",
-    question: "Apakah solusi yang dibuat bisa disesuaikan dengan kebutuhan bisnis?",
-    answer: "Ya. Kami tidak menggunakan pendekatan one-size-fits-all. Solusi dirancang berdasarkan workflow, kebutuhan operasional, dan scope proyek yang telah disepakati."
-  },
-  {
-    id: "04",
-    question: "Apakah Entercraft.id bisa mengintegrasikan sistem yang sudah ada?",
-    answer: "Bisa. Kami dapat membantu menghubungkan sistem, database, aplikasi, atau platform yang sudah digunakan agar data dan proses dapat bekerja lebih terintegrasi. Kebutuhan integrasi akan dievaluasi berdasarkan sistem yang digunakan."
-  },
-  {
-    id: "05",
-    question: "Bagaimana proses memulai kerja sama dengan Entercraft.id?",
-    answer: "Anda dapat memulai dengan menghubungi tim Entercraft.id dan menjelaskan kebutuhan atau tantangan bisnis yang ingin diselesaikan. Kami kemudian mempelajari kebutuhan tersebut sebelum menentukan pendekatan dan scope solusi yang sesuai.",
-    hasLink: true,
-    linkText: "Diskusikan Kebutuhan Anda →",
-    linkUrl: "/contact/"
-  },
-  {
-    id: "06",
-    question: "Berapa biaya pembuatan solusi digital?",
-    answer: "Biaya bergantung pada jenis solusi, kompleksitas, fitur, integrasi, dan scope pekerjaan. Setelah kebutuhan bisnis dipahami, kami dapat menyusun scope dan estimasi biaya yang lebih sesuai."
-  },
-  {
-    id: "07",
-    question: "Berapa lama proses pengerjaan proyek?",
-    answer: "Durasi proyek bergantung pada scope, kompleksitas, jumlah fitur, integrasi, serta kebutuhan implementasi. Estimasi timeline akan dibahas setelah kebutuhan dan scope proyek ditentukan."
-  },
-  {
-    id: "08",
-    question: "Apakah Entercraft.id hanya menggunakan AI untuk solusi baru?",
-    answer: "Tidak. AI merupakan salah satu teknologi yang dapat digunakan ketika memang relevan dengan kebutuhan bisnis. Kami mempertimbangkan proses, tujuan, dan kondisi sistem terlebih dahulu sebelum menentukan apakah AI, automation, software development, atau kombinasi beberapa teknologi merupakan pendekatan yang tepat."
-  }
-];
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+  hasLink?: boolean;
+  linkText?: string;
+  linkUrl?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  titleHtml?: string;
+  intro?: string;
+  faqData?: FaqItem[];
+}
+
+const {
+  eyebrow = "FAQ",
+  titleHtml = "Pertanyaan yang<br />Sering Ditanyakan",
+  intro = "Masih punya pertanyaan sebelum memulai? Temukan jawaban atas beberapa hal yang paling sering ditanyakan tentang layanan dan proses kerja Entercraft.id.",
+  faqData = [
+    {
+      id: "01",
+      question: "Entercraft.id melayani bisnis seperti apa?",
+      answer: "Entercraft.id berfokus pada kebutuhan digital bisnis B2B non-IT dari berbagai industri. Solusi dapat disesuaikan dengan proses, kebutuhan operasional, dan tujuan bisnis masing-masing perusahaan."
+    },
+    {
+      id: "02",
+      question: "Apakah Entercraft.id hanya mengerjakan proyek dari nol?",
+      answer: "Tidak. Kami dapat membantu membangun solusi baru maupun mengembangkan, mengintegrasikan, atau mengoptimalkan sistem yang sudah digunakan bisnis Anda."
+    },
+    {
+      id: "03",
+      question: "Apakah solusi yang dibuat bisa disesuaikan dengan kebutuhan bisnis?",
+      answer: "Ya. Kami tidak menggunakan pendekatan one-size-fits-all. Solusi dirancang berdasarkan workflow, kebutuhan operasional, dan scope proyek yang telah disepakati."
+    },
+    {
+      id: "04",
+      question: "Apakah Entercraft.id bisa mengintegrasikan sistem yang sudah ada?",
+      answer: "Bisa. Kami dapat membantu menghubungkan sistem, database, aplikasi, atau platform yang sudah digunakan agar data dan proses dapat bekerja lebih terintegrasi. Kebutuhan integrasi akan dievaluasi berdasarkan sistem yang digunakan."
+    },
+    {
+      id: "05",
+      question: "Bagaimana proses memulai kerja sama dengan Entercraft.id?",
+      answer: "Anda dapat memulai dengan menghubungi tim Entercraft.id dan menjelaskan kebutuhan atau tantangan bisnis yang ingin diselesaikan. Kami kemudian mempelajari kebutuhan tersebut sebelum menentukan pendekatan dan scope solusi yang sesuai.",
+      hasLink: true,
+      linkText: "Diskusikan Kebutuhan Anda →",
+      linkUrl: "/contact/"
+    },
+    {
+      id: "06",
+      question: "Berapa biaya pembuatan solusi digital?",
+      answer: "Biaya bergantung pada jenis solusi, kompleksitas, fitur, integrasi, dan scope pekerjaan. Setelah kebutuhan bisnis dipahami, kami dapat menyusun scope dan estimasi biaya yang lebih sesuai."
+    },
+    {
+      id: "07",
+      question: "Berapa lama proses pengerjaan proyek?",
+      answer: "Durasi proyek bergantung pada scope, kompleksitas, jumlah fitur, integrasi, serta kebutuhan implementasi. Estimasi timeline akan dibahas setelah kebutuhan dan scope proyek ditentukan."
+    },
+    {
+      id: "08",
+      question: "Apakah Entercraft.id hanya menggunakan AI untuk solusi baru?",
+      answer: "Tidak. AI merupakan salah satu teknologi yang dapat digunakan ketika memang relevan dengan kebutuhan bisnis. Kami mempertimbangkan proses, tujuan, dan kondisi sistem terlebih dahulu sebelum menentukan apakah AI, automation, software development, atau kombinasi beberapa teknologi merupakan pendekatan yang tepat."
+    }
+  ]
+} = Astro.props;
 ---
 
 <section class="faq-section" aria-labelledby="faq-section-title">
@@ -68,14 +89,11 @@ const faqData = [
     <!-- Left Column: Header (35%) -->
     <div class="faq-left-col animate-fade-scroll" style="animation-delay: 100ms;">
       <div class="faq-eyebrow">
-        <span class="eyebrow-dot">●</span> FAQ
+        <span class="eyebrow-dot">●</span> {eyebrow}
       </div>
-      <h2 class="faq-title" id="faq-section-title">
-        Pertanyaan yang<br />
-        Sering Ditanyakan
-      </h2>
+      <h2 class="faq-title" id="faq-section-title" set:html={titleHtml}></h2>
       <p class="faq-intro">
-        Masih punya pertanyaan sebelum memulai? Temukan jawaban atas beberapa hal yang paling sering ditanyakan tentang layanan dan proses kerja Entercraft.id.
+        {intro}
       </p>
     </div>
 

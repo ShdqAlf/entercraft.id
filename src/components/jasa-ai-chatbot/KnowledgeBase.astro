@@ -1,0 +1,352 @@
+---
+// KnowledgeBase.astro
+
+const sources = [
+  "Website",
+  "FAQ",
+  "Product Catalog",
+  "PDF / Documents",
+  "SOP",
+  "Knowledge Base"
+];
+---
+
+<section class="kb-section">
+  <div class="kb-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Chatbot AI yang Memahami Bisnis Anda</h2>
+      <p class="header-intro">
+        Hubungkan chatbot dengan informasi bisnis yang relevan agar jawaban lebih sesuai dengan konteks perusahaan.
+      </p>
+    </div>
+
+    <!-- Visual Flow -->
+    <div class="kb-flow-wrapper animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <!-- Sources Column -->
+      <div class="flow-sources">
+        {sources.map(src => (
+          <div class="source-item">
+            <span class="source-dot"></span>
+            {src}
+          </div>
+        ))}
+      </div>
+
+      <!-- Connector to AI -->
+      <div class="flow-connector">
+        <svg class="connector-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <!-- Central funneling lines -->
+          <path d="M0,10 C50,10 50,50 100,50" fill="none" stroke="rgba(57,132,255,0.4)" stroke-width="2" />
+          <path d="M0,30 C50,30 50,50 100,50" fill="none" stroke="rgba(57,132,255,0.4)" stroke-width="2" />
+          <path d="M0,50 C50,50 50,50 100,50" fill="none" stroke="rgba(57,132,255,0.4)" stroke-width="2" />
+          <path d="M0,70 C50,70 50,50 100,50" fill="none" stroke="rgba(57,132,255,0.4)" stroke-width="2" />
+          <path d="M0,90 C50,90 50,50 100,50" fill="none" stroke="rgba(57,132,255,0.4)" stroke-width="2" />
+        </svg>
+      </div>
+
+      <!-- AI Core -->
+      <div class="flow-ai-core">
+        <div class="ai-box">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          <span>AI Chatbot</span>
+        </div>
+      </div>
+
+      <!-- Connector to Output -->
+      <div class="flow-connector-out">
+        <svg class="connector-svg" viewBox="0 0 100 20" preserveAspectRatio="none">
+          <path d="M0,10 L100,10" fill="none" stroke="rgba(34, 197, 94, 0.5)" stroke-width="2" stroke-dasharray="4,4" />
+        </svg>
+      </div>
+
+      <!-- Output -->
+      <div class="flow-output">
+        <div class="output-box">
+          Relevant Response
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Realistic Copy -->
+    <div class="kb-realistic-copy animate-fade-scroll" style="animation-delay: 400ms;">
+      <p>
+        Kami membantu menyiapkan knowledge dan struktur informasi agar chatbot dapat memberikan jawaban yang lebih relevan terhadap kebutuhan bisnis Anda.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .kb-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .kb-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 700px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Flow Diagram Layout */
+  .kb-flow-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    background: rgba(10, 22, 44, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+  }
+
+  /* Sources */
+  .flow-sources {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    max-width: 220px;
+  }
+
+  .source-item {
+    background: #1B2A42;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+  }
+
+  /* Connectors */
+  .flow-connector {
+    width: 100px;
+    height: 250px;
+    margin: 0 20px;
+  }
+
+  .flow-connector-out {
+    width: 80px;
+    height: 20px;
+    margin: 0 20px;
+  }
+
+  .connector-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* AI Core */
+  .flow-ai-core {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-box {
+    background: rgba(57, 132, 255, 0.15);
+    border: 1px solid rgba(57, 132, 255, 0.4);
+    box-shadow: 0 0 30px rgba(57, 132, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .ai-box svg {
+    color: var(--accent-blue);
+  }
+
+  /* Output */
+  .flow-output {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .output-box {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 8px;
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #86efac;
+    text-align: center;
+  }
+
+  /* Realistic Copy */
+  .kb-realistic-copy {
+    text-align: center;
+    max-width: 650px;
+  }
+
+  .kb-realistic-copy p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #8fa7d4;
+    background: rgba(7, 16, 32, 0.5);
+    padding: 16px 24px;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-blue);
+    margin: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .kb-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .kb-flow-wrapper {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+  }
+
+  :global(html[data-theme="light"]) .source-item {
+    background: #F1F5F9;
+    color: #1E293B;
+  }
+
+  :global(html[data-theme="light"]) .ai-box {
+    color: #0F172A;
+    background: rgba(57, 132, 255, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .output-box {
+    color: #15803d;
+    background: rgba(34, 197, 94, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .kb-realistic-copy p {
+    background: #FFFFFF;
+    color: #475569;
+    border-color: #E2E8F0;
+    border-left-color: var(--accent-blue);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 850px) {
+    .kb-flow-wrapper {
+      flex-direction: column;
+      padding: 30px 20px;
+      gap: 20px;
+    }
+    
+    .flow-connector, .flow-connector-out {
+      width: 40px;
+      height: 40px;
+      margin: 0;
+      transform: rotate(90deg);
+    }
+
+    .flow-sources {
+      width: 100%;
+      max-width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .source-item {
+      flex: 1 1 45%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kb-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+    
+    .source-item {
+      flex: 1 1 100%;
+    }
+  }
+</style>

@@ -1,12 +1,12 @@
 ## Development
 
-When starting the dev server, use background mode:
+Start the dev server manually with the standard npm script:
 
 ```
-astro dev --background
+npm run dev
 ```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+The dev server should not be started automatically or in background mode.
 
 ## Documentation
 

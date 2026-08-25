@@ -1,5 +1,17 @@
 ---
 // FinalCta.astro
+
+interface Props {
+  eyebrow?: string;
+  titleHtml?: string;
+  intro?: string;
+}
+
+const {
+  eyebrow = "LET'S BUILD WHAT'S NEXT",
+  titleHtml = "Siap Membawa Bisnis Anda<br />ke Level Berikutnya?",
+  intro = "Ceritakan tantangan atau kebutuhan bisnis Anda. Kami akan membantu menemukan solusi teknologi yang tepat untuk mewujudkannya."
+} = Astro.props;
 ---
 
 <section class="cta-section" id="konsultasi">
@@ -13,17 +25,13 @@
         <!-- Left Side: Content (55%) -->
         <div class="cta-left-content">
           <div class="cta-eyebrow">
-            <span class="eyebrow-dot">●</span> LET'S BUILD WHAT'S NEXT
+            <span class="eyebrow-dot">●</span> {eyebrow}
           </div>
 
-          <h2 class="cta-headline">
-            Siap Membawa Bisnis Anda<br />
-            ke Level Berikutnya?
-          </h2>
+          <h2 class="cta-headline" set:html={titleHtml}></h2>
 
           <p class="cta-subheadline">
-            Ceritakan tantangan atau kebutuhan bisnis Anda. Kami akan membantu
-            menemukan solusi teknologi yang tepat untuk mewujudkannya.
+            {intro}
           </p>
 
           <!-- Buttons Row -->

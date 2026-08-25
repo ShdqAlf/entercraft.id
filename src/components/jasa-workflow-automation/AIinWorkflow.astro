@@ -1,0 +1,261 @@
+---
+// AIinWorkflow.astro (Jasa Workflow Automation)
+---
+
+<section class="ai-workflow-section" id="ai-workflow">
+  <div class="ai-workflow-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Tambahkan AI pada Workflow yang Membutuhkannya</h2>
+      <p class="header-intro">
+        Workflow Automation tidak harus selalu menggunakan AI. Namun, AI dapat disisipkan ke dalam workflow saat sebuah tahapan membutuhkan pemahaman kontekstual atau pengolahan informasi tak terstruktur.
+      </p>
+    </div>
+
+    <div class="ai-examples animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <!-- Example 1: Document Processing -->
+      <div class="ai-example-card">
+        <div class="card-label">Automation with AI</div>
+        <h3 class="example-title">Pemrosesan Dokumen Masuk</h3>
+        
+        <div class="horizontal-flow">
+          <div class="flow-step">Incoming Document</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step ai-step">
+            <span class="ai-icon">✨</span>
+            AI Membaca Dokumen
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Extract Data</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Validation</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Approval</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Database</div>
+        </div>
+      </div>
+
+      <!-- Example 2: Customer Request Routing -->
+      <div class="ai-example-card">
+        <div class="card-label">Automation with AI</div>
+        <h3 class="example-title">Perutean Permintaan Pelanggan</h3>
+        
+        <div class="horizontal-flow">
+          <div class="flow-step">Customer Request</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step ai-step">
+            <span class="ai-icon">✨</span>
+            AI Memahami Intent
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Tentukan Rute</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">CRM Update</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">Sales Team</div>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ai-workflow-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .ai-workflow-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .ai-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .ai-example-card {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 32px;
+    position: relative;
+  }
+
+  .card-label {
+    position: absolute;
+    top: -12px;
+    left: 32px;
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .example-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 24px 0;
+  }
+
+  .horizontal-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    background: rgba(4, 9, 20, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px dashed #1B2A42;
+  }
+
+  .flow-step {
+    background: #1B2A42;
+    color: #D7E0F0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #2b3e5b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ai-step {
+    background: rgba(139, 92, 246, 0.15);
+    color: #c4b5fd;
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+
+  .ai-icon {
+    font-size: 14px;
+  }
+
+  .flow-arrow {
+    color: #4b5a7a;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .ai-workflow-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .example-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .ai-example-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .horizontal-flow {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .flow-step {
+    background: #FFFFFF;
+    color: #1E293B;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .ai-step {
+    background: #F3E8FF;
+    color: #6B21A8;
+    border-color: #D8B4FE;
+  }
+
+  :global(html[data-theme="light"]) .flow-arrow {
+    color: #94A3B8;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .ai-workflow-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+    
+    .horizontal-flow {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .flow-arrow {
+      transform: rotate(90deg);
+      margin-left: 20px;
+    }
+  }
+</style>

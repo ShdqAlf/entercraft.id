@@ -1,0 +1,298 @@
+---
+// src/pages/jasa-ai-chatbot/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Specific components for AI Chatbot
+import Hero from '../../components/jasa-ai-chatbot/Hero.astro';
+import Problem from '../../components/jasa-ai-chatbot/Problem.astro';
+import Capability from '../../components/jasa-ai-chatbot/Capability.astro';
+import DemoConversation from '../../components/jasa-ai-chatbot/DemoConversation.astro';
+import UseCases from '../../components/jasa-ai-chatbot/UseCases.astro';
+import KnowledgeBase from '../../components/jasa-ai-chatbot/KnowledgeBase.astro';
+import KnowledgeExample from '../../components/jasa-ai-chatbot/KnowledgeExample.astro';
+import Integration from '../../components/jasa-ai-chatbot/Integration.astro';
+import HumanHandover from '../../components/jasa-ai-chatbot/HumanHandover.astro';
+import BusinessBenefits from '../../components/jasa-ai-chatbot/BusinessBenefits.astro';
+import Channels from '../../components/jasa-ai-chatbot/Channels.astro';
+
+// Reused global components
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Industries from '../../components/Industries.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_TITLE } from '../../consts';
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Business First",
+    description: "Kami memahami kebutuhan bisnis sebelum menentukan solusi chatbot.",
+    label: "BUSINESS FIRST"
+  },
+  {
+    id: "02",
+    title: "Custom Knowledge",
+    description: "Chatbot disesuaikan dengan informasi dan knowledge yang relevan dengan bisnis Anda.",
+    label: "CUSTOM KNOWLEDGE"
+  },
+  {
+    id: "03",
+    title: "Practical AI",
+    description: "AI digunakan untuk menyelesaikan kebutuhan yang nyata, bukan sekadar mengikuti tren.",
+    label: "PRACTICAL AI"
+  },
+  {
+    id: "04",
+    title: "Integration Ready",
+    description: "Chatbot dapat dirancang agar terhubung dengan sistem yang relevan.",
+    label: "INTEGRATION READY"
+  },
+  {
+    id: "05",
+    title: "Human Handover",
+    description: "Kasus yang membutuhkan keputusan manusia dapat diteruskan kepada tim.",
+    label: "HUMAN HANDOVER"
+  },
+  {
+    id: "06",
+    title: "End-to-End",
+    description: "Mulai dari discovery, design, development, testing, deployment, hingga support.",
+    label: "END-TO-END"
+  }
+];
+
+const howWeWorkData = [
+  {
+    num: "01",
+    label: "DISCOVER",
+    title: "Discover",
+    description: "Memahami kebutuhan customer, internal user, jenis pertanyaan, dan tujuan bisnis.",
+    focus: "PROBLEM IDENTIFICATION"
+  },
+  {
+    num: "02",
+    label: "DESIGN",
+    title: "Design",
+    description: "Menentukan personality, tone of voice, knowledge, conversation flow, dan escalation logic.",
+    focus: "SOLUTION STRATEGY"
+  },
+  {
+    num: "03",
+    label: "BUILD",
+    title: "Build",
+    description: "Membangun chatbot dan integrasi yang dibutuhkan.",
+    focus: "ENGINEERING"
+  },
+  {
+    num: "04",
+    label: "TRAIN & TEST",
+    title: "Train & Test",
+    description: "Menguji chatbot menggunakan pertanyaan dan skenario yang relevan dengan bisnis.",
+    focus: "QUALITY ASSURANCE"
+  },
+  {
+    num: "05",
+    label: "DEPLOY",
+    title: "Deploy",
+    description: "Menempatkan chatbot pada channel yang dipilih.",
+    focus: "IMPLEMENTATION"
+  },
+  {
+    num: "06",
+    label: "IMPROVE",
+    title: "Improve",
+    description: "Melakukan improvement berdasarkan penggunaan, feedback, dan kebutuhan bisnis.",
+    focus: "OPTIMIZATION"
+  }
+];
+
+const industriesData = [
+  {
+    id: "distribution",
+    num: "01",
+    title: "Distributor & Trading",
+    description: "Product inquiry, lead qualification, quotation request, customer support.",
+    solutions: ["Product Inquiry", "Lead Qualification", "Quotation", "Support"],
+    cta: "Konsultasi Distribusi →",
+    iconPath: "M10 21v-6.5L4 11M14 21v-6.5l6-3.5M12 3v7.5"
+  },
+  {
+    id: "manufacturing",
+    num: "02",
+    title: "Manufacturing",
+    description: "Product information, technical FAQ, sales inquiry, internal knowledge.",
+    solutions: ["Product Info", "Technical FAQ", "Sales Inquiry", "Internal Knowledge"],
+    cta: "Konsultasi Manufacturing →",
+    iconPath: "M12 2v20M2 12h20M12 7h0 M12 17h0 M7 12h0 M17 12h0" 
+  },
+  {
+    id: "retail",
+    num: "03",
+    title: "Retail & F&B",
+    description: "Product information, order assistance, reservation, customer FAQ.",
+    solutions: ["Product Info", "Order Assistance", "Reservation", "FAQ"],
+    cta: "Konsultasi Retail →",
+    iconPath: "M3 9l1-4h16l1 4M3 9v11a2 2 0 002 2h14a2 2 0 002-2V9M3 9h18M9 22v-6h6v6"
+  },
+  {
+    id: "healthcare",
+    num: "04",
+    title: "Healthcare",
+    description: "Appointment inquiry, service information, FAQ, reminder.",
+    solutions: ["Appointment", "Service Info", "FAQ", "Reminder"],
+    cta: "Konsultasi Healthcare →",
+    iconPath: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" // shield
+  },
+  {
+    id: "education",
+    num: "05",
+    title: "Education",
+    description: "Admission inquiry, program information, registration assistance.",
+    solutions: ["Admission", "Program Info", "Registration"],
+    cta: "Konsultasi Edukasi →",
+    iconPath: "M12 2L2 7l10 5 10-5-10-5zm-8 8.5V17c0 2 4 3.5 8 3.5s8-1.5 8-3.5v-6.5"
+  },
+  {
+    id: "professional",
+    num: "06",
+    title: "Professional Services",
+    description: "Service inquiry, lead qualification, appointment, FAQ.",
+    solutions: ["Service Inquiry", "Lead Qualification", "Appointment", "FAQ"],
+    cta: "Konsultasi Layanan Profesional →",
+    iconPath: "M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M3 7h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Apa itu AI Chatbot?",
+    answer: "AI Chatbot adalah asisten virtual yang didukung oleh kecerdasan buatan (seperti NLP dan LLM) untuk memahami percakapan natural dan merespons pertanyaan berdasarkan knowledge base bisnis."
+  },
+  {
+    id: "02",
+    question: "Apa bedanya AI Chatbot dengan chatbot biasa?",
+    answer: "Chatbot biasa bekerja dengan aturan kaku (rule-based) dan hanya mengerti kata kunci tertentu. AI Chatbot dapat memahami bahasa natural, konteks percakapan, intensi pengguna, dan memberikan respons yang dinamis serta relevan tanpa template kaku."
+  },
+  {
+    id: "03",
+    question: "Apakah AI Chatbot bisa menggunakan data perusahaan?",
+    answer: "Ya, kami membangun chatbot yang diintegrasikan dengan sumber data bisnis Anda (knowledge base), sehingga jawaban yang diberikan sesuai dengan informasi spesifik perusahaan Anda, bukan pengetahuan umum."
+  },
+  {
+    id: "04",
+    question: "Apakah chatbot bisa membaca dokumen atau PDF?",
+    answer: "Tentu. Kami dapat melatih dan menghubungkan chatbot dengan berbagai format dokumen seperti PDF, SOP, katalog produk, atau halaman website agar chatbot bisa menarik informasi dari sana."
+  },
+  {
+    id: "05",
+    question: "Apakah AI Chatbot bisa menjawab pertanyaan tentang produk?",
+    answer: "Bisa. Dengan menghubungkan chatbot ke katalog atau spesifikasi produk Anda, chatbot mampu menjelaskan fitur, perbedaan produk, hingga informasi harga kepada customer."
+  },
+  {
+    id: "06",
+    question: "Apakah chatbot dapat terhubung dengan CRM?",
+    answer: "Ya, chatbot dapat diintegrasikan dengan sistem CRM yang Anda gunakan. Saat chatbot mengumpulkan data lead atau kualifikasi pelanggan, informasi tersebut akan langsung masuk ke dalam CRM."
+  },
+  {
+    id: "07",
+    question: "Apakah AI Chatbot bisa digunakan di WhatsApp?",
+    answer: "Tentu, chatbot dapat dihubungkan ke WhatsApp Business API, website perusahaan, portal pelanggan, atau platform komunikasi internal."
+  },
+  {
+    id: "08",
+    question: "Apakah chatbot dapat meneruskan percakapan ke human agent?",
+    answer: "Sangat bisa. Kami menerapkan fitur 'Human Handover'. Saat chatbot tidak bisa menjawab pertanyaan kompleks, atau pelanggan meminta berbicara dengan manusia, percakapan akan otomatis dialihkan ke tim Anda (sales/CS)."
+  },
+  {
+    id: "09",
+    question: "Apakah AI Chatbot dapat digunakan untuk internal perusahaan?",
+    answer: "Tentu. Selain untuk customer, AI Chatbot sangat efektif digunakan secara internal (misalnya HR assistant atau Support IT) agar karyawan mudah mencari SOP, kebijakan, atau panduan kerja."
+  },
+  {
+    id: "10",
+    question: "Berapa lama proses pembuatan AI Chatbot?",
+    answer: "Waktu pembuatan bervariasi tergantung pada kompleksitas data dan integrasi sistem. Secara umum, dari tahap discovery hingga pengujian dan deployment bisa memakan waktu mulai dari beberapa minggu."
+  },
+  {
+    id: "11",
+    question: "Berapa biaya jasa AI Chatbot?",
+    answer: "Biaya bergantung pada cakupan (scope) pekerjaan, volume data knowledge base, channel yang digunakan, dan kompleksitas integrasi. Silakan hubungi kami untuk mendapatkan konsultasi dan estimasi biaya."
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={`Jasa AI Chatbot untuk Bisnis | ${SITE_TITLE}`} 
+      description="Jasa AI Chatbot untuk membantu bisnis menjawab pertanyaan, mengelola lead, menyediakan informasi, dan menghubungkan chatbot dengan sistem bisnis." 
+    />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <Capability />
+      <DemoConversation />
+      <UseCases />
+      <KnowledgeBase />
+      <KnowledgeExample />
+      <Integration />
+      <HumanHandover />
+      <BusinessBenefits />
+      <Channels />
+      
+      <WhyChoose 
+        eyebrow="MENGAPA KAMI"
+        titleHtml="Mengapa Memilih Entercraft<br/>untuk AI Chatbot?"
+        intro="Kami memastikan AI Chatbot memberikan manfaat nyata dengan pendekatan yang berpusat pada pemahaman bisnis Anda."
+        valueProps={whyChooseData}
+      />
+      
+      <HowWeWork 
+        eyebrow="WORKFLOW KAMI"
+        titleHtml="Langkah Implementasi<br/>AI Chatbot"
+        intro="Proses sistematis dari perencanaan hingga peluncuran agar chatbot Anda berfungsi optimal dan relevan."
+        stepsData={howWeWorkData}
+      />
+      
+      <Industries 
+        industriesData={industriesData}
+      />
+      
+      <Faq 
+        eyebrow="FAQ AI CHATBOT"
+        titleHtml="Frequently Asked Questions"
+        intro="Temukan jawaban tentang bagaimana AI Chatbot kami dapat membantu efisiensi bisnis Anda."
+        faqData={faqData}
+      />
+      
+      <FinalCta 
+        eyebrow="MULAI SEKARANG"
+        titleHtml="Bangun AI Chatbot yang<br/>Memahami Bisnis Anda"
+        intro="Ceritakan pertanyaan atau proses yang ingin Anda otomatisasi. Kami akan membantu menentukan knowledge, workflow, integrasi, dan channel yang sesuai dengan kebutuhan bisnis Anda."
+        primaryText="Konsultasikan AI Chatbot Anda"
+        primaryHref="/contact/"
+        secondaryText="Hubungi Entercraft"
+        secondaryHref="/contact/"
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

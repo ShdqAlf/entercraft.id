@@ -1,0 +1,288 @@
+---
+// WhatCanBeAutomated.astro
+
+const automationCards = [
+  {
+    title: "Customer Service Automation",
+    workflow: "FAQ → Auto Response → Routing → Human Escalation",
+    description: "Bantu tim menangani pertanyaan umum secara lebih cepat, lalu teruskan kasus tertentu kepada tim yang sesuai.",
+    icon: "headset"
+  },
+  {
+    title: "Lead Qualification",
+    workflow: "Incoming Lead → Qualification → Scoring → CRM → Sales",
+    description: "Kumpulkan informasi calon customer dan bantu tim sales fokus pada lead yang lebih relevan.",
+    icon: "filter"
+  },
+  {
+    title: "Follow-up Automation",
+    workflow: "Lead → Reminder → Follow-up → Response → Sales Notification",
+    description: "Jaga komunikasi dengan prospek tanpa mengandalkan follow-up manual sepenuhnya.",
+    icon: "refresh-cw"
+  },
+  {
+    title: "Order & Transaction",
+    workflow: "Customer Request → Order → Confirmation → Status Notification",
+    description: "Hubungkan percakapan WhatsApp dengan proses pemesanan atau transaksi.",
+    icon: "shopping-bag"
+  },
+  {
+    title: "Booking & Reminder",
+    workflow: "Booking Request → Schedule → Confirmation → Reminder",
+    description: "Bantu bisnis mengelola booking, konfirmasi, dan reminder melalui workflow otomatis.",
+    icon: "calendar"
+  },
+  {
+    title: "Business Notification",
+    workflow: "Trigger → Data Update → WhatsApp Notification → Action",
+    description: "Kirim informasi penting secara otomatis kepada customer atau internal team ketika kondisi tertentu terjadi.",
+    icon: "bell"
+  }
+];
+---
+
+<section class="automate-section">
+  <div class="automate-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Apa Saja yang Bisa Diotomatisasi melalui WhatsApp?</h2>
+      <p class="header-intro">
+        WhatsApp bukan sekadar saluran komunikasi pasif. Dengan automation yang tepat, platform ini dapat menjadi pusat interaksi berbagai proses bisnis Anda.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      {automationCards.map((card, index) => (
+        <div class="automate-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="card-icon-wrapper">
+            {card.icon === 'headset' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>}
+            {card.icon === 'filter' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>}
+            {card.icon === 'refresh-cw' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>}
+            {card.icon === 'shopping-bag' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>}
+            {card.icon === 'calendar' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>}
+            {card.icon === 'bell' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>}
+          </div>
+          
+          <h3 class="card-title">{card.title}</h3>
+          
+          <!-- Workflow Process Steps Visual -->
+          <div class="card-workflow">
+            <span class="workflow-text">{card.workflow.split('→').map((step, idx, arr) => (
+              <>
+                <span class="w-step">{step.trim()}</span>
+                {idx < arr.length - 1 && <span class="w-arrow">→</span>}
+              </>
+            ))}</span>
+          </div>
+
+          <p class="card-description">{card.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .automate-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .automate-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Grid Layout */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  /* Individual Card */
+  .automate-card {
+    background-color: rgba(7, 16, 32, 0.3);
+    border: 1px solid #1B2A42;
+    border-radius: 12px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .automate-card:hover {
+    background-color: rgba(7, 16, 32, 0.6);
+    border-color: rgba(34, 197, 94, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .card-workflow {
+    background: rgba(10, 22, 44, 0.5);
+    border: 1px solid #1B2A42;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    color: #A0B2D2;
+    line-height: 1.6;
+  }
+  
+  .automate-card:hover .card-workflow {
+    border-color: rgba(57, 132, 255, 0.3);
+  }
+
+  .w-step {
+    font-weight: 500;
+  }
+
+  .w-arrow {
+    color: rgba(57, 132, 255, 0.7);
+    margin: 0 4px;
+  }
+
+  .card-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #7D96C5;
+    margin: 0;
+    flex-grow: 1;
+  }
+
+  /* Entrance Animation */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .automate-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .automate-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .automate-card:hover {
+    border-color: #22c55e;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .card-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .card-description {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .card-workflow {
+    background-color: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #334155;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header-title {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .automate-section {
+      padding: 70px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+  }
+</style>

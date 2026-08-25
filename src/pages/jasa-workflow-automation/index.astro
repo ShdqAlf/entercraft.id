@@ -1,0 +1,294 @@
+---
+// src/pages/jasa-workflow-automation/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Specific components for Workflow Automation
+import Hero from '../../components/jasa-workflow-automation/Hero.astro';
+import Problem from '../../components/jasa-workflow-automation/Problem.astro';
+import BeforeAfter from '../../components/jasa-workflow-automation/BeforeAfter.astro';
+import WhatCanBeAutomated from '../../components/jasa-workflow-automation/WhatCanBeAutomated.astro';
+import DepartmentUseCases from '../../components/jasa-workflow-automation/DepartmentUseCases.astro';
+import HowItWorks from '../../components/jasa-workflow-automation/HowItWorks.astro';
+import ApprovalAutomation from '../../components/jasa-workflow-automation/ApprovalAutomation.astro';
+import ExceptionHandling from '../../components/jasa-workflow-automation/ExceptionHandling.astro';
+import MultiSystemIntegration from '../../components/jasa-workflow-automation/MultiSystemIntegration.astro';
+import AIinWorkflow from '../../components/jasa-workflow-automation/AIinWorkflow.astro';
+import BusinessBenefits from '../../components/jasa-workflow-automation/BusinessBenefits.astro';
+
+// Reused global components
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Industries from '../../components/Industries.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_TITLE } from '../../consts';
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Business First",
+    description: "Kami memulai dari proses bisnis, bukan sekadar dari alat atau teknologi yang tersedia.",
+    label: "BUSINESS FIRST"
+  },
+  {
+    id: "02",
+    title: "Custom Workflow",
+    description: "Workflow dirancang khusus untuk mengikuti kebutuhan unik dan SOP perusahaan Anda.",
+    label: "CUSTOM WORKFLOW"
+  },
+  {
+    id: "03",
+    title: "System Integration",
+    description: "Kami membantu menghubungkan sistem dan database yang sudah digunakan, meminimalkan disrupsi.",
+    label: "INTEGRATION"
+  },
+  {
+    id: "04",
+    title: "Practical Automation",
+    description: "Fokus kami adalah pada otomatisasi proses yang benar-benar memberikan dampak efisiensi terukur.",
+    label: "PRACTICAL"
+  },
+  {
+    id: "05",
+    title: "Scalable",
+    description: "Arsitektur workflow dapat dikembangkan dengan mudah seiring dengan pertumbuhan skala bisnis Anda.",
+    label: "SCALABLE"
+  },
+  {
+    id: "06",
+    title: "End-to-End",
+    description: "Layanan kami mencakup pemetaan proses, desain, pengembangan, pengujian, deployment, hingga dukungan lanjutan.",
+    label: "END-TO-END"
+  }
+];
+
+const howWeWorkData = [
+  {
+    num: "01",
+    label: "MAP",
+    title: "Map",
+    description: "Memahami proses bisnis saat ini dan menemukan titik-titik yang masih manual atau menjadi leher botol (bottleneck).",
+    focus: "PROCESS MAPPING"
+  },
+  {
+    num: "02",
+    label: "DESIGN",
+    title: "Design",
+    description: "Menentukan triggers, conditions, actions, skema approvals, penanganan exceptions, dan output akhir.",
+    focus: "WORKFLOW DESIGN"
+  },
+  {
+    num: "03",
+    label: "BUILD",
+    title: "Build",
+    description: "Membangun logika workflow di atas platform otomasi dan menyiapkan integrasi sistem yang dibutuhkan.",
+    focus: "DEVELOPMENT"
+  },
+  {
+    num: "04",
+    label: "TEST",
+    title: "Test",
+    description: "Menguji workflow secara menyeluruh dalam kondisi normal maupun skenario exception (kegagalan sistem).",
+    focus: "QUALITY ASSURANCE"
+  },
+  {
+    num: "05",
+    label: "DEPLOY",
+    title: "Deploy",
+    description: "Mengimplementasikan solusi automation ke dalam proses operasional bisnis harian.",
+    focus: "IMPLEMENTATION"
+  },
+  {
+    num: "06",
+    label: "OPTIMIZE",
+    title: "Optimize",
+    description: "Memantau keberjalanan sistem dan melakukan penyempurnaan berdasarkan data dan kondisi nyata di lapangan.",
+    focus: "CONTINUOUS IMPROVEMENT"
+  }
+];
+
+const industriesData = [
+  {
+    id: "distribution",
+    num: "01",
+    title: "Distributor & Trading",
+    description: "Otomatisasi untuk lead processing, pembuatan penawaran (quotation), proses order, approval berjenjang, dan notifikasi stok minimum.",
+    solutions: ["Lead Processing", "Quotation", "Order", "Stock Alert"],
+    cta: "Konsultasi Distribusi →",
+    iconPath: "M10 21v-6.5L4 11M14 21v-6.5l6-3.5M12 3v7.5"
+  },
+  {
+    id: "manufacturing",
+    num: "02",
+    title: "Manufacturing",
+    description: "Menghubungkan production request, alur approval, sinkronisasi inventory, hingga permintaan pembelian (procurement) dan reporting.",
+    solutions: ["Production Request", "Inventory", "Procurement", "Reporting"],
+    cta: "Konsultasi Manufacturing →",
+    iconPath: "M12 2v20M2 12h20M12 7h0 M12 17h0 M7 12h0 M17 12h0" 
+  },
+  {
+    id: "logistics",
+    num: "03",
+    title: "Logistics",
+    description: "Mempersingkat shipment status updates, alur dokumen pengiriman, notifikasi otomatis ke klien, dan delivery updates antar hub.",
+    solutions: ["Shipment Status", "Doc Workflow", "Delivery Update"],
+    cta: "Konsultasi Logistik →",
+    iconPath: "M9 17H7A5 5 0 0 1 7 7h2M15 7h2a5 5 0 1 1 0 10h-2M8 12h8"
+  },
+  {
+    id: "professional",
+    num: "04",
+    title: "Professional Services",
+    description: "Melancarkan proses penerimaan lead, approval proposal proyek, proses project handover antar tim, hingga reporting klien periodik.",
+    solutions: ["Proposal Approval", "Project Handover", "Reporting"],
+    cta: "Konsultasi Layanan Profesional →",
+    iconPath: "M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M3 7h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
+  },
+  {
+    id: "retail",
+    num: "05",
+    title: "Retail & F&B",
+    description: "Sinkronisasi order processing, customer notification pasca-pembelian, pembaruan inventory, dan kelancaran operational workflow gerai.",
+    solutions: ["Order Processing", "Customer Alert", "Operational"],
+    cta: "Konsultasi Retail →",
+    iconPath: "M3 9l1-4h16l1 4M3 9v11a2 2 0 002 2h14a2 2 0 002-2V9M3 9h18M9 22v-6h6v6"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Apa itu Workflow Automation?",
+    answer: "Workflow Automation adalah penggunaan perangkat lunak untuk menjalankan tugas dan proses bisnis secara berurutan dan otomatis, menghubungkan sistem, data, dan orang (melalui approval/notifikasi) agar proses berjalan lebih cepat dan terstruktur."
+  },
+  {
+    id: "02",
+    question: "Apa bedanya Workflow Automation dengan AI Automation?",
+    answer: "Workflow Automation berfokus pada logika pasti (jika X maka lakukan Y) untuk memindahkan data dan mengarahkan proses operasional. Sedangkan AI Automation menggunakan Kecerdasan Buatan untuk memproses data tak terstruktur, membuat keputusan prediktif, atau menganalisis teks kompleks."
+  },
+  {
+    id: "03",
+    question: "Proses bisnis apa saja yang bisa diotomatisasi?",
+    answer: "Hampir semua proses yang repetitif dan berbasis aturan baku dapat diotomatisasi. Contohnya: entri data antar sistem, alur approval dokumen, pemrosesan pesanan, kualifikasi lead, dan pembuatan laporan (reporting)."
+  },
+  {
+    id: "04",
+    question: "Apakah Workflow Automation harus menggunakan AI?",
+    answer: "Tidak. Sebagian besar proses inti operasional dapat berjalan sepenuhnya berbasis aturan baku (rule-based). AI hanya ditambahkan jika alur kerja memerlukan pemahaman konteks, seperti membaca dokumen atau mengekstraksi sentimen pengguna."
+  },
+  {
+    id: "05",
+    question: "Apakah workflow dapat terhubung dengan software yang sudah digunakan?",
+    answer: "Sangat bisa. Kami merancang otomasi untuk mengintegrasikan perangkat lunak yang sudah Anda miliki (seperti CRM, ERP, atau Google Sheets) melalui API atau metode webhooks."
+  },
+  {
+    id: "06",
+    question: "Apakah workflow bisa memiliki approval bertingkat?",
+    answer: "Bisa. Kami sering menerapkan alur persetujuan majemuk (misalnya: Supervisor -> Manager -> Finance) di mana proses baru akan berlanjut setelah semua pihak menyetujui, dan notifikasi akan dikirim jika ditolak."
+  },
+  {
+    id: "07",
+    question: "Bagaimana jika workflow menemukan kondisi yang tidak sesuai?",
+    answer: "Kami merancang 'Exception Handling' (penanganan pengecualian). Jika sistem mendeteksi error atau data tidak standar, alur otomatis akan dihentikan sementara dan sistem akan memberitahu staf (human review) untuk melakukan penyesuaian manual."
+  },
+  {
+    id: "08",
+    question: "Apakah workflow dapat mengirim notifikasi otomatis?",
+    answer: "Ya, pada setiap tahapan penting, sistem dapat memicu notifikasi yang dapat dikirimkan melalui email, WhatsApp, Slack, atau platform internal lainnya."
+  },
+  {
+    id: "09",
+    question: "Apakah workflow dapat terhubung dengan database?",
+    answer: "Tentu. Workflow dapat dirancang untuk membaca data dari database SQL/NoSQL Anda, serta menulis atau memperbarui (update) data kembali setelah tahapan proses selesai."
+  },
+  {
+    id: "10",
+    question: "Apakah workflow bisa dikembangkan ketika bisnis bertambah besar?",
+    answer: "Ya. Arsitektur yang kami buat sangat modular (scalable). Anda bisa menambahkan percabangan baru, integrasi perangkat lunak baru, atau menambah tingkat persetujuan kapan saja bisnis membutuhkannya."
+  },
+  {
+    id: "11",
+    question: "Berapa lama proses implementasi Workflow Automation?",
+    answer: "Bergantung pada jumlah sistem yang harus dihubungkan dan kompleksitas alur kerja. Untuk alur sederhana biasanya memakan waktu beberapa minggu, sementara untuk integrasi skala enterprise bisa memerlukan waktu lebih lama."
+  },
+  {
+    id: "12",
+    question: "Berapa biaya jasa Workflow Automation?",
+    answer: "Biaya dihitung berdasarkan kompleksitas proses (jumlah nodes/langkah), kerumitan integrasi API, dan seberapa besar pengujian yang diperlukan. Silakan konsultasi dengan tim kami untuk mendapatkan estimasi yang tepat."
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={`Jasa Workflow Automation untuk Bisnis | ${SITE_TITLE}`} 
+      description="Jasa Workflow Automation untuk membantu bisnis mengotomatisasi proses kerja, approval, integrasi sistem, notifikasi, dan workflow operasional." 
+    />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <BeforeAfter />
+      <WhatCanBeAutomated />
+      <DepartmentUseCases />
+      <HowItWorks />
+      <ApprovalAutomation />
+      <MultiSystemIntegration />
+      <AIinWorkflow />
+      <ExceptionHandling />
+      <BusinessBenefits />
+      
+      <WhyChoose 
+        eyebrow="MENGAPA KAMI"
+        titleHtml="Mengapa Memilih Entercraft<br/>untuk Workflow Automation?"
+        intro="Pendekatan kami menitikberatkan pada perbaikan proses bisnis, menjamin solusi otomasi berjalan selaras dengan kebutuhan perusahaan, bukan sekadar gaya teknis."
+        valueProps={whyChooseData}
+      />
+      
+      <HowWeWork 
+        eyebrow="WORKFLOW KAMI"
+        titleHtml="Langkah Implementasi<br/>Otomatisasi Proses"
+        intro="Metodologi kami dirancang untuk meminimalkan risiko operasional, memastikan sistem lama dan baru bekerja beriringan secara transparan."
+        stepsData={howWeWorkData}
+      />
+      
+      <Industries 
+        industriesData={industriesData}
+      />
+      
+      <Faq 
+        eyebrow="FAQ WORKFLOW AUTOMATION"
+        titleHtml="Frequently Asked Questions"
+        intro="Cari tahu selengkapnya mengenai bagaimana otomatisasi terstruktur dapat menyederhanakan operasional Anda yang repetitif."
+        faqData={faqData}
+      />
+      
+      <FinalCta 
+        eyebrow="MULAI SEKARANG"
+        titleHtml="Ubah Proses Manual Menjadi<br/>Workflow yang Lebih Efisien"
+        intro="Ceritakan proses bisnis yang masih melibatkan banyak input manual, approval, follow-up, atau perpindahan data. Kami akan membantu memetakan bagian yang dapat diotomatisasi."
+        primaryText="Konsultasikan Workflow Anda"
+        primaryHref="/contact/"
+        secondaryText="Hubungi Entercraft"
+        secondaryHref="/contact/"
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

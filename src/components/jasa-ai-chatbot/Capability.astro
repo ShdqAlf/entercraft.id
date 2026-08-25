@@ -1,0 +1,343 @@
+---
+// Capability.astro (Jasa AI Chatbot)
+
+const capabilities = [
+  {
+    title: "Menjawab FAQ",
+    description: "Customer bertanya tentang jam operasional, layanan, kebijakan, atau proses umum.",
+    exampleQ: "Jam berapa toko buka?",
+    action: "Memberikan jawaban instan.",
+    icon: "message-circle"
+  },
+  {
+    title: "Menjelaskan Produk",
+    description: "Membantu menjelaskan fitur, spesifikasi, atau perbedaan produk berdasarkan knowledge yang tersedia.",
+    exampleQ: "Apa beda Tipe A & B?",
+    action: "Membandingkan produk relevan.",
+    icon: "box"
+  },
+  {
+    title: "Mencari Informasi",
+    description: "Membantu menemukan informasi spesifik dari knowledge base atau sistem internal yang terhubung.",
+    exampleQ: "Syarat return barang?",
+    action: "Mencari dari SOP perusahaan.",
+    icon: "search"
+  },
+  {
+    title: "Mengumpulkan Lead",
+    description: "Menanyakan kebutuhan calon customer dan mengumpulkan info penting sebelum diteruskan ke sales.",
+    exampleQ: "Bisa minta penawaran?",
+    action: "Menanyakan email & kebutuhan.",
+    icon: "filter"
+  },
+  {
+    title: "Membantu Booking",
+    description: "Mengumpulkan kebutuhan booking atau appointment sesuai workflow yang tersedia.",
+    exampleQ: "Bisa jadwalkan meeting?",
+    action: "Mengumpulkan info jadwal.",
+    icon: "calendar"
+  },
+  {
+    title: "Human Handover",
+    description: "Meneruskan percakapan kepada tim manusia ketika pertanyaan membutuhkan bantuan spesifik.",
+    exampleQ: "Saya ada komplain.",
+    action: "Diteruskan ke Customer Service.",
+    icon: "users"
+  }
+];
+---
+
+<section class="capability-section">
+  <div class="cap-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Apa yang Bisa Dilakukan AI Chatbot untuk Bisnis Anda?</h2>
+      <p class="header-intro">
+        Chatbot yang baik dapat bertindak lebih dari sekadar penjawab otomatis. Berikut adalah kemampuan konkret yang dapat dijalankan oleh asisten AI.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      {capabilities.map((card, index) => (
+        <div class="cap-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="card-icon-wrapper">
+            {card.icon === 'message-circle' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>}
+            {card.icon === 'box' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>}
+            {card.icon === 'search' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>}
+            {card.icon === 'filter' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>}
+            {card.icon === 'calendar' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>}
+            {card.icon === 'users' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
+          </div>
+          
+          <h3 class="card-title">{card.title}</h3>
+          <p class="card-description">{card.description}</p>
+          
+          <!-- Concrete Example Block -->
+          <div class="card-example">
+            <div class="example-q">
+              <span class="q-icon">Q</span>
+              <span>"{card.exampleQ}"</span>
+            </div>
+            <div class="example-a">
+              <span class="a-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span>{card.action}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .capability-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .cap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Grid Layout */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  /* Individual Card */
+  .cap-card {
+    background-color: rgba(7, 16, 32, 0.3);
+    border: 1px solid #1B2A42;
+    border-radius: 12px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .cap-card:hover {
+    background-color: rgba(7, 16, 32, 0.6);
+    border-color: rgba(57, 132, 255, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .card-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #7D96C5;
+    margin: 0 0 24px 0;
+    flex-grow: 1;
+  }
+
+  /* Example Block */
+  .card-example {
+    background: rgba(10, 22, 44, 0.5);
+    border: 1px solid #1B2A42;
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .example-q, .example-a {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .example-q {
+    color: #A0B2D2;
+    font-style: italic;
+  }
+
+  .example-a {
+    color: #D7E0F0;
+    font-weight: 500;
+  }
+
+  .q-icon {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    background: #1B2A42;
+    color: #A0B2D2;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .a-icon {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Entrance Animation */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .capability-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .cap-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .cap-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  :global(html[data-theme="light"]) .card-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .card-description {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .card-example {
+    background-color: #F1F5F9;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .example-q {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .example-a {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .q-icon {
+    background: #E2E8F0;
+    color: #475569;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header-title {
+      font-size: 36px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .capability-section {
+      padding: 70px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+  }
+</style>

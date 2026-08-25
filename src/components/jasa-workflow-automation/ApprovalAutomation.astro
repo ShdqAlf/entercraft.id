@@ -1,0 +1,431 @@
+---
+// ApprovalAutomation.astro (Jasa Workflow Automation)
+---
+
+<section class="approval-section" id="approval-automation">
+  <div class="approval-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Sederhanakan Proses Approval yang Selama Ini Berjalan Manual</h2>
+      <p class="header-intro">
+        Otomasi tidak menghilangkan peran manusia, tetapi memastikannya hadir tepat pada saat dibutuhkan—yaitu untuk membuat keputusan persetujuan.
+      </p>
+    </div>
+
+    <div class="approval-visual animate-fade-scroll" style="animation-delay: 250ms;">
+      <div class="approval-flow">
+        
+        <!-- Step 1 -->
+        <div class="app-node">
+          <div class="app-role">Employee</div>
+          <div class="app-action">Submit Purchase Request</div>
+        </div>
+
+        <div class="app-arrow-down"></div>
+
+        <!-- Step 2 (Branching) -->
+        <div class="app-node app-decision">
+          <div class="app-role">Manager</div>
+          <div class="app-action">Review Request</div>
+        </div>
+
+        <!-- Branching paths -->
+        <div class="app-branches">
+          
+          <!-- Reject Branch -->
+          <div class="branch branch-reject">
+            <div class="branch-line"></div>
+            <div class="branch-label label-red">Rejected</div>
+            <div class="app-node node-end">
+              <div class="app-role">System</div>
+              <div class="app-action">Notify Requester</div>
+            </div>
+          </div>
+
+          <!-- Approve Branch (Main path) -->
+          <div class="branch branch-approve">
+            <div class="branch-line-straight"></div>
+            <div class="branch-label label-green">Approved</div>
+            
+            <div class="app-node">
+              <div class="app-role">Finance</div>
+              <div class="app-action">Budget Verification</div>
+            </div>
+
+            <div class="app-arrow-down"></div>
+
+            <div class="app-node">
+              <div class="app-role">Procurement</div>
+              <div class="app-action">Process Order</div>
+            </div>
+
+            <div class="app-arrow-down"></div>
+
+            <div class="app-node node-end">
+              <div class="app-role">System</div>
+              <div class="app-action">Status Notification</div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .approval-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .approval-container {
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Visual Layout */
+  .approval-visual {
+    background: rgba(4, 9, 20, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .approval-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .app-node {
+    background: #1B2A42;
+    border: 1px solid #2b3e5b;
+    border-radius: 8px;
+    padding: 12px 24px;
+    text-align: center;
+    width: 220px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+  }
+
+  .app-decision {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.4);
+  }
+
+  .node-end {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .branch-reject .node-end {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .app-role {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #A0B2D2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .app-decision .app-role { color: #c4b5fd; }
+
+  .app-action {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .app-arrow-down {
+    width: 2px;
+    height: 30px;
+    background-color: #2b3e5b;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .app-arrow-down::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #2b3e5b;
+  }
+
+  /* Branching */
+  .app-branches {
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+  }
+
+  /* Connection from decision to branches */
+  .app-branches::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 20%;
+    right: 50%;
+    height: 2px;
+    background-color: #2b3e5b;
+  }
+  
+  .app-branches::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background-color: #2b3e5b;
+  }
+
+  .branch {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .branch-reject {
+    flex: 0.8;
+  }
+
+  .branch-approve {
+    flex: 1.2;
+  }
+
+  .branch-line {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background-color: #2b3e5b;
+  }
+
+  .branch-line::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #2b3e5b;
+  }
+
+  .branch-line-straight {
+    width: 2px;
+    height: 0; /* Handled by pseudo element below */
+    position: relative;
+  }
+  
+  /* Already have the down line from app-branches::after, just need the arrow head */
+  .branch-approve::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #2b3e5b;
+  }
+
+  .branch-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-top: -15px; /* Pull up to overlay on line */
+    background: #0B1424;
+    position: relative;
+    z-index: 2;
+  }
+
+  .label-red {
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .label-green {
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .approval-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .approval-visual {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .app-node {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .app-role {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .app-action {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .app-decision {
+    background: #F3E8FF;
+    border-color: #D8B4FE;
+  }
+
+  :global(html[data-theme="light"]) .app-decision .app-role { color: #6B21A8; }
+
+  :global(html[data-theme="light"]) .node-end {
+    background: #DCFCE7;
+    border-color: #86EFAC;
+  }
+
+  :global(html[data-theme="light"]) .branch-reject .node-end {
+    background: #FEE2E2;
+    border-color: #FCA5A5;
+  }
+
+  :global(html[data-theme="light"]) .app-arrow-down,
+  :global(html[data-theme="light"]) .app-branches::before,
+  :global(html[data-theme="light"]) .app-branches::after,
+  :global(html[data-theme="light"]) .branch-line {
+    background-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .app-arrow-down::after,
+  :global(html[data-theme="light"]) .branch-line::after,
+  :global(html[data-theme="light"]) .branch-approve::before {
+    border-top-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .branch-label {
+    background: #FFFFFF;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .approval-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+
+    .app-branches {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .app-branches::before,
+    .app-branches::after,
+    .branch-line {
+      display: none;
+    }
+
+    .branch-approve::before {
+      display: none;
+    }
+
+    .branch-label {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .app-node {
+      width: 100%;
+    }
+    
+    .branch {
+      width: 100%;
+    }
+  }
+</style>

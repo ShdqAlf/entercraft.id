@@ -1,32 +1,55 @@
 ---
 // WhyChoose.astro
 
-const valueProps = [
-  {
-    id: "01",
-    title: "Berangkat dari Kebutuhan Bisnis",
-    description: "Kami tidak memulai dari teknologi. Kami memulai dari masalah, proses, dan tujuan bisnis yang ingin diselesaikan.",
-    label: "BUSINESS FIRST"
-  },
-  {
-    id: "02",
-    title: "Solusi Dibuat Sesuai Kebutuhan",
-    description: "Tidak semua bisnis membutuhkan solusi yang sama. Kami menyesuaikan teknologi dengan workflow, kebutuhan operasional, dan skala bisnis Anda.",
-    label: "CUSTOM & SCALABLE"
-  },
-  {
-    id: "03",
-    title: "Satu Partner untuk Kebutuhan Digital",
-    description: "Mulai dari AI & automation, software development, hingga digital marketing, kebutuhan digital dapat dikembangkan dalam satu ekosistem.",
-    label: "END-TO-END"
-  },
-  {
-    id: "04",
-    title: "Fokus pada Dampak, Bukan Sekadar Teknologi",
-    description: "Teknologi harus memberikan dampak nyata. Kami berfokus pada efisiensi proses, kemudahan operasional, digital visibility, dan peluang pertumbuhan bisnis.",
-    label: "BUSINESS IMPACT"
-  }
-];
+interface ValueProp {
+  id: string;
+  title: string;
+  description: string;
+  label: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  titleHtml?: string;
+  intro?: string;
+  valueProps?: ValueProp[];
+  closingTitle?: string;
+  closingSubtitle?: string;
+}
+
+const {
+  eyebrow = "WHY ENTERCRAFT.ID",
+  titleHtml = "Bukan Sekadar Membuat Teknologi.<br />Kami Memahami Bagaimana Teknologi<br />Bekerja untuk Bisnis.",
+  intro = "Setiap bisnis memiliki proses, tantangan, dan tujuan yang berbeda. Kami merancang solusi digital berdasarkan kebutuhan nyata bisnis, bukan sekadar mengikuti tren teknologi.",
+  valueProps = [
+    {
+      id: "01",
+      title: "Berangkat dari Kebutuhan Bisnis",
+      description: "Kami tidak memulai dari teknologi. Kami memulai dari masalah, proses, dan tujuan bisnis yang ingin diselesaikan.",
+      label: "BUSINESS FIRST"
+    },
+    {
+      id: "02",
+      title: "Solusi Dibuat Sesuai Kebutuhan",
+      description: "Tidak semua bisnis membutuhkan solusi yang sama. Kami menyesuaikan teknologi dengan workflow, kebutuhan operasional, dan skala bisnis Anda.",
+      label: "CUSTOM & SCALABLE"
+    },
+    {
+      id: "03",
+      title: "Satu Partner untuk Kebutuhan Digital",
+      description: "Mulai dari AI & automation, software development, hingga digital marketing, kebutuhan digital dapat dikembangkan dalam satu ekosistem.",
+      label: "END-TO-END"
+    },
+    {
+      id: "04",
+      title: "Fokus pada Dampak, Bukan Sekadar Teknologi",
+      description: "Teknologi harus memberikan dampak nyata. Kami berfokus pada efisiensi proses, kemudahan operasional, digital visibility, dan peluang pertumbuhan bisnis.",
+      label: "BUSINESS IMPACT"
+    }
+  ],
+  closingTitle = "Pahami Bisnis. Bangun Solusi. Dorong Pertumbuhan.",
+  closingSubtitle = "Teknologi yang tepat bukan hanya membuat proses menjadi digital. Teknologi yang tepat membuat bisnis bekerja lebih baik."
+} = Astro.props;
 ---
 
 <section class="why-section" id="mengapa-kami">
@@ -46,15 +69,11 @@ const valueProps = [
     <!-- Header -->
     <div class="why-header animate-fade-scroll" style="animation-delay: 100ms;">
       <div class="why-eyebrow">
-        <span class="eyebrow-dot">●</span> WHY ENTERCRAFT.ID
+        <span class="eyebrow-dot">●</span> {eyebrow}
       </div>
-      <h2 class="why-title">
-        Bukan Sekadar Membuat Teknologi.<br />
-        Kami Memahami Bagaimana Teknologi<br />
-        Bekerja untuk Bisnis.
-      </h2>
+      <h2 class="why-title" set:html={titleHtml}></h2>
       <p class="why-intro">
-        Setiap bisnis memiliki proses, tantangan, dan tujuan yang berbeda. Kami merancang solusi digital berdasarkan kebutuhan nyata bisnis, bukan sekadar mengikuti tren teknologi.
+        {intro}
       </p>
     </div>
 
@@ -86,9 +105,9 @@ const valueProps = [
 
     <!-- Closing Statement -->
     <div class="why-closing animate-fade-scroll" style="animation-delay: 650ms;">
-      <h3 class="closing-title">Pahami Bisnis. Bangun Solusi. Dorong Pertumbuhan.</h3>
+      <h3 class="closing-title">{closingTitle}</h3>
       <p class="closing-subtitle">
-        Teknologi yang tepat bukan hanya membuat proses menjadi digital. Teknologi yang tepat membuat bisnis bekerja lebih baik.
+        {closingSubtitle}
       </p>
       
       <!-- Minimal Visual Sequence -->

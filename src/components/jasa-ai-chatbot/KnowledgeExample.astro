@@ -1,0 +1,327 @@
+---
+// KnowledgeExample.astro
+---
+
+<section class="kbex-section">
+  <div class="kbex-container">
+    
+    <div class="example-wrapper animate-fade-scroll" style="animation-delay: 100ms;">
+      
+      <!-- Source Data Card -->
+      <div class="ex-card ex-source">
+        <div class="ex-card-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z"></path><path d="M14 3v5h5M16 13H8M16 17H8M10 9H8"></path></svg>
+          Source: Product Catalog
+        </div>
+        <div class="ex-card-body">
+          <pre><code>{`{
+  "product": "Product A",
+  "minimum_order": "100 unit",
+  "specification": "Standard",
+  "lead_time": "14 hari kerja"
+}`}</code></pre>
+        </div>
+        <div class="ex-card-footer">
+          Business Information
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="ex-arrow">
+        <div class="arrow-line"></div>
+        <div class="arrow-text">AI Processing</div>
+      </div>
+
+      <!-- Chat Result Card -->
+      <div class="ex-card ex-result">
+        <div class="ex-card-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Chat Interface
+        </div>
+        <div class="ex-card-body chat-style">
+          <div class="chat-row customer-row">
+            <div class="chat-bubble c-bubble">Berapa minimum order Product A?</div>
+          </div>
+          <div class="chat-row ai-row">
+            <div class="chat-bubble a-bubble">Minimum order untuk Product A adalah 100 unit. Apakah Anda butuh informasi lebih lanjut?</div>
+          </div>
+        </div>
+        <div class="ex-card-footer">
+          Customer Answer
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .kbex-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 0 24px 100px 24px; /* padding-top 0 since it follows KnowledgeBase closely */
+    box-sizing: border-box;
+  }
+
+  .kbex-container {
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .example-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* Cards */
+  .ex-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .ex-source {
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .ex-result {
+    border-color: rgba(57, 132, 255, 0.3);
+  }
+
+  .ex-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: rgba(10, 22, 44, 0.8);
+    border-bottom: 1px solid #1B2A42;
+    font-family: 'Inter', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: #A0B2D2;
+  }
+
+  .ex-source .ex-card-header {
+    border-bottom-color: rgba(139, 92, 246, 0.2);
+    color: #c4b5fd;
+  }
+
+  .ex-result .ex-card-header {
+    border-bottom-color: rgba(57, 132, 255, 0.2);
+    color: #93c5fd;
+  }
+
+  .ex-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* JSON Source Styling */
+  .ex-card-body pre {
+    margin: 0;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #d1d5db;
+    background: rgba(0,0,0,0.2);
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  /* Chat Result Styling */
+  .chat-style {
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .chat-row {
+    display: flex;
+    width: 100%;
+  }
+
+  .customer-row {
+    justify-content: flex-end;
+  }
+
+  .ai-row {
+    justify-content: flex-start;
+  }
+
+  .chat-bubble {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 90%;
+  }
+
+  .c-bubble {
+    background: #1B2A42;
+    color: #FFFFFF;
+    border-bottom-right-radius: 2px;
+  }
+
+  .a-bubble {
+    background: rgba(57, 132, 255, 0.15);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    color: #FFFFFF;
+    border-bottom-left-radius: 2px;
+  }
+
+  /* Footer */
+  .ex-card-footer {
+    padding: 12px;
+    text-align: center;
+    background: rgba(10, 22, 44, 0.5);
+    border-top: 1px solid #1B2A42;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #617AA7;
+  }
+
+  /* Arrow */
+  .ex-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .arrow-line {
+    width: 40px;
+    height: 2px;
+    background: #1B2A42;
+    position: relative;
+  }
+
+  .arrow-line::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: -4px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid #1B2A42;
+  }
+
+  .arrow-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #617AA7;
+    white-space: nowrap;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .kbex-section {
+    background-color: #F8FAFC;
+  }
+
+  :global(html[data-theme="light"]) .ex-card {
+    background: #FFFFFF;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .ex-card-header {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .ex-card-footer {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .ex-card-body pre {
+    background: #1E293B; /* Keep pre dark for JSON syntax contrast */
+    color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .c-bubble {
+    background: #F1F5F9;
+    color: #1E293B;
+  }
+
+  :global(html[data-theme="light"]) .a-bubble {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .arrow-line {
+    background: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .arrow-line::after {
+    border-left-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .arrow-text {
+    color: #64748B;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .example-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .ex-card {
+      width: 100%;
+    }
+
+    .ex-arrow {
+      padding: 15px 0;
+    }
+
+    .arrow-line {
+      width: 2px;
+      height: 20px;
+    }
+
+    .arrow-line::after {
+      right: -4px;
+      top: 18px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid #1B2A42;
+    }
+
+    :global(html[data-theme="light"]) .arrow-line::after {
+      border-top-color: #CBD5E1;
+    }
+  }
+</style>

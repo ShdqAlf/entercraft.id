@@ -1,0 +1,362 @@
+---
+// DemoConversation.astro
+
+const demos = [
+  {
+    id: "demo-sales",
+    title: "Sales & Lead Qualification",
+    conversation: [
+      { sender: "customer", text: "Saya membutuhkan 300 unit produk A untuk bulan depan." },
+      { sender: "ai", text: "Baik. Agar tim kami dapat menyiapkan kebutuhan Anda, boleh diinformasikan lokasi pengiriman dan spesifikasi produk yang dibutuhkan?" },
+      { sender: "customer", text: "Bandung, spesifikasi standard." },
+      { sender: "ai", text: "Terima kasih. Saya sudah mencatat kebutuhan tersebut. Tim sales dapat melanjutkan penawaran berdasarkan informasi yang Anda berikan." }
+    ],
+    workflow: ["Conversation", "Qualification", "Lead Data", "Sales"]
+  },
+  {
+    id: "demo-product",
+    title: "Product Information",
+    conversation: [
+      { sender: "customer", text: "Apa perbedaan produk A dan produk B?" },
+      { sender: "ai", text: "Produk A dirancang untuk penggunaan personal dengan kapasitas 10L, sedangkan produk B ditujukan untuk penggunaan industri dengan kapasitas 50L dan tambahan fitur X." }
+    ],
+    workflow: ["Question", "Knowledge Retrieval", "Answer"]
+  },
+  {
+    id: "demo-support",
+    title: "Customer Support (Handover)",
+    conversation: [
+      { sender: "customer", text: "Saya punya masalah dengan invoice pesanan saya." },
+      { sender: "ai", text: "Saya dapat membantu mengarahkan kebutuhan Anda. Untuk kasus yang membutuhkan pengecekan invoice, saya akan meneruskan permintaan ini kepada tim Finance agar dapat diperiksa lebih lanjut. Mohon tunggu sebentar ya." }
+    ],
+    workflow: ["Question", "Intent Detection", "Human Handover"]
+  }
+];
+---
+
+<section class="demo-section" id="demo">
+  <div class="demo-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Lihat Bagaimana AI Chatbot Berinteraksi dengan Customer</h2>
+      <p class="header-intro">
+        Chatbot yang dirancang dengan baik tidak memaksakan diri menjawab semua hal, melainkan mengenali konteks, memberikan informasi relevan, atau meneruskan percakapan jika diperlukan.
+      </p>
+    </div>
+
+    <div class="demo-grid">
+      {demos.map((demo, index) => (
+        <div class="demo-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 150)}ms;`}>
+          <div class="demo-header">
+            <h3 class="demo-title">{demo.title}</h3>
+          </div>
+          
+          <div class="chat-window">
+            <div class="chat-messages">
+              {demo.conversation.map(msg => (
+                <div class={`message msg-${msg.sender}`}>
+                  {msg.sender === 'ai' && (
+                    <div class="avatar ai-avatar">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                  )}
+                  <div class="msg-bubble">{msg.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="demo-workflow">
+            {demo.workflow.map((step, stepIdx) => (
+              <>
+                <span class="wf-step">{step}</span>
+                {stepIdx < demo.workflow.length - 1 && <span class="wf-arrow">→</span>}
+              </>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .demo-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .demo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  /* Grid for Demos */
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .demo-card {
+    background: rgba(7, 16, 32, 0.3);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .demo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(57, 132, 255, 0.3);
+  }
+
+  .demo-header {
+    padding: 20px;
+    border-bottom: 1px solid #1B2A42;
+    background: rgba(10, 22, 44, 0.5);
+  }
+
+  .demo-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Chat Window */
+  .chat-window {
+    flex-grow: 1;
+    padding: 24px 20px;
+    background: rgba(4, 9, 20, 0.3);
+  }
+
+  .chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .message {
+    display: flex;
+    max-width: 85%;
+    gap: 8px;
+  }
+
+  .msg-customer {
+    align-self: flex-end;
+  }
+
+  .msg-ai {
+    align-self: flex-start;
+  }
+
+  .msg-bubble {
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .msg-customer .msg-bubble {
+    background: #1B2A42;
+    color: #FFFFFF;
+    border-bottom-right-radius: 4px;
+  }
+
+  .msg-ai .msg-bubble {
+    background: rgba(57, 132, 255, 0.15);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    color: #FFFFFF;
+    border-bottom-left-radius: 4px;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .ai-avatar {
+    background: rgba(57, 132, 255, 0.2);
+    color: var(--accent-blue);
+  }
+
+  /* Workflow Bar */
+  .demo-workflow {
+    padding: 16px 20px;
+    background: rgba(7, 16, 32, 0.8);
+    border-top: 1px solid #1B2A42;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .wf-step {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8fa7d4;
+    background: rgba(143, 167, 212, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .wf-arrow {
+    color: #4b5a7a;
+    font-size: 12px;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specifics */
+  :global(html[data-theme="light"]) .demo-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .demo-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .demo-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .demo-header {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .demo-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .chat-window {
+    background: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .msg-customer .msg-bubble {
+    background: #F1F5F9;
+    color: #1E293B;
+  }
+
+  :global(html[data-theme="light"]) .msg-ai .msg-bubble {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .demo-workflow {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .wf-step {
+    color: #475569;
+    background: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .wf-arrow {
+    color: #94A3B8;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .demo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .demo-card:nth-child(3) {
+      grid-column: span 2;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .demo-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 30px;
+    }
+
+    .demo-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-card:nth-child(3) {
+      grid-column: span 1;
+      max-width: 100%;
+    }
+  }
+</style>

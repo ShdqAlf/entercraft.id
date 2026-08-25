@@ -1,0 +1,394 @@
+---
+// BeforeAfter.astro (Jasa Workflow Automation)
+---
+
+<section class="before-after-section" id="before-after">
+  <div class="ba-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Dari Proses Manual Menjadi Workflow yang Berjalan Otomatis</h2>
+      <p class="header-intro">
+        Automation untuk proses repetitif, dipadukan dengan Human Decision untuk proses yang membutuhkan keputusan manusia.
+      </p>
+    </div>
+
+    <div class="ba-comparison animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <!-- BEFORE (MANUAL) -->
+      <div class="ba-column ba-before">
+        <div class="column-header">
+          <span class="badge before-badge">MANUAL PROCESS</span>
+        </div>
+        
+        <div class="flowchart">
+          
+          <div class="node node-neutral">Customer Order</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-red">Manual Input</span>
+          </div>
+          
+          <div class="node node-manual">Admin Input Form</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-red">Manual Handover via Chat/Email</span>
+          </div>
+          
+          <div class="node node-manual">Kirim ke Finance</div>
+          
+          <div class="arrow-down"></div>
+          
+          <div class="node node-human">Finance Verify</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-red">Manual Follow-up</span>
+          </div>
+          
+          <div class="node node-manual">Kirim ke Warehouse</div>
+          
+          <div class="arrow-down"></div>
+          
+          <div class="node node-human">Warehouse Update</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-red">High Risk of Missed Steps</span>
+          </div>
+          
+          <div class="node node-manual">Admin Notify Customer</div>
+
+        </div>
+      </div>
+
+      <!-- AFTER (AUTOMATED) -->
+      <div class="ba-column ba-after">
+        <div class="column-header">
+          <span class="badge after-badge">AUTOMATED WORKFLOW</span>
+        </div>
+        
+        <div class="flowchart">
+          
+          <div class="node node-neutral">Customer Order</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-green">Structured Workflow</span>
+          </div>
+          
+          <div class="node node-auto">Automation (System Routing)</div>
+          
+          <div class="arrow-down"></div>
+          
+          <div class="node node-human">Finance Verification <span class="human-decision">(Human Decision)</span></div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-green">Automated Handover</span>
+          </div>
+          
+          <div class="node node-auto">Automation (Task Creation)</div>
+          
+          <div class="arrow-down"></div>
+          
+          <div class="node node-human">Warehouse Task</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-green">Fewer Repetitive Tasks</span>
+          </div>
+          
+          <div class="node node-auto">Automation (Send Notification)</div>
+          
+          <div class="arrow-down">
+            <span class="arrow-label label-green">Status Tracking</span>
+          </div>
+          
+          <div class="node node-auto">Customer Notification</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .before-after-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .ba-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .ba-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .ba-column {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ba-before {
+    border-top: 4px solid #ef4444;
+  }
+
+  .ba-after {
+    border-top: 4px solid #22c55e;
+  }
+
+  .column-header {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .before-badge {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+  }
+
+  .after-badge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+  }
+
+  /* Flowchart styles */
+  .flowchart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .node {
+    width: 100%;
+    max-width: 280px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+  }
+
+  .node-neutral {
+    background: #1B2A42;
+    color: #FFFFFF;
+    border-color: #2b3e5b;
+  }
+
+  .node-manual {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .node-human {
+    background: rgba(139, 92, 246, 0.15);
+    color: #c4b5fd;
+    border-color: rgba(139, 92, 246, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .human-decision {
+    font-size: 12px;
+    font-weight: 500;
+    color: #a78bfa;
+  }
+
+  .node-auto {
+    background: rgba(34, 197, 94, 0.1);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .arrow-down {
+    width: 2px;
+    height: 30px;
+    background-color: #1B2A42;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .arrow-down::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #1B2A42;
+  }
+
+  .arrow-label {
+    position: absolute;
+    left: 15px;
+    white-space: nowrap;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    z-index: 2;
+  }
+
+  .label-red {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+  }
+
+  .label-green {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .before-after-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .ba-column {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .node-neutral {
+    background: #F1F5F9;
+    color: #1E293B;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .node-manual {
+    color: #b91c1c;
+  }
+
+  :global(html[data-theme="light"]) .node-human {
+    color: #6d28d9;
+  }
+
+  :global(html[data-theme="light"]) .human-decision {
+    color: #7c3aed;
+  }
+
+  :global(html[data-theme="light"]) .node-auto {
+    color: #15803d;
+  }
+
+  :global(html[data-theme="light"]) .arrow-down {
+    background-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .arrow-down::after {
+    border-top-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .label-red {
+    color: #b91c1c;
+  }
+
+  :global(html[data-theme="light"]) .label-green {
+    color: #15803d;
+  }
+
+  /* Responsive */
+  @media (max-width: 850px) {
+    .ba-comparison {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .before-after-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+
+    .arrow-label {
+      font-size: 10px;
+    }
+  }
+</style>

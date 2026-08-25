@@ -1,0 +1,335 @@
+---
+// Solution.astro (Jasa AI Automation)
+
+const steps = [
+  "Mengidentifikasi proses yang berulang",
+  "Menentukan bagian yang paling layak diotomatisasi",
+  "Menghubungkan berbagai sistem",
+  "Menggunakan AI pada titik yang memberikan value",
+  "Membuat workflow berjalan otomatis",
+  "Menghasilkan output yang dapat ditindaklanjuti"
+];
+
+const workflowNodes = [
+  { label: "Trigger", icon: "zap", color: "blue" },
+  { label: "Process", icon: "settings", color: "cyan" },
+  { label: "AI", icon: "cpu", color: "purple" },
+  { label: "Decision", icon: "git-branch", color: "blue" },
+  { label: "Action", icon: "play", color: "emerald" },
+  { label: "Result", icon: "check-circle", color: "emerald" }
+];
+---
+
+<section class="solution-section" id="solusi">
+  <div class="solution-container">
+    <div class="content-wrapper">
+      <div class="text-content animate-fade-scroll" style="animation-delay: 100ms;">
+        <h2 class="section-title">Ubah Proses Manual Menjadi Workflow yang Berjalan Otomatis</h2>
+        <p class="section-description">
+          AI Automation bukan sekadar menggunakan chatbot atau tools AI biasa. Kami merancang ekosistem di mana teknologi benar-benar mengambil alih beban kerja manual Anda. Entercraft membantu bisnis:
+        </p>
+        
+        <ul class="benefits-list">
+          {steps.map((step, index) => (
+            <li class="benefit-item" style={`animation-delay: ${150 + (index * 50)}ms;`}>
+              <div class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="visual-content animate-fade-scroll" style="animation-delay: 400ms;">
+        <div class="workflow-visual">
+          <div class="workflow-glow"></div>
+          <h3 class="visual-title">Automation Pipeline</h3>
+          
+          <div class="pipeline">
+            {workflowNodes.map((node, i) => (
+              <>
+                <div class={`pipeline-node node-${node.color}`}>
+                  <div class="node-icon-wrapper">
+                    {/* Simplified SVG icons based on name for the visual */}
+                    {node.icon === 'zap' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>}
+                    {node.icon === 'settings' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>}
+                    {node.icon === 'cpu' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>}
+                    {node.icon === 'git-branch' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>}
+                    {node.icon === 'play' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>}
+                    {node.icon === 'check-circle' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>}
+                  </div>
+                  <span class="node-label">{node.label}</span>
+                </div>
+                {i < workflowNodes.length - 1 && (
+                  <div class="pipeline-connector">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow"></div>
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .solution-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .solution-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .section-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 0 32px 0;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #D7E0F0;
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(57, 132, 255, 0.15);
+    color: var(--accent-blue);
+    flex-shrink: 0;
+    margin-top: -2px;
+  }
+
+  /* Visual Pipeline styles */
+  .workflow-visual {
+    position: relative;
+    background-color: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 40px;
+    overflow: hidden;
+  }
+
+  .workflow-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(57, 132, 255, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .visual-title {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 40px 0;
+  }
+
+  .pipeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pipeline-node {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(10, 22, 44, 0.8);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    padding: 12px 20px;
+    border-radius: 12px;
+    width: 220px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .pipeline-node:hover {
+    transform: translateX(5px);
+  }
+
+  .node-blue { border-color: rgba(57, 132, 255, 0.3); }
+  .node-cyan { border-color: rgba(57, 213, 232, 0.3); }
+  .node-purple { border-color: rgba(139, 92, 246, 0.3); }
+  .node-emerald { border-color: rgba(34, 197, 94, 0.3); }
+
+  .node-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .node-blue .node-icon-wrapper { color: #3984ff; background: rgba(57, 132, 255, 0.15); }
+  .node-cyan .node-icon-wrapper { color: #39d5e8; background: rgba(57, 213, 232, 0.15); }
+  .node-purple .node-icon-wrapper { color: #a855f7; background: rgba(139, 92, 246, 0.15); }
+  .node-emerald .node-icon-wrapper { color: #22c55e; background: rgba(34, 197, 94, 0.15); }
+
+  .node-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  .pipeline-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 24px;
+  }
+
+  .connector-line {
+    width: 2px;
+    height: 18px;
+    background: linear-gradient(to bottom, var(--accent-blue), rgba(57, 132, 255, 0.2));
+  }
+
+  .connector-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid rgba(57, 132, 255, 0.5);
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Adjustments */
+  :global(html[data-theme="light"]) .solution-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .section-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .section-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .benefit-item {
+    color: #1E293B;
+  }
+  
+  :global(html[data-theme="light"]) .workflow-visual {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .pipeline-node {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .node-label {
+    color: #0F172A;
+  }
+
+  @media (max-width: 991px) {
+    .content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .workflow-visual {
+      padding: 32px 20px;
+    }
+    
+    .pipeline {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+    
+    .pipeline-connector {
+      display: none;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .solution-section {
+      padding: 60px 16px;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+  }
+</style>

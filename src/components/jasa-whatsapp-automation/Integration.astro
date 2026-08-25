@@ -1,0 +1,283 @@
+---
+// Integration.astro
+
+const integrationCategories = [
+  {
+    name: "CRM & Sales",
+    tools: "HubSpot, Salesforce, Pipedrive, dll",
+    icon: "users"
+  },
+  {
+    name: "Database & Spreadsheet",
+    tools: "Google Sheets, Airtable, MySQL, dll",
+    icon: "database"
+  },
+  {
+    name: "Workflow Builders",
+    tools: "Make.com, Zapier, n8n, dll",
+    icon: "git-merge"
+  },
+  {
+    name: "Internal Systems",
+    tools: "Custom API & Webhooks",
+    icon: "code"
+  }
+];
+---
+
+<section class="integration-section">
+  <div class="int-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Terhubung dengan Tools yang Anda Gunakan</h2>
+      <p class="header-intro">
+        Workflow yang baik adalah workflow yang saling terkoneksi tanpa <em>silo</em>. Layanan WhatsApp Automation kami dapat diintegrasikan dengan berbagai platform dan database untuk memastikan kelancaran arus informasi.
+      </p>
+    </div>
+
+    <div class="integration-grid">
+      {integrationCategories.map((cat, index) => (
+        <div class="integration-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="int-icon">
+            {cat.icon === 'users' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
+            {cat.icon === 'database' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>}
+            {cat.icon === 'git-merge' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M6 21V9a9 9 0 0 0 9 9"></path></svg>}
+            {cat.icon === 'code' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>}
+          </div>
+          <div class="int-info">
+            <h3 class="int-name">{cat.name}</h3>
+            <p class="int-tools">{cat.tools}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="integration-visual animate-fade-scroll" style="animation-delay: 500ms;">
+      <div class="center-wa">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      </div>
+      <div class="connection-lines"></div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .integration-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .int-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .header-intro em {
+    color: #A0B2D2;
+  }
+
+  /* Grid layout for categories */
+  .integration-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .integration-card {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.2s ease;
+  }
+
+  .integration-card:hover {
+    background: rgba(10, 22, 44, 0.8);
+    border-color: rgba(34, 197, 94, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .int-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .int-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .int-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .int-tools {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Simple visual abstraction */
+  .integration-visual {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .center-wa {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: #22c55e;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+  }
+
+  .connection-lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(57, 132, 255, 0.5) 20%, 
+      rgba(57, 132, 255, 0.5) 80%, 
+      transparent 100%
+    );
+    z-index: 1;
+  }
+
+  .connection-lines::before, .connection-lines::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(0deg, transparent 0%, rgba(57, 132, 255, 0.5) 50%, transparent 100%);
+  }
+
+  .connection-lines::before { left: 20%; }
+  .connection-lines::after { right: 20%; }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .integration-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .int-name {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .int-tools {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .integration-card {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .integration-card:hover {
+    border-color: #22c55e;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .integration-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 30px;
+    }
+
+    .integration-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .integration-visual {
+      display: none; /* Hide visual abstraction on mobile to save space */
+    }
+  }
+</style>

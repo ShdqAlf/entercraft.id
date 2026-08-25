@@ -1,0 +1,293 @@
+---
+// Integration.astro (Jasa AI Chatbot)
+
+const systems = [
+  "CRM",
+  "Database",
+  "Website",
+  "ERP",
+  "Booking System",
+  "Internal System",
+  "WhatsApp",
+  "API Gateway"
+];
+---
+
+<section class="integration-section">
+  <div class="integ-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Hubungkan AI Chatbot dengan Sistem Bisnis Anda</h2>
+      <p class="header-intro">
+        Integrasi disesuaikan dengan kebutuhan bisnis dan kondisi sistem yang Anda gunakan saat ini.
+      </p>
+    </div>
+
+    <div class="network-diagram animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <!-- Center Node -->
+      <div class="center-node">
+        <div class="center-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </div>
+        <span>AI Chatbot</span>
+      </div>
+
+      <!-- Surround Nodes -->
+      <div class="surround-nodes">
+        {systems.map((sys, index) => {
+          // Calculate positions in a circle (for desktop)
+          const angle = (index / systems.length) * (2 * Math.PI) - (Math.PI / 2);
+          const radius = 220; // Distance from center
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          
+          return (
+            <div class="satellite-node" style={`--x: ${x}px; --y: ${y}px; --delay: ${index * 100}ms`}>
+              <div class="node-content">
+                <span class="node-dot"></span>
+                {sys}
+              </div>
+              <!-- Connector line drawn via CSS -->
+              <div class="node-line"></div>
+            </div>
+          );
+        })}
+      </div>
+      
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .integration-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+    overflow: hidden;
+  }
+
+  .integ-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Network Diagram Desktop */
+  .network-diagram {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .center-node {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: rgba(10, 22, 44, 0.8);
+    padding: 24px 32px;
+    border-radius: 20px;
+    border: 1px solid rgba(57, 132, 255, 0.4);
+    box-shadow: 0 0 40px rgba(57, 132, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .center-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(57, 132, 255, 0.15);
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .surround-nodes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .satellite-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Translate to the calculated circular position */
+    transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)));
+    z-index: 5;
+    animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(400ms + var(--delay));
+    opacity: 0;
+  }
+
+  @keyframes popIn {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    100% { opacity: 1; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1); }
+  }
+
+  .node-content {
+    background: rgba(7, 16, 32, 0.8);
+    border: 1px solid #1B2A42;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #A0B2D2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    transition: all 0.2s ease;
+  }
+
+  .node-content:hover {
+    border-color: rgba(57, 132, 255, 0.4);
+    color: #FFFFFF;
+    background: rgba(10, 22, 44, 1);
+  }
+
+  .node-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+  }
+
+  /* Connecting lines */
+  .node-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 220px; /* matches radius */
+    height: 1px;
+    background: linear-gradient(90deg, rgba(57,132,255,0.4) 0%, rgba(57,132,255,0) 100%);
+    transform-origin: left center;
+    z-index: 1;
+    /* Calculate angle back to center based on coordinates */
+    transform: rotate(calc(atan2(var(--y) * -1, var(--x) * -1)));
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .integration-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .center-node {
+    background: #FFFFFF;
+    color: #0F172A;
+    border-color: #E2E8F0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .node-content {
+    background: #FFFFFF;
+    color: #475569;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .node-line {
+    background: linear-gradient(90deg, rgba(57,132,255,0.3) 0%, rgba(57,132,255,0) 100%);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .integration-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+
+    .network-diagram {
+      height: auto;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .surround-nodes {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      height: auto;
+    }
+
+    .satellite-node {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none !important;
+      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .node-line {
+      display: none; /* Hide radial lines on mobile */
+    }
+  }
+</style>

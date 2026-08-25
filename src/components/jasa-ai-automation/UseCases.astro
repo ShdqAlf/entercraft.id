@@ -1,0 +1,492 @@
+---
+// UseCases.astro (Jasa AI Automation)
+
+const useCases = [
+  {
+    id: "01",
+    title: "Sales & Lead Qualification",
+    description: "Tingkatkan konversi tanpa menambah beban tim sales. Biarkan AI menyaring dan melakukan interaksi awal dengan calon pelanggan sebelum diserahkan ke tim manusia.",
+    steps: [
+      "Lead masuk dari website atau iklan",
+      "AI melakukan kualifikasi otomatis melalui chat",
+      "Data prospek tersimpan langsung di CRM",
+      "Sistem melakukan follow-up otomatis jika tidak ada respons",
+      "Tim Sales menerima lead yang sudah matang dan siap"
+    ],
+    image: "/images/use-case-sales.svg", // Placeholder, will rely on visual styling instead
+  },
+  {
+    id: "02",
+    title: "Customer Service Cerdas",
+    description: "Selesaikan 80% pertanyaan pelanggan secara instan dengan asisten virtual yang mengerti konteks, sehingga tim CS bisa fokus pada masalah yang membutuhkan empati manusia.",
+    steps: [
+      "Pelanggan mengirim pesan (WhatsApp/Web)",
+      "AI menganalisis maksud dan konteks pesan",
+      "AI memberikan solusi atau jawaban yang relevan",
+      "Sistem menentukan kategori tiket secara otomatis",
+      "Kasus kompleks diteruskan langsung ke agen yang tepat"
+    ],
+    image: "/images/use-case-cs.svg",
+  },
+  {
+    id: "03",
+    title: "Automated Reporting & Analytics",
+    description: "Manajemen bisa mendapatkan laporan terpusat setiap pagi tanpa ada staf yang harus begadang merapikan data di Excel semalaman.",
+    steps: [
+      "Data terkumpul dari ERP, CRM, dan Ads",
+      "Sistem menstandarisasi format data secara otomatis",
+      "AI membantu mencari insight atau anomali data",
+      "Laporan visual komprehensif berhasil dibuat",
+      "Manajemen menerima laporan lewat email atau dashboard"
+    ],
+    image: "/images/use-case-reporting.svg",
+  },
+  {
+    id: "04",
+    title: "Operational Workflow & Approval",
+    description: "Percepat proses birokrasi internal dan kurangi dokumen yang menumpuk. Setiap proses berjalan sesuai aturan tanpa perlu saling mengingatkan.",
+    steps: [
+      "Karyawan membuat pengajuan (task/dokumen)",
+      "Sistem memvalidasi kelengkapan data otomatis",
+      "Workflow mengarahkan ke atasan yang bersangkutan",
+      "Notifikasi approval dikirim via Slack atau WhatsApp",
+      "Status diperbarui dan proses selanjutnya berjalan"
+    ],
+    image: "/images/use-case-ops.svg",
+  }
+];
+---
+
+<section class="use-cases-section">
+  <div class="use-cases-container">
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Contoh Penerapan AI Automation dalam Bisnis</h2>
+      <p class="header-intro">
+        Bagaimana otomasi mengubah cara kerja tim Anda dari rutinitas yang melelahkan menjadi alur yang berjalan mandiri.
+      </p>
+    </div>
+
+    <div class="use-cases-list">
+      {useCases.map((useCase, index) => {
+        const isEven = index % 2 !== 0;
+        return (
+          <div class={`use-case-row ${isEven ? 'row-reversed' : ''} animate-fade-scroll`} style={`animation-delay: ${200 + (index * 150)}ms;`}>
+            
+            <div class="use-case-content">
+              <span class="use-case-number">USE CASE {useCase.id}</span>
+              <h3 class="use-case-title">{useCase.title}</h3>
+              <p class="use-case-description">{useCase.description}</p>
+              
+              <div class="use-case-flow">
+                {useCase.steps.map((step, i) => (
+                  <div class="flow-step">
+                    <div class="step-indicator">
+                      <div class="step-dot"></div>
+                      {i < useCase.steps.length - 1 && <div class="step-line"></div>}
+                    </div>
+                    <div class="step-text">{step}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="use-case-visual">
+              <div class="visual-card">
+                <div class="visual-header">
+                  <div class="window-controls">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                  </div>
+                  <span class="window-title">Workflow Execution</span>
+                </div>
+                <div class="visual-body">
+                  <div class="mock-flow">
+                    {useCase.steps.map((step, i) => (
+                      <div class="mock-node" style={`animation-delay: ${i * 0.3}s`}>
+                        <div class="node-icon">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        </div>
+                        <div class="node-lines">
+                          <div class="line-thick"></div>
+                          <div class="line-thin"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div class="visual-glow"></div>
+            </div>
+
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .use-cases-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .use-cases-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #6682B3;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .use-cases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
+
+  .use-case-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .use-case-row.row-reversed {
+    direction: rtl;
+  }
+  
+  .use-case-row.row-reversed > * {
+    direction: ltr;
+  }
+
+  .use-case-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .use-case-number {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .use-case-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+  }
+
+  .use-case-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 0 32px 0;
+  }
+
+  .use-case-flow {
+    display: flex;
+    flex-direction: column;
+    background: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-blue);
+    margin-top: 5px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(57, 132, 255, 0.4);
+  }
+
+  .step-line {
+    width: 2px;
+    flex-grow: 1;
+    background-color: rgba(57, 132, 255, 0.2);
+    margin: 4px 0;
+    min-height: 20px;
+  }
+
+  .step-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #D7E0F0;
+    padding-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .flow-step:last-child .step-text {
+    padding-bottom: 0;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
+
+  .use-case-visual {
+    position: relative;
+    width: 100%;
+  }
+
+  .visual-card {
+    background-color: #0A162C;
+    border: 1px solid #1B2A42;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .visual-header {
+    background-color: #050B16;
+    border-bottom: 1px solid #1B2A42;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .window-controls {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background-color: #FF5F56; }
+  .dot.yellow { background-color: #FFBD2E; }
+  .dot.green { background-color: #27C93F; }
+
+  .window-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #52698F;
+    margin-left: 20px;
+    font-weight: 500;
+  }
+
+  .visual-body {
+    padding: 32px;
+    background: radial-gradient(circle at center, rgba(57, 132, 255, 0.05) 0%, transparent 70%);
+  }
+
+  .mock-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mock-node {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px 16px;
+    border-radius: 8px;
+    animation: mockPulse 3s infinite alternate;
+  }
+
+  @keyframes mockPulse {
+    0% { border-color: rgba(255, 255, 255, 0.05); }
+    100% { border-color: rgba(57, 132, 255, 0.3); background: rgba(57, 132, 255, 0.05); }
+  }
+
+  .node-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .node-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+  }
+
+  .line-thick {
+    height: 6px;
+    width: 60%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+  }
+
+  .line-thin {
+    height: 4px;
+    width: 40%;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+  }
+
+  .visual-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(57, 132, 255, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(40px);
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Adjustments */
+  :global(html[data-theme="light"]) .use-cases-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .use-case-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .use-case-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .use-case-flow {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .step-text {
+    color: #334155;
+  }
+  
+  :global(html[data-theme="light"]) .flow-step:last-child .step-text {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .visual-card {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  :global(html[data-theme="light"]) .visual-header {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .mock-node {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .line-thick {
+    background: #CBD5E1;
+  }
+  
+  :global(html[data-theme="light"]) .line-thin {
+    background: #E2E8F0;
+  }
+
+  @media (max-width: 991px) {
+    .use-cases-list {
+      gap: 80px;
+    }
+    .use-case-row,
+    .use-case-row.row-reversed {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      direction: ltr;
+    }
+    .use-case-row.row-reversed > * {
+      direction: ltr;
+    }
+    .visual-card {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .use-cases-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 32px;
+    }
+    .use-case-title {
+      font-size: 26px;
+    }
+  }
+</style>

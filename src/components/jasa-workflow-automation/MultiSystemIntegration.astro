@@ -1,0 +1,289 @@
+---
+// MultiSystemIntegration.astro (Jasa Workflow Automation)
+
+const systems = [
+  "Website", "CRM", "Google Sheets", "Database", "ERP", 
+  "Email", "WhatsApp", "Cloud Storage", "Internal System", "API Gateway"
+];
+---
+
+<section class="integration-section" id="integration">
+  <div class="integration-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Hubungkan Sistem yang Sudah Digunakan Bisnis Anda</h2>
+      <p class="header-intro">
+        Workflow Automation tidak harus mengganti seluruh software yang sudah digunakan. Kami membantu menghubungkan sistem dan proses yang sudah ada agar data dapat berpindah sesuai alur yang dibutuhkan.
+      </p>
+    </div>
+
+    <div class="integration-visual animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <div class="ecosystem-tags">
+        {systems.map(sys => (
+          <span class="sys-tag">{sys}</span>
+        ))}
+      </div>
+
+      <div class="flow-demo">
+        <div class="sys-node sys-a">
+          <span class="node-label">System A</span>
+          <span class="node-name">CRM</span>
+        </div>
+        
+        <div class="flow-arrow">→</div>
+        
+        <div class="sys-node sys-hub">
+          <span class="node-label">Automation</span>
+          <span class="node-name">Workflow Hub</span>
+        </div>
+        
+        <div class="flow-arrow">→</div>
+        
+        <div class="sys-node sys-b">
+          <span class="node-label">System B</span>
+          <span class="node-name">ERP</span>
+        </div>
+        
+        <div class="flow-arrow">→</div>
+        
+        <div class="sys-node sys-c">
+          <span class="node-label">System C</span>
+          <span class="node-name">WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="integration-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        <strong>Connect Existing Systems</strong>, bukan Replace Everything.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .integration-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .integration-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .integration-visual {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 20px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .ecosystem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 800px;
+  }
+
+  .sys-tag {
+    background: #1B2A42;
+    color: #A0B2D2;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+  }
+
+  .flow-demo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .sys-node {
+    background: #0B1424;
+    border: 1px solid #2b3e5b;
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+  }
+
+  .node-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #617AA7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .node-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .sys-hub {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.4);
+  }
+  
+  .sys-hub .node-label {
+    color: #60a5fa;
+  }
+
+  .flow-arrow {
+    color: #4b5a7a;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .integration-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #86efac;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+  }
+
+  .integration-note strong {
+    font-weight: 700;
+    color: #22c55e;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .integration-section {
+    background-color: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .integration-visual {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .sys-tag {
+    background: #E2E8F0;
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .sys-node {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .node-name {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .sys-hub {
+    background: #EFF6FF;
+    border-color: #93C5FD;
+  }
+  
+  :global(html[data-theme="light"]) .sys-hub .node-label {
+    color: #2563EB;
+  }
+
+  :global(html[data-theme="light"]) .flow-arrow {
+    color: #94A3B8;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 850px) {
+    .flow-demo {
+      flex-direction: column;
+    }
+    
+    .flow-arrow {
+      transform: rotate(90deg);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .integration-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+    
+    .integration-visual {
+      padding: 30px 20px;
+    }
+  }
+</style>

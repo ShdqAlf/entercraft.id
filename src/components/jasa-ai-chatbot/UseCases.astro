@@ -1,0 +1,289 @@
+---
+// UseCases.astro (Jasa AI Chatbot)
+
+const usecases = [
+  {
+    title: "AI Customer Service Chatbot",
+    description: "Menjawab FAQ dan membantu customer mendapatkan informasi kapan saja sebelum diteruskan ke customer service manusia.",
+    label: "CUSTOMER EXPERIENCE"
+  },
+  {
+    title: "AI Sales Chatbot",
+    description: "Mengenali kebutuhan calon customer, melakukan qualification, dan mengumpulkan informasi lead yang terstruktur.",
+    label: "REVENUE GENERATION"
+  },
+  {
+    title: "AI Product Assistant",
+    description: "Membantu customer menemukan informasi, membandingkan opsi, dan memahami spesifikasi layanan atau produk.",
+    label: "PRODUCT EDUCATION"
+  },
+  {
+    title: "AI Internal Knowledge Assistant",
+    description: "Membantu karyawan menemukan informasi dari SOP, dokumen kebijakan, atau panduan kerja internal secara instan.",
+    label: "TEAM PRODUCTIVITY"
+  },
+  {
+    title: "AI Support Assistant",
+    description: "Membantu menjawab pertanyaan teknis atau panduan pemecahan masalah (troubleshooting) berdasarkan dokumentasi.",
+    label: "CUSTOMER SUCCESS"
+  },
+  {
+    title: "AI Booking Assistant",
+    description: "Membantu mengumpulkan kebutuhan appointment atau reservasi jadwal sesuai alur kerja operasional.",
+    label: "OPERATIONAL EFFICIENCY"
+  }
+];
+---
+
+<section class="usecases-section">
+  <div class="uc-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">AI Chatbot untuk Berbagai Kebutuhan Bisnis</h2>
+      <p class="header-intro">
+        Chatbot dapat difokuskan pada satu tugas spesifik atau dirancang untuk menangani berbagai fungsi dalam bisnis Anda.
+      </p>
+    </div>
+
+    <div class="timeline-wrapper">
+      <div class="timeline-line"></div>
+      
+      {usecases.map((uc, index) => (
+        <div class={`timeline-item animate-fade-scroll ${index % 2 === 0 ? 'left' : 'right'}`} style={`animation-delay: ${200 + (index * 150)}ms;`}>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="uc-label">{uc.label}</span>
+            <h3 class="uc-title">{uc.title}</h3>
+            <p class="uc-desc">{uc.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .usecases-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .uc-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  /* Timeline */
+  .timeline-wrapper {
+    position: relative;
+    padding: 20px 0;
+  }
+
+  .timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #1B2A42;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 40px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-item.left {
+    left: 0;
+    text-align: right;
+  }
+
+  .timeline-item.right {
+    left: 50%;
+    text-align: left;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-primary);
+    border: 3px solid var(--accent-blue);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(57, 132, 255, 0.2);
+  }
+
+  .timeline-item.left .timeline-dot {
+    right: -8px;
+  }
+
+  .timeline-item.right .timeline-dot {
+    left: -8px;
+  }
+
+  .timeline-content {
+    background: rgba(7, 16, 32, 0.3);
+    border: 1px solid #1B2A42;
+    padding: 30px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateY(-4px);
+    border-color: rgba(57, 132, 255, 0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+
+  .uc-label {
+    display: inline-block;
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .uc-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .uc-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .usecases-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .timeline-line {
+    background: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .timeline-dot {
+    background: #F8FAFC;
+  }
+
+  :global(html[data-theme="light"]) .timeline-content {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  }
+
+  :global(html[data-theme="light"]) .timeline-content:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  }
+
+  :global(html[data-theme="light"]) .uc-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .uc-desc {
+    color: #475569;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .usecases-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+
+    .timeline-line {
+      left: 20px;
+      transform: none;
+    }
+
+    .timeline-item {
+      width: 100%;
+      left: 0 !important;
+      padding: 0 0 0 50px;
+      text-align: left !important;
+    }
+
+    .timeline-dot {
+      left: 12px !important;
+      right: auto !important;
+    }
+  }
+</style>

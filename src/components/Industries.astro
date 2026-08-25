@@ -1,7 +1,21 @@
 ---
 // Industries.astro
 
-const industriesData = [
+interface IndustryData {
+  id: string;
+  num: string;
+  title: string;
+  description: string;
+  solutions: string[];
+  cta: string;
+  iconPath: string;
+}
+
+interface Props {
+  industriesData?: IndustryData[];
+}
+
+const defaultIndustriesData: IndustryData[] = [
   {
     id: "manufacturing",
     num: "01",
@@ -83,6 +97,8 @@ const industriesData = [
     iconPath: "M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M3 7h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
   }
 ];
+
+const { industriesData = defaultIndustriesData } = Astro.props;
 ---
 
 <section class="ind-section" id="industri">

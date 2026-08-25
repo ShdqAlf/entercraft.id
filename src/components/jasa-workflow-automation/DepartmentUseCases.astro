@@ -1,0 +1,288 @@
+---
+// DepartmentUseCases.astro (Jasa Workflow Automation)
+
+const departments = [
+  {
+    name: "SALES",
+    workflow: ["Lead Masuk", "Qualification", "Sales Assignment", "CRM Update", "Follow-up"],
+    copy: "Buat proses lead handling lebih terstruktur tanpa mengharuskan tim memindahkan data secara manual dari satu tahap ke tahap berikutnya."
+  },
+  {
+    name: "FINANCE",
+    workflow: ["Invoice", "Verification", "Approval", "Payment", "Status Update"],
+    copy: "Kurangi pekerjaan administratif pada proses invoice, persetujuan (approval), dan pelacakan status pembayaran."
+  },
+  {
+    name: "OPERATIONS",
+    workflow: ["Request", "Task Assignment", "Execution", "Status Update", "Completion"],
+    copy: "Pastikan setiap request internal maupun eksternal memiliki alur, PIC, dan status perkembangan yang jelas."
+  },
+  {
+    name: "HR",
+    workflow: ["Employee Request", "Manager Approval", "HR Processing", "Notification", "Record Update"],
+    copy: "Buat proses internal seperti cuti, reimbursement, dan permintaan karyawan lainnya berjalan sistematis dan terdokumentasi."
+  },
+  {
+    name: "CUSTOMER SERVICE",
+    workflow: ["Customer Request", "Categorization", "Assignment", "Escalation", "Resolution"],
+    copy: "Pastikan setiap request customer diteruskan ke tim yang tepat, dilacak progresnya, dan dapat ditindaklanjuti segera."
+  }
+];
+---
+
+<section class="usecase-section">
+  <div class="usecase-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Workflow Automation untuk Berbagai Departemen</h2>
+      <p class="header-intro">
+        Otomatisasi tidak terbatas pada departemen IT. Setiap divisi dengan proses berbasis aturan dapat merasakan peningkatan efisiensi yang signifikan.
+      </p>
+    </div>
+
+    <div class="usecase-list">
+      {departments.map((dept, index) => (
+        <div class="usecase-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="card-left">
+            <h3 class="dept-name">{dept.name}</h3>
+            <p class="dept-copy">{dept.copy}</p>
+          </div>
+          
+          <div class="card-right">
+            <div class="horizontal-workflow">
+              {dept.workflow.map((step, stepIndex) => (
+                <div class="hw-step-container">
+                  <div class="hw-step">{step}</div>
+                  {stepIndex < dept.workflow.length - 1 && (
+                    <div class="hw-arrow">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .usecase-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .usecase-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 16px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .usecase-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .usecase-card {
+    background: rgba(7, 16, 32, 0.4);
+    border: 1px solid #1B2A42;
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    transition: all 0.3s ease;
+  }
+
+  .usecase-card:hover {
+    background: rgba(10, 22, 44, 0.8);
+    border-color: rgba(57, 132, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .card-left {
+    flex: 0 0 35%;
+  }
+
+  .dept-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    margin: 0 0 12px 0;
+  }
+
+  .dept-copy {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #A0B2D2;
+    margin: 0;
+  }
+
+  .card-right {
+    flex: 1;
+    background: rgba(4, 9, 20, 0.4);
+    border: 1px dashed #1B2A42;
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+  }
+
+  /* Horizontal Workflow */
+  .horizontal-workflow {
+    display: inline-flex; /* to allow scrolling if wider */
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hw-step-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hw-step {
+    background: #1B2A42;
+    color: #D7E0F0;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    border: 1px solid #2b3e5b;
+  }
+
+  .hw-arrow {
+    color: #4b5a7a;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .usecase-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .dept-name {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .usecase-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .usecase-card:hover {
+    border-color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .dept-copy {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .card-right {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .hw-step {
+    background: #FFFFFF;
+    color: #1E293B;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .hw-arrow {
+    color: #94A3B8;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 850px) {
+    .usecase-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .card-left {
+      flex: none;
+      width: 100%;
+    }
+
+    .card-right {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .usecase-section {
+      padding: 70px 16px;
+    }
+
+    .header-title {
+      font-size: 32px;
+    }
+    
+    .horizontal-workflow {
+      /* Stack vertically on very small screens if needed, 
+         or keep horizontal and allow native swipe scrolling */
+    }
+  }
+</style>

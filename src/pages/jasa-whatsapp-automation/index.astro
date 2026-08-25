@@ -1,0 +1,269 @@
+---
+// src/pages/jasa-whatsapp-automation/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Specific components for WhatsApp Automation
+import Hero from '../../components/jasa-whatsapp-automation/Hero.astro';
+import Problem from '../../components/jasa-whatsapp-automation/Problem.astro';
+import Solution from '../../components/jasa-whatsapp-automation/Solution.astro';
+import WhatCanBeAutomated from '../../components/jasa-whatsapp-automation/WhatCanBeAutomated.astro';
+import BeforeAfter from '../../components/jasa-whatsapp-automation/BeforeAfter.astro';
+import UseCases from '../../components/jasa-whatsapp-automation/UseCases.astro';
+import AIPowered from '../../components/jasa-whatsapp-automation/AIPowered.astro';
+import Integration from '../../components/jasa-whatsapp-automation/Integration.astro';
+import BusinessBenefits from '../../components/jasa-whatsapp-automation/BusinessBenefits.astro';
+
+// Reused global components
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Industries from '../../components/Industries.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Business First",
+    description: "Kami memahami proses bisnis sebelum menentukan automation yang dibutuhkan.",
+    label: "BUSINESS FIRST"
+  },
+  {
+    id: "02",
+    title: "Custom Workflow",
+    description: "Workflow dirancang mengikuti kebutuhan dan proses bisnis Anda.",
+    label: "CUSTOM WORKFLOW"
+  },
+  {
+    id: "03",
+    title: "Practical AI",
+    description: "AI digunakan ketika benar-benar memberikan value dalam workflow.",
+    label: "PRACTICAL AI"
+  },
+  {
+    id: "04",
+    title: "End-to-End",
+    description: "Mulai dari discovery, development, integration, testing, hingga support.",
+    label: "END-TO-END"
+  },
+  {
+    id: "05",
+    title: "WhatsApp-Centric Workflow",
+    description: "WhatsApp bukan hanya channel chat, tetapi dapat menjadi bagian dari proses bisnis yang terhubung dengan sistem lain.",
+    label: "WHATSAPP CENTRIC"
+  }
+];
+
+const howWeWorkData = [
+  {
+    num: "01",
+    label: "DISCOVER",
+    title: "Discover",
+    description: "Memahami cara bisnis menggunakan WhatsApp saat ini dan menemukan proses yang masih manual.",
+    focus: "PROBLEM IDENTIFICATION"
+  },
+  {
+    num: "02",
+    label: "DEFINE",
+    title: "Define",
+    description: "Menentukan workflow, trigger, automation, integration, dan kebutuhan human intervention.",
+    focus: "SOLUTION STRATEGY"
+  },
+  {
+    num: "03",
+    label: "BUILD",
+    title: "Build",
+    description: "Membangun automation dan integrasi sesuai kebutuhan.",
+    focus: "ENGINEERING"
+  },
+  {
+    num: "04",
+    label: "TEST & REFINE",
+    title: "Test & Refine",
+    description: "Menguji workflow dan melakukan refinement berdasarkan kondisi bisnis.",
+    focus: "QUALITY ASSURANCE"
+  },
+  {
+    num: "05",
+    label: "LAUNCH & SUPPORT",
+    title: "Launch & Support",
+    description: "Mengimplementasikan solution dan membantu pengembangan berikutnya.",
+    focus: "IMPLEMENTATION & SUPPORT"
+  }
+];
+
+const industriesData = [
+  {
+    id: "distribution",
+    num: "01",
+    title: "Distributor & Trading",
+    description: "Lead handling, quotation follow-up, order update, dan sales notification.",
+    solutions: ["Lead Handling", "Quotation", "Order Update", "Notification"],
+    cta: "Konsultasi Distribusi →",
+    iconPath: "M10 21v-6.5L4 11M14 21v-6.5l6-3.5M12 3v7.5"
+  },
+  {
+    id: "retail",
+    num: "02",
+    title: "Retail & F&B",
+    description: "Customer inquiry, order, reservation, promo communication, dan notification.",
+    solutions: ["Inquiry", "Order", "Reservation", "Promo"],
+    cta: "Konsultasi Retail →",
+    iconPath: "M3 9l1-4h16l1 4M3 9v11a2 2 0 002 2h14a2 2 0 002-2V9M3 9h18M9 22v-6h6v6"
+  },
+  {
+    id: "healthcare",
+    num: "03",
+    title: "Healthcare",
+    description: "Appointment request, reminder, customer communication, dan internal notification.",
+    solutions: ["Appointment", "Reminder", "Communication", "Notification"],
+    cta: "Konsultasi Healthcare →",
+    iconPath: "M12 2v20M2 12h20M12 7h0 M12 17h0 M7 12h0 M17 12h0"
+  },
+  {
+    id: "education",
+    num: "04",
+    title: "Education",
+    description: "Inquiry, admission communication, reminder, dan notification.",
+    solutions: ["Inquiry", "Admission", "Reminder", "Notification"],
+    cta: "Konsultasi Edukasi →",
+    iconPath: "M12 2L2 7l10 5 10-5-10-5zm-8 8.5V17c0 2 4 3.5 8 3.5s8-1.5 8-3.5v-6.5"
+  },
+  {
+    id: "property",
+    num: "05",
+    title: "Property",
+    description: "Lead qualification, property inquiry, viewing schedule, dan follow-up.",
+    solutions: ["Lead Qualification", "Inquiry", "Schedule", "Follow-up"],
+    cta: "Konsultasi Properti →",
+    iconPath: "M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 7h2 M9 11h2 M9 15h2 M13 7h2 M13 11h2 M13 15h2"
+  },
+  {
+    id: "professional",
+    num: "06",
+    title: "Professional Services",
+    description: "Lead handling, appointment, customer communication, dan workflow notification.",
+    solutions: ["Lead Handling", "Appointment", "Communication", "Workflow"],
+    cta: "Konsultasi Layanan Profesional →",
+    iconPath: "M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M3 7h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Apa itu WhatsApp Automation?",
+    answer: "WhatsApp Automation adalah penggunaan teknologi untuk mengelola percakapan WhatsApp secara otomatis, menghubungkannya dengan sistem bisnis lain, dan menjalankan alur kerja (workflow) tanpa memerlukan intervensi manual pada setiap pesan."
+  },
+  {
+    id: "02",
+    question: "Apa saja proses bisnis yang bisa diotomatisasi melalui WhatsApp?",
+    answer: "Berbagai proses seperti customer service (menjawab FAQ), lead qualification, pengingat jadwal (booking & reminder), notifikasi pesanan, hingga alur kerja internal seperti persetujuan dokumen dapat diotomatisasi."
+  },
+  {
+    id: "03",
+    question: "Apakah WhatsApp Automation bisa digunakan untuk follow-up lead?",
+    answer: "Tentu. Automation dapat diatur untuk mengirimkan pesan follow-up otomatis kepada lead yang belum merespons dalam periode waktu tertentu, membantu menjaga komunikasi secara konsisten."
+  },
+  {
+    id: "04",
+    question: "Apakah WhatsApp Automation dapat terhubung dengan CRM?",
+    answer: "Ya, kami dapat menghubungkan WhatsApp dengan berbagai sistem CRM sehingga setiap interaksi, data lead, dan riwayat percakapan otomatis tercatat dalam sistem yang Anda gunakan."
+  },
+  {
+    id: "05",
+    question: "Apakah WhatsApp Automation bisa menggunakan AI?",
+    answer: "Bisa. AI dapat diintegrasikan untuk memahami maksud (intent) dari pesan pelanggan, mengekstrak data penting, dan memberikan respons yang lebih natural, bukan sekadar balasan statis."
+  },
+  {
+    id: "06",
+    question: "Apakah WhatsApp Automation hanya untuk customer service?",
+    answer: "Tidak. Selain customer service, automation ini sangat berguna untuk sales (lead handling, follow-up), operasional (notifikasi internal), marketing, dan berbagai fungsi bisnis lainnya."
+  },
+  {
+    id: "07",
+    question: "Apakah automation bisa terhubung dengan database atau sistem internal?",
+    answer: "Tentu, WhatsApp dapat dihubungkan ke sistem internal Anda melalui API, sehingga data dari WhatsApp langsung masuk ke database, Google Sheets, ERP, atau aplikasi internal lainnya."
+  },
+  {
+    id: "08",
+    question: "Apakah WhatsApp Automation dapat menggunakan nomor WhatsApp bisnis yang sudah digunakan?",
+    answer: "Biasanya kami merekomendasikan penggunaan WhatsApp Business API. Nomor bisnis Anda yang sudah ada dapat ditingkatkan menjadi nomor API, namun setelah beralih, pengelolaannya akan melalui platform API dan tidak lagi melalui aplikasi WhatsApp biasa di handphone."
+  },
+  {
+    id: "09",
+    question: "Berapa lama proses implementasi WhatsApp Automation?",
+    answer: "Waktu implementasi sangat bergantung pada kompleksitas alur kerja. Pembuatan alur dasar bisa memakan waktu beberapa minggu, sementara integrasi penuh dengan AI dan sistem internal bisa membutuhkan waktu lebih lama."
+  },
+  {
+    id: "10",
+    question: "Berapa biaya jasa WhatsApp Automation?",
+    answer: "Biaya bergantung pada skala proyek, fitur yang dibutuhkan, dan tingkat integrasi. Kami menyediakan konsultasi awal untuk memahami kebutuhan Anda sebelum merancang proposal dan estimasi biaya yang sesuai."
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Jasa WhatsApp Automation untuk Bisnis | ${SITE_TITLE}`} description="Jasa WhatsApp Automation untuk membantu bisnis mengotomatiskan komunikasi, follow-up, customer service, dan workflow bisnis." />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <Solution />
+      <WhatCanBeAutomated />
+      <BeforeAfter />
+      <UseCases />
+      <AIPowered />
+      <Integration />
+      <BusinessBenefits />
+      
+      <WhyChoose 
+        eyebrow="MENGAPA KAMI"
+        titleHtml="Mengapa Memilih Entercraft<br/>untuk WhatsApp Automation?"
+        intro="Kami bukan hanya technology provider. Kami adalah digital partner yang memahami masalah operasional bisnis Anda dan menghadirkan solusi otomasi yang terukur."
+        valueProps={whyChooseData}
+      />
+      
+      <HowWeWork 
+        eyebrow="WORKFLOW KAMI"
+        titleHtml="Bagaimana Kami Merancang<br/>Otomasi untuk Anda?"
+        intro="Langkah sistematis untuk memastikan transisi operasional yang mulus dari manual ke otomatis, tanpa mengganggu produktivitas harian Anda."
+        stepsData={howWeWorkData}
+      />
+      
+      <Industries 
+        industriesData={industriesData}
+      />
+      
+      <Faq 
+        eyebrow="FAQ WHATSAPP AUTOMATION"
+        titleHtml="Frequently Asked Questions"
+        intro="Temukan jawaban atas kekhawatiran umum sebelum Anda mulai beralih ke alur kerja otomatis bersama Entercraft.id."
+        faqData={faqData}
+      />
+      
+      <FinalCta 
+        eyebrow="MULAI SEKARANG"
+        titleHtml="Otomatiskan Proses Bisnis<br/>Anda melalui WhatsApp"
+        intro="Ceritakan bagaimana bisnis Anda menggunakan WhatsApp saat ini. Kami akan membantu mengidentifikasi workflow yang dapat diotomatisasi dan diintegrasikan dengan sistem bisnis Anda."
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

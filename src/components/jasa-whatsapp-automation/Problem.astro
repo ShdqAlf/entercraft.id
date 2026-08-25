@@ -1,0 +1,319 @@
+---
+// Problem.astro (Jasa WhatsApp Automation)
+
+const problems = [
+  {
+    id: "01",
+    title: "Pesan Menumpuk",
+    description: "Customer mengirim pertanyaan sepanjang hari dan tim harus merespons satu per satu secara manual.",
+    tags: ["Overwhelmed", "Slow Response"]
+  },
+  {
+    id: "02",
+    title: "Follow-up Terlewat",
+    description: "Lead atau customer yang sudah berinteraksi tidak selalu mendapat follow-up tepat waktu karena kelalaian manual.",
+    tags: ["Lost Leads", "Sales Drop"]
+  },
+  {
+    id: "03",
+    title: "Pertanyaan Berulang",
+    description: "Tim customer service terus menerus menjawab pertanyaan yang sama secara manual setiap hari.",
+    tags: ["Inefficiency", "Repetitive Tasks"]
+  },
+  {
+    id: "04",
+    title: "Data Tidak Tercatat",
+    description: "Percakapan penting terjadi di WhatsApp, tetapi informasi tersebut tidak selalu masuk ke CRM atau sistem bisnis.",
+    tags: ["Data Silos", "Manual Entry"]
+  }
+];
+---
+
+<section class="prob-sol-section">
+  <div class="prob-sol-container">
+    
+    <!-- Section Header -->
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> THE PROBLEM
+      </div>
+      <h2 class="header-title">
+        Bisnis Anda Masih Mengelola WhatsApp Secara Manual?
+      </h2>
+      <p class="header-intro">
+        Banyak bisnis menerima puluhan hingga ratusan pesan setiap hari, tetapi sebagian besar proses komunikasi dan pencatatan datanya masih ditangani secara manual.
+      </p>
+    </div>
+
+    <!-- Problem Grid (2x2) -->
+    <div class="problems-grid">
+      {problems.map((prob, index) => (
+        <div class="problem-panel animate-fade-scroll" style={`animation-delay: ${250 + (index * 100)}ms;`}>
+          <!-- Subtle Top Border Accent on Hover -->
+          <div class="panel-accent-line"></div>
+          
+          <div class="panel-header">
+            <span class="problem-number">{prob.id}</span>
+          </div>
+          <h3 class="problem-title">{prob.title}</h3>
+          <p class="problem-description">{prob.description}</p>
+          <div class="problem-tags">
+            {prob.tags.map((tag) => (
+              <span class="problem-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Outer Section styling */
+  .prob-sol-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 90px 24px 100px 24px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .prob-sol-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: left;
+    margin-bottom: 56px;
+    max-width: 800px;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 46px; 
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; 
+    line-height: 1.7;
+    color: #6682B3;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Problems Grid (2x2) */
+  .problems-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Dark Bordered Panel styling */
+  .problem-panel {
+    position: relative;
+    background-color: rgba(7, 16, 32, 0.2);
+    border: 1px solid #1B2A42;
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+  }
+
+  .panel-accent-line {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    width: 0px;
+    height: 2px;
+    background-color: var(--accent-blue);
+    transition: width 0.2s ease;
+  }
+
+  .problem-panel:hover {
+    transform: translateY(-2px);
+    border-color: #2b3e5b;
+    background-color: rgba(7, 16, 32, 0.4);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .problem-panel:hover .panel-accent-line {
+    width: 40px;
+  }
+
+  .panel-header {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .problem-number {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    letter-spacing: 1px;
+  }
+
+  .problem-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+  }
+
+  .problem-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0 0 24px 0;
+  }
+
+  /* Tags */
+  .problem-tags {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .problem-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px;
+    color: #617AA7;
+    background-color: #0B1424;
+    border: 1px solid #1D304B;
+    border-radius: 6px;
+    padding: 4px 10px;
+    transition: all 0.15s ease;
+  }
+
+  .problem-panel:hover .problem-tag {
+    color: #8fa7d4;
+    border-color: #2b4369;
+  }
+
+  /* Entrance animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .prob-sol-section {
+    background-color: #F8FAFC;
+    border-top: 1px solid #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .problem-panel {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+  
+  :global(html[data-theme="light"]) .problem-panel:hover {
+    border-color: var(--accent-blue);
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .problem-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .problem-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .problem-tag {
+    background-color: #F1F5F9;
+    border-color: #E2E8F0;
+    color: #475569;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .header-title {
+      font-size: 38px;
+      letter-spacing: -1.2px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .prob-sol-section {
+      padding: 60px 16px 70px 16px;
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .header-title {
+      font-size: 32px;
+      letter-spacing: -1px;
+    }
+
+    .problems-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .problem-panel {
+      padding: 24px;
+    }
+  }
+</style>

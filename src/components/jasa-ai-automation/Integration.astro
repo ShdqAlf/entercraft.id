@@ -1,0 +1,315 @@
+---
+// Integration.astro (Jasa AI Automation)
+
+const integrations = [
+  { name: "WhatsApp", icon: "message-circle" },
+  { name: "Google Sheets", icon: "grid" },
+  { name: "Gmail", icon: "mail" },
+  { name: "CRM", icon: "users" },
+  { name: "Website", icon: "layout" },
+  { name: "Database", icon: "database" },
+  { name: "ERP", icon: "briefcase" },
+  { name: "API", icon: "code" },
+  { name: "Cloud Storage", icon: "cloud" }
+];
+---
+
+<section class="integration-section">
+  <div class="integration-container">
+    <div class="integration-content animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="section-title">Hubungkan AI Automation dengan Sistem yang Sudah Digunakan Bisnis Anda</h2>
+      <p class="section-description">
+        Kami dapat membantu menghubungkan workflow baru dengan sistem yang sudah digunakan bisnis Anda, sehingga automation dapat bekerja tanpa harus membangun semuanya dari awal. Tidak perlu mengganti software yang sudah familiar bagi tim Anda.
+      </p>
+    </div>
+
+    <div class="integration-ecosystem animate-fade-scroll" style="animation-delay: 300ms;">
+      <div class="center-node">
+        <div class="center-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <span class="center-label">Entercraft<br/>Automation</span>
+        <div class="center-glow"></div>
+      </div>
+
+      <div class="orbit-rings">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+      </div>
+
+      <div class="floating-icons">
+        {integrations.map((item, index) => (
+          <div class={`app-node node-${index + 1}`}>
+            <div class="app-icon">
+              {item.icon === 'message-circle' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>}
+              {item.icon === 'grid' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>}
+              {item.icon === 'mail' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>}
+              {item.icon === 'users' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
+              {item.icon === 'layout' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>}
+              {item.icon === 'database' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>}
+              {item.icon === 'briefcase' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>}
+              {item.icon === 'code' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>}
+              {item.icon === 'cloud' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>}
+            </div>
+            <span class="app-label">{item.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .integration-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 120px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .integration-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .integration-content {
+    text-align: center;
+    max-width: 750px;
+  }
+
+  .section-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 24px 0;
+  }
+
+  .section-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Integration Ecosystem Diagram */
+  .integration-ecosystem {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .orbit-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(57, 132, 255, 0.2);
+    border-radius: 50%;
+  }
+
+  .ring-1 { width: 250px; height: 250px; }
+  .ring-2 { width: 450px; height: 450px; }
+
+  .center-node {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .center-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, #3984ff 0%, #1e5dd1 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(57, 132, 255, 0.4);
+    position: relative;
+    z-index: 2;
+  }
+
+  .center-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .center-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(57, 132, 255, 0.4) 0%, transparent 70%);
+    z-index: 1;
+    animation: pulseGlow 3s infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  }
+
+  .floating-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .app-node {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transform: translate(-50%, -50%);
+  }
+
+  .app-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(10, 22, 44, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D7E0F0;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .app-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7D96C5;
+    white-space: nowrap;
+    background: rgba(10, 22, 44, 0.8);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Node Positions */
+  .node-1 { top: 15%; left: 30%; animation: float 4s ease-in-out infinite 0s; }
+  .node-2 { top: 15%; left: 70%; animation: float 4.5s ease-in-out infinite 0.5s; }
+  .node-3 { top: 40%; left: 15%; animation: float 5s ease-in-out infinite 1s; }
+  .node-4 { top: 40%; left: 85%; animation: float 4s ease-in-out infinite 1.5s; }
+  .node-5 { top: 75%; left: 20%; animation: float 4.2s ease-in-out infinite 0.2s; }
+  .node-6 { top: 75%; left: 80%; animation: float 4.8s ease-in-out infinite 0.7s; }
+  .node-7 { top: 90%; left: 50%; animation: float 4.5s ease-in-out infinite 1.2s; }
+  .node-8 { top: 50%; left: 100%; transform: translate(-100%, -50%); animation: float 5s ease-in-out infinite 0.8s; }
+  .node-9 { top: 50%; left: 0%; transform: translate(0%, -50%); animation: float 4.3s ease-in-out infinite 0.4s; }
+
+  @keyframes float {
+    0%, 100% { margin-top: 0; }
+    50% { margin-top: -10px; }
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .integration-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .section-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .section-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .app-icon,
+  :global(html[data-theme="light"]) .app-label {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    color: #475569;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .center-label {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .ring {
+    border-color: rgba(57, 132, 255, 0.15);
+  }
+
+  @media (max-width: 767px) {
+    .integration-section {
+      padding: 60px 16px;
+    }
+    
+    .section-title {
+      font-size: 32px;
+    }
+    
+    .integration-ecosystem {
+      width: 100%;
+      height: 350px;
+    }
+    
+    .ring-1 { width: 180px; height: 180px; }
+    .ring-2 { width: 320px; height: 320px; }
+    
+    .app-icon { width: 36px; height: 36px; }
+    .app-icon svg { width: 16px; height: 16px; }
+    .app-label { font-size: 10px; }
+    
+    .node-8, .node-9 { display: none; }
+  }
+</style>
