@@ -1,0 +1,299 @@
+---
+// src/pages/jasa-website-development/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Jasa Website Development specific components
+import Hero from '../../components/jasa-website-development/Hero.astro';
+import Problem from '../../components/jasa-website-development/Problem.astro';
+import WhatWeBuild from '../../components/jasa-website-development/WhatWeBuild.astro';
+import BusinessLogic from '../../components/jasa-website-development/BusinessLogic.astro';
+import FeatureCapabilities from '../../components/jasa-website-development/FeatureCapabilities.astro';
+import UseCaseWorkflow from '../../components/jasa-website-development/UseCaseWorkflow.astro';
+import Integration from '../../components/jasa-website-development/Integration.astro';
+import TechCapability from '../../components/jasa-website-development/TechCapability.astro';
+import TechStack from '../../components/jasa-website-development/TechStack.astro';
+import PerformanceQuality from '../../components/jasa-website-development/PerformanceQuality.astro';
+import SeoFoundation from '../../components/jasa-website-development/SeoFoundation.astro';
+import Portfolio from '../../components/jasa-website-development/Portfolio.astro';
+import WhyNeedCustom from '../../components/jasa-website-development/WhyNeedCustom.astro';
+
+// Reused global components
+import Industries from '../../components/Industries.astro';
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_TITLE } from '../../consts';
+
+const industriesData = [
+  {
+    id: "manufacturing",
+    num: "01",
+    title: "Manufacturing & Pabrik",
+    description: "Sistem web custom untuk mengelola pesanan B2B, pelacakan proses produksi, logistik log masuk/keluar, dan integrasi dengan ERP internal pabrik.",
+    solutions: ["Production Tracking Portal", "B2B Order Portal", "ERP Integration API", "Global Language Support"],
+    cta: "Lihat Solusi Manufaktur →",
+    iconPath: "M2 22V9l6 3V9l6 3V9l6 3v10H2zm6 0v-4h4v4"
+  },
+  {
+    id: "distribution",
+    num: "02",
+    title: "Distributor & B2B Trading",
+    description: "Portal keagenan terpadu dengan login terproteksi untuk memeriksa sisa stok produk, mengunduh daftar harga dinamis, dan melakukan pemesanan massal.",
+    solutions: ["Agent Registration Portal", "Stock Index Integration", "Dynamic Pricing System", "Invoice PDF Generator"],
+    cta: "Lihat Solusi Distributor →",
+    iconPath: "M10 21v-6.5L4 11M14 21v-6.5l6-3.5M12 3v7.5"
+  },
+  {
+    id: "services",
+    num: "03",
+    title: "Professional Services",
+    description: "Platform penjadwalan klien, booking konsultasi terkonfirmasi, database rekam medis/kasus terenkripsi, dan integrasi sistem pembayaran digital.",
+    solutions: ["Expert Booking Engine", "Secure Client Portal", "Custom Intake Forms", "Midtrans / Xendit Gateway"],
+    cta: "Lihat Solusi Jasa Profesional →",
+    iconPath: "M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M3 7h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
+  }
+];
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Business First",
+    description: "Kami mendalami proses bisnis Anda terlebih dahulu sebelum menyodorkan solusi teknis pemrograman.",
+    label: "BUSINESS ALIGNED"
+  },
+  {
+    id: "02",
+    title: "Custom Development",
+    description: "Seluruh fitur dikembangkan khusus dari nol mengikuti alur operasional kerja perusahaan Anda.",
+    label: "fully custom"
+  },
+  {
+    id: "03",
+    title: "End-to-End Delivery",
+    description: "Membantu dari analisis kebutuhan, rancangan database, coding, testing, hingga maintenance pasca-rilis.",
+    label: "full lifecycle"
+  },
+  {
+    id: "04",
+    title: "Integration Ready",
+    description: "Sistem web dirancang sejak awal agar siap terintegrasi dengan CRM, ERP, atau sistem database yang sudah ada.",
+    label: "connectable"
+  },
+  {
+    id: "05",
+    title: "Practical Technology",
+    description: "Kami memilih tech stack berdasarkan performa dan kemudahan pemeliharaan, bukan sekadar mengikuti tren sesaat.",
+    label: "optimized stack"
+  },
+  {
+    id: "06",
+    title: "Scalable Foundation",
+    description: "Arsitektur database dan logika server dibuat fleksibel agar siap ditingkatkan skalanya seiring pertumbuhan bisnis.",
+    label: "future-proof"
+  }
+];
+
+const processData = [
+  {
+    num: "01",
+    label: "DISCOVER",
+    title: "Requirements Discovery",
+    description: "Menganalisis proses operasional bisnis, hak akses pengguna, fungsionalitas fitur, serta sistem integrasi yang diperlukan.",
+    focus: "RESEARCH"
+  },
+  {
+    num: "02",
+    label: "PLAN",
+    title: "Architecture & Wireframe Planning",
+    description: "Merancang skema relasi database (ERD), diagram alur data (data flow), sitemap, serta wireframe navigasi utama.",
+    focus: "PLANNING"
+  },
+  {
+    num: "03",
+    label: "DESIGN",
+    title: "UI/UX & Interactive Prototyping",
+    description: "Mendesain antarmuka website secara premium menyesuaikan identitas brand Anda, lengkap dengan prototype interaktif.",
+    focus: "VISUAL"
+  },
+  {
+    num: "04",
+    label: "DEVELOP",
+    title: "Full-Stack Web Coding",
+    description: "Menulis kode frontend responsif, backend logika, skema database aman, serta setup API internal dan eksternal.",
+    focus: "ENGINEERING"
+  },
+  {
+    num: "05",
+    label: "TEST",
+    title: "QA & Integration Testing",
+    description: "Melakukan pengujian fungsional fitur secara menyeluruh, uji coba enkripsi, pengiriman data API, serta kecepatan loading.",
+    focus: "QUALITY"
+  },
+  {
+    num: "06",
+    label: "LAUNCH",
+    title: "Deployment & Setup",
+    description: "Merilis website ke server utama, melakukan konfigurasi domain, mengamankan SSL, dan menyerahkan panduan admin.",
+    focus: "DEPLOYMENT"
+  },
+  {
+    num: "07",
+    label: "SUPPORT",
+    title: "Support & Maintenance",
+    description: "Pemantauan berkala, perbaikan bug darurat, optimasi performa berkelanjutan, serta pengembangan modul lanjutan.",
+    focus: "MAINTENANCE"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Apa bedanya website company profile dan website development?",
+    answer: "Website Company Profile difokuskan pada kehadiran korporat (corporate presence), kredibilitas, penyampaian informasi, dan form kontak sederhana. Sedangkan Website Development berfokus pada fungsionalitas custom, proses bisnis khusus (business logic), integrasi API dua arah, dan relasi database dinamis."
+  },
+  {
+    id: "02",
+    question: "Website custom seperti apa saja yang dapat dikembangkan?",
+    answer: "Kami dapat mengembangkan portal pelanggan (customer portal), dasbor internal manajemen data, sistem reservasi dan booking terjadwal, platform katalog produk filter dinamis, hingga aplikasi berbasis web (SaaS) skala menengah."
+  },
+  {
+    id: "03",
+    question: "Apakah bisa membuat website dengan login dan dashboard?",
+    answer: "Tentu saja. Kami dapat membuat modul otentikasi aman lengkap dengan dasbor personalisasi yang menampilkan informasi relevan bagi tiap-tiap pengguna terdaftar."
+  },
+  {
+    id: "04",
+    question: "Apakah bisa membuat website dengan database?",
+    answer: "Ya. Kami menggunakan arsitektur basis data relasional standar industri (seperti MySQL atau PostgreSQL) untuk menyimpan, memproses, dan menyajikan data dinamis secara cepat dan aman."
+  },
+  {
+    id: "05",
+    question: "Apakah bisa membuat website dengan API integration?",
+    answer: "Bisa. Kami dapat membangun API internal kustom maupun menghubungkan website Anda dengan API eksternal pihak ketiga untuk bertukar data secara instan."
+  },
+  {
+    id: "06",
+    question: "Apakah bisa mengintegrasikan payment gateway?",
+    answer: "Tentu. Kami dapat mengintegrasikan gateway pembayaran resmi Indonesia seperti Midtrans atau Xendit agar website Anda dapat menerima pembayaran kartu kredit, transfer bank, virtual account, dan e-wallet secara otomatis."
+  },
+  {
+    id: "07",
+    question: "Apakah bisa terhubung dengan sistem CRM?",
+    answer: "Ya, kami bisa menyinkronkan data formulir atau leads dari website Anda langsung ke sistem CRM populer seperti HubSpot, Zoho, atau Salesforce via koneksi API."
+  },
+  {
+    id: "08",
+    question: "Apakah bisa mengembangkan website yang sudah dimiliki perusahaan?",
+    answer: "Bisa, tergantung pada analisis kode dasar website Anda saat ini. Kami akan melakukan audit teknis terlebih dahulu sebelum menentukan kelayakan migrasi atau penambahan fitur."
+  },
+  {
+    id: "09",
+    question: "Apakah bisa membuat hak akses role dan permission bertingkat?",
+    answer: "Ya. Kami dapat mengatur tingkat otorisasi yang aman, membatasi fungsionalitas tertentu agar hanya bisa diakses oleh Admin, Staff internal, atau Klien luar."
+  },
+  {
+    id: "10",
+    question: "Teknologi (tech stack) apa yang digunakan?",
+    answer: "Kami memilih teknologi berdasarkan skala project. Untuk frontend berkecepatan tinggi kami menggunakan Astro, React, atau Next.js. Untuk backend logika kami mengandalkan Node.js atau Laravel, dengan penyimpanan database MySQL/PostgreSQL."
+  },
+  {
+    id: "11",
+    question: "Berapa lama proses pengembangan website development?",
+    answer: "Waktu pengembangan sangat bervariasi bergantung pada jumlah modul fitur dan kompleksitas alur kerja bisnis. Project menengah umumnya memakan waktu berkisar antara 6 hingga 12 minggu."
+  },
+  {
+    id: "12",
+    question: "Berapa biaya jasa website development custom?",
+    answer: "Karena sifatnya yang sepenuhnya dikembangkan secara custom menyesuaikan kebutuhan fitur Anda, kami tidak menerapkan harga flat. Biaya ditentukan berdasarkan hasil asesmen scope pekerjaan (*Scope of Work*)."
+  },
+  {
+    id: "13",
+    question: "Apakah tersedia jaminan perawatan (maintenance) setelah website selesai?",
+    answer: "Ya, setiap project kami lengkapi dengan masa garansi perbaikan bug gratis pasca-rilis. Kami juga menawarkan opsi paket kontrak maintenance bulanan untuk monitoring berkelanjutan."
+  },
+  {
+    id: "14",
+    question: "Apakah website dapat dikembangkan lagi di masa depan?",
+    answer: "Sangat bisa. Kami merancang arsitektur kode dengan prinsip modular (scalable foundation) agar modul-modul baru dapat ditambahkan dengan mudah kapan pun bisnis Anda berkembang."
+  }
+];
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={`Jasa Website Development Custom untuk Bisnis | Entercraft`} 
+      description="Jasa Website Development custom untuk membangun website dengan fitur, business logic, database, API, dan integrasi sesuai kebutuhan bisnis." 
+    />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <WhatWeBuild />
+      <BusinessLogic />
+      <FeatureCapabilities />
+      <UseCaseWorkflow />
+      <Integration />
+      <TechCapability />
+      <TechStack />
+      <PerformanceQuality />
+      <SeoFoundation />
+      <Portfolio />
+      <WhyNeedCustom />
+      
+      <!-- Reused global Industries -->
+      <Industries 
+        industriesData={industriesData}
+      />
+      
+      <!-- Reused global WhyChoose -->
+      <WhyChoose 
+        eyebrow="MENGAPA ENTERCRAFT"
+        titleHtml="Solusi Web yang Dirancang<br/>Mengikuti Kebutuhan Bisnis Anda"
+        intro="Kami menggabungkan technical capability dan pemahaman bisnis yang mendalam untuk mewujudkan platform web yang stabil dan berkinerja tinggi."
+        valueProps={whyChooseData}
+      />
+      
+      <!-- Reused global HowWeWork -->
+      <HowWeWork 
+        eyebrow="TAHAPAN KERJA"
+        titleHtml="Proses Pengembangan Web<br/>yang Terstruktur dan Transparan"
+        intro="Setiap baris kode kami kerjakan secara sistematis demi menjamin keamanan data dan ketepatan waktu pengiriman project."
+        stepsData={processData}
+      />
+      
+      <!-- Reused global Faq -->
+      <Faq 
+        eyebrow="FAQ LAYANAN CUSTOM"
+        titleHtml="Pertanyaan Umum Seputar<br/>Jasa Website Development"
+        intro="Hal-hal penting yang sering ditanyakan oleh calon mitra sebelum mempercayakan pengembangan sistem web mereka."
+        faqData={faqData}
+      />
+      
+      <!-- Reused global FinalCta -->
+      <FinalCta 
+        eyebrow="KONSULTASI PROJECT"
+        titleHtml="Punya Kebutuhan Website yang<br/>Tidak Bisa Diselesaikan dengan Template?"
+        intro="Ceritakan fitur, proses bisnis, integrasi, dan kebutuhan website Anda. Kami akan membantu menentukan pendekatan development yang sesuai dengan scope dan tujuan project."
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

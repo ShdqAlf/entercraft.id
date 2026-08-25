@@ -1,0 +1,308 @@
+---
+// Portfolio.astro (Jasa Integrasi Sistem)
+
+const portfolios = [
+  {
+    title: "E-Commerce to ERP Sync",
+    client: "Retail & Distribution Company",
+    challenge: "Ribuan transaksi per hari dari website (WooCommerce) harus dimasukkan secara manual ke dalam sistem ERP (Odoo) oleh admin gudang, menyebabkan delay pengiriman dan stok tidak akurat.",
+    solution: "Membangun custom middleware (Node.js) yang mendengarkan webhook dari WooCommerce, memvalidasi data order, dan langsung melakukan Push data pesanan dan potongan stok (Inventory Allocation) ke API Odoo secara real-time.",
+    result: "Proses pemenuhan pesanan (fulfillment) menjadi otomatis. Delay input manual hilang, akurasi stok 99.9%, dan tim admin dialokasikan untuk Quality Control pengiriman.",
+    tags: ["WooCommerce API", "Odoo ERP", "Webhook", "Real-time Sync"]
+  },
+  {
+    title: "CRM to Finance Billing Automation",
+    client: "B2B Service Provider",
+    challenge: "Tim Sales menutup deal di HubSpot CRM, namun tim Finance harus membuat tagihan secara terpisah di sistem Xero, sering kali terjadi kesalahan nominal atau kelupaan penagihan.",
+    solution: "Mengintegrasikan HubSpot dengan Xero menggunakan iPaaS (Make.com) dan Custom Transformation. Saat deal status berubah menjadi 'Closed Won', sistem otomatis men-generate draft invoice di Xero beserta detail kontak lengkap.",
+    result: "Tidak ada lagi double-entry. Draft invoice siap dalam hitungan detik setelah deal disetujui, mempercepat proses penagihan (cash flow) perusahaan.",
+    tags: ["HubSpot API", "Xero API", "Make.com", "Data Transformation"]
+  }
+];
+---
+
+<section class="portfolio-section" id="portfolio">
+  <div class="portfolio-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Studi Kasus Integrasi Sistem</h2>
+      <p class="header-intro">
+        Bagaimana kami membantu perusahaan membebaskan diri dari proses input data manual dan menciptakan aliran kerja yang terhubung.
+      </p>
+    </div>
+
+    <div class="portfolio-list">
+      {portfolios.map((item, index) => (
+        <div class="portfolio-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 150)}ms;`}>
+          <div class="card-header">
+            <h3>{item.title}</h3>
+            <span class="client-badge">{item.client}</span>
+          </div>
+          
+          <div class="card-body">
+            <div class="story-block">
+              <h4>The Challenge</h4>
+              <p>{item.challenge}</p>
+            </div>
+            
+            <div class="story-block">
+              <h4>The Solution</h4>
+              <p>{item.solution}</p>
+            </div>
+            
+            <div class="story-block result">
+              <h4>The Result</h4>
+              <p>{item.result}</p>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="tags">
+              {item.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .portfolio-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .portfolio-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .portfolio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .portfolio-card {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border-color);
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .card-header h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .client-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    white-space: nowrap;
+  }
+
+  .card-body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .story-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .story-block h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #94A3B8;
+    margin: 0;
+  }
+
+  .story-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #E2E8F0;
+    margin: 0;
+  }
+
+  .story-block.result {
+    padding-top: 24px;
+    border-top: 1px dashed var(--border-color);
+  }
+  
+  .story-block.result h4 {
+    color: #10B981;
+  }
+
+  .card-footer {
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid var(--border-color);
+    padding: 20px 32px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05);
+    color: #94A3B8;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .portfolio-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .portfolio-card {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .card-header {
+    background: #F8FAFC;
+    border-bottom-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .card-header h3 {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .story-block h4 {
+    color: #64748B;
+  }
+  
+  :global(html[data-theme="light"]) .story-block.result h4 {
+    color: #059669;
+  }
+
+  :global(html[data-theme="light"]) .story-block.result {
+    border-top-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .story-block p {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .card-footer {
+    background: #F8FAFC;
+    border-top-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .tag {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #475569;
+  }
+
+  @media (max-width: 767px) {
+    .portfolio-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px;
+    }
+    .card-body, .card-footer {
+      padding: 24px;
+    }
+  }
+</style>

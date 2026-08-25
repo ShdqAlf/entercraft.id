@@ -1,0 +1,287 @@
+---
+// IntegrationVsAutomation.astro (Jasa Integrasi Sistem)
+---
+
+<section class="vs-section">
+  <div class="vs-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Integrasi Sistem vs Workflow Automation</h2>
+      <p class="header-intro">
+        Keduanya sering dianggap sama, namun memiliki fokus yang berbeda. Di Entercraft, kami dapat membangun keduanya untuk menghasilkan ekosistem digital yang sempurna.
+      </p>
+    </div>
+
+    <div class="vs-grid">
+      
+      <!-- System Integration -->
+      <div class="vs-card animate-fade-scroll" style="animation-delay: 200ms;">
+        <div class="card-icon blue">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <div class="card-content">
+          <h3>Integrasi Sistem (Membangun Pipa)</h3>
+          <p>
+            Berfokus pada <strong>infrastruktur</strong>. Tujuannya adalah membuat dua sistem yang berbeda bisa saling "berbicara" dan mengenali data satu sama lain.
+          </p>
+          <ul>
+            <li>Sinkronisasi data (Customer, Inventory)</li>
+            <li>Mengamankan pertukaran data</li>
+            <li>Berjalan di level background (Data flow)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="vs-divider animate-fade-scroll" style="animation-delay: 300ms;">
+        <span>+</span>
+      </div>
+
+      <!-- Workflow Automation -->
+      <div class="vs-card animate-fade-scroll" style="animation-delay: 400ms;">
+        <div class="card-icon purple">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <div class="card-content">
+          <h3>Workflow Automation (Mengatur Lalu Lintas)</h3>
+          <p>
+            Berfokus pada <strong>logika operasional</strong> (If this, then that). Tujuannya adalah menggantikan pekerjaan klik-klik manual yang dilakukan oleh manusia.
+          </p>
+          <ul>
+            <li>Merespons event (Order Masuk -> Notifikasi Slack)</li>
+            <li>Multi-step logic (Approval, conditional routing)</li>
+            <li>Berfokus pada penyelesaian tugas harian</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .vs-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .vs-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .vs-grid {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+  }
+
+  .vs-card {
+    flex: 1;
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .card-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-icon.blue {
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border: 1px solid rgba(57, 132, 255, 0.3);
+  }
+
+  .card-icon.purple {
+    background: rgba(139, 92, 246, 0.1);
+    color: #A78BFA;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .card-content h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .card-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #94A3B8;
+    margin: 0;
+  }
+
+  .card-content p strong {
+    color: #E2E8F0;
+  }
+
+  .card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .card-content ul li {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #E2E8F0;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vs-divider span {
+    font-size: 32px;
+    color: #475569;
+    font-weight: bold;
+    width: 48px;
+    height: 48px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .vs-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .vs-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .card-content h3 {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .card-content p {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .card-content p strong {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .card-content ul li {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .vs-divider span {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    color: #94A3B8;
+  }
+
+  @media (max-width: 991px) {
+    .vs-grid {
+      flex-direction: column;
+    }
+    .vs-divider {
+      padding: 16px 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .vs-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .vs-card {
+      padding: 24px;
+    }
+  }
+</style>

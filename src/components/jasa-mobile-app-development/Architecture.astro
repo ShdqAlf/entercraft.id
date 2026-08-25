@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'API-first foundation', description: 'Aplikasi berkomunikasi dengan backend melalui API yang terstruktur, terdokumentasi, dan siap dikembangkan.', meta: 'BACKEND' },
+	{ title: 'Modular by design', description: 'Fitur dipisahkan secara rapi agar perubahan dan penambahan modul tidak mengganggu fungsi yang sudah berjalan.', meta: 'SCALABLE' },
+	{ title: 'Observability built in', description: 'Logging dan monitoring membantu tim menemukan masalah sebelum berdampak luas pada pengguna.', meta: 'RELIABILITY' }
+];
+---
+<FeatureSection eyebrow="SYSTEM DESIGN" title="Arsitektur yang Siap Bertumbuh" intro="Fondasi teknis dirancang untuk melayani kebutuhan hari ini sekaligus volume pengguna dan fitur di masa depan." items={items} />

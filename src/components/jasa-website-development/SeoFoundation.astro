@@ -1,0 +1,370 @@
+---
+// SeoFoundation.astro (Jasa Website Development)
+---
+
+<section class="seo-section" id="seo">
+  <div class="seo-container">
+    
+    <div class="seo-layout">
+      <!-- Left side: Text & Description -->
+      <div class="seo-content animate-fade-scroll" style="animation-delay: 100ms;">
+        <div class="header-eyebrow">
+          <span class="eyebrow-dot">●</span> SEO FOUNDATION
+        </div>
+        <h2 class="header-title">Siap Mendukung Kebutuhan SEO Bila Website Anda Membutuhkannya</h2>
+        <p class="header-intro">
+          Tidak semua website custom harus difokuskan pada SEO sejak awal (misalnya portal internal atau dashboard klien). Namun, jika traffic organik penting bagi bisnis Anda, kami menyediakan fondasi SEO teknis yang solid sejak hari pertama.
+        </p>
+
+        <div class="seo-checklist">
+          <div class="chk-item">
+            <span class="chk-icon">✓</span>
+            <div class="chk-text">
+              <strong>Struktur Kode Semantik:</strong> Struktur HTML5 semantik membantu mesin pencari mengindeks konten dengan mudah.
+            </div>
+          </div>
+          <div class="chk-item">
+            <span class="chk-icon">✓</span>
+            <div class="chk-text">
+              <strong>Meta Tag & Skema Data:</strong> Integrasi Open Graph untuk bagikan tautan secara terstruktur dan implementasi JSON-LD Schema.
+            </div>
+          </div>
+          <div class="chk-item">
+            <span class="chk-icon">✓</span>
+            <div class="chk-text">
+              <strong>URL Bersih & Otomasi Sitemap:</strong> Struktur link ramah SEO serta pembuatan XML sitemap yang diperbarui secara dinamis.
+            </div>
+          </div>
+          <div class="chk-item">
+            <span class="chk-icon">✓</span>
+            <div class="chk-text">
+              <strong>Optimasi Aset & Rendering:</strong> Kompresi gambar Next-Gen dan rendering strategy (Static/Server) yang disesuaikan dengan kebutuhan kecepatan perayapan.
+            </div>
+          </div>
+        </div>
+
+        <p class="seo-disclaimer">
+          * Kami berfokus pada fondasi SEO teknis (*Technical SEO*) untuk memastikan website Anda ramah mesin pencari, tanpa menjanjikan peringkat instan tertentu di Google.
+        </p>
+      </div>
+
+      <!-- Right side: Visual decoration representation -->
+      <div class="seo-visual animate-fade-scroll" style="animation-delay: 250ms;">
+        <div class="seo-box">
+          <div class="seo-window">
+            <div class="window-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="window-content">
+              <div class="search-result">
+                <span class="res-url">https://entercraft.id › services</span>
+                <h4 class="res-title">Jasa Website Development Custom B2B Indonesia</h4>
+                <p class="res-desc">Bangun platform web, portal pelanggan, dan dashboard internal custom dengan integrasi API, database aman, dan performa tinggi.</p>
+              </div>
+              <div class="seo-metrics">
+                <div class="metric-item">
+                  <span class="metric-val text-green">100</span>
+                  <span class="metric-lbl">SEO Technical</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-val text-green">95+</span>
+                  <span class="metric-lbl">Performance</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-val text-green">100</span>
+                  <span class="metric-lbl">Best Practices</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .seo-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .seo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .seo-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin-bottom: 30px;
+  }
+
+  .seo-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+
+  .chk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .chk-icon {
+    width: 20px;
+    height: 20px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .chk-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  .chk-text strong {
+    color: #FFFFFF;
+  }
+
+  .seo-disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    color: #6682B3;
+    margin: 0;
+  }
+
+  /* Right Visual */
+  .seo-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .seo-box {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .seo-window {
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .window-dots {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 14px;
+    display: flex;
+    gap: 6px;
+  }
+
+  .window-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #334155;
+  }
+
+  .window-content {
+    padding: 20px;
+  }
+
+  .search-result {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .res-url {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #64748B;
+  }
+
+  .res-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin: 4px 0 8px 0;
+  }
+
+  .res-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .seo-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+  }
+
+  .metric-item {
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 8px;
+  }
+
+  .metric-val {
+    font-family: 'Inter', monospace;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .metric-val.text-green { color: #10b981; }
+
+  .metric-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: #64748b;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .seo-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .chk-text {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .chk-text strong {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .seo-box {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .seo-window {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .res-title {
+    color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .res-desc {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .metric-item {
+    background: #FFFFFF;
+  }
+
+  @media (max-width: 991px) {
+    .seo-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .seo-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+  }
+</style>

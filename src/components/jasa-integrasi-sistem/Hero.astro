@@ -1,0 +1,607 @@
+---
+// Hero.astro (Jasa Integrasi Sistem)
+---
+
+<section class="hero-section">
+  <!-- Dynamic Background Grid -->
+  <div class="hero-bg-grid"></div>
+  
+  <div class="hero-container">
+    <div class="hero-content">
+      
+      <div class="pill-badge animate-fade-up" style="animation-delay: 100ms;">
+        <span class="pill-dot"></span>
+        <span>Jasa Integrasi Sistem</span>
+      </div>
+
+      <h1 class="hero-title animate-fade-up" style="animation-delay: 200ms;">
+        Jasa Integrasi Sistem untuk Menghubungkan Data dan Aplikasi Bisnis Anda
+      </h1>
+      
+      <p class="hero-subtitle animate-fade-up" style="animation-delay: 300ms;">
+        Hubungkan website, aplikasi, CRM, ERP, database, payment, dan sistem internal agar data dapat bertukar secara lebih terstruktur tanpa proses input manual berulang.
+      </p>
+
+      <div class="hero-cta animate-fade-up" style="animation-delay: 400ms;">
+        <a href="/contact/" class="btn-primary">
+          Konsultasikan Integrasi Sistem Anda
+        </a>
+        <a href="#what-we-integrate" class="btn-secondary">
+          Lihat Contoh Integrasi
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Visual Centerpiece: Architecture Data Flow -->
+    <div class="hero-visual animate-fade-up" style="animation-delay: 500ms;">
+      <div class="architecture-wrapper">
+        
+        <!-- Left Side Nodes (Sources) -->
+        <div class="arch-column left-nodes">
+          <div class="node-card source">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span>Website</span>
+          </div>
+          <div class="node-card source">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            <span>Mobile App</span>
+          </div>
+          <div class="node-card source">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <span>Payment</span>
+          </div>
+        </div>
+
+        <!-- Connection Lines In -->
+        <div class="arch-lines in-lines">
+          <div class="line-track"><div class="data-packet"></div></div>
+          <div class="line-track"><div class="data-packet delay-1"></div></div>
+          <div class="line-track"><div class="data-packet delay-2"></div></div>
+        </div>
+
+        <!-- Center: Integration Layer -->
+        <div class="arch-center">
+          <div class="integration-layer">
+            <div class="layer-glow"></div>
+            <div class="layer-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <span class="layer-text">INTEGRATION LAYER</span>
+            <div class="layer-processes">
+              <span class="process-chip">Auth</span>
+              <span class="process-chip">Map</span>
+              <span class="process-chip">Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connection Lines Out -->
+        <div class="arch-lines out-lines">
+          <div class="line-track out"><div class="data-packet delay-3"></div></div>
+          <div class="line-track out"><div class="data-packet delay-4"></div></div>
+          <div class="line-track out"><div class="data-packet delay-5"></div></div>
+        </div>
+
+        <!-- Right Side Nodes (Destinations) -->
+        <div class="arch-column right-nodes">
+          <div class="node-card dest">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>CRM System</span>
+          </div>
+          <div class="node-card dest">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            <span>ERP System</span>
+          </div>
+          <div class="node-card dest">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+            <span>Database</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    padding: 120px 24px 60px 24px;
+    box-sizing: border-box;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-size: 50px 50px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    width: 100%;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(57, 132, 255, 0.1);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent-blue);
+    margin-bottom: 24px;
+  }
+
+  .pill-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-blue);
+  }
+
+  .hero-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: #FFFFFF;
+    margin: 0 0 24px 0;
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #94A3B8;
+    margin: 0 0 40px 0;
+    max-width: 680px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: var(--accent-blue);
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(57, 132, 255, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(57, 132, 255, 0.4);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Visualization Styles */
+  .hero-visual {
+    width: 100%;
+    max-width: 1000px;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 60px 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(57, 132, 255, 0.5), transparent);
+  }
+
+  .architecture-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .arch-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .node-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #E2E8F0;
+    width: 180px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .node-card.source {
+    border-left: 3px solid #10B981; /* Green */
+  }
+
+  .node-card.dest {
+    border-right: 3px solid #8B5CF6; /* Purple */
+  }
+
+  .node-card svg {
+    color: #94A3B8;
+  }
+
+  /* Lines and Data Flow */
+  .arch-lines {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 20px;
+  }
+
+  .line-track {
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(148, 163, 184, 0.1) 0, rgba(148, 163, 184, 0.1) 4px, transparent 4px, transparent 8px);
+    position: relative;
+    margin: 10px 0;
+  }
+
+  .data-packet {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #10B981; /* Green coming in */
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px #10B981;
+    animation: flowDataIn 2.5s infinite linear;
+    opacity: 0;
+  }
+
+  .line-track.out .data-packet {
+    background: #8B5CF6; /* Purple going out */
+    box-shadow: 0 0 10px #8B5CF6;
+    animation: flowDataOut 2.5s infinite linear;
+  }
+
+  /* Delays to stagger the data flow */
+  .delay-1 { animation-delay: 0.8s; }
+  .delay-2 { animation-delay: 1.6s; }
+  .delay-3 { animation-delay: 1.2s; }
+  .delay-4 { animation-delay: 2.0s; }
+  .delay-5 { animation-delay: 0.4s; }
+
+  @keyframes flowDataIn {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  @keyframes flowDataOut {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
+  /* Center Integration Layer */
+  .arch-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 3;
+    padding: 0 20px;
+  }
+
+  .integration-layer {
+    background: rgba(57, 132, 255, 0.05);
+    border: 2px solid var(--accent-blue);
+    border-radius: 20px;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(57, 132, 255, 0.15), inset 0 0 20px rgba(57, 132, 255, 0.1);
+  }
+
+  .layer-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: var(--accent-blue);
+    filter: blur(15px);
+    opacity: 0.15;
+    z-index: -1;
+    animation: pulse 3s infinite alternate ease-in-out;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.1; filter: blur(15px); }
+    100% { opacity: 0.25; filter: blur(25px); }
+  }
+
+  .layer-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--accent-blue);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    box-shadow: 0 8px 16px rgba(57, 132, 255, 0.3);
+  }
+
+  .layer-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+  }
+
+  .layer-processes {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .process-chip {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #94A3B8;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .hero-bg-grid {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  }
+  
+  :global(html[data-theme="light"]) .hero-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .hero-subtitle {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .btn-secondary {
+    color: #0F172A;
+    border-color: #CBD5E1;
+    background: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .btn-secondary:hover {
+    background: #F8FAFC;
+    border-color: #94A3B8;
+  }
+  
+  :global(html[data-theme="light"]) .hero-visual {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  }
+  
+  :global(html[data-theme="light"]) .hero-visual::before {
+    background: linear-gradient(90deg, transparent, rgba(57, 132, 255, 0.3), transparent);
+  }
+
+  :global(html[data-theme="light"]) .node-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .node-card svg {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .integration-layer {
+    background: #FFFFFF;
+  }
+
+  :global(html[data-theme="light"]) .layer-text {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .process-chip {
+    background: #F1F5F9;
+    color: #64748B;
+    border-color: #E2E8F0;
+  }
+
+  @media (max-width: 991px) {
+    .hero-title {
+      font-size: 46px;
+    }
+    
+    .hero-visual {
+      padding: 40px 20px;
+    }
+    
+    .node-card {
+      width: 140px;
+      font-size: 13px;
+      padding: 12px 16px;
+    }
+    
+    .integration-layer {
+      padding: 20px;
+    }
+    
+    .layer-icon {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-section {
+      padding: 100px 16px 60px 16px;
+    }
+
+    .hero-title {
+      font-size: 36px;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .architecture-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .arch-column {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .node-card {
+      width: auto;
+    }
+
+    .arch-lines {
+      display: none; /* Hide horizontal lines on mobile, or replace with vertical */
+    }
+
+    /* Add vertical arrows for mobile */
+    .arch-center::before,
+    .arch-center::after {
+      content: '↓';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: var(--accent-blue);
+      font-weight: bold;
+      animation: bouncePulse 2s infinite;
+    }
+
+    .arch-center::before {
+      top: -30px;
+    }
+
+    .arch-center::after {
+      bottom: -30px;
+    }
+
+    @keyframes bouncePulse {
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+      50% { transform: translate(-50%, 5px); opacity: 1; }
+    }
+  }
+</style>

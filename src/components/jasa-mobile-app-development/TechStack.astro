@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'React Native atau Flutter', description: 'Pilih framework cross-platform yang tepat untuk mengirim pengalaman konsisten ke iOS dan Android.', meta: 'APP LAYER' },
+	{ title: 'Backend dan API modern', description: 'Gunakan service yang stabil untuk autentikasi, data, integrasi pihak ketiga, dan proses bisnis.', meta: 'SERVICE LAYER' },
+	{ title: 'CI/CD dan store release', description: 'Automasi build dan quality checks agar rilis versi baru lebih cepat, aman, dan dapat dilacak.', meta: 'DELIVERY' }
+];
+---
+<FeatureSection eyebrow="TECHNOLOGY" title="Teknologi yang Dipilih Sesuai Konteks" intro="Kami memilih stack berdasarkan target platform, integrasi, skala, kemampuan tim, dan biaya pemeliharaan jangka panjang." items={items} />

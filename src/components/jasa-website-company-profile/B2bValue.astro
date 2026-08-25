@@ -1,0 +1,249 @@
+---
+// B2bValue.astro (Jasa Website Company Profile)
+
+const pillars = [
+  {
+    title: "Credibility",
+    description: "Desain eksklusif dan profesional yang secara instan menunjukkan skala, keseriusan, dan reputasi perusahaan Anda di mata visitor.",
+    icon: "shield"
+  },
+  {
+    title: "Clarity",
+    description: "Penyampaian layanan dan solusi yang jelas, langsung pada intinya, tanpa jargon teknis yang membingungkan calon klien.",
+    icon: "target"
+  },
+  {
+    title: "Trust",
+    description: "Menampilkan portofolio, studi kasus, klien sebelumnya, dan sertifikasi untuk membangun rasa percaya sebelum klien menghubungi Anda.",
+    icon: "check-circle"
+  },
+  {
+    title: "Conversion",
+    description: "Alur navigasi yang sengaja dirancang untuk membimbing visitor menuju satu tujuan akhir: menghubungi tim sales Anda.",
+    icon: "trending-up"
+  }
+];
+---
+
+<section class="b2b-value-section" id="value">
+  <div class="b2b-container">
+    <div class="value-layout">
+      
+      <!-- Left side: Text content -->
+      <div class="value-content animate-fade-scroll" style="animation-delay: 100ms;">
+        <div class="header-eyebrow">
+          <span class="eyebrow-dot">●</span> 4 PILAR B2B WEBSITE
+        </div>
+        <h2 class="header-title">
+          Website yang Bekerja Layaknya <span class="text-blue">Top Sales Anda</span>
+        </h2>
+        <p class="header-intro">
+          Dalam ekosistem B2B, proses pengambilan keputusan melibatkan banyak pihak dan memakan waktu lama. Website Anda harus bisa meyakinkan mereka di setiap tahap riset. Kami membangun website dengan 4 pilar utama ini.
+        </p>
+      </div>
+
+      <!-- Right side: Pillars Grid -->
+      <div class="value-grid">
+        {pillars.map((pillar, index) => (
+          <div class="pillar-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+            <div class="pillar-icon">
+              {pillar.icon === 'shield' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>}
+              {pillar.icon === 'target' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>}
+              {pillar.icon === 'check-circle' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>}
+              {pillar.icon === 'trending-up' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>}
+            </div>
+            <div class="pillar-info">
+              <h3 class="pillar-title">{pillar.title}</h3>
+              <p class="pillar-desc">{pillar.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .b2b-value-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .b2b-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .value-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .value-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .text-blue {
+    color: var(--accent-blue);
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .pillar-card {
+    background-color: rgba(13, 20, 34, 0.5);
+    border: 1px solid rgba(57, 132, 255, 0.15);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.2s ease;
+  }
+
+  .pillar-card:hover {
+    background-color: rgba(57, 132, 255, 0.05);
+    border-color: rgba(57, 132, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .pillar-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+  }
+
+  .pillar-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .b2b-value-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .pillar-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .pillar-desc {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .pillar-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .pillar-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 991px) {
+    .value-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .value-content {
+      text-align: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .b2b-value-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 32px;
+    }
+
+    .value-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

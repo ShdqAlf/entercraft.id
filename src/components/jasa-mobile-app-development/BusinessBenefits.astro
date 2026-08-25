@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Retensi pelanggan meningkat', description: 'Berikan alasan bagi pelanggan untuk kembali melalui pengalaman yang cepat, personal, dan selalu tersedia.', meta: 'CUSTOMER' },
+	{ title: 'Operasional lebih efisien', description: 'Kurangi input berulang dan percepat koordinasi dengan data yang masuk langsung dari lapangan.', meta: 'OPERATIONS' },
+	{ title: 'Keputusan lebih cepat', description: 'Satukan aktivitas pengguna dan tim dalam dashboard yang membantu manajemen melihat kondisi terkini.', meta: 'MANAGEMENT' }
+];
+---
+<FeatureSection eyebrow="BUSINESS IMPACT" title="Mobile App yang Memberi Dampak Terukur" intro="Teknologi hanya bernilai ketika membantu bisnis bekerja lebih baik, melayani lebih cepat, dan tumbuh lebih sehat." items={items} />

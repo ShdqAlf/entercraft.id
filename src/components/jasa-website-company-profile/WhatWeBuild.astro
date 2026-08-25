@@ -1,0 +1,217 @@
+---
+// WhatWeBuild.astro (Jasa Website Company Profile)
+
+const elements = [
+  {
+    title: "Company Overview",
+    description: "Profil perusahaan yang terstruktur, mencakup sejarah, visi misi, dan jajaran kepemimpinan untuk menumbuhkan kepercayaan (trust) pada pandangan pertama.",
+    icon: "building"
+  },
+  {
+    title: "Services & Solutions",
+    description: "Penjelasan mendetail mengenai layanan atau produk B2B Anda, dirancang agar mudah dipahami oleh pengambil keputusan (decision maker).",
+    icon: "briefcase"
+  },
+  {
+    title: "Industry Applications",
+    description: "Halaman khusus yang menunjukkan bagaimana solusi Anda diterapkan di berbagai sektor industri, membuktikan pengalaman dan spesialisasi Anda.",
+    icon: "layers"
+  },
+  {
+    title: "Portfolio & Case Studies",
+    description: "Kumpulan proyek sukses atau studi kasus nyata yang menunjukkan kemampuan perusahaan dalam menyelesaikan masalah klien.",
+    icon: "folder"
+  },
+  {
+    title: "Company Strengths",
+    description: "Sertifikasi, teknologi yang digunakan, standar kualitas, dan nilai lebih (value proposition) yang membedakan Anda dari kompetitor.",
+    icon: "award"
+  },
+  {
+    title: "Contact & Inquiry",
+    description: "Sistem routing yang jelas untuk mengarahkan pengunjung ke form inquiry, kontak WhatsApp, atau email departemen terkait.",
+    icon: "phone"
+  }
+];
+---
+
+<section class="whatwebuild-section" id="elements">
+  <div class="wwb-container">
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Apa Saja yang Akan Kami Bangun untuk Anda?</h2>
+      <p class="header-intro">
+        Sebuah website B2B profesional harus mencakup elemen-elemen fundamental yang menjawab pertanyaan calon klien sebelum mereka menghubungi Anda.
+      </p>
+    </div>
+
+    <div class="elements-grid">
+      {elements.map((el, index) => (
+        <div class="element-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="element-icon">
+            {el.icon === 'building' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="22"></line><line x1="15" y1="22" x2="15" y2="22"></line><line x1="9" y1="6" x2="9" y2="6.01"></line><line x1="15" y1="6" x2="15" y2="6.01"></line><line x1="9" y1="10" x2="9" y2="10.01"></line><line x1="15" y1="10" x2="15" y2="10.01"></line><line x1="9" y1="14" x2="9" y2="14.01"></line><line x1="15" y1="14" x2="15" y2="14.01"></line><line x1="9" y1="18" x2="9" y2="18.01"></line><line x1="15" y1="18" x2="15" y2="18.01"></line></svg>}
+            {el.icon === 'briefcase' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>}
+            {el.icon === 'layers' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>}
+            {el.icon === 'folder' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>}
+            {el.icon === 'award' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>}
+            {el.icon === 'phone' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>}
+          </div>
+          <h3 class="element-title">{el.title}</h3>
+          <p class="element-description">{el.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .whatwebuild-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .wwb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #6682B3;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .elements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .element-card {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 32px 24px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .element-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue);
+    background-color: rgba(7, 16, 32, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .element-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .element-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .element-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .whatwebuild-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .element-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .element-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .element-card {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .element-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 991px) {
+    .elements-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .whatwebuild-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 32px;
+    }
+    .elements-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

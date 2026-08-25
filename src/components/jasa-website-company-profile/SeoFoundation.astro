@@ -1,0 +1,321 @@
+---
+// SeoFoundation.astro (Jasa Website Company Profile)
+---
+
+<section class="seo-section" id="seo">
+  <div class="seo-container">
+    <div class="seo-layout">
+      <div class="seo-content animate-fade-scroll" style="animation-delay: 100ms;">
+        <div class="header-eyebrow">
+          <span class="eyebrow-dot">●</span> SEO FOUNDATION
+        </div>
+        <h2 class="header-title">Struktur Website yang Disukai Google</h2>
+        <p class="header-intro">
+          Website yang bagus tidak akan berguna jika tidak ada yang menemukannya. Kami membangun fondasi SEO On-Page sejak hari pertama, memastikan website Anda siap bersaing di halaman pencarian Google.
+        </p>
+
+        <ul class="seo-list">
+          <li>
+            <div class="check-icon">✓</div>
+            <span><strong>Semantic HTML:</strong> Tag yang terstruktur jelas (H1, H2, dll) membantu robot Google memahami konten Anda.</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span><strong>Meta & Open Graph:</strong> Tampilan rapi saat link website dibagikan di WhatsApp, LinkedIn, atau media sosial lain.</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span><strong>Auto-generated Sitemap:</strong> Peta situs XML yang secara otomatis terupdate setiap kali ada halaman baru.</span>
+          </li>
+          <li>
+            <div class="check-icon">✓</div>
+            <span><strong>Mobile-Friendly Indexing:</strong> Optimasi untuk algoritma Mobile-First Indexing dari Google.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="seo-visual animate-fade-scroll" style="animation-delay: 250ms;">
+        <div class="google-mockup">
+          <div class="search-bar">
+            <div class="search-icon"></div>
+            <div class="search-text">jasa <span class="highlight">spesialisasi bisnis anda</span></div>
+          </div>
+          <div class="search-result">
+            <div class="result-url">https://www.perusahaananda.com</div>
+            <div class="result-title">Perusahaan Anda | Jasa Spesialisasi Terbaik di Indonesia</div>
+            <div class="result-desc">Kami menyediakan solusi B2B terbaik untuk perusahaan Anda dengan pengalaman lebih dari 10 tahun dan portofolio yang terpercaya.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .seo-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .seo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .seo-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 0 32px 0;
+  }
+
+  .seo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .seo-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #94a3b8;
+  }
+
+  .seo-list li strong {
+    color: #f8fafc;
+  }
+
+  .check-icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .seo-visual {
+    background: rgba(13, 20, 34, 0.5);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .google-mockup {
+    background: #1e293b;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #334155;
+  }
+
+  .search-bar {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 24px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin-bottom: 30px;
+  }
+
+  .search-icon {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #64748b;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 12px;
+  }
+
+  .search-icon::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 6px;
+    height: 2px;
+    background: #64748b;
+    transform: rotate(45deg);
+  }
+
+  .search-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #cbd5e1;
+  }
+
+  .highlight {
+    color: #f8fafc;
+  }
+
+  .search-result {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .result-url {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #cbd5e1;
+  }
+
+  .result-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #60a5fa;
+  }
+
+  .result-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #94a3b8;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .seo-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .seo-list li {
+    color: #64748b;
+  }
+
+  :global(html[data-theme="light"]) .seo-list li strong {
+    color: #0f172a;
+  }
+
+  :global(html[data-theme="light"]) .seo-visual {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .google-mockup {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .search-bar {
+    background: #F1F5F9;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .search-text {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .highlight {
+    color: #0f172a;
+  }
+
+  :global(html[data-theme="light"]) .result-url {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .result-title {
+    color: #2563eb;
+  }
+
+  :global(html[data-theme="light"]) .result-desc {
+    color: #64748b;
+  }
+
+  @media (max-width: 991px) {
+    .seo-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .seo-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 32px;
+    }
+  }
+</style>

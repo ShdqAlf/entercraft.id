@@ -1,0 +1,213 @@
+---
+// TechStack.astro (Jasa Integrasi Sistem)
+---
+
+<section class="tech-stack-section">
+  <div class="tech-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Teknologi Integrasi yang Kami Gunakan</h2>
+      <p class="header-intro">
+        Kami memilih alat yang paling tepat untuk kebutuhan Anda—mulai dari Middleware (iPaaS) untuk kecepatan pengembangan, hingga Custom API untuk kompleksitas tingkat tinggi.
+      </p>
+    </div>
+
+    <div class="tech-grid">
+      
+      <!-- Category 1 -->
+      <div class="tech-category animate-fade-scroll" style="animation-delay: 200ms;">
+        <h3 class="category-title">Integration Platform (iPaaS)</h3>
+        <div class="tech-items">
+          <div class="tech-item">n8n</div>
+          <div class="tech-item">Make.com</div>
+          <div class="tech-item">Zapier</div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="tech-category animate-fade-scroll" style="animation-delay: 300ms;">
+        <h3 class="category-title">Custom API Development</h3>
+        <div class="tech-items">
+          <div class="tech-item">Node.js</div>
+          <div class="tech-item">Python</div>
+          <div class="tech-item">Laravel (PHP)</div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="tech-category animate-fade-scroll" style="animation-delay: 400ms;">
+        <h3 class="category-title">Data Format</h3>
+        <div class="tech-items">
+          <div class="tech-item">JSON</div>
+          <div class="tech-item">XML</div>
+          <div class="tech-item">CSV</div>
+        </div>
+      </div>
+
+      <!-- Category 4 -->
+      <div class="tech-category animate-fade-scroll" style="animation-delay: 500ms;">
+        <h3 class="category-title">Auth Protocol</h3>
+        <div class="tech-items">
+          <div class="tech-item">OAuth 2.0</div>
+          <div class="tech-item">API Key</div>
+          <div class="tech-item">JWT / Bearer</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .tech-stack-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .tech-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .tech-category {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .category-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(57, 132, 255, 0.2);
+  }
+
+  .tech-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .tech-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #E2E8F0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tech-item::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .tech-stack-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .tech-category {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .category-title {
+    border-bottom-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .tech-item {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .tech-item::before {
+    background-color: #94A3B8;
+  }
+
+  @media (max-width: 991px) {
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .tech-stack-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

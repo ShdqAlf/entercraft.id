@@ -1,0 +1,228 @@
+---
+// src/pages/jasa-website-company-profile/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Jasa Website Company Profile specific components
+import Hero from '../../components/jasa-website-company-profile/Hero.astro';
+import Problem from '../../components/jasa-website-company-profile/Problem.astro';
+import BeforeAfter from '../../components/jasa-website-company-profile/BeforeAfter.astro';
+import WhatWeBuild from '../../components/jasa-website-company-profile/WhatWeBuild.astro';
+import B2bValue from '../../components/jasa-website-company-profile/B2bValue.astro';
+import WebsiteStructure from '../../components/jasa-website-company-profile/WebsiteStructure.astro';
+import DesignDevelopment from '../../components/jasa-website-company-profile/DesignDevelopment.astro';
+import TechCapability from '../../components/jasa-website-company-profile/TechCapability.astro';
+import SeoFoundation from '../../components/jasa-website-company-profile/SeoFoundation.astro';
+import Portfolio from '../../components/jasa-website-company-profile/Portfolio.astro';
+import QualityChecklist from '../../components/jasa-website-company-profile/QualityChecklist.astro';
+import Integration from '../../components/jasa-website-company-profile/Integration.astro';
+import BusinessBenefits from '../../components/jasa-website-company-profile/BusinessBenefits.astro';
+
+// Reused global components
+import Industries from '../../components/Industries.astro';
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_TITLE } from '../../consts';
+
+const industriesData = [
+  {
+    id: "manufacturing",
+    num: "01",
+    title: "Manufacturing & Pabrik",
+    description: "Website company profile profesional untuk membangun kepercayaan dengan supplier global, investor, dan distributor. Tampilkan sertifikasi ISO, kapasitas produksi, dan katalog B2B secara terstruktur.",
+    solutions: ["Corporate Profile", "Product Catalog", "Certification Showcase", "Investor Relations"],
+    cta: "Lihat Solusi Manufaktur →",
+    iconPath: "M2 22V9l6 3V9l6 3V9l6 3v10H2zm6 0v-4h4v4"
+  },
+  {
+    id: "distribution",
+    num: "02",
+    title: "Distributor & B2B Trading",
+    description: "Digital presence yang mempermudah calon agen atau partner bisnis menemukan perusahaan Anda. Tampilkan lini produk, principal brands, dan jaringan distribusi.",
+    solutions: ["Principal Brands", "Distribution Network", "Product Indexing", "Agent Application"],
+    cta: "Lihat Solusi Distributor →",
+    iconPath: "M10 21v-6.5L4 11M14 21v-6.5l6-3.5M12 3v7.5"
+  },
+  {
+    id: "contractor",
+    num: "03",
+    title: "Kontraktor & Konstruksi",
+    description: "Website yang difokuskan pada kredibilitas proyek. Tampilkan portofolio pengerjaan, daftar klien BUMN/Swasta, keselamatan kerja (HSE), dan legalitas perusahaan.",
+    solutions: ["Project Portfolio", "Client List", "HSE Standards", "Tender Ready"],
+    cta: "Lihat Solusi Konstruksi →",
+    iconPath: "M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 7h2 M9 11h2 M9 15h2 M13 7h2 M13 11h2 M13 15h2"
+  },
+  {
+    id: "professional",
+    num: "04",
+    title: "Consultant & Professional Services",
+    description: "Bangun thought leadership dan trust untuk firma hukum, konsultan IT, konsultan pajak, atau agency. Tonjolkan expertise tim, studi kasus, dan artikel insight.",
+    solutions: ["Expertise Showcase", "Case Studies", "Insight Blog", "Appointment Booking"],
+    cta: "Lihat Solusi Jasa Profesional →",
+    iconPath: "M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16M3 7h18a2 2 0 012 2v10a2 2 0 01-2 2H3a2 2 0 01-2-2V9a2 2 0 012-2z"
+  }
+];
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Fokus pada Standar B2B",
+    description: "Kami tidak mendesain website asal cantik. Kami memahami apa yang dicari investor, partner, dan corporate buyer saat menilai sebuah bisnis secara online.",
+    label: "B2B FOCUSED"
+  },
+  {
+    id: "02",
+    title: "Desain Eksklusif (No Cheap Templates)",
+    description: "Website Anda akan dirancang khusus secara custom menyesuaikan brand identity, visi, dan skala bisnis Anda agar terlihat premium dan kredibel.",
+    label: "CUSTOM DESIGN"
+  },
+  {
+    id: "03",
+    title: "SEO Foundation Built-in",
+    description: "Struktur website dirancang sejak awal agar mudah ditemukan di Google (SEO-ready), memastikan calon klien yang mencari jasa Anda bisa menemukan perusahaan Anda.",
+    label: "SEO OPTIMIZED"
+  },
+  {
+    id: "04",
+    title: "High Performance & Secure",
+    description: "Kami menggunakan stack teknologi modern. Website Anda akan dimuat sangat cepat (fast loading) dan aman dari risiko peretasan umum.",
+    label: "FAST & SECURE"
+  }
+];
+
+const processData = [
+  {
+    num: "01",
+    label: "DISCOVERY",
+    title: "Requirement & Discovery",
+    description: "Kami mempelajari profil perusahaan Anda, target market, dan objektif utama dari website yang ingin dibangun.",
+    focus: "RESEARCH"
+  },
+  {
+    num: "02",
+    label: "STRUCTURE",
+    title: "Information Architecture",
+    description: "Membuat sitemap dan wireframe untuk merencanakan struktur konten agar navigasi user dan SEO menjadi optimal.",
+    focus: "PLANNING"
+  },
+  {
+    num: "03",
+    label: "DESIGN",
+    title: "UI/UX Design",
+    description: "Mendesain visual website secara eksklusif dan memberikan mockup (preview) sebelum masuk tahap coding.",
+    focus: "VISUAL"
+  },
+  {
+    num: "04",
+    label: "DEVELOP",
+    title: "Development & Coding",
+    description: "Mengembangkan website dengan clean code, memastikan responsivitas di semua perangkat, dan kecepatan loading yang optimal.",
+    focus: "ENGINEERING"
+  },
+  {
+    num: "05",
+    label: "LAUNCH",
+    title: "Testing & Launch",
+    description: "Pengecekan kualitas menyeluruh (QA), optimasi SEO On-Page, dan perilisan website ke domain utama Anda.",
+    focus: "DEPLOYMENT"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Berapa lama proses pembuatan website company profile?",
+    answer: "Umumnya memakan waktu 3-6 minggu tergantung dari kompleksitas struktur halaman, ketersediaan materi konten (teks/foto), dan revisi desain."
+  },
+  {
+    id: "02",
+    question: "Apakah saya harus menyiapkan materi konten sendiri?",
+    answer: "Kami sangat menyarankan materi dasar (company profile, foto) dari pihak Anda agar otentik. Namun jika Anda tidak memilikinya, kami bisa membantu layanan copywriting profesional."
+  },
+  {
+    id: "03",
+    question: "Apakah website ini bisa saya update sendiri nantinya?",
+    answer: "Tentu. Kami akan menyediakan sistem Content Management System (CMS) yang mudah digunakan sehingga tim internal Anda dapat mengupdate portofolio atau artikel secara mandiri."
+  },
+  {
+    id: "04",
+    question: "Apakah harganya termasuk domain dan hosting?",
+    answer: "Ya, kami menawarkan paket all-in yang sudah mencakup domain korporat (seperti .com, .co.id, atau .id) dan server hosting berkecepatan tinggi untuk tahun pertama."
+  }
+];
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={`Jasa Pembuatan Website Company Profile B2B Profesional - ${SITE_TITLE}`} 
+      description="Jasa pembuatan website company profile profesional, responsif, dan SEO ready untuk meningkatkan kredibilitas dan konversi bisnis B2B Anda." 
+    />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <BeforeAfter />
+      <WhatWeBuild />
+      <B2bValue />
+      <WebsiteStructure />
+      <DesignDevelopment />
+      <TechCapability />
+      <SeoFoundation />
+      <Portfolio />
+      <QualityChecklist />
+      <Integration />
+      <BusinessBenefits />
+      
+      <!-- Industries section with custom data -->
+      <Industries 
+        industriesData={industriesData}
+      />
+      
+      <WhyChoose 
+        eyebrow="MENGAPA ENTERCRAFT"
+        titleHtml="Bukan Sekadar Jasa Pembuat Web.<br/>Kami Partner Pertumbuhan Bisnis Anda."
+        intro="Kami menggabungkan business understanding, desain premium, dan teknologi modern untuk menghasilkan website yang relevan dengan skala bisnis Anda."
+        valueProps={whyChooseData}
+      />
+      
+      <HowWeWork 
+        eyebrow="PROSES KAMI"
+        titleHtml="Tahapan Pembuatan<br/>Website yang Terstruktur"
+        intro="Setiap project kami kerjakan melalui metodologi sistematis untuk memastikan hasil akhir sesuai dengan visi perusahaan Anda."
+        stepsData={processData}
+      />
+      
+      <Faq 
+        eyebrow="FAQ PEMBUATAN WEBSITE"
+        titleHtml="Pertanyaan Umum Seputar<br/>Jasa Website Company Profile"
+        intro="Hal-hal yang sering ditanyakan oleh klien sebelum memulai project website mereka."
+        faqData={faqData}
+      />
+      
+      <FinalCta 
+        eyebrow="MULAI SEKARANG"
+        titleHtml="Siap Membangun Kredibilitas<br/>Digital Bisnis Anda?"
+        intro="Konsultasikan kebutuhan website company profile Anda bersama tim kami. Kami siap membantu Anda merancang representasi digital terbaik."
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

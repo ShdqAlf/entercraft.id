@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Pesan tepat waktu', description: 'Kirim pengingat, update status, dan penawaran saat informasi tersebut paling dibutuhkan pengguna.', meta: 'TIMELY' },
+	{ title: 'Segmentasi penerima', description: 'Bedakan pesan untuk pelanggan baru, pelanggan aktif, staf lapangan, atau manajer operasional.', meta: 'TARGETED' },
+	{ title: 'Deep link ke aksi', description: 'Arahkan notifikasi langsung ke pesanan, tugas, atau halaman yang harus segera ditindaklanjuti.', meta: 'ACTIONABLE' }
+];
+---
+<FeatureSection eyebrow="ENGAGEMENT" title="Notifikasi yang Menggerakkan Aksi" intro="Push notification dirancang sebagai kanal komunikasi yang relevan, terukur, dan tidak mengganggu." items={items} />

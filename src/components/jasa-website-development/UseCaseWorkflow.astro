@@ -1,0 +1,416 @@
+---
+// UseCaseWorkflow.astro (Jasa Website Development)
+
+const workflows = [
+  {
+    id: "portal",
+    title: "Customer Portal",
+    steps: [
+      { name: "Login", detail: "Secure Authentication" },
+      { name: "Dashboard", detail: "Personalized View" },
+      { name: "View Status", detail: "Fetch Activity Logs" },
+      { name: "Submit Request", detail: "Input Custom Form" },
+      { name: "Track Progress", detail: "Real-time Updates" }
+    ]
+  },
+  {
+    id: "booking",
+    title: "Booking & Scheduling",
+    steps: [
+      { name: "Select Service", detail: "Pick Slot & Team" },
+      { name: "Check Availability", detail: "Query DB Real-time" },
+      { name: "Submit Booking", detail: "Hold Reservation" },
+      { name: "Confirmation", detail: "Trigger E-Receipt" },
+      { name: "Reminder", detail: "SMS/WA Notification" }
+    ]
+  },
+  {
+    id: "lead",
+    title: "Lead Management",
+    steps: [
+      { name: "Website Form", detail: "Visitor Fills Query" },
+      { name: "Validation", detail: "Filter Spam / Bots" },
+      { name: "Create Lead", detail: "Map Data Structure" },
+      { name: "CRM Integration", detail: "Push to HubSpot/Zoho" },
+      { name: "Sales Assignment", detail: "Auto Routing to Agent" }
+    ]
+  },
+  {
+    id: "order",
+    title: "Order Management",
+    steps: [
+      { name: "Customer Order", detail: "Select Item & Cart" },
+      { name: "Validation", detail: "Check Stock Alloc" },
+      { name: "Payment Gateway", detail: "Verify Midtrans/Xendit" },
+      { name: "Fulfillment", detail: "Sync with Logistics" },
+      { name: "Status Update", detail: "Auto Email & Push Notification" }
+    ]
+  }
+];
+---
+
+<section class="workflow-section" id="use-cases">
+  <div class="wf-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> USE CASE WORKFLOWS
+      </div>
+      <h2 class="header-title">Contoh Alur Website dengan Business Logic</h2>
+      <p class="header-intro">
+        Berikut adalah contoh bagaimana website custom memproses data secara berurutan untuk mendukung operasional bisnis Anda.
+      </p>
+    </div>
+
+    <!-- Active tabs workflow container -->
+    <div class="workflows-container animate-fade-scroll" style="animation-delay: 250ms;">
+      
+      <!-- Tab Buttons -->
+      <div class="tab-buttons">
+        {workflows.map((wf, idx) => (
+          <button class={`tab-btn ${idx === 0 ? 'active' : ''}`} data-target={wf.id}>
+            {wf.title}
+          </button>
+        ))}
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="tab-panels">
+        {workflows.map((wf, idx) => (
+          <div class={`tab-panel ${idx === 0 ? 'active' : ''}`} id={wf.id}>
+            <div class="steps-wrapper">
+              {wf.steps.map((step, sIdx) => (
+                <>
+                  <div class="step-card">
+                    <div class="step-number">0{sIdx + 1}</div>
+                    <div class="step-info">
+                      <h4 class="step-title">{step.name}</h4>
+                      <p class="step-desc">{step.detail}</p>
+                    </div>
+                  </div>
+                  {sIdx < wf.steps.length - 1 && (
+                    <div class="step-arrow">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
+                  )}
+                </>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Simple interactive tab switcher
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+      
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const activePanel = document.getElementById(target);
+      if (activePanel) {
+        activePanel.classList.add('active');
+      }
+    });
+  });
+</script>
+
+<style>
+  .workflow-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .wf-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .workflows-container {
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+  }
+
+  .tab-btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .tab-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .tab-btn.active {
+    color: #ffffff;
+    background: rgba(57, 132, 255, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(57, 132, 255, 0.3);
+  }
+
+  .tab-panels {
+    position: relative;
+    min-height: 160px;
+  }
+
+  .tab-panel {
+    display: none;
+    width: 100%;
+  }
+
+  .tab-panel.active {
+    display: block;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .steps-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .step-card {
+    background: rgba(13, 20, 34, 0.7);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    transition: all 0.2s ease;
+  }
+
+  .step-card:hover {
+    border-color: rgba(57, 132, 255, 0.3);
+    background: rgba(57, 132, 255, 0.02);
+  }
+
+  .step-number {
+    font-family: 'Inter', monospace;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--accent-blue);
+    background: rgba(57, 132, 255, 0.08);
+    padding: 4px 8px;
+    border-radius: 4px;
+    align-self: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 6px 0;
+  }
+
+  .step-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .step-arrow {
+    color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .workflow-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .workflows-container {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .tab-btn {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .tab-btn:hover {
+    color: #0f172a;
+    background: #f1f5f9;
+  }
+
+  :global(html[data-theme="light"]) .tab-btn.active {
+    color: var(--accent-blue);
+    background: rgba(57, 132, 255, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .step-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .step-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .step-desc {
+    color: #64748B;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 991px) {
+    .steps-wrapper {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .step-card {
+      width: 100%;
+    }
+
+    .step-arrow {
+      transform: rotate(90deg);
+      margin: 4px 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .workflow-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+
+    .workflows-container {
+      padding: 20px;
+    }
+
+    .tab-buttons {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tab-btn {
+      font-size: 13px;
+      padding: 8px 16px;
+    }
+  }
+</style>

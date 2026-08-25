@@ -1,0 +1,332 @@
+---
+// TechCapability.astro (Jasa Website Development)
+---
+
+<section class="capability-section" id="capability">
+  <div class="cap-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> SYSTEM ARCHITECTURE
+      </div>
+      <h2 class="header-title">Membangun Website dari Interface hingga Business Logic</h2>
+      <p class="header-intro">
+        Kami merancang arsitektur sistem web secara menyeluruh, memastikan setiap lapisan (layer) bekerja harmonis demi stabilitas dan keamanan jangka panjang.
+      </p>
+    </div>
+
+    <div class="cap-layout">
+      
+      <!-- Left side: Vertical visual stack representation -->
+      <div class="cap-visual animate-fade-scroll" style="animation-delay: 250ms;">
+        <div class="stack-container">
+          <div class="stack-layer layer-user">
+            <span class="layer-num">1</span>
+            <span class="layer-title">USER LAYER</span>
+          </div>
+          <div class="stack-arrow">↓</div>
+          <div class="stack-layer layer-front">
+            <span class="layer-num">2</span>
+            <span class="layer-title">FRONTEND INTERFACE</span>
+          </div>
+          <div class="stack-arrow">↓</div>
+          <div class="stack-layer layer-logic">
+            <span class="layer-num">3</span>
+            <span class="layer-title">BUSINESS LOGIC ENGINE</span>
+          </div>
+          <div class="stack-arrow">↓</div>
+          <div class="stack-layer layer-back">
+            <span class="layer-num">4</span>
+            <span class="layer-title">API / BACKEND LAYER</span>
+          </div>
+          <div class="stack-arrow">↓</div>
+          <div class="stack-layer layer-db">
+            <span class="layer-num">5</span>
+            <span class="layer-title">DATABASE STORE</span>
+          </div>
+          <div class="stack-arrow">↓</div>
+          <div class="stack-layer layer-int">
+            <span class="layer-num">6</span>
+            <span class="layer-title">INTEGRATIONS LAYER</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Explanation cards -->
+      <div class="cap-details">
+        
+        <div class="detail-card animate-fade-scroll" style="animation-delay: 300ms;">
+          <h3 class="detail-title">1. Frontend (User Interface)</h3>
+          <p class="detail-desc">Antarmuka visual responsif yang diakses pengguna langsung melalui web browser. Dirancang dengan UI/UX modern, cepat dimuat, dan mudah dinavigasi di perangkat apapun.</p>
+        </div>
+
+        <div class="detail-card animate-fade-scroll" style="animation-delay: 400ms;">
+          <h3 class="detail-title">2. Business Logic</h3>
+          <p class="detail-desc">Otak dari website Anda. Menentukan aturan, alur kerja, validasi, dan bagaimana data diolah sebelum diproses lebih lanjut.</p>
+        </div>
+
+        <div class="detail-card animate-fade-scroll" style="animation-delay: 500ms;">
+          <h3 class="detail-title">3. Backend & API</h3>
+          <p class="detail-desc">Sisi server yang mengamankan pengolahan data utama, menangani otentikasi pengguna, logika berat, dan bertindak sebagai jembatan komunikasi.</p>
+        </div>
+
+        <div class="detail-card animate-fade-scroll" style="animation-delay: 600ms;">
+          <h3 class="detail-title">4. Database</h3>
+          <p class="detail-desc">Penyimpanan terstruktur untuk semua informasi penting seperti data pengguna, pesanan, konten, atau log transaksi secara aman dan cepat diakses.</p>
+        </div>
+
+        <div class="detail-card animate-fade-scroll" style="animation-delay: 700ms;">
+          <h3 class="detail-title">5. Integrations</h3>
+          <p class="detail-desc">Lapisan komunikasi dengan aplikasi eksternal (third-party services) seperti payment gateway, CRM, logistik, atau WhatsApp API.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .capability-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .cap-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 auto;
+    max-width: 650px;
+  }
+
+  .cap-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  /* Visual stack styling */
+  .cap-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .stack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 360px;
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+  }
+
+  .stack-layer {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+  }
+
+  .layer-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .layer-user { background: rgba(57, 132, 255, 0.1); border-color: rgba(57, 132, 255, 0.2); color: var(--accent-blue); }
+  .layer-user .layer-num { background: var(--accent-blue); color: #ffffff; }
+
+  .layer-front { background: rgba(57, 213, 232, 0.1); border-color: rgba(57, 213, 232, 0.2); color: #39d5e8; }
+  .layer-front .layer-num { background: #39d5e8; color: #0f172a; }
+
+  .layer-logic { background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.3); color: #8b5cf6; }
+  .layer-logic .layer-num { background: #8b5cf6; color: #ffffff; }
+
+  .layer-back { background: rgba(236, 72, 153, 0.1); border-color: rgba(236, 72, 153, 0.2); color: #ec4899; }
+  .layer-back .layer-num { background: #ec4899; color: #ffffff; }
+
+  .layer-db { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: #10b981; }
+  .layer-db .layer-num { background: #10b981; color: #ffffff; }
+
+  .layer-int { background: rgba(245, 158, 11, 0.1); border-color: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+  .layer-int .layer-num { background: #f59e0b; color: #0f172a; }
+
+  .stack-arrow {
+    color: var(--border-color);
+    font-size: 16px;
+    margin: 4px 0;
+  }
+
+  /* Details Panel */
+  .cap-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .detail-card {
+    background: rgba(13, 20, 34, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition: all 0.2s ease;
+  }
+
+  .detail-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(4px);
+  }
+
+  .detail-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+  }
+
+  .detail-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .capability-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .stack-container {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+  }
+
+  :global(html[data-theme="light"]) .detail-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .detail-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .detail-desc {
+    color: #64748B;
+  }
+
+  @media (max-width: 991px) {
+    .cap-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .cap-visual {
+      order: 2;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .capability-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+  }
+</style>

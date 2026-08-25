@@ -1,0 +1,281 @@
+---
+// src/pages/jasa-mobile-app-development/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Jasa Mobile App Development specific components
+import Hero from '../../components/jasa-mobile-app-development/Hero.astro';
+import Problem from '../../components/jasa-mobile-app-development/Problem.astro';
+import AppRelevance from '../../components/jasa-mobile-app-development/AppRelevance.astro';
+import WhatWeBuild from '../../components/jasa-mobile-app-development/WhatWeBuild.astro';
+import CustomerVsEmployeeApp from '../../components/jasa-mobile-app-development/CustomerVsEmployeeApp.astro';
+import UserFlows from '../../components/jasa-mobile-app-development/UserFlows.astro';
+import FeatureGrid from '../../components/jasa-mobile-app-development/FeatureGrid.astro';
+import PushNotification from '../../components/jasa-mobile-app-development/PushNotification.astro';
+import DeviceCapability from '../../components/jasa-mobile-app-development/DeviceCapability.astro';
+import Architecture from '../../components/jasa-mobile-app-development/Architecture.astro';
+import TechStack from '../../components/jasa-mobile-app-development/TechStack.astro';
+import SecurityAndOffline from '../../components/jasa-mobile-app-development/SecurityAndOffline.astro';
+import BusinessBenefits from '../../components/jasa-mobile-app-development/BusinessBenefits.astro';
+import Portfolio from '../../components/jasa-mobile-app-development/Portfolio.astro';
+
+// Reused global components
+import Industries from '../../components/Industries.astro';
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_TITLE } from '../../consts';
+
+const industriesData = [
+  {
+    id: "logistics",
+    num: "01",
+    title: "Logistics & Delivery",
+    description: "Aplikasi kurir lapangan dengan routing GPS, pemindaian barcode, bukti pengiriman digital (Proof of Delivery), dan mode offline.",
+    solutions: ["Driver Tracking", "Barcode Scanning", "Offline Mode", "Digital Signature"],
+    cta: "Lihat Solusi Logistik →",
+    iconPath: "M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+  },
+  {
+    id: "retail",
+    num: "02",
+    title: "Retail & E-Commerce",
+    description: "Aplikasi loyalitas pelanggan dan belanja online dengan notifikasi promo instan, integrasi payment gateway, dan manajemen poin.",
+    solutions: ["Loyalty Points", "Push Notifications", "In-App Purchases", "User Profiles"],
+    cta: "Lihat Solusi Retail →",
+    iconPath: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+  },
+  {
+    id: "healthcare",
+    num: "03",
+    title: "Healthcare",
+    description: "Aplikasi pemesanan layanan kesehatan, rekam medis digital terenkripsi, integrasi smartwatch/IoT, dan telekonsultasi.",
+    solutions: ["Doctor Booking", "Telemedicine", "Health Kit Integration", "Secure Patient Data"],
+    cta: "Lihat Solusi Healthcare →",
+    iconPath: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+  }
+];
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Native-like Performance",
+    description: "Kami menggunakan teknologi modern seperti React Native atau Flutter untuk memberikan pengalaman yang mulus layaknya aplikasi native.",
+    label: "HIGH PERFORMANCE"
+  },
+  {
+    id: "02",
+    title: "Cross-Platform Ready",
+    description: "Satu basis kode untuk dirilis ke iOS (App Store) dan Android (Play Store) sehingga menghemat waktu dan biaya.",
+    label: "IOS & ANDROID"
+  },
+  {
+    id: "03",
+    title: "Seamless Integration",
+    description: "Aplikasi terhubung langsung dengan backend, API, atau sistem ERP internal yang sudah Anda gunakan saat ini.",
+    label: "API CONNECTED"
+  },
+  {
+    id: "04",
+    title: "User-Centric UI/UX",
+    description: "Desain antarmuka (UI) dirancang khusus untuk layar sentuh dengan mempertimbangkan kebiasaan pengguna mobile.",
+    label: "MOBILE FIRST"
+  },
+  {
+    id: "05",
+    title: "Device Capabilities",
+    description: "Memaksimalkan fitur bawaan perangkat seperti Kamera, GPS, Bluetooth, dan Biometrics (Face ID/Fingerprint).",
+    label: "HARDWARE ACCESS"
+  },
+  {
+    id: "06",
+    title: "Secure Architecture",
+    description: "Menerapkan standar keamanan aplikasi tinggi mulai dari enkripsi data, secure storage, hingga otentikasi token.",
+    label: "ENTERPRISE SECURITY"
+  }
+];
+
+const processData = [
+  {
+    num: "01",
+    label: "STRATEGY",
+    title: "Mobile App Strategy",
+    description: "Menentukan apakah aplikasi ini untuk publik (B2C) atau internal (B2B), fitur wajib, target OS, dan integrasi backend.",
+    focus: "RESEARCH"
+  },
+  {
+    num: "02",
+    label: "UX/UI",
+    title: "Prototyping & Interface",
+    description: "Merancang wireframe interaktif, user flow, dan antarmuka premium yang mematuhi pedoman desain iOS (Human Interface) dan Android (Material Design).",
+    focus: "DESIGN"
+  },
+  {
+    num: "03",
+    label: "API",
+    title: "Backend Development",
+    description: "Membangun sistem backend dan REST/GraphQL API yang aman dan tangguh untuk melayani pertukaran data ke aplikasi mobile.",
+    focus: "BACKEND"
+  },
+  {
+    num: "04",
+    label: "DEVELOP",
+    title: "Mobile Programming",
+    description: "Proses coding aplikasi (React Native / Flutter), implementasi state management, integrasi perangkat keras, dan koneksi API.",
+    focus: "ENGINEERING"
+  },
+  {
+    num: "05",
+    label: "TEST",
+    title: "Testing & QA",
+    description: "Uji coba di berbagai ukuran layar dan perangkat nyata, pengujian performa, uji stres backend, dan penyelesaian bug.",
+    focus: "QUALITY"
+  },
+  {
+    num: "06",
+    label: "PUBLISH",
+    title: "App Store & Play Store",
+    description: "Menangani seluruh proses rilis aplikasi ke Apple App Store dan Google Play Store, termasuk persiapan aset dan metadata.",
+    focus: "DEPLOYMENT"
+  },
+  {
+    num: "07",
+    label: "SUPPORT",
+    title: "Maintenance & Updates",
+    description: "Pemantauan kestabilan aplikasi, perbaikan versi untuk OS baru, serta penambahan fitur di update rilis selanjutnya.",
+    focus: "MAINTENANCE"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Apakah aplikasi yang dibuat bisa untuk iOS dan Android?",
+    answer: "Ya. Kami menggunakan framework cross-platform terkemuka yang memungkinkan aplikasi Anda dirilis sekaligus ke Apple App Store (iOS) dan Google Play Store (Android) dengan kualitas yang tetap optimal."
+  },
+  {
+    id: "02",
+    question: "Apa bedanya Mobile App dan Website Responsive?",
+    answer: "Website responsive diakses melalui browser dan harus memuat halaman dari internet. Mobile app diinstal di perangkat (icon di layar), memiliki akses ke notifikasi push, dapat berjalan offline, dan bisa mengakses sensor perangkat (kamera, GPS) secara mendalam, sehingga memberikan user experience yang jauh lebih responsif dan privat."
+  },
+  {
+    id: "03",
+    question: "Apakah bisa membuat aplikasi untuk staf internal (bukan untuk umum)?",
+    answer: "Tentu. Banyak klien kami mengembangkan aplikasi internal untuk manajemen inventaris, laporan lapangan, atau sales tracking. Aplikasi ini tidak harus dirilis publik di PlayStore, bisa didistribusikan secara privat melalui platform Enterprise."
+  },
+  {
+    id: "04",
+    question: "Apakah aplikasi mobile bisa dihubungkan dengan website atau software yang sudah ada?",
+    answer: "Sangat bisa. Jika website atau sistem Anda memiliki API, kami dapat menghubungkan aplikasi mobile secara langsung ke sistem tersebut. Jika belum ada API, kami bisa membantu membangunkan sistem backend/API penengahnya."
+  },
+  {
+    id: "05",
+    question: "Apakah aplikasi bisa bekerja tanpa internet (Offline Mode)?",
+    answer: "Ya, kami dapat membangun fitur Offline Mode dengan sinkronisasi lokal. Data akan disimpan secara aman di perangkat saat tidak ada sinyal, dan akan otomatis tersinkronisasi kembali ke server utama ketika mendapatkan koneksi internet."
+  },
+  {
+    id: "06",
+    question: "Berapa lama proses pembuatan aplikasi mobile?",
+    answer: "Waktu pengerjaan bergantung pada kompleksitas fitur. Aplikasi sederhana membutuhkan waktu sekitar 8-10 minggu. Aplikasi kompleks dengan berbagai integrasi pihak ketiga, sistem pembayaran, dan backend rumit dapat memakan waktu 3 hingga 6 bulan."
+  },
+  {
+    id: "07",
+    question: "Siapa yang mengurus proses upload ke App Store dan Play Store?",
+    answer: "Kami akan menangani seluruh proses rilis teknis ke App Store dan Play Store dengan akun Developer Anda, mulai dari kompilasi, penyiapan sertifikat, hingga review approval dari pihak Apple dan Google."
+  },
+  {
+    id: "08",
+    question: "Apakah Entercraft juga menyediakan pembuatan Backend/Admin Panel?",
+    answer: "Ya. Aplikasi mobile membutuhkan Admin Panel (dashboard) untuk mengelola data (pengguna, pesanan, notifikasi). Pembuatan backend server, database, API, dan dasbor web admin sudah termasuk dalam ruang lingkup pengerjaan yang kami tawarkan."
+  },
+  {
+    id: "09",
+    question: "Apakah source code aplikasi akan diberikan?",
+    answer: "Ya, setelah seluruh proses pengerjaan dan pelunasan selesai, hak cipta penuh dan source code akhir akan diserahkan kepada klien."
+  },
+  {
+    id: "10",
+    question: "Bagaimana sistem pemeliharaan (maintenance) setelah aplikasi rilis?",
+    answer: "Setiap project mendapatkan masa garansi untuk perbaikan bug kritis. Untuk dukungan jangka panjang seperti update OS terbaru Apple/Android atau peningkatan fitur, kami menawarkan paket kontrak maintenance berkelanjutan."
+  }
+];
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead 
+      title={`Jasa Pembuatan Aplikasi Mobile Custom (iOS & Android) | Entercraft`} 
+      description="Jasa mobile app development custom untuk membangun aplikasi pelanggan, karyawan, atau operasional dengan fitur, UX, dan integrasi sesuai kebutuhan bisnis Anda." 
+    />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <AppRelevance />
+      <WhatWeBuild />
+      <CustomerVsEmployeeApp />
+      <UserFlows />
+      <FeatureGrid />
+      <PushNotification />
+      <DeviceCapability />
+      <Architecture />
+      <TechStack />
+      <SecurityAndOffline />
+      <BusinessBenefits />
+      <Portfolio />
+      
+      <!-- Reused global Industries -->
+      <Industries 
+        industriesData={industriesData}
+      />
+      
+      <!-- Reused global WhyChoose -->
+      <WhyChoose 
+        eyebrow="MENGAPA ENTERCRAFT"
+        titleHtml="Mitra Mobile App Development<br/>Terpercaya Anda"
+        intro="Kami tidak sekadar membuat aplikasi. Kami merancang solusi mobile end-to-end yang mengintegrasikan UX elegan, kode tangguh, dan arsitektur backend andal."
+        valueProps={whyChooseData}
+      />
+      
+      <!-- Reused global HowWeWork -->
+      <HowWeWork 
+        eyebrow="TAHAPAN KERJA"
+        titleHtml="Proses Pembuatan Mobile App<br/>dari Konsep hingga App Store"
+        intro="Pendekatan terstruktur kami memastikan aplikasi Anda diluncurkan tepat waktu, sesuai standar ketat Apple dan Google, serta bebas masalah."
+        stepsData={processData}
+      />
+      
+      <!-- Reused global Faq -->
+      <Faq 
+        eyebrow="FAQ LAYANAN APP"
+        titleHtml="Pertanyaan Umum Seputar<br/>Jasa Mobile App Development"
+        intro="Informasi krusial yang sering ditanyakan perusahaan sebelum memulai inisiatif pengembangan aplikasi seluler mereka."
+        faqData={faqData}
+      />
+      
+      <!-- Reused global FinalCta -->
+      <FinalCta 
+        eyebrow="KONSULTASI APP DEVELOPMENT"
+        titleHtml="Siap Menghadirkan Bisnis Anda<br/>ke Genggaman Pengguna?"
+        intro="Mari diskusikan ide aplikasi seluler Anda. Kami akan menganalisis kebutuhan operasional, target pengguna, dan menyusun arsitektur solusi mobile yang paling tepat sasaran."
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

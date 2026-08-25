@@ -1,0 +1,362 @@
+---
+// UseCases.astro (Jasa Integrasi Sistem)
+
+const useCases = [
+  {
+    title: "WEBSITE → CRM",
+    copy: "Lead dari website dapat diteruskan ke CRM agar tim sales tidak perlu memasukkan data secara manual.",
+    flow: [
+      { step: "Website Form", type: "source" },
+      { step: "Validation", type: "process" },
+      { step: "CRM", type: "core" },
+      { step: "Sales Assignment", type: "process" },
+      { step: "Notification", type: "dest" }
+    ]
+  },
+  {
+    title: "E-COMMERCE → ERP",
+    copy: "Data order dapat diteruskan ke sistem operasional agar proses pemenuhan pesanan lebih terstruktur.",
+    flow: [
+      { step: "New Order", type: "source" },
+      { step: "Order Validation", type: "process" },
+      { step: "ERP", type: "core" },
+      { step: "Inventory Update", type: "process" },
+      { step: "Order Status", type: "dest" }
+    ]
+  },
+  {
+    title: "PAYMENT → ORDER SYSTEM",
+    copy: "Status pembayaran dapat diteruskan ke sistem order sesuai workflow yang dirancang.",
+    flow: [
+      { step: "Payment Success", type: "source" },
+      { step: "Verification", type: "process" },
+      { step: "Order Status Update", type: "core" },
+      { step: "Notification", type: "dest" }
+    ]
+  },
+  {
+    title: "MOBILE APP → BACKEND",
+    copy: "Aplikasi mobile dapat bertukar data dengan backend melalui API sesuai kebutuhan sistem.",
+    flow: [
+      { step: "Mobile App", type: "source" },
+      { step: "API", type: "process" },
+      { step: "Business Logic", type: "process" },
+      { step: "Database", type: "core" },
+      { step: "Response", type: "dest" }
+    ]
+  },
+  {
+    title: "CRM → ERP",
+    copy: "Data customer atau transaksi dapat diteruskan antar sistem ketika proses bisnis membutuhkan sinkronisasi tersebut.",
+    flow: [
+      { step: "Qualified Customer", type: "source" },
+      { step: "CRM", type: "core" },
+      { step: "Integration Layer", type: "process" },
+      { step: "ERP", type: "dest" }
+    ]
+  }
+];
+---
+
+<section class="usecases-section" id="use-cases">
+  <div class="usecases-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Contoh Integrasi Sistem dalam Proses Bisnis</h2>
+      <p class="header-intro">
+        Berikut adalah beberapa pola (pattern) integrasi yang paling sering kami rancang untuk memuluskan aliran informasi antar departemen dan aplikasi.
+      </p>
+    </div>
+
+    <div class="usecases-grid">
+      {useCases.map((uc, index) => (
+        <div class="uc-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="uc-header">
+            <h3>{uc.title}</h3>
+            <p>{uc.copy}</p>
+          </div>
+          
+          <div class="uc-flow">
+            {uc.flow.map((node, i) => (
+              <>
+                <div class={`flow-node ${node.type}`}>
+                  {node.step}
+                </div>
+                {i < uc.flow.length - 1 && (
+                  <div class="flow-arrow">↓</div>
+                )}
+              </>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .usecases-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .usecases-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* Handle 5 items nicely: 3 in first row, 2 in second row centered */
+  .usecases-grid > :nth-child(4) {
+    grid-column: 1 / span 2;
+    justify-self: end;
+    width: 100%;
+    max-width: 384px; /* matches normal 1fr width roughly */
+  }
+  
+  .usecases-grid > :nth-child(5) {
+    grid-column: 2 / span 2;
+    justify-self: start;
+    width: 100%;
+    max-width: 384px;
+  }
+
+  /* Reset for smaller screens */
+  @media (max-width: 991px) {
+    .usecases-grid > :nth-child(4),
+    .usecases-grid > :nth-child(5) {
+      grid-column: auto;
+      justify-self: stretch;
+      max-width: none;
+    }
+  }
+
+  .uc-card {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    transition: all 0.3s ease;
+  }
+
+  .uc-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(57, 132, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .uc-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .uc-header h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--accent-blue);
+    margin: 0;
+  }
+
+  .uc-header p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94A3B8;
+    margin: 0;
+  }
+
+  .uc-flow {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .flow-node {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+  }
+
+  .flow-node.source {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #34D399;
+  }
+
+  .flow-node.process {
+    background: var(--bg-secondary);
+    color: #94A3B8;
+    border-style: dashed;
+  }
+
+  .flow-node.core {
+    background: rgba(57, 132, 255, 0.1);
+    border-color: var(--accent-blue);
+    color: #FFFFFF;
+    font-weight: bold;
+  }
+
+  .flow-node.dest {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.3);
+    color: #A78BFA;
+  }
+
+  .flow-arrow {
+    color: #475569;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: bold;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .usecases-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .uc-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .uc-card:hover {
+    border-color: rgba(57, 132, 255, 0.4);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .uc-header h3 {
+    color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .uc-header p {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .uc-flow {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .flow-node {
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .flow-node.source {
+    background: rgba(16, 185, 129, 0.05);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #059669;
+  }
+
+  :global(html[data-theme="light"]) .flow-node.process {
+    background: #F8FAFC;
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .flow-node.core {
+    background: rgba(57, 132, 255, 0.1);
+    border-color: var(--accent-blue);
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .flow-node.dest {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.4);
+    color: #7C3AED;
+  }
+
+  :global(html[data-theme="light"]) .flow-arrow {
+    color: #94A3B8;
+  }
+
+  @media (max-width: 991px) {
+    .usecases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .usecases-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .usecases-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

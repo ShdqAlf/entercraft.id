@@ -1,0 +1,199 @@
+---
+// TechCapability.astro (Jasa Website Company Profile)
+---
+
+<section class="tech-section" id="tech">
+  <div class="tech-container">
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Teknologi Modern di Balik Website Anda</h2>
+      <p class="header-intro">
+        Kami tidak menggunakan platform jadul yang lambat dan rentan diretas. Website Anda dibangun menggunakan standar web modern untuk kecepatan, keamanan, dan skalabilitas maksimal.
+      </p>
+    </div>
+
+    <div class="tech-grid animate-fade-scroll" style="animation-delay: 250ms;">
+      <div class="tech-card">
+        <div class="tech-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+        </div>
+        <h3 class="tech-title">Modern Framework</h3>
+        <p class="tech-desc">Menggunakan teknologi web terbaru yang menghasilkan static site super cepat tanpa loading database berlebih.</p>
+      </div>
+      
+      <div class="tech-card">
+        <div class="tech-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        </div>
+        <h3 class="tech-title">Headless Architecture</h3>
+        <p class="tech-desc">Memisahkan tampilan (frontend) dan pengelolaan konten (backend) sehingga lebih aman dari serangan hacker.</p>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <h3 class="tech-title">Global CDN</h3>
+        <p class="tech-desc">Aset website didistribusikan ke server di seluruh dunia, memastikan akses cepat darimana pun pengunjung berada.</p>
+      </div>
+
+      <div class="tech-card">
+        <div class="tech-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 class="tech-title">Enterprise Security</h3>
+        <p class="tech-desc">Dilengkapi sertifikat SSL gratis, proteksi DDoS, dan best practice keamanan standar industri.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .tech-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .tech-card {
+    background: rgba(13, 20, 34, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .tech-card:hover {
+    background: rgba(57, 132, 255, 0.05);
+    border-color: rgba(57, 132, 255, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .tech-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .tech-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .tech-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .tech-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .tech-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .tech-card:hover {
+    border-color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .tech-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .tech-desc {
+    color: #475569;
+  }
+
+  @media (max-width: 991px) {
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 575px) {
+    .tech-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 28px;
+    }
+
+    .tech-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

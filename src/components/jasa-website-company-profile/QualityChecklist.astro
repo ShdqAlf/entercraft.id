@@ -1,0 +1,209 @@
+---
+// QualityChecklist.astro (Jasa Website Company Profile)
+
+const checklistItems = [
+  "Lulus uji responsivitas di minimal 10 ukuran layar",
+  "Optimasi ukuran gambar & format Next-Gen (WebP)",
+  "Lulus Google PageSpeed Insights (Skor 90+)",
+  "Uji coba form kontak & notifikasi email",
+  "Pemasangan Google Analytics & Tag Manager",
+  "Pemasangan Meta Pixel / TikTok Pixel (Opsional)",
+  "Optimasi Meta Title & Description semua halaman",
+  "Pembuatan file robots.txt & XML Sitemap",
+  "Keamanan SSL/HTTPS aktif",
+  "Kompresi file CSS & JavaScript (Minification)",
+  "Uji kompabilitas lintas browser (Chrome, Safari, dll)",
+  "Uji coba CMS dan penyerahan dokumentasi admin"
+];
+---
+
+<section class="qa-section" id="qa">
+  <div class="qa-container">
+    <div class="qa-layout">
+      
+      <div class="qa-content animate-fade-scroll" style="animation-delay: 100ms;">
+        <div class="header-eyebrow">
+          <span class="eyebrow-dot">●</span> QUALITY ASSURANCE
+        </div>
+        <h2 class="header-title">Checklist Kualitas Sebelum Website Dirilis</h2>
+        <p class="header-intro">
+          Setiap website yang kami buat harus melewati proses Quality Assurance (QA) yang ketat. Kami tidak akan melakukan serah terima jika checklist ini belum terpenuhi seluruhnya.
+        </p>
+      </div>
+
+      <div class="qa-checklist animate-fade-scroll" style="animation-delay: 250ms;">
+        <ul class="checklist-grid">
+          {checklistItems.map(item => (
+            <li class="check-item">
+              <div class="check-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .qa-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .qa-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .qa-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .qa-checklist {
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+  }
+
+  .checklist-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  .check-icon {
+    width: 20px;
+    height: 20px;
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .qa-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .qa-checklist {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .check-item {
+    color: #334155;
+  }
+
+  @media (max-width: 991px) {
+    .qa-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .qa-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 32px;
+    }
+
+    .checklist-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .qa-checklist {
+      padding: 24px;
+    }
+  }
+</style>

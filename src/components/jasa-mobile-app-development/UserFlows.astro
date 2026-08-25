@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Onboarding singkat', description: 'Bantu pengguna memahami nilai aplikasi dan menyelesaikan registrasi tanpa langkah yang tidak perlu.', meta: 'FIRST USE' },
+	{ title: 'Alur utama yang jelas', description: 'Setiap aksi penting, dari pencarian hingga checkout atau pengiriman laporan, dirancang dengan navigasi yang mudah dipahami.', meta: 'CORE FLOW' },
+	{ title: 'Status selalu terlihat', description: 'Tampilkan progres pesanan, tugas, atau approval secara real-time agar pengguna tahu langkah berikutnya.', meta: 'VISIBILITY' }
+];
+---
+<FeatureSection id="user-flows" eyebrow="USER EXPERIENCE" title="Alur Pengguna yang Terasa Natural" intro="Kami memetakan perjalanan pengguna sebelum menulis kode agar setiap layar punya tujuan yang jelas." items={items} />

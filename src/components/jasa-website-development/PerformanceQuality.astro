@@ -1,0 +1,248 @@
+---
+// PerformanceQuality.astro (Jasa Website Development)
+
+const qualities = [
+  {
+    title: "Responsive Layout",
+    description: "Tampilan website disesuaikan secara dinamis agar terlihat sempurna baik di smartphone, tablet, maupun layar desktop lebar.",
+    icon: "smartphone"
+  },
+  {
+    title: "High Performance",
+    description: "Optimasi aset gambar, kompresi file CSS/JS, dan caching server untuk kecepatan pemuatan data yang optimal.",
+    icon: "zap"
+  },
+  {
+    title: "Robust Security",
+    description: "Perlindungan data menggunakan SSL/HTTPS, validasi input berlapis (XSS/CSRF), serta otorisasi otentikasi yang ketat.",
+    icon: "lock"
+  },
+  {
+    title: "Code Maintainability",
+    description: "Struktur proyek ditulis menggunakan kaidah clean code yang terorganisir agar mudah dipahami developer lain bila diperlukan.",
+    icon: "code"
+  },
+  {
+    title: "Architecture Scalability",
+    description: "Rancangan basis data dan framework yang diposisikan untuk siap ditambahkan fitur-fitur kompleks di masa depan.",
+    icon: "trending-up"
+  },
+  {
+    title: "Complete Testing",
+    description: "Pengujian kualitas secara manual maupun otomatis mencakup functional test, integration test, dan usability check.",
+    icon: "check-circle"
+  }
+];
+---
+
+<section class="pq-section" id="quality">
+  <div class="pq-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> PERFORMANCE & QUALITY
+      </div>
+      <h2 class="header-title">Website yang Tidak Hanya Berfungsi, tetapi Siap Digunakan</h2>
+      <p class="header-intro">
+        Kami memastikan website custom yang kami bangun tidak hanya bebas bug, namun juga andal dalam performa, aman dari ancaman, dan siap untuk diskalakan.
+      </p>
+    </div>
+
+    <div class="pq-grid">
+      {qualities.map((item, index) => (
+        <div class="pq-card animate-fade-scroll" style={`animation-delay: ${150 + (index * 50)}ms;`}>
+          <div class="pq-icon">
+            {item.icon === 'smartphone' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>}
+            {item.icon === 'zap' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>}
+            {item.icon === 'lock' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>}
+            {item.icon === 'code' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>}
+            {item.icon === 'trending-up' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>}
+            {item.icon === 'check-circle' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>}
+          </div>
+          <h3 class="pq-title">{item.title}</h3>
+          <p class="pq-desc">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .pq-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .pq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 auto;
+    max-width: 650px;
+  }
+
+  .pq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .pq-card {
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px 24px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pq-card:hover {
+    border-color: var(--accent-blue);
+    background: rgba(57, 132, 255, 0.03);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .pq-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .pq-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+  }
+
+  .pq-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .pq-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .pq-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+  }
+
+  :global(html[data-theme="light"]) .pq-card:hover {
+    border-color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .pq-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .pq-desc {
+    color: #64748B;
+  }
+
+  @media (max-width: 991px) {
+    .pq-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .pq-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+
+    .pq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

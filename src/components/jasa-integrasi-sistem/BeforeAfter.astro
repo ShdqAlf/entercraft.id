@@ -1,0 +1,516 @@
+---
+// BeforeAfter.astro (Jasa Integrasi Sistem)
+---
+
+<section class="before-after-section">
+  <div class="ba-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Dari Sistem yang Terpisah Menjadi Ekosistem yang Saling Terhubung</h2>
+      <p class="header-intro">
+        Mengurangi proses pemindahan data manual yang tidak perlu.
+      </p>
+    </div>
+
+    <div class="ba-wrapper">
+      
+      <!-- BEFORE -->
+      <div class="ba-card before animate-fade-scroll" style="animation-delay: 200ms;">
+        <div class="card-header">
+          <span class="badge red">BEFORE</span>
+          <h3>Data Terpisah & Manual</h3>
+        </div>
+        
+        <div class="visual-area">
+          <div class="flow-linear">
+            <div class="node">Website</div>
+            <div class="arrow down">↓</div>
+            <div class="node human">Admin (Download CSV)</div>
+            <div class="arrow down">↓</div>
+            <div class="node">Excel</div>
+            <div class="arrow down">↓</div>
+            <div class="node">CRM</div>
+            <div class="arrow down">↓</div>
+            <div class="node human">Admin (Data Entry)</div>
+            <div class="arrow down">↓</div>
+            <div class="node">ERP</div>
+          </div>
+        </div>
+
+        <ul class="label-list">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Manual Handover
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Double Entry
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Delayed Update
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            Higher Risk of Inconsistency
+          </li>
+        </ul>
+      </div>
+
+      <!-- AFTER -->
+      <div class="ba-card after highlight animate-fade-scroll" style="animation-delay: 300ms;">
+        <div class="card-header">
+          <span class="badge green">AFTER</span>
+          <h3>Ekosistem Terintegrasi</h3>
+        </div>
+        
+        <div class="visual-area">
+          <div class="flow-hub">
+            <div class="node source">Website</div>
+            <div class="arrow right">→</div>
+            
+            <div class="center-hub">
+              <div class="node integration">Integration Layer</div>
+              
+              <!-- Branches out from Integration Layer -->
+              <div class="branches">
+                <div class="branch">
+                  <div class="line-connector top"></div>
+                  <div class="node dest">CRM</div>
+                </div>
+                <div class="branch">
+                  <div class="line-connector straight"></div>
+                  <div class="node dest">ERP</div>
+                </div>
+                <div class="branch">
+                  <div class="line-connector bottom-1"></div>
+                  <div class="node dest">Database</div>
+                </div>
+                <div class="branch">
+                  <div class="line-connector bottom-2"></div>
+                  <div class="node dest">Notification</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <ul class="label-list positive">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Connected Systems
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Structured Data Flow
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Less Repetitive Input
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Better Visibility
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .before-after-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .ba-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--accent-blue);
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .ba-wrapper {
+    display: flex;
+    gap: 32px;
+    align-items: stretch;
+  }
+
+  .ba-card {
+    flex: 1;
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .ba-card.highlight {
+    background-color: rgba(16, 185, 129, 0.03); /* subtle green */
+    border-color: rgba(16, 185, 129, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-header {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .badge.red {
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  .badge.green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .card-header h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  /* Visual Area Styles */
+  .visual-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 20px 0;
+  }
+
+  .node {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 13px;
+    color: #E2E8F0;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .node.human {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #FCA5A5;
+    border-style: dashed;
+  }
+
+  .node.integration {
+    background: rgba(57, 132, 255, 0.1);
+    border: 2px solid var(--accent-blue);
+    color: #FFFFFF;
+    font-weight: bold;
+    padding: 14px 20px;
+  }
+
+  .node.source {
+    border-left: 3px solid #10B981;
+  }
+
+  .node.dest {
+    border-right: 3px solid #8B5CF6;
+    min-width: 100px;
+  }
+
+  .arrow {
+    color: #64748B;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  /* Before Flow (Linear) */
+  .flow-linear {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* After Flow (Hub) */
+  .flow-hub {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .center-hub {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .branches {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 40px;
+  }
+
+  .branch {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .line-connector {
+    position: absolute;
+    right: 100%;
+    border: 1px solid #475569;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .line-connector.top {
+    width: 20px;
+    height: 38px;
+    top: 50%;
+    border-bottom: 0;
+    border-top: 1px solid #475569;
+    border-radius: 6px 0 0 0;
+  }
+
+  .line-connector.straight {
+    width: 20px;
+    height: 1px;
+    top: 50%;
+    background: #475569;
+    border: none;
+  }
+
+  .line-connector.bottom-1 {
+    width: 20px;
+    height: 38px;
+    bottom: 50%;
+    border-top: 0;
+    border-bottom: 1px solid #475569;
+    border-radius: 0 0 0 6px;
+  }
+
+  .line-connector.bottom-2 {
+    width: 20px;
+    height: 92px;
+    bottom: 50%;
+    border-top: 0;
+    border-bottom: 1px solid #475569;
+    border-radius: 0 0 0 6px;
+  }
+
+
+  /* Label List */
+  .label-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 24px;
+  }
+
+  .label-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #94A3B8;
+  }
+
+  .label-list svg {
+    color: #EF4444;
+    flex-shrink: 0;
+  }
+
+  .label-list.positive svg {
+    color: #10B981;
+  }
+
+  .label-list.positive li {
+    color: #E2E8F0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .before-after-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .ba-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .ba-card.highlight {
+    background-color: #FFFFFF;
+    border-color: #10B981;
+    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.15);
+  }
+  
+  :global(html[data-theme="light"]) .card-header h3 {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .node {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .node.human {
+    background: rgba(239, 68, 68, 0.05);
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #DC2626;
+  }
+
+  :global(html[data-theme="light"]) .node.integration {
+    background: #FFFFFF;
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .line-connector {
+    border-color: #94A3B8;
+  }
+  
+  :global(html[data-theme="light"]) .line-connector.straight {
+    background: #94A3B8;
+  }
+  
+  :global(html[data-theme="light"]) .label-list {
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .label-list li {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .label-list.positive li {
+    color: #0F172A;
+  }
+
+  @media (max-width: 991px) {
+    .ba-wrapper {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .before-after-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 28px;
+    }
+    
+    .flow-hub {
+      flex-direction: column;
+    }
+    
+    .arrow.right {
+      transform: rotate(90deg);
+      margin: 10px 0;
+    }
+
+    .center-hub {
+      flex-direction: column;
+    }
+
+    .branches {
+      margin-left: 0;
+      margin-top: 40px;
+      align-items: center;
+    }
+    
+    .branch {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Change connectors to vertical layout on mobile */
+    .line-connector {
+      display: none; /* simplifies the diagram for mobile */
+    }
+    
+    .node.dest {
+      width: 150px;
+      margin-bottom: 8px;
+    }
+  }
+</style>

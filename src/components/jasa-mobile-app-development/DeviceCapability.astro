@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Kamera dan barcode', description: 'Percepat input data dengan pemindaian barang, dokumen, atau bukti pekerjaan langsung dari kamera.', meta: 'CAPTURE' },
+	{ title: 'GPS dan geolocation', description: 'Pantau lokasi, rute, dan kehadiran tim lapangan dengan data yang akurat dan kontekstual.', meta: 'LOCATION' },
+	{ title: 'Biometrik perangkat', description: 'Tambahkan Face ID atau fingerprint untuk akses yang cepat tanpa mengorbankan keamanan.', meta: 'SECURITY' }
+];
+---
+<FeatureSection eyebrow="DEVICE NATIVE" title="Memanfaatkan Kemampuan Perangkat" intro="Aplikasi memanfaatkan hardware secara tepat untuk membuat pekerjaan lebih cepat dan pengalaman lebih personal." items={items} />

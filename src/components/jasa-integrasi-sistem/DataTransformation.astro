@@ -1,0 +1,349 @@
+---
+// DataTransformation.astro (Jasa Integrasi Sistem)
+---
+
+<section class="transformation-section">
+  <div class="transformation-container">
+    
+    <div class="transformation-content animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Mengatasi Perbedaan "Bahasa" Antar Sistem</h2>
+      <p class="header-intro">
+        Sangat wajar jika Sistem A dan Sistem B memiliki struktur data, penamaan kolom, atau format tanggal yang berbeda.
+      </p>
+      <p class="header-intro">
+        Kami membangun <strong>Transformation Layer</strong> di tengah-tengah untuk "menerjemahkan" data dari sistem sumber menjadi format yang tepat sesuai permintaan sistem tujuan. Tidak ada lagi error karena format data yang tidak cocok.
+      </p>
+      
+      <ul class="feature-list">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Field Mapping (Mencocokkan nama kolom)
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Data Type Conversion (String to Integer, dll)
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Data Formatting (Format tanggal, mata uang)
+        </li>
+      </ul>
+    </div>
+
+    <div class="transformation-visual animate-fade-scroll" style="animation-delay: 300ms;">
+      
+      <!-- System A Payload -->
+      <div class="code-block source">
+        <div class="code-header">
+          <span>Website Payload (JSON)</span>
+        </div>
+        <pre><code>&#123;
+  "full_name": "Budi Santoso",
+  "phone_number": "081234567890",
+  "order_date": "2023-10-25"
+      &#125;</code></pre>
+      </div>
+
+      <!-- Transformation Process -->
+      <div class="transform-process">
+        <div class="process-line"></div>
+        <div class="process-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-9 5 18 2-9h5"></path></svg>
+        </div>
+        <div class="process-label">Data Transformation</div>
+        <div class="process-line"></div>
+      </div>
+
+      <!-- System B Payload -->
+      <div class="code-block dest">
+        <div class="code-header">
+          <span>ERP Required Format (JSON)</span>
+        </div>
+        <pre><code>&#123;
+  "FirstName": "Budi",
+  "LastName": "Santoso",
+  "Mobile": "+6281234567890",
+  "OrderDate": "25/10/2023"
+      &#125;</code></pre>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .transformation-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .transformation-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .transformation-content {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 24px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    margin: 0 0 16px 0;
+  }
+
+  .header-intro strong {
+    color: #FFFFFF;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #E2E8F0;
+  }
+
+  .feature-list svg {
+    color: var(--accent-blue);
+    flex-shrink: 0;
+  }
+
+  /* Visual Styles */
+  .transformation-visual {
+    flex: 1.2;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 20px;
+    background: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 40px;
+  }
+
+  .code-block {
+    flex: 1;
+    background: #0F172A;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  .code-header {
+    background: #1E293B;
+    padding: 10px 16px;
+    border-bottom: 1px solid #334155;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .code-block.source .code-header {
+    color: #10B981;
+    border-top: 2px solid #10B981;
+  }
+
+  .code-block.dest .code-header {
+    color: #8B5CF6;
+    border-top: 2px solid #8B5CF6;
+  }
+
+  .code-block pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+  }
+
+  .code-block code {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #E2E8F0;
+  }
+
+  /* Highlight specific changes (just styling visually with text colors within the pre logic isn't easily done dynamically without spans, but we can assume syntax highlighting via raw text is enough. We'll add some color manually if needed, but plain is okay for conceptual). */
+
+  .transform-process {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .process-line {
+    width: 2px;
+    flex: 1;
+    background: repeating-linear-gradient(to bottom, #475569 0, #475569 4px, transparent 4px, transparent 8px);
+  }
+
+  .process-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(57, 132, 255, 0.1);
+    border: 1px solid rgba(57, 132, 255, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-blue);
+    margin: 16px 0 8px 0;
+  }
+
+  .process-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    margin: 16px 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .transformation-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro strong {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .feature-list li {
+    color: #334155;
+  }
+
+  :global(html[data-theme="light"]) .transformation-visual {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .code-block {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .code-header {
+    background: #F1F5F9;
+    border-bottom-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .code-block code {
+    color: #1E293B;
+  }
+  
+  :global(html[data-theme="light"]) .process-line {
+    background: repeating-linear-gradient(to bottom, #94A3B8 0, #94A3B8 4px, transparent 4px, transparent 8px);
+  }
+
+  @media (max-width: 991px) {
+    .transformation-container {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .transformation-content {
+      max-width: 100%;
+      text-align: center;
+    }
+    .feature-list {
+      align-items: center;
+    }
+    .transformation-visual {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .transformation-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .transformation-visual {
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    .transform-process {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .process-line {
+      height: 2px;
+      width: auto;
+      background: repeating-linear-gradient(to right, #475569 0, #475569 4px, transparent 4px, transparent 8px);
+    }
+    
+    .process-label {
+      writing-mode: horizontal-tb;
+      transform: none;
+      margin: 0 16px;
+    }
+
+    .process-icon {
+      margin: 0 8px;
+    }
+  }
+</style>

@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Data terlindungi', description: 'Terapkan secure storage, enkripsi saat transit, dan prinsip least privilege pada setiap akses data.', meta: 'SECURITY' },
+	{ title: 'Tetap bekerja saat offline', description: 'Simpan data penting secara lokal dan sinkronkan kembali secara aman ketika koneksi tersedia.', meta: 'OFFLINE MODE' },
+	{ title: 'Sinkronisasi yang terukur', description: 'Kelola konflik dan status sinkronisasi agar pengguna selalu tahu apakah datanya sudah tersimpan.', meta: 'SYNC' }
+];
+---
+<FeatureSection eyebrow="RESILIENCE" title="Aman, Stabil, dan Siap di Lapangan" intro="Aplikasi tetap dapat diandalkan ketika koneksi tidak sempurna dan data bisnis membutuhkan perlindungan serius." items={items} />

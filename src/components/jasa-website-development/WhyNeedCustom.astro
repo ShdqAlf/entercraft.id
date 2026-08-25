@@ -1,0 +1,243 @@
+---
+// WhyNeedCustom.astro (Jasa Website Development)
+
+const conditions = [
+  {
+    title: "Membutuhkan Fitur Khusus",
+    description: "Kebutuhan bisnis Anda sangat spesifik dan tidak dapat diakomodasi oleh plugin template yang ada di pasaran.",
+    icon: "sparkles"
+  },
+  {
+    title: "Membutuhkan User Login",
+    description: "Sistem web Anda membutuhkan manajemen data pengguna, role akses bertingkat, dan dashboard personalisasi.",
+    icon: "user-check"
+  },
+  {
+    title: "Membutuhkan Workflow",
+    description: "Website perlu memproses data secara bertahap mengikuti persetujuan (approval) atau alur birokrasi internal.",
+    icon: "git-merge"
+  },
+  {
+    title: "Membutuhkan Integrasi",
+    description: "Aplikasi web harus terhubung dengan database perusahaan, sistem pergudangan, logistik, maupun payment gateway.",
+    icon: "link"
+  },
+  {
+    title: "Pengembangan Lanjutan",
+    description: "Website dipersiapkan sebagai pondasi awal produk digital Anda yang siap diperluas dan ditambahkan skalanya kelak.",
+    icon: "trending-up"
+  }
+];
+---
+
+<section class="need-custom-section" id="need-custom">
+  <div class="nc-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> WHEN TO CUSTOM
+      </div>
+      <h2 class="header-title">Kapan Anda Membutuhkan Custom Website Development?</h2>
+      <p class="header-intro">
+        Tidak semua website membutuhkan kustomisasi tinggi. Berikut adalah kondisi di mana custom development menjadi keputusan bisnis yang tepat.
+      </p>
+    </div>
+
+    <div class="nc-grid">
+      {conditions.map((item, index) => (
+        <div class="nc-card animate-fade-scroll" style={`animation-delay: ${150 + (index * 100)}ms;`}>
+          <div class="nc-icon">
+            {item.icon === 'sparkles' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>}
+            {item.icon === 'user-check' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>}
+            {item.icon === 'git-merge' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M6 21V9a9 9 0 0 0 9 9"></path></svg>}
+            {item.icon === 'link' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>}
+            {item.icon === 'trending-up' && <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>}
+          </div>
+          <h3 class="nc-title">{item.title}</h3>
+          <p class="nc-desc">{item.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .need-custom-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .nc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 auto;
+    max-width: 650px;
+  }
+
+  .nc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* Span the last 2 items across columns on desktop if needed, or keep 3x3 wrap */
+  .nc-card {
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px 24px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nc-card:hover {
+    border-color: var(--accent-blue);
+    background: rgba(57, 132, 255, 0.03);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .nc-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .nc-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+  }
+
+  .nc-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .need-custom-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .nc-card {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+  }
+
+  :global(html[data-theme="light"]) .nc-card:hover {
+    border-color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .nc-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .nc-desc {
+    color: #64748B;
+  }
+
+  @media (max-width: 991px) {
+    .nc-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .need-custom-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 30px;
+    }
+
+    .nc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

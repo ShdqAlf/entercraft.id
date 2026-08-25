@@ -1,0 +1,11 @@
+---
+import FeatureSection from './FeatureSection.astro';
+
+const items = [
+	{ title: 'Aplikasi pelanggan', description: 'Bangun kanal digital untuk pemesanan, loyalty, pembayaran, dan layanan mandiri yang mudah digunakan.', meta: 'B2C' },
+	{ title: 'Aplikasi karyawan', description: 'Bekali tim lapangan dengan akses tugas, absensi, laporan, dan approval tanpa harus kembali ke kantor.', meta: 'B2E' },
+	{ title: 'Satu fondasi data', description: 'Keduanya dapat terhubung ke backend yang sama sehingga data pelanggan dan operasional tetap sinkron.', meta: 'TERINTEGRASI' }
+];
+---
+
+<FeatureSection id="customer-vs-employee" eyebrow="MODEL APLIKASI" title="Untuk Pelanggan atau Tim Internal" intro="Kami membantu memilih model aplikasi yang paling sesuai dengan tujuan bisnis dan karakter pengguna Anda." items={items} />

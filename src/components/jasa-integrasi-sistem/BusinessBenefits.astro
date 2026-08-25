@@ -1,0 +1,220 @@
+---
+// BusinessBenefits.astro (Jasa Integrasi Sistem)
+
+const benefits = [
+  {
+    title: "Menyelamatkan Investasi Software Anda",
+    description: "Tidak perlu membuang ERP atau CRM mahal yang sudah berjalan hanya karena sulit saling terhubung. Kami menyambungkan apa yang sudah ada, sehingga investasi lama Anda tetap berharga.",
+    icon: "save"
+  },
+  {
+    title: "Single Source of Truth",
+    description: "Semua departemen melihat data yang konsisten. Tidak ada lagi perdebatan karena data di tim Sales berbeda dengan data di tim Finance.",
+    icon: "target"
+  },
+  {
+    title: "Efisiensi Biaya Operasional",
+    description: "Menghilangkan jam kerja yang terbuang sia-sia untuk memindahkan data (copy-paste) antar aplikasi, sehingga tim bisa fokus pada tugas strategis.",
+    icon: "trending-down"
+  },
+  {
+    title: "Skalabilitas Bisnis Tanpa Hambatan",
+    description: "Saat bisnis tumbuh dan Anda butuh software baru (WMS, HRIS), software tersebut bisa langsung dicolokkan ke ekosistem yang sudah ada tanpa merusak proses bisnis.",
+    icon: "maximize-2"
+  }
+];
+---
+
+<section class="benefits-section">
+  <div class="benefits-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Mengapa Investasi pada Integrasi Sistem Sangat Penting?</h2>
+      <p class="header-intro">
+        Sistem yang terhubung bukan hanya tentang teknologi, tetapi tentang menciptakan aliran kerja yang mulus dan dapat diandalkan oleh seluruh elemen perusahaan.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      {benefits.map((benefit, index) => (
+        <div class="benefit-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="benefit-icon">
+            {benefit.icon === 'save' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>}
+            {benefit.icon === 'target' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>}
+            {benefit.icon === 'trending-down' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>}
+            {benefit.icon === 'maximize-2' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>}
+          </div>
+          <div class="benefit-content">
+            <h3>{benefit.title}</h3>
+            <p>{benefit.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .benefits-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .benefits-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 750px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .benefit-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .benefit-content h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .benefit-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #94A3B8;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .benefits-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .benefit-card {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .benefit-card:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(html[data-theme="light"]) .benefit-icon {
+    background: #ECFDF5;
+    color: #059669;
+  }
+
+  :global(html[data-theme="light"]) .benefit-content h3 {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .benefit-content p {
+    color: #64748B;
+  }
+
+  @media (max-width: 991px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .benefits-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .benefit-card {
+      padding: 24px;
+    }
+  }
+</style>

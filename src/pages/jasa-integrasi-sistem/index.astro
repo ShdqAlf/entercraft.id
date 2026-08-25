@@ -1,0 +1,264 @@
+---
+// src/pages/jasa-integrasi-sistem/index.astro
+import BaseHead from '../../components/BaseHead.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+// Specific components for System Integration
+import Hero from '../../components/jasa-integrasi-sistem/Hero.astro';
+import Problem from '../../components/jasa-integrasi-sistem/Problem.astro';
+import BeforeAfter from '../../components/jasa-integrasi-sistem/BeforeAfter.astro';
+import WhatWeIntegrate from '../../components/jasa-integrasi-sistem/WhatWeIntegrate.astro';
+import ConnectionMethods from '../../components/jasa-integrasi-sistem/ConnectionMethods.astro';
+import UseCases from '../../components/jasa-integrasi-sistem/UseCases.astro';
+import Architecture from '../../components/jasa-integrasi-sistem/Architecture.astro';
+import DataTransformation from '../../components/jasa-integrasi-sistem/DataTransformation.astro';
+import ErrorHandling from '../../components/jasa-integrasi-sistem/ErrorHandling.astro';
+import Security from '../../components/jasa-integrasi-sistem/Security.astro';
+import IntegrationVsAutomation from '../../components/jasa-integrasi-sistem/IntegrationVsAutomation.astro';
+import TechStack from '../../components/jasa-integrasi-sistem/TechStack.astro';
+import BusinessBenefits from '../../components/jasa-integrasi-sistem/BusinessBenefits.astro';
+import IndustryUseCases from '../../components/jasa-integrasi-sistem/IndustryUseCases.astro';
+import Portfolio from '../../components/jasa-integrasi-sistem/Portfolio.astro';
+
+// Reused global components
+import WhyChoose from '../../components/WhyChoose.astro';
+import HowWeWork from '../../components/HowWeWork.astro';
+import Faq from '../../components/Faq.astro';
+import FinalCta from '../../components/FinalCta.astro';
+
+import { SITE_TITLE } from '../../consts';
+
+const whyChooseData = [
+  {
+    id: "01",
+    title: "Business First",
+    description: "Kami memahami kebutuhan proses dan data Anda sebelum menentukan pendekatan teknis integrasi.",
+    label: "BUSINESS FIRST"
+  },
+  {
+    id: "02",
+    title: "System-Aware",
+    description: "Kami selalu mempertimbangkan arsitektur, ketersediaan API, dan keterbatasan dari sistem existing Anda.",
+    label: "SYSTEM-AWARE"
+  },
+  {
+    id: "03",
+    title: "Custom Integration",
+    description: "Pendekatan disesuaikan dengan kebutuhan, bukan memaksakan satu connector atau metode untuk semua kondisi.",
+    label: "CUSTOM"
+  },
+  {
+    id: "04",
+    title: "Structured Data Flow",
+    description: "Data mapping, validation, dan transformation sangat diperhatikan dalam integration design kami.",
+    label: "STRUCTURED"
+  },
+  {
+    id: "05",
+    title: "Error Handling",
+    description: "Workflow memperhitungkan berbagai failure scenario (kegagalan sistem/jaringan) dan setup monitoring yang relevan.",
+    label: "RELIABILITY"
+  },
+  {
+    id: "06",
+    title: "End-to-End",
+    description: "Layanan mencakup audit, architecture design, implementation, testing, deployment, hingga support.",
+    label: "END-TO-END"
+  }
+];
+
+const howWeWorkData = [
+  {
+    num: "01",
+    label: "AUDIT",
+    title: "Audit",
+    description: "Memahami sistem existing, sumber data (source), tujuan data (destination), ketersediaan API, akses database, dan constraints bisnis.",
+    focus: "DISCOVERY"
+  },
+  {
+    num: "02",
+    label: "MAP",
+    title: "Map",
+    description: "Memetakan data source, destination, trigger events, serta kebutuhan sinkronisasi (real-time vs batch) secara terperinci.",
+    focus: "MAPPING"
+  },
+  {
+    num: "03",
+    label: "DESIGN",
+    title: "Design",
+    description: "Menentukan architecture, metode authentication, aturan transformasi data (mapping), business logic, error handling, dan monitoring.",
+    focus: "ARCHITECTURE"
+  },
+  {
+    num: "04",
+    label: "INTEGRATE",
+    title: "Integrate",
+    description: "Mengimplementasikan koneksi API, webhook, integrasi database, atau middleware (connector) sesuai rancangan teknis yang disepakati.",
+    focus: "DEVELOPMENT"
+  },
+  {
+    num: "05",
+    label: "TEST",
+    title: "Test",
+    description: "Menguji seluruh aliran data (data flow), sistem validasi, penanganan error (failure scenarios), dan batas edge cases.",
+    focus: "QUALITY ASSURANCE"
+  },
+  {
+    num: "06",
+    label: "MONITOR",
+    title: "Monitor",
+    description: "Memantau behaviour integrasi saat berjalan (live), memeriksa error logs, dan melakukan penyesuaian untuk menjaga stabilitas.",
+    focus: "MAINTENANCE"
+  }
+];
+
+const faqData = [
+  {
+    id: "01",
+    question: "Apa itu integrasi sistem?",
+    answer: "Integrasi sistem adalah proses menghubungkan berbagai perangkat lunak, database, dan aplikasi bisnis (seperti Website, CRM, atau ERP) agar mereka bisa saling berkomunikasi dan bertukar data tanpa campur tangan manusia."
+  },
+  {
+    id: "02",
+    question: "Apa bedanya integrasi sistem dengan workflow automation?",
+    answer: "Integrasi Sistem berfokus pada pembuatan jalur komunikasi antar sistem agar dapat bertukar data (misalnya: menghubungkan Website ke CRM). Sedangkan Workflow Automation berfokus pada pengotomatisasian langkah-langkah kerja di antara sistem dan tim tersebut (misalnya: Lead baru masuk -> kualifikasi otomatis -> tugaskan ke sales -> kirim notifikasi)."
+  },
+  {
+    id: "03",
+    question: "Sistem apa saja yang dapat diintegrasikan?",
+    answer: "Kami dapat mengintegrasikan hampir seluruh sistem yang menyediakan API, dukungan webhook, atau setidaknya akses ke database. Ini mencakup Website custom, Mobile App, berbagai sistem CRM dan ERP, Payment Gateway, hingga platform komunikasi seperti WhatsApp."
+  },
+  {
+    id: "04",
+    question: "Apakah website bisa diintegrasikan dengan CRM?",
+    answer: "Sangat bisa. Ini adalah salah satu skenario paling umum, di mana data dari form kontak atau transaksi di website langsung diteruskan (sync) ke dalam CRM agar tim sales bisa segera mem-follow-up."
+  },
+  {
+    id: "05",
+    question: "Apakah CRM bisa diintegrasikan dengan ERP?",
+    answer: "Ya, kami bisa mengatur aliran data dua arah (atau satu arah) antara sistem front-end seperti CRM dengan sistem back-end seperti ERP, memastikan data pelanggan dan status finansial selalu tersinkronisasi."
+  },
+  {
+    id: "06",
+    question: "Apakah bisa menggunakan REST API?",
+    answer: "Tentu. REST API adalah standar industri saat ini dan merupakan salah satu metode utama yang kami gunakan untuk membuat sistem yang terpisah dapat saling bertukar instruksi dan informasi dengan aman."
+  },
+  {
+    id: "07",
+    question: "Apakah bisa menggunakan webhook?",
+    answer: "Ya, kami memanfaatkan webhook untuk pengiriman data real-time berbasis kejadian (event-driven). Misalnya, saat ada pesanan masuk, sistem langsung 'mengetuk' ERP Anda tanpa harus menunggu polling berulang kali."
+  },
+  {
+    id: "08",
+    question: "Bagaimana jika struktur data antar sistem berbeda?",
+    answer: "Sangat wajar jika sistem A dan B memiliki penamaan atau format tabel yang berbeda (misalnya 'Contact_Name' vs 'FullName'). Kami membangun layer 'Transformation' di tengah untuk menerjemahkan (mapping) dan menyesuaikan data sebelum diteruskan."
+  },
+  {
+    id: "09",
+    question: "Apakah integrasi bisa berjalan secara real-time?",
+    answer: "Bisa, selama sistem sumber mendukung pengiriman data langsung (seperti webhook atau event streaming). Jika sistem sumber hanya mengizinkan tarikan data (pull), kami bisa mengaturnya ke penjadwalan yang sangat rapat (near real-time) atau sesuai kebutuhan bisnis."
+  },
+  {
+    id: "10",
+    question: "Bagaimana jika API atau sistem tujuan mengalami error?",
+    answer: "Kami tidak hanya memindahkan data, tetapi membangun 'Error Handling'. Jika sistem tujuan (misal: ERP) sedang down, integrasi akan menahan data dalam antrean (queue), dan mencoba mengirimkannya lagi nanti (retry), sambil mencatat error di log dan mengirim peringatan ke tim IT Anda."
+  },
+  {
+    id: "11",
+    question: "Apakah sistem existing harus diganti?",
+    answer: "Tidak. Filosofi integrasi sistem justru ada untuk menyelamatkan investasi software Anda saat ini. Kami menghubungkan apa yang sudah Anda gunakan tanpa harus merombak atau membuang sistem existing."
+  },
+  {
+    id: "12",
+    question: "Apakah bisa mengintegrasikan database?",
+    answer: "Ya. Jika API tidak tersedia namun Anda memiliki akses ke server, kami bisa merancang sinkronisasi langsung di level database (MySQL, PostgreSQL, dll) selama struktur dan skemanya dipahami."
+  },
+  {
+    id: "13",
+    question: "Apakah bisa menggunakan n8n atau automation platform lain?",
+    answer: "Bisa. Penggunaan platform seperti n8n atau Make kami tawarkan sebagai middleware (Integration Layer) jika itu terbukti dapat mempercepat proses development, mudah untuk maintain, dan sejalan dengan standar keamanan data perusahaan Anda."
+  },
+  {
+    id: "14",
+    question: "Berapa lama proses implementasi integrasi?",
+    answer: "Ini sangat bergantung pada kerumitan dan kerapian sistem Anda (kualitas API). Integrasi simpel (contoh: Form Web ke CRM) bisa diselesaikan dalam hitungan hari atau minggu, sementara sinkronisasi bi-directional antar ERP dan WMS bisa memakan waktu berbulan-bulan."
+  },
+  {
+    id: "15",
+    question: "Berapa biaya jasa integrasi sistem?",
+    answer: "Biayanya tidak bisa disamaratakan karena kompleksitas tiap project berbeda-beda (menyangkut jumlah endpoint, struktur data, kebutuhan keamanan). Setelah proses konsultasi dan Assessment Awal, kami akan memberikan estimasi angka yang spesifik dan transparan."
+  }
+];
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <BaseHead 
+      title="Jasa Integrasi Sistem untuk Bisnis | Entercraft" 
+      description="Jasa Integrasi Sistem untuk menghubungkan website, CRM, ERP, database, API, payment, dan aplikasi bisnis agar data dapat bertukar secara terstruktur." 
+    />
+  </head>
+  <body>
+    <Navbar />
+    
+    <main>
+      <Hero />
+      <Problem />
+      <BeforeAfter />
+      <WhatWeIntegrate />
+      <ConnectionMethods />
+      <UseCases />
+      <Architecture />
+      <DataTransformation />
+      <ErrorHandling />
+      <Security />
+      <IntegrationVsAutomation />
+      <TechStack />
+      <BusinessBenefits />
+      <IndustryUseCases />
+      <Portfolio />
+      
+      <WhyChoose 
+        eyebrow="MENGAPA KAMI"
+        titleHtml="Mengapa Memilih Entercraft<br/>untuk Integrasi Sistem?"
+        intro="Kami tidak hanya menyambungkan 'kabel API'. Kami merancang arsitektur data flow yang kuat, aman, dan toleran terhadap kegagalan (fault-tolerant) agar data operasional Anda terjamin."
+        valueProps={whyChooseData}
+      />
+      
+      <HowWeWork 
+        eyebrow="WORKFLOW KAMI"
+        titleHtml="Langkah Implementasi<br/>Integrasi Sistem"
+        intro="Metodologi terstruktur kami dirancang untuk memastikan perpindahan data yang aman tanpa merusak integritas informasi yang ada di sistem utama Anda."
+        stepsData={howWeWorkData}
+      />
+      
+      <Faq 
+        eyebrow="FAQ INTEGRASI SISTEM"
+        titleHtml="Frequently Asked Questions"
+        intro="Temukan jawaban atas pertanyaan teknis maupun strategis seputar bagaimana menghubungkan sistem operasional perusahaan Anda."
+        faqData={faqData}
+      />
+      
+      <FinalCta 
+        eyebrow="HUBUNGKAN SISTEM ANDA"
+        titleHtml="Hubungkan Sistem yang Selama Ini Berjalan Terpisah"
+        intro="Ceritakan sistem yang Anda gunakan, data yang perlu dipertukarkan, dan proses yang masih melibatkan input manual. Kami akan membantu memetakan pendekatan integrasi yang sesuai."
+        primaryText="Konsultasikan Integrasi Sistem Anda"
+        primaryHref="/contact/"
+        secondaryText="Hubungi Entercraft"
+        secondaryHref="/contact/"
+      />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+</style>

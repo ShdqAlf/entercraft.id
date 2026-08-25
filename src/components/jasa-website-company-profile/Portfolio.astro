@@ -1,0 +1,330 @@
+---
+// Portfolio.astro (Jasa Website Company Profile)
+
+const portfolioItems = [
+  {
+    title: "Global Manufacturing Corp",
+    category: "Manufacturing",
+    description: "Website B2B untuk pabrik manufaktur dengan katalog produk kompleks dan multi-language support.",
+    imgPlaceholder: "Manufaktur"
+  },
+  {
+    title: "Prime Distribution Network",
+    category: "Distributor & Trading",
+    description: "Portal company profile yang terintegrasi dengan form pendaftaran agen dan pelacakan principle brand.",
+    imgPlaceholder: "Distributor"
+  },
+  {
+    title: "Apex Consultant Group",
+    category: "Professional Services",
+    description: "Website konsultan profesional yang difokuskan pada kredibilitas tim ahli dan studi kasus klien.",
+    imgPlaceholder: "Konsultan"
+  }
+];
+---
+
+<section class="portfolio-section" id="portfolio">
+  <div class="portfolio-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> SELECTED CONCEPTS
+      </div>
+      <h2 class="header-title">Website yang Kami Kembangkan</h2>
+      <p class="header-intro">
+        Intip beberapa konsep dan arsitektur website B2B yang kami rancang untuk berbagai skala industri.
+      </p>
+    </div>
+
+    <div class="portfolio-grid">
+      {portfolioItems.map((item, index) => (
+        <div class="portfolio-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="portfolio-image">
+            <div class="mockup-frame">
+              <div class="frame-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="img-placeholder">
+              <span class="placeholder-text">{item.imgPlaceholder}</span>
+            </div>
+          </div>
+          <div class="portfolio-content">
+            <span class="portfolio-category">{item.category}</span>
+            <h3 class="portfolio-title">{item.title}</h3>
+            <p class="portfolio-desc">{item.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="portfolio-action animate-fade-scroll" style="animation-delay: 500ms;">
+      <a href="/contact/" class="cta-primary">Mulai Project Website Anda</a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .portfolio-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .portfolio-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .portfolio-card {
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+
+  .portfolio-image {
+    width: 100%;
+    height: 220px;
+    background: #1e293b;
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mockup-frame {
+    height: 30px;
+    background: #0f172a;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+  }
+
+  .frame-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .frame-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #475569;
+  }
+  .frame-dots span:nth-child(1) { background: #ef4444; }
+  .frame-dots span:nth-child(2) { background: #f59e0b; }
+  .frame-dots span:nth-child(3) { background: #10b981; }
+
+  .img-placeholder {
+    width: 100%;
+    height: calc(100% - 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(45deg, #1e293b, #1e293b 10px, #1a2333 10px, #1a2333 20px);
+  }
+
+  .placeholder-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .portfolio-content {
+    padding: 24px;
+  }
+
+  .portfolio-category {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 12px;
+    display: block;
+    letter-spacing: 1px;
+  }
+
+  .portfolio-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .portfolio-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .portfolio-action {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-blue);
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    height: 48px;
+    padding: 0 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .cta-primary:hover {
+    background: var(--accent-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(57, 132, 255, 0.35);
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .portfolio-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .portfolio-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .portfolio-desc {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .portfolio-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .portfolio-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .portfolio-image {
+    background: #e2e8f0;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .mockup-frame {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+
+  :global(html[data-theme="light"]) .img-placeholder {
+    background: repeating-linear-gradient(45deg, #e2e8f0, #e2e8f0 10px, #cbd5e1 10px, #cbd5e1 20px);
+  }
+
+  :global(html[data-theme="light"]) .placeholder-text {
+    color: rgba(15, 23, 42, 0.1);
+  }
+
+  @media (max-width: 991px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .portfolio-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 32px;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

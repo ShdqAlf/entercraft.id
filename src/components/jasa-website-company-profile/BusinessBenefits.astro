@@ -1,0 +1,240 @@
+---
+// BusinessBenefits.astro (Jasa Website Company Profile)
+
+const benefits = [
+  {
+    role: "Untuk Tim Sales",
+    title: "Mesin Presentasi 24/7",
+    description: "Tim sales tidak perlu lagi menjelaskan hal yang sama berulang kali. Mereka cukup memberikan link website yang sudah berisi informasi lengkap, portofolio, dan studi kasus, sehingga diskusi bisa langsung fokus pada closing.",
+    icon: "briefcase"
+  },
+  {
+    role: "Untuk Tim Marketing",
+    title: "Pusat Konversi Campaign",
+    description: "Website menjadi landing page utama dari semua iklan (Ads) maupun campaign media sosial. Membantu mengkonversi traffic menjadi leads atau jadwal meeting secara otomatis.",
+    icon: "pie-chart"
+  },
+  {
+    role: "Untuk Manajemen / HR",
+    title: "Meningkatkan Employer Branding",
+    description: "Kandidat talenta terbaik akan mencari tahu tentang perusahaan Anda sebelum melamar. Website yang profesional akan memberikan kesan kredibel dan menarik bagi calon karyawan berkualitas.",
+    icon: "users"
+  }
+];
+---
+
+<section class="benefits-section" id="benefits">
+  <div class="benefits-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> BUSINESS IMPACT
+      </div>
+      <h2 class="header-title">Investasi yang Menguntungkan Seluruh Departemen</h2>
+      <p class="header-intro">
+        Sebuah website company profile yang baik bukan sekadar pengeluaran IT, melainkan aset digital yang mempermudah pekerjaan berbagai divisi dalam perusahaan Anda.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      {benefits.map((benefit, index) => (
+        <div class="benefit-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="benefit-header">
+            <div class="benefit-icon">
+              {benefit.icon === 'briefcase' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>}
+              {benefit.icon === 'pie-chart' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>}
+              {benefit.icon === 'users' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
+            </div>
+            <span class="benefit-role">{benefit.role}</span>
+          </div>
+          <h3 class="benefit-title">{benefit.title}</h3>
+          <p class="benefit-desc">{benefit.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .benefits-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 auto 20px auto;
+    max-width: 700px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .benefit-card {
+    background: rgba(13, 20, 34, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    background: rgba(57, 132, 255, 0.05);
+    border-color: rgba(57, 132, 255, 0.3);
+    transform: translateY(-5px);
+  }
+
+  .benefit-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .benefit-role {
+    font-family: 'Inter', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .benefit-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+
+  .benefit-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .benefits-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .benefit-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .benefit-desc {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .benefit-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .benefit-card:hover {
+    border-color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .benefit-role {
+    color: #475569;
+  }
+
+  @media (max-width: 991px) {
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .benefits-section {
+      padding: 60px 16px;
+    }
+    
+    .header-title {
+      font-size: 32px;
+    }
+  }
+</style>

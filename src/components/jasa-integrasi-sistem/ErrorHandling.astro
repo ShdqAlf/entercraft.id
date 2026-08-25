@@ -1,0 +1,378 @@
+---
+// ErrorHandling.astro (Jasa Integrasi Sistem)
+---
+
+<section class="error-handling-section">
+  <div class="eh-container">
+    
+    <div class="eh-visual animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="server-rack">
+        <div class="server-unit">
+          <span class="dot green"></span>
+          <span>Integration Layer</span>
+        </div>
+        
+        <div class="queue-lines">
+          <div class="q-item"></div>
+          <div class="q-item"></div>
+          <div class="q-item highlight"></div>
+          <div class="q-item"></div>
+        </div>
+
+        <div class="server-unit offline">
+          <span class="dot red blink"></span>
+          <span>Destination System (Offline)</span>
+        </div>
+      </div>
+
+      <div class="alert-toast">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <span>Alert: Connection timeout. Data queued for retry.</span>
+      </div>
+    </div>
+
+    <div class="eh-content animate-fade-scroll" style="animation-delay: 300ms;">
+      <h2 class="header-title">Bagaimana Jika Sistem Tujuan Sedang Down?</h2>
+      <p class="header-intro">
+        Sistem mati, API berubah, atau koneksi terputus adalah hal yang wajar dalam dunia IT. Integrasi yang kami bangun dirancang untuk menahan (fault-tolerant) masalah tersebut agar data Anda tidak hilang.
+      </p>
+      
+      <div class="eh-features">
+        <div class="feature-item">
+          <div class="f-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.13 15.57a9 9 0 1 0 3.87-11.57l-3.23 2.62"></path></svg>
+          </div>
+          <div class="f-text">
+            <h3>Retry Mechanism</h3>
+            <p>Jika sistem tujuan gagal merespons, layer integrasi akan mencoba mengirim ulang data secara berkala (misal: setelah 1 menit, 5 menit, 1 jam) sebelum menyatakan gagal.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="f-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <div class="f-text">
+            <h3>Message Queueing</h3>
+            <p>Saat sistem sedang maintenance, data yang masuk tidak ditolak, melainkan ditampung sementara di antrean (queue) untuk diproses saat sistem hidup kembali.</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <div class="f-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          </div>
+          <div class="f-text">
+            <h3>Failure Alerts</h3>
+            <p>Jika pengiriman tetap gagal setelah batas maksimum retry, sistem akan mengirimkan notifikasi (via email atau Slack) kepada tim IT agar dapat segera ditangani secara manual.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .error-handling-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .eh-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .eh-visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .server-rack {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .server-unit {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 16px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #E2E8F0;
+  }
+
+  .server-unit.offline {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.05);
+    color: #FCA5A5;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .dot.green { background: #10B981; box-shadow: 0 0 10px #10B981; }
+  .dot.red { background: #EF4444; box-shadow: 0 0 10px #EF4444; }
+
+  .blink {
+    animation: blinker 1s linear infinite;
+  }
+  @keyframes blinker {
+    50% { opacity: 0.2; }
+  }
+
+  .queue-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  .q-item {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .q-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .q-item.highlight::after {
+    background: var(--accent-blue);
+    animation: loadProgress 2s infinite ease-in-out;
+  }
+
+  @keyframes loadProgress {
+    0% { left: -30%; }
+    50% { left: 40%; width: 20%; }
+    100% { left: 100%; }
+  }
+
+  .alert-toast {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background: rgba(239, 68, 68, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid #FCA5A5;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #FFFFFF;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+    animation: floatUpDown 4s ease-in-out infinite;
+  }
+
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .eh-content {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    margin: 0 0 40px 0;
+  }
+
+  .eh-features {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .f-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-blue);
+    flex-shrink: 0;
+  }
+
+  .f-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .f-text h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .f-text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #94A3B8;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .error-handling-section {
+    background-color: #FFFFFF;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .server-rack {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .server-unit {
+    background: #FFFFFF;
+    border-color: #CBD5E1;
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .server-unit.offline {
+    background: #FEF2F2;
+    border-color: #FECACA;
+    color: #991B1B;
+  }
+  
+  :global(html[data-theme="light"]) .q-item {
+    background: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .q-item::after {
+    background: #94A3B8;
+  }
+
+  :global(html[data-theme="light"]) .alert-toast {
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2);
+  }
+
+  :global(html[data-theme="light"]) .f-icon {
+    background: #F1F5F9;
+  }
+
+  :global(html[data-theme="light"]) .f-text h3 {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .f-text p {
+    color: #64748B;
+  }
+
+  @media (max-width: 991px) {
+    .eh-container {
+      flex-direction: column;
+      gap: 60px;
+    }
+    .eh-visual {
+      order: 2;
+    }
+    .eh-content {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .error-handling-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .alert-toast {
+      bottom: -10px;
+      right: 0;
+      width: calc(100% - 32px);
+      justify-content: center;
+    }
+  }
+</style>

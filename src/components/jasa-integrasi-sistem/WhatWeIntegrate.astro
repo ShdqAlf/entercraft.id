@@ -1,0 +1,257 @@
+---
+// WhatWeIntegrate.astro (Jasa Integrasi Sistem)
+
+const systems = [
+  {
+    title: "CRM (Customer Relationship Mgmt)",
+    description: "Sinkronisasi data pelanggan (customer), prospek (lead), status tiket, dan aktivitas sales antar platform.",
+    icon: "users"
+  },
+  {
+    title: "ERP (Enterprise Resource Planning)",
+    description: "Pertukaran data order, tagihan finansial, status inventory, hingga proses pengadaan (procurement).",
+    icon: "briefcase"
+  },
+  {
+    title: "Website & Web Application",
+    description: "Menghubungkan data pendaftaran user, transaksi belanja, pengisian form kontak, hingga konten CMS.",
+    icon: "globe"
+  },
+  {
+    title: "Mobile Application",
+    description: "Sinkronisasi data user dari aplikasi ke backend operasional, riwayat transaksi, hingga manajemen aktivitas.",
+    icon: "smartphone"
+  },
+  {
+    title: "Database (SQL / NoSQL)",
+    description: "Integrasi tingkat basis data seperti MySQL, PostgreSQL, dan database lainnya selama akses tersedia.",
+    icon: "database"
+  },
+  {
+    title: "Payment Gateway",
+    description: "Penerusan status transaksi (sukses/gagal/pending) ke sistem order secara instan (webhook).",
+    icon: "credit-card"
+  },
+  {
+    title: "Communication & Notification",
+    description: "Otomatisasi pengiriman pesan via WhatsApp API, Email gateway, SMS, dan platform notifikasi lain.",
+    icon: "message-square"
+  },
+  {
+    title: "External API & Third-Party",
+    description: "Menghubungkan software atau layanan pihak ketiga yang menyediakan endpoint REST API publik.",
+    icon: "link"
+  }
+];
+---
+
+<section class="wwi-section" id="what-we-integrate">
+  <div class="wwi-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Sistem Apa Saja yang Dapat Dihubungkan?</h2>
+      <p class="header-intro">
+        Kami merancang solusi konektivitas untuk berbagai lapisan aplikasi bisnis. Jika perangkat lunak Anda memiliki API, webhook, atau akses database yang mumpuni, kami dapat mengintegrasikannya.
+      </p>
+    </div>
+
+    <div class="wwi-grid">
+      {systems.map((sys, index) => (
+        <div class="wwi-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 50)}ms;`}>
+          <div class="wwi-icon">
+            {sys.icon === 'users' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
+            {sys.icon === 'briefcase' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>}
+            {sys.icon === 'globe' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>}
+            {sys.icon === 'smartphone' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>}
+            {sys.icon === 'database' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>}
+            {sys.icon === 'credit-card' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>}
+            {sys.icon === 'message-square' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>}
+            {sys.icon === 'link' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>}
+          </div>
+          <div class="wwi-content">
+            <h3 class="wwi-title">{sys.title}</h3>
+            <p class="wwi-description">{sys.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .wwi-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .wwi-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #94A3B8;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .wwi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .wwi-card {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .wwi-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue);
+    background-color: rgba(57, 132, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .wwi-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .wwi-card:hover .wwi-icon {
+    background: rgba(57, 132, 255, 0.15);
+    transform: scale(1.05);
+  }
+
+  .wwi-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+  }
+
+  .wwi-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .wwi-section {
+    background-color: #F8FAFC;
+  }
+  
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .wwi-card {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  }
+  
+  :global(html[data-theme="light"]) .wwi-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  :global(html[data-theme="light"]) .wwi-icon {
+    background: #F1F5F9;
+  }
+  
+  :global(html[data-theme="light"]) .wwi-card:hover .wwi-icon {
+    background: rgba(57, 132, 255, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .wwi-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .wwi-description {
+    color: #64748B;
+  }
+
+  @media (max-width: 1024px) {
+    .wwi-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wwi-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .wwi-section {
+      padding: 80px 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wwi-grid {
+      grid-template-columns: 1fr;
+    }
+    .header-title {
+      font-size: 32px;
+    }
+  }
+</style>

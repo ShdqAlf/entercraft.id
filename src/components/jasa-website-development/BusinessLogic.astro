@@ -1,0 +1,539 @@
+---
+// BusinessLogic.astro (Jasa Website Development)
+---
+
+<section class="logic-section" id="logic">
+  <div class="logic-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <div class="header-eyebrow">
+        <span class="eyebrow-dot">●</span> BUSINESS LOGIC
+      </div>
+      <h2 class="header-title">Website yang Mengikuti Proses Bisnis Anda</h2>
+      <p class="header-intro">
+        Website custom tidak hanya sekadar menerima input formulir. Kami membangun sistem yang memproses data secara cerdas berdasarkan aturan dan alur kerja (workflow) unik bisnis Anda.
+      </p>
+    </div>
+
+    <!-- Interactive Logic Diagram (Booking Workflow) -->
+    <div class="diagram-wrapper animate-fade-scroll" style="animation-delay: 250ms;">
+      <div class="diagram-header">
+        <span class="diagram-badge">CONTOH: BOOKING WORKFLOW</span>
+      </div>
+      
+      <div class="flow-chart">
+        
+        <!-- Step 1: User -->
+        <div class="flow-node">
+          <div class="node-circle icon-blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <span class="node-title">User</span>
+          <span class="node-subtitle">Pilih Layanan & Jadwal</span>
+        </div>
+
+        <div class="flow-connector horizontal">
+          <div class="connector-line"></div>
+          <div class="connector-arrow"></div>
+        </div>
+
+        <!-- Step 2: Submit Booking -->
+        <div class="flow-node">
+          <div class="node-circle icon-cyan">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <span class="node-title">Submit Booking</span>
+          <span class="node-subtitle">Validasi Input Form</span>
+        </div>
+
+        <div class="flow-connector horizontal">
+          <div class="connector-line"></div>
+          <div class="connector-arrow"></div>
+        </div>
+
+        <!-- Step 3: Check Availability -->
+        <div class="flow-node">
+          <div class="node-circle icon-purple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          </div>
+          <span class="node-title">Check Availability</span>
+          <span class="node-subtitle">Verifikasi Server & DB</span>
+        </div>
+
+        <div class="flow-connector horizontal">
+          <div class="connector-line"></div>
+          <div class="connector-arrow"></div>
+        </div>
+
+        <!-- Step 4: Decision Node (Available?) -->
+        <div class="flow-node decision-node">
+          <div class="node-diamond">
+            <span class="decision-text">Available?</span>
+          </div>
+          
+          <!-- Yes path -->
+          <div class="decision-path path-yes">
+            <span class="path-label text-green">YES</span>
+            <div class="path-connector"></div>
+            
+            <div class="sub-flow">
+              <div class="flow-node mini">
+                <div class="node-circle mini icon-green">✓</div>
+                <span class="node-title small">Create Booking & Database Update</span>
+              </div>
+              <div class="flow-node mini">
+                <div class="node-circle mini icon-green">✓</div>
+                <span class="node-title small">Send Notification (WA/Email)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- No path -->
+          <div class="decision-path path-no">
+            <span class="path-label text-red">NO</span>
+            <div class="path-connector"></div>
+            
+            <div class="sub-flow">
+              <div class="flow-node mini">
+                <div class="node-circle mini icon-red">✗</div>
+                <span class="node-title small">Show Alternative Schedule</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .logic-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .logic-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .eyebrow-dot {
+    color: var(--accent-blue);
+    font-size: 8px;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  /* Diagram Styles */
+  .diagram-wrapper {
+    background: rgba(13, 20, 34, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+
+  .diagram-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .diagram-badge {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-blue);
+    background: rgba(57, 132, 255, 0.08);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 99px;
+    letter-spacing: 1px;
+  }
+
+  .flow-chart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+  }
+
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    min-width: 120px;
+  }
+
+  .node-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    transition: all 0.2s ease;
+  }
+
+  .node-circle.icon-blue { background: rgba(57, 132, 255, 0.1); color: var(--accent-blue); border: 1px solid rgba(57, 132, 255, 0.2); }
+  .node-circle.icon-cyan { background: rgba(57, 213, 232, 0.1); color: #39d5e8; border: 1px solid rgba(57, 213, 232, 0.2); }
+  .node-circle.icon-purple { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2); }
+
+  .node-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+  }
+
+  .node-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #6682B3;
+  }
+
+  /* Connectors */
+  .flow-connector.horizontal {
+    flex-grow: 1;
+    height: 2px;
+    position: relative;
+    margin: 0 10px;
+    min-width: 40px;
+  }
+
+  .connector-line {
+    width: 100%;
+    height: 2px;
+    background: var(--border-color);
+  }
+
+  .connector-arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-top: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+  }
+
+  /* Decision Node (Diamond) */
+  .decision-node {
+    position: relative;
+    min-width: 130px;
+  }
+
+  .node-diamond {
+    width: 100px;
+    height: 100px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    transform: rotate(45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  }
+
+  .decision-text {
+    transform: rotate(-45deg);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: #8b5cf6;
+    text-align: center;
+  }
+
+  /* Decision Paths */
+  .decision-path {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .path-label {
+    font-family: 'Inter', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .text-green { color: #10b981; }
+  .text-red { color: #ef4444; }
+
+  /* Yes Path goes Right / Down-Right */
+  .path-yes {
+    top: -90px;
+    left: 110px;
+    width: 260px;
+    align-items: flex-start;
+  }
+
+  .path-yes .path-connector {
+    width: 40px;
+    height: 2px;
+    background: #10b981;
+    margin: 8px 0;
+    position: relative;
+  }
+
+  .path-yes .path-connector::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 5px;
+    height: 5px;
+    border-top: 2px solid #10b981;
+    border-right: 2px solid #10b981;
+  }
+
+  /* No Path goes Down */
+  .path-no {
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+  }
+
+  .path-no .path-connector {
+    width: 2px;
+    height: 30px;
+    background: #ef4444;
+    margin: 8px 0;
+    position: relative;
+  }
+
+  .path-no .path-connector::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(135deg);
+    width: 5px;
+    height: 5px;
+    border-top: 2px solid #ef4444;
+    border-right: 2px solid #ef4444;
+  }
+
+  .sub-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .flow-node.mini {
+    flex-direction: row;
+    align-items: center;
+    background: rgba(13, 20, 34, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 14px;
+    gap: 10px;
+    text-align: left;
+    min-width: unset;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .node-circle.mini {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .node-circle.mini.icon-green { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+  .node-circle.mini.icon-red { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+
+  .node-title.small {
+    font-size: 12px;
+    margin-bottom: 0;
+    color: #cbd5e1;
+  }
+
+  /* Animations */
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme */
+  :global(html[data-theme="light"]) .logic-section {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .header-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .header-intro {
+    color: #475569;
+  }
+
+  :global(html[data-theme="light"]) .diagram-wrapper {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  }
+
+  :global(html[data-theme="light"]) .node-title {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .node-subtitle {
+    color: #64748B;
+  }
+
+  :global(html[data-theme="light"]) .flow-node.mini {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .node-title.small {
+    color: #334155;
+  }
+
+  /* Responsive styling */
+  @media (max-width: 991px) {
+    .flow-chart {
+      flex-direction: column;
+      gap: 20px;
+      padding-bottom: 240px; /* space for absolute positioned paths */
+    }
+
+    .flow-connector.horizontal {
+      display: none;
+    }
+
+    /* Set up a simple vertical flow structure */
+    .flow-node::after {
+      content: '↓';
+      font-size: 20px;
+      color: var(--border-color);
+      margin-top: 10px;
+    }
+    
+    .decision-node::after {
+      display: none;
+    }
+
+    .path-yes {
+      left: 140px;
+      top: -10px;
+      width: 220px;
+    }
+
+    .path-no {
+      bottom: -220px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 575px) {
+    .diagram-wrapper {
+      padding: 20px;
+    }
+
+    .flow-chart {
+      padding-bottom: 260px;
+    }
+
+    .path-yes {
+      left: 0;
+      top: 130px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .path-yes .path-connector {
+      width: 2px;
+      height: 20px;
+      margin: 8px 0;
+    }
+
+    .path-yes .path-connector::after {
+      transform: rotate(90deg);
+      bottom: 0;
+      top: unset;
+      left: 50%;
+      right: unset;
+    }
+
+    .path-no {
+      bottom: -150px;
+    }
+  }
+</style>

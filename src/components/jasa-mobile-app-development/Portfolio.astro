@@ -1,0 +1,9 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Aplikasi kurir dan delivery', description: 'Menghubungkan dispatcher, kurir, dan pelanggan melalui status pengiriman, GPS, dan bukti serah terima.', meta: 'LOGISTICS' },
+	{ title: 'Aplikasi loyalty retail', description: 'Menyatukan katalog, poin, voucher, dan promo personal dalam satu pengalaman pelanggan.', meta: 'RETAIL' },
+	{ title: 'Aplikasi operasional internal', description: 'Mendukung absensi, inspeksi, laporan, dan approval untuk tim yang bekerja lintas lokasi.', meta: 'ENTERPRISE' }
+];
+---
+<FeatureSection id="portfolio" eyebrow="USE CASES" title="Solusi yang Dibangun untuk Situasi Nyata" intro="Setiap proyek dimulai dari proses bisnis dan target hasil yang ingin dicapai, lalu diterjemahkan menjadi pengalaman mobile yang konkret." items={items} />

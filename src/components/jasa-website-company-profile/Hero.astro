@@ -1,0 +1,737 @@
+---
+// Hero.astro (Jasa Website Company Profile)
+---
+
+<section class="hero-section">
+  <!-- Subtle Radial Glows -->
+  <div class="hero-glow"></div>
+  <div class="hero-glow-secondary"></div>
+
+  <!-- Background Grid -->
+  <div class="hero-bg-decorations" aria-hidden="true"></div>
+
+  <div class="hero-container">
+    <div class="hero-content">
+      <!-- Tech Badge -->
+      <div class="hero-badge animate-fade-in" style="animation-delay: 100ms;">
+        <svg class="badge-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="currentColor"></path>
+        </svg>
+        <span class="badge-text">JASA WEBSITE COMPANY PROFILE</span>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="hero-heading animate-fade-in" style="animation-delay: 250ms;">
+        Jasa Website Company Profile Profesional untuk Membangun <span class="text-blue">Kredibilitas Bisnis</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="hero-description animate-fade-in" style="animation-delay: 400ms;">
+        Tampilkan profil, layanan, keunggulan, dan pengalaman perusahaan melalui website yang profesional, responsive, cepat, dan dirancang untuk membantu calon customer memahami bisnis Anda.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-actions animate-fade-in" style="animation-delay: 550ms;">
+        <a href="/contact/" class="cta-primary">Konsultasikan Website Anda</a>
+        <a href="#portfolio" class="cta-secondary">Lihat Portfolio</a>
+      </div>
+    </div>
+    
+    <!-- Hero Visual / Mockups -->
+    <div class="hero-visual animate-fade-in" style="animation-delay: 700ms;">
+      <!-- Floating Badges -->
+      <div class="floating-badge badge-1">
+        <span class="badge-dot dot-green"></span> Responsive
+      </div>
+      <div class="floating-badge badge-2">
+        <span class="badge-dot dot-blue"></span> SEO Ready
+      </div>
+      <div class="floating-badge badge-3">
+        <span class="badge-dot dot-purple"></span> Fast Performance
+      </div>
+
+      <!-- Desktop Mockup -->
+      <div class="desktop-mockup">
+        <div class="mockup-header">
+          <div class="dots"><span></span><span></span><span></span></div>
+          <div class="address-bar">entercraft.id</div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-nav">
+            <div class="m-logo"></div>
+            <div class="m-links"><span></span><span></span><span></span></div>
+          </div>
+          <div class="mockup-hero">
+            <div class="m-title"></div>
+            <div class="m-subtitle"></div>
+            <div class="m-btn"></div>
+          </div>
+          <div class="mockup-section">
+            <div class="m-card"></div>
+            <div class="m-card"></div>
+            <div class="m-card"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Mockup -->
+      <div class="mobile-mockup">
+        <div class="mobile-header"></div>
+        <div class="mobile-body">
+          <div class="mb-nav">
+            <div class="mb-logo"></div>
+            <div class="mb-menu"></div>
+          </div>
+          <div class="mb-hero">
+            <div class="mb-title"></div>
+            <div class="mb-title short"></div>
+            <div class="mb-btn"></div>
+          </div>
+          <div class="mb-cards">
+            <div class="mb-card"></div>
+            <div class="mb-card"></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero Section Wrapper */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    overflow: hidden;
+    padding: 100px 24px 60px 24px;
+    box-sizing: border-box;
+  }
+
+  .hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(57, 132, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 132, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Radial Glow Backgrounds */
+  .hero-glow {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 850px;
+    height: 850px;
+    background:
+      radial-gradient(
+        circle at 50% 45%,
+        rgba(57, 132, 255, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 20% 75%,
+        rgba(57, 213, 232, 0.04) 0%,
+        transparent 40%
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-glow-secondary {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Main Centered Container */
+  .hero-container {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Tech Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(7, 16, 32, 0.5);
+    border: 1px solid #25436c;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(4px);
+    box-sizing: border-box;
+  }
+
+  .badge-icon {
+    color: var(--accent-blue);
+    flex-shrink: 0;
+  }
+
+  .badge-text {
+    font-family: "Inter", monospace;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--accent-blue);
+    letter-spacing: 1.5px;
+    line-height: 1;
+  }
+
+  /* Large Typography Heading */
+  .hero-heading {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: var(--text-primary);
+    margin: 0 0 20px 0;
+    text-transform: none;
+    text-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
+  }
+
+  .text-blue {
+    color: var(--accent-blue);
+  }
+
+  /* Description */
+  .hero-description {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #6682b3;
+    max-width: 540px;
+    margin: 0 0 35px 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* CTA Buttons */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-blue);
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 0 0 rgba(57, 132, 255, 0);
+  }
+
+  .cta-primary:hover {
+    background: var(--accent-bright);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(57, 132, 255, 0.35);
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid #34415a;
+    color: #ffffff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cta-secondary:hover {
+    background: var(--blue-dark-10);
+    border-color: var(--accent-blue);
+    transform: translateY(-1px);
+  }
+
+  /* Visual Mockups */
+  .hero-visual {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    perspective: 1000px;
+  }
+
+  .desktop-mockup {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 90%;
+    height: 320px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    overflow: hidden;
+    transform: rotateY(-5deg) rotateX(5deg);
+    transition: transform 0.5s ease;
+  }
+
+  .desktop-mockup:hover {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+
+  .mockup-header {
+    height: 30px;
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 12px;
+  }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #475569;
+  }
+
+  .dots span:nth-child(1) { background: #ef4444; }
+  .dots span:nth-child(2) { background: #f59e0b; }
+  .dots span:nth-child(3) { background: #10b981; }
+
+  .address-bar {
+    background: #0f172a;
+    color: #94a3b8;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .mockup-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mockup-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .m-logo {
+    width: 80px;
+    height: 16px;
+    background: #3b82f6;
+    border-radius: 4px;
+  }
+
+  .m-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .m-links span {
+    width: 40px;
+    height: 8px;
+    background: #334155;
+    border-radius: 4px;
+  }
+
+  .mockup-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .m-title {
+    width: 60%;
+    height: 24px;
+    background: #f8fafc;
+    border-radius: 4px;
+  }
+
+  .m-subtitle {
+    width: 40%;
+    height: 12px;
+    background: #94a3b8;
+    border-radius: 4px;
+  }
+
+  .m-btn {
+    width: 120px;
+    height: 32px;
+    background: #3b82f6;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+
+  .mockup-section {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .m-card {
+    flex: 1;
+    height: 80px;
+    background: #1e293b;
+    border-radius: 6px;
+  }
+
+  .mobile-mockup {
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    width: 140px;
+    height: 280px;
+    background: #0f172a;
+    border: 6px solid #334155;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    overflow: hidden;
+    transform: rotateY(10deg) rotateX(5deg) translateY(20px);
+    transition: transform 0.5s ease;
+    z-index: 10;
+  }
+
+  .mobile-mockup:hover {
+    transform: rotateY(0deg) rotateX(0deg) translateY(0);
+  }
+
+  .mobile-header {
+    height: 12px;
+    background: #334155;
+    width: 40px;
+    margin: 0 auto;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  .mobile-body {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mb-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mb-logo {
+    width: 50px;
+    height: 12px;
+    background: #3b82f6;
+    border-radius: 4px;
+  }
+
+  .mb-menu {
+    width: 16px;
+    height: 12px;
+    background: repeating-linear-gradient(to bottom, #94a3b8, #94a3b8 2px, transparent 2px, transparent 4px);
+  }
+
+  .mb-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .mb-title {
+    width: 100%;
+    height: 16px;
+    background: #f8fafc;
+    border-radius: 4px;
+  }
+
+  .mb-title.short {
+    width: 70%;
+  }
+
+  .mb-btn {
+    width: 80px;
+    height: 24px;
+    background: #3b82f6;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  .mb-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mb-card {
+    width: 100%;
+    height: 40px;
+    background: #1e293b;
+    border-radius: 4px;
+  }
+
+  /* Floating Badges */
+  .floating-badge {
+    position: absolute;
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid #334155;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(4px);
+    z-index: 20;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .dot-green { background: #10b981; box-shadow: 0 0 5px #10b981;}
+  .dot-blue { background: #3b82f6; box-shadow: 0 0 5px #3b82f6;}
+  .dot-purple { background: #8b5cf6; box-shadow: 0 0 5px #8b5cf6;}
+
+  .badge-1 {
+    top: 40px;
+    right: -20px;
+    animation: float1 4s ease-in-out infinite;
+  }
+
+  .badge-2 {
+    bottom: 60px;
+    right: 40px;
+    animation: float2 5s ease-in-out infinite;
+  }
+
+  .badge-3 {
+    top: 180px;
+    left: -10px;
+    animation: float3 4.5s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Entrance Animation CSS classes */
+  .animate-fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Adjustments */
+  :global(html[data-theme="light"]) .hero-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .hero-glow {
+    background:
+      radial-gradient(
+        circle at 50% 45%,
+        rgba(57, 132, 255, 0.18) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 20% 75%,
+        rgba(57, 213, 232, 0.12) 0%,
+        transparent 40%
+      );
+  }
+
+  :global(html[data-theme="light"]) .hero-glow-secondary {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  }
+
+  :global(html[data-theme="light"]) .hero-heading {
+    text-shadow: none;
+  }
+  
+  :global(html[data-theme="light"]) .hero-description {
+    text-shadow: none;
+  }
+
+  :global(html[data-theme="light"]) .desktop-mockup,
+  :global(html[data-theme="light"]) .mobile-mockup {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+
+  :global(html[data-theme="light"]) .mockup-header {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+
+  :global(html[data-theme="light"]) .address-bar {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+  }
+
+  :global(html[data-theme="light"]) .m-title,
+  :global(html[data-theme="light"]) .mb-title {
+    background: #0f172a;
+  }
+
+  :global(html[data-theme="light"]) .m-card,
+  :global(html[data-theme="light"]) .mb-card {
+    background: #f1f5f9;
+  }
+
+  :global(html[data-theme="light"]) .floating-badge {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #e2e8f0;
+    color: #0f172a;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  /* Responsive Design styling */
+  @media (max-width: 991px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 60px;
+    }
+    
+    .hero-content {
+      align-items: center;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+    
+    .desktop-mockup {
+      width: 80%;
+      right: 10%;
+    }
+    
+    .mobile-mockup {
+      left: 10%;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .hero-section {
+      padding: 100px 16px 40px 16px;
+    }
+
+    .hero-badge {
+      margin-bottom: 24px;
+    }
+
+    .hero-heading {
+      font-size: 36px;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-description {
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cta-primary,
+    .cta-secondary {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .desktop-mockup {
+      width: 90%;
+      right: 5%;
+      height: 240px;
+    }
+    
+    .mobile-mockup {
+      width: 100px;
+      height: 200px;
+      left: 5%;
+    }
+    
+    .badge-1, .badge-2, .badge-3 {
+      transform: scale(0.8);
+    }
+  }
+</style>

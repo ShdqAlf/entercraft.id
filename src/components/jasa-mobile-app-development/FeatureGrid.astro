@@ -1,0 +1,12 @@
+---
+import FeatureSection from './FeatureSection.astro';
+const items = [
+	{ title: 'Login aman dan fleksibel', description: 'Gunakan email, OTP, atau single sign-on sesuai kebutuhan keamanan dan kebiasaan pengguna.', meta: 'ACCESS' },
+	{ title: 'Dashboard personal', description: 'Ringkas informasi terpenting dalam satu layar yang relevan untuk pelanggan, staf, maupun admin.', meta: 'CONTROL' },
+	{ title: 'Transaksi dan pembayaran', description: 'Siapkan katalog, keranjang, invoice, dan payment gateway untuk pengalaman transaksi yang lancar.', meta: 'COMMERCE' },
+	{ title: 'Pencarian dan filter', description: 'Buat data, produk, dan pekerjaan mudah ditemukan meski jumlahnya terus bertambah.', meta: 'DISCOVERY' },
+	{ title: 'Role dan permission', description: 'Atur akses berdasarkan jabatan, cabang, atau kebutuhan operasional setiap pengguna.', meta: 'GOVERNANCE' },
+	{ title: 'Laporan yang actionable', description: 'Ubah aktivitas aplikasi menjadi insight yang membantu tim mengambil keputusan lebih cepat.', meta: 'INSIGHT' }
+];
+---
+<FeatureSection eyebrow="FITUR INTI" title="Fitur yang Mengikuti Cara Bisnis Anda Bekerja" intro="Setiap fitur dipilih berdasarkan kebutuhan nyata, bukan sekadar menambah daftar menu di aplikasi." items={items} />

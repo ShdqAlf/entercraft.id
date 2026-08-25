@@ -1,0 +1,268 @@
+---
+// WhatWeBuild.astro (Jasa Mobile App Development)
+
+const useCases = [
+  {
+    title: "Customer Loyalty App",
+    description: "Tingkatkan retensi pelanggan dengan aplikasi yang dilengkapi sistem poin, voucher digital, notifikasi promo, dan profil pelanggan yang dipersonalisasi.",
+    icon: "heart"
+  },
+  {
+    title: "Internal Operations App",
+    description: "Permudah staf Anda bekerja dari mana saja dengan sistem absensi GPS, laporan harian, manajemen tugas, dan approval berjenjang via smartphone.",
+    icon: "briefcase"
+  },
+  {
+    title: "E-Commerce & Booking App",
+    description: "Berikan pengalaman belanja atau pemesanan (booking) yang jauh lebih cepat dan mulus dibandingkan website, lengkap dengan integrasi Payment Gateway.",
+    icon: "shopping-cart"
+  },
+  {
+    title: "On-Demand Service App",
+    description: "Platform penghubung penyedia jasa dan pelanggan (seperti ride-hailing atau home services) dengan fitur live tracking dan matching algoritma.",
+    icon: "navigation"
+  },
+  {
+    title: "Field Staff App",
+    description: "Aplikasi khusus teknisi atau kurir dengan fitur scan barcode, mode offline, pengambilan foto bukti kerja, dan navigasi rute.",
+    icon: "map"
+  },
+  {
+    title: "Custom B2B Platform",
+    description: "Aplikasi khusus untuk klien korporat (B2B) memesan inventaris dalam partai besar, mengecek ketersediaan stok, dan mengunduh e-faktur.",
+    icon: "box"
+  }
+];
+---
+
+<section class="wwb-section" id="what-we-build">
+  <div class="wwb-container">
+    
+    <div class="section-header animate-fade-scroll" style="animation-delay: 100ms;">
+      <h2 class="header-title">Aplikasi Seperti Apa yang Bisa Kami Bangun?</h2>
+      <p class="header-intro">
+        Mulai dari aplikasi B2C untuk menjangkau jutaan konsumen hingga aplikasi B2B untuk efisiensi operasional internal. Kami siap mewujudkannya.
+      </p>
+    </div>
+
+    <div class="wwb-grid">
+      {useCases.map((uc, index) => (
+        <div class="wwb-card animate-fade-scroll" style={`animation-delay: ${200 + (index * 100)}ms;`}>
+          <div class="wwb-icon">
+            {uc.icon === 'heart' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>}
+            {uc.icon === 'briefcase' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>}
+            {uc.icon === 'shopping-cart' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>}
+            {uc.icon === 'navigation' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>}
+            {uc.icon === 'map' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>}
+            {uc.icon === 'box' && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>}
+          </div>
+          <h3 class="wwb-title">{uc.title}</h3>
+          <p class="wwb-description">{uc.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="wwb-microcopy animate-fade-scroll" style="animation-delay: 850ms;">
+      <span class="microcopy-icon">i</span>
+      <p class="microcopy-text">Seluruh aplikasi dibangun khusus (custom) sesuai proses bisnis Anda, bukan template.</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .wwb-section {
+    position: relative;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 100px 24px;
+    box-sizing: border-box;
+  }
+
+  .wwb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+  }
+
+  .header-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #7D96C5;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .wwb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .wwb-card {
+    background-color: rgba(10, 22, 44, 0.4);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 32px 24px;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wwb-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-blue);
+    background-color: rgba(7, 16, 32, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .wwb-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .wwb-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+  }
+
+  .wwb-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #7D96C5;
+    margin: 0;
+  }
+
+  .wwb-microcopy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 12px 20px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .microcopy-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(57, 132, 255, 0.1);
+    color: var(--accent-blue);
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .microcopy-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6682B3;
+    margin: 0;
+  }
+
+  .animate-fade-scroll {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Light Theme Specific Adjustments */
+  :global(html[data-theme="light"]) .wwb-section {
+    background-color: #FFFFFF;
+    border-color: #E2E8F0;
+  }
+  
+  :global(html[data-theme="light"]) .header-title,
+  :global(html[data-theme="light"]) .wwb-title {
+    color: #0F172A;
+  }
+  
+  :global(html[data-theme="light"]) .header-intro,
+  :global(html[data-theme="light"]) .wwb-description {
+    color: #475569;
+  }
+  
+  :global(html[data-theme="light"]) .wwb-card {
+    background-color: #F8FAFC;
+    border-color: #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  }
+  
+  :global(html[data-theme="light"]) .wwb-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(html[data-theme="light"]) .wwb-microcopy {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+  }
+
+  :global(html[data-theme="light"]) .microcopy-text {
+    color: #64748B;
+  }
+
+  @media (max-width: 991px) {
+    .wwb-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .wwb-section {
+      padding: 60px 16px;
+    }
+    .header-title {
+      font-size: 30px;
+    }
+    .wwb-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
