@@ -109,6 +109,11 @@
           <label class="consent-control"><input name="consent" type="checkbox" required aria-describedby="consent-error" /><span>Dengan mengirimkan form ini, Anda menyetujui Entercraft.id menghubungi Anda terkait kebutuhan yang disampaikan.</span></label>
           <p class="field-error consent-error" id="consent-error" data-error-for="consent"></p>
 
+          <div class="field-group turnstile-container" style="margin: 14px 0 6px;">
+            <div class="cf-turnstile" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'} data-theme="auto"></div>
+            <p class="field-error turnstile-error" id="turnstile-error" data-error-for="cf-turnstile-response" style="margin-top: 6px;"></p>
+          </div>
+
           <button class="submit-button" type="submit">
             <span class="button-label">Diskusikan Kebutuhan Saya <span aria-hidden="true">→</span></span>
             <span class="button-loading" aria-hidden="true"><span class="spinner"></span> Sending...</span>
@@ -322,6 +327,7 @@
       let firstInvalidName: string | null = null;
       let valid = true;
       for (const field of fields) {
+        if (field.name === 'cf-turnstile-response') continue;
         if (validators[field.name]) touched.add(field.name);
         const message = validateField(field);
         if (message && !firstInvalidName) firstInvalidName = field.name;
@@ -329,21 +335,46 @@
       }
       const invalidField = firstInvalidName ? fields.find((field) => field.name === firstInvalidName) : null;
       if (invalidField && firstInvalidName) { showError(invalidField, validators[firstInvalidName](invalidField)); invalidField.focus(); }
+
+      const turnstileResponse = formElement.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement;
+      const turnstileError = formElement.querySelector('#turnstile-error');
+      if (!turnstileResponse?.value) {
+        if (turnstileError) turnstileError.textContent = 'Silakan selesaikan verifikasi keamanan.';
+        valid = false;
+      } else {
+        if (turnstileError) turnstileError.textContent = '';
+      }
       return valid;
     };
 
     fields.forEach((field) => {
+      if (field.name === 'cf-turnstile-response') return;
       field.addEventListener('blur', () => { touched.add(field.name); validateField(field); });
       field.addEventListener('input', () => { if (field === textarea) updateCount(); if (touched.has(field.name)) validateField(field); });
       field.addEventListener('change', () => { if (touched.has(field.name)) validateField(field); });
     });
     updateCount();
 
-    // Development-safe adapter: replace this function with an API/email provider call later.
-    const submitLead = async (payload: Record<string, string | boolean>) => {
-      await new Promise((resolve) => window.setTimeout(resolve, 700));
-      return payload;
-    };
+const N8N_WEBHOOK_URL =
+  import.meta.env.PUBLIC_N8N_WEBHOOK_URL || 'http://localhost:5678/webhook-test/entercraft-contact';
+
+const submitLead = async (
+  payload: Record<string, string | boolean>
+) => {
+  const response = await fetch(N8N_WEBHOOK_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error('Gagal mengirim data ke n8n');
+  }
+
+  return response.json().catch(() => null);
+};
 
     formElement.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -359,9 +390,11 @@
         await submitLead(payload);
         formCard.querySelector('[data-form-state="form"]')?.setAttribute('hidden', 'true');
         formCard.querySelector('[data-form-state="success"]')?.removeAttribute('hidden');
+        (window as any).turnstile?.reset();
       } catch {
         formCard.querySelector('[data-form-state="form"]')?.setAttribute('hidden', 'true');
         formCard.querySelector('[data-form-state="error"]')?.removeAttribute('hidden');
+        (window as any).turnstile?.reset();
       } finally {
         submitButton.disabled = false;
         submitButton.classList.remove('is-loading');
