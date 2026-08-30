@@ -1,50 +1,54 @@
 ---
 // src/pages/jasa-ai-automation/index.astro
-import BaseHead from '../../components/BaseHead.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
 
 // AI Automation specific components
-import Hero from '../../components/jasa-ai-automation/Hero.astro';
-import Problem from '../../components/jasa-ai-automation/Problem.astro';
-import Solution from '../../components/jasa-ai-automation/Solution.astro';
-import Features from '../../components/jasa-ai-automation/Features.astro';
-import UseCases from '../../components/jasa-ai-automation/UseCases.astro';
-import Integration from '../../components/jasa-ai-automation/Integration.astro';
+import Hero from "../../components/jasa-ai-automation/Hero.astro";
+import Problem from "../../components/jasa-ai-automation/Problem.astro";
+import Solution from "../../components/jasa-ai-automation/Solution.astro";
+import Features from "../../components/jasa-ai-automation/Features.astro";
+import UseCases from "../../components/jasa-ai-automation/UseCases.astro";
+import Integration from "../../components/jasa-ai-automation/Integration.astro";
 
 // Reused global components
-import WhyChoose from '../../components/WhyChoose.astro';
-import HowWeWork from '../../components/HowWeWork.astro';
-import Faq from '../../components/Faq.astro';
-import FinalCta from '../../components/FinalCta.astro';
+import WhyChoose from "../../components/WhyChoose.astro";
+import HowWeWork from "../../components/HowWeWork.astro";
+import Faq from "../../components/Faq.astro";
+import FinalCta from "../../components/FinalCta.astro";
 
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 
 const whyChooseData = [
   {
     id: "01",
     title: "Pendekatan Berbasis Bisnis (Business-First)",
-    description: "Kami tidak sekadar memasang software. Kami mempelajari proses kerja tim Anda, menemukan bottleneck, dan mendesain otomasi yang tepat sasaran.",
-    label: "BUSINESS FIRST"
+    description:
+      "Kami tidak sekadar memasang software. Kami mempelajari proses kerja tim Anda, menemukan bottleneck, dan mendesain otomasi yang tepat sasaran.",
+    label: "BUSINESS FIRST",
   },
   {
     id: "02",
     title: "Integrasi yang Mulus (Seamless Integration)",
-    description: "Sistem yang kami bangun dapat terhubung dengan aplikasi yang sudah Anda gunakan (WhatsApp, CRM, ERP, Google Sheets) tanpa mengganggu operasional.",
-    label: "SEAMLESS INTEGRATION"
+    description:
+      "Sistem yang kami bangun dapat terhubung dengan aplikasi yang sudah Anda gunakan (WhatsApp, CRM, ERP, Google Sheets) tanpa mengganggu operasional.",
+    label: "SEAMLESS INTEGRATION",
   },
   {
     id: "03",
     title: "Pengembangan Menyeluruh (End-to-End)",
-    description: "Mulai dari pemetaan masalah, perancangan workflow, development, hingga maintenance, semua dilakukan dalam satu ekosistem.",
-    label: "END-TO-END"
+    description:
+      "Mulai dari pemetaan masalah, perancangan workflow, development, hingga maintenance, semua dilakukan dalam satu ekosistem.",
+    label: "END-TO-END",
   },
   {
     id: "04",
     title: "Fokus Pada Dampak Nyata (Real Impact)",
-    description: "Tujuan utama kami bukan membuat sistem terlihat canggih, melainkan mengurangi jam kerja manual, menekan biaya, dan mempercepat waktu proses.",
-    label: "REAL IMPACT"
-  }
+    description:
+      "Tujuan utama kami bukan membuat sistem terlihat canggih, melainkan mengurangi jam kerja manual, menekan biaya, dan mempercepat waktu proses.",
+    label: "REAL IMPACT",
+  },
 ];
 
 const howWeWorkData = [
@@ -52,71 +56,83 @@ const howWeWorkData = [
     num: "01",
     label: "AUDIT",
     title: "Audit & Discovery",
-    description: "Membedah alur kerja Anda saat ini untuk menemukan pekerjaan manual mana yang paling memakan waktu dan berpotensi untuk diotomatisasi.",
-    focus: "PROBLEM IDENTIFICATION"
+    description:
+      "Membedah alur kerja Anda saat ini untuk menemukan pekerjaan manual mana yang paling memakan waktu dan berpotensi untuk diotomatisasi.",
+    focus: "PROBLEM IDENTIFICATION",
   },
   {
     num: "02",
     label: "DESIGN",
     title: "Workflow Design",
-    description: "Merancang arsitektur sistem baru, memilih AI dan tools yang paling sesuai, serta memetakan integrasi dengan aplikasi existing.",
-    focus: "SOLUTION STRATEGY"
+    description:
+      "Merancang arsitektur sistem baru, memilih AI dan tools yang paling sesuai, serta memetakan integrasi dengan aplikasi existing.",
+    focus: "SOLUTION STRATEGY",
   },
   {
     num: "03",
     label: "BUILD",
     title: "Development & Integration",
-    description: "Mulai membangun, menghubungkan berbagai API, dan mengkonfigurasi AI model untuk memastikan otomasi berjalan mulus.",
-    focus: "ENGINEERING"
+    description:
+      "Mulai membangun, menghubungkan berbagai API, dan mengkonfigurasi AI model untuk memastikan otomasi berjalan mulus.",
+    focus: "ENGINEERING",
   },
   {
     num: "04",
     label: "TEST",
     title: "Testing & Deployment",
-    description: "Menguji seluruh skenario penggunaan untuk memastikan tidak ada data yang terlewat atau proses yang terputus sebelum Go-Live.",
-    focus: "QUALITY ASSURANCE"
+    description:
+      "Menguji seluruh skenario penggunaan untuk memastikan tidak ada data yang terlewat atau proses yang terputus sebelum Go-Live.",
+    focus: "QUALITY ASSURANCE",
   },
   {
     num: "05",
     label: "MAINTAIN",
     title: "Training & Maintenance",
-    description: "Melatih tim Anda cara mengoperasikan sistem baru dan memberikan dukungan teknis berkelanjutan.",
-    focus: "SUSTAINABILITY"
-  }
+    description:
+      "Melatih tim Anda cara mengoperasikan sistem baru dan memberikan dukungan teknis berkelanjutan.",
+    focus: "SUSTAINABILITY",
+  },
 ];
 
 const faqData = [
   {
     id: "01",
     question: "Apakah automation ini akan menggantikan karyawan saya?",
-    answer: "Tujuan utama AI Automation bukan untuk menggantikan karyawan, melainkan menghilangkan tugas-tugas administratif repetitif sehingga tim Anda bisa fokus pada pekerjaan yang membutuhkan analisa, strategi, dan empati."
+    answer:
+      "Tujuan utama AI Automation bukan untuk menggantikan karyawan, melainkan menghilangkan tugas-tugas administratif repetitif sehingga tim Anda bisa fokus pada pekerjaan yang membutuhkan analisa, strategi, dan empati.",
   },
   {
     id: "02",
     question: "Berapa lama proses implementasinya?",
-    answer: "Bergantung pada kompleksitas alur kerja. Proyek otomasi sederhana bisa memakan waktu 2-4 minggu, sementara perombakan workflow besar dengan integrasi sistem yang banyak membutuhkan waktu 1-3 bulan."
+    answer:
+      "Bergantung pada kompleksitas alur kerja. Proyek otomasi sederhana bisa memakan waktu 2-4 minggu, sementara perombakan workflow besar dengan integrasi sistem yang banyak membutuhkan waktu 1-3 bulan.",
   },
   {
     id: "03",
     question: "Apakah saya perlu berlangganan software baru yang mahal?",
-    answer: "Tidak selalu. Pendekatan kami adalah mengoptimalkan tools yang sudah Anda miliki. Jika diperlukan platform tambahan, kami akan merekomendasikan solusi yang paling hemat biaya dengan ROI tertinggi."
+    answer:
+      "Tidak selalu. Pendekatan kami adalah mengoptimalkan tools yang sudah Anda miliki. Jika diperlukan platform tambahan, kami akan merekomendasikan solusi yang paling hemat biaya dengan ROI tertinggi.",
   },
   {
     id: "04",
     question: "Bagaimana dengan keamanan data bisnis saya?",
-    answer: "Kami menggunakan standar keamanan terbaik, protokol enkripsi, dan API resmi dari platform. Kami juga dapat mendesain sistem agar data sensitif tidak pernah meninggalkan server atau cloud storage Anda."
-  }
+    answer:
+      "Kami menggunakan standar keamanan terbaik, protokol enkripsi, dan API resmi dari platform. Kami juga dapat mendesain sistem agar data sensitif tidak pernah meninggalkan server atau cloud storage Anda.",
+  },
 ];
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`Jasa AI Automation - ${SITE_TITLE}`} description="Ubah pekerjaan manual menjadi alur yang otomatis dengan solusi AI Automation dari Entercraft.id. Hemat waktu, kurangi biaya, dan tingkatkan efisiensi." />
+    <BaseHead
+      title={`Jasa AI Automation - ${SITE_TITLE}`}
+      description="Ubah pekerjaan manual menjadi alur yang otomatis dengan solusi AI Automation dari Entercraft.id. Hemat waktu, kurangi biaya, dan tingkatkan efisiensi."
+    />
   </head>
   <body>
     <Navbar />
-    
+
     <main>
       <Hero />
       <Problem />
@@ -124,29 +140,29 @@ const faqData = [
       <Features />
       <UseCases />
       <Integration />
-      
-      <WhyChoose 
+
+      <WhyChoose
         eyebrow="MENGAPA KAMI"
         titleHtml="Mengapa Entercraft<br/>untuk AI Automation?"
         intro="Kami bukan hanya technology provider. Kami adalah digital partner yang memahami masalah operasional bisnis Anda dan menghadirkan solusi otomasi yang terukur."
         valueProps={whyChooseData}
       />
-      
-      <HowWeWork 
+
+      <HowWeWork
         eyebrow="WORKFLOW KAMI"
         titleHtml="Bagaimana Kami Merancang<br/>Otomasi untuk Anda?"
         intro="Langkah sistematis untuk memastikan transisi operasional yang mulus dari manual ke otomatis, tanpa mengganggu produktivitas harian Anda."
         stepsData={howWeWorkData}
       />
-      
-      <Faq 
+
+      <Faq
         eyebrow="FAQ AI AUTOMATION"
         titleHtml="Pertanyaan Seputar<br/>AI Automation"
         intro="Temukan jawaban atas kekhawatiran umum sebelum Anda mulai beralih ke alur kerja otomatis bersama Entercraft.id."
         faqData={faqData}
       />
-      
-      <FinalCta 
+
+      <FinalCta
         eyebrow="MULAI SEKARANG"
         titleHtml="Siap Menghilangkan Pekerjaan<br/>Manual di Bisnis Anda?"
         intro="Ceritakan alur kerja yang membebani tim Anda hari ini. Mari rancang sistem yang bekerja 24/7 untuk mengembangkan bisnis Anda."

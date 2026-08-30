@@ -64,7 +64,7 @@ const whyChooseData = [
 ];
 
 const faqData = [
-  { id: '01', question: 'Apa itu migrasi database?', answer: 'Migrasi database adalah proses memindahkan data dan struktur database dari environment lama ke environment baru dengan assessment, mapping, migration, validation, dan cutover yang terencana.' },
+  { id: '01', question: 'Apa itu migrasi database?', answer: 'Migrasi database adalah proses memindahkan data dan database environment dari environment lama ke environment baru dengan assessment, mapping, migration, validation, dan cutover yang terencana.' },
   { id: '02', question: 'Apa bedanya migrasi database dengan backup?', answer: 'Backup menyalin data untuk kebutuhan recovery. Migration memindahkan atau menyesuaikan data ke environment tujuan agar dapat digunakan di sana.' },
   { id: '03', question: 'Apa bedanya migrasi database dengan integrasi sistem?', answer: 'Migrasi memindahkan data dari satu environment ke environment lain. Integrasi sistem membuat dua sistem tetap terhubung dan bertukar data. Lihat juga layanan Jasa Integrasi Sistem Entercraft.' , hasLink: true, linkText: 'Lihat Jasa Integrasi Sistem →', linkUrl: '/jasa-integrasi-sistem/' },
   { id: '04', question: 'Database apa saja yang dapat dimigrasikan?', answer: 'Engine dan pendekatan ditentukan setelah melihat source, destination, ukuran data, schema, akses, dan kebutuhan aplikasi. Assessment diperlukan sebelum menentukan scope.' },
@@ -105,6 +105,7 @@ const icon = (name: string) => {
       <section class="migration-hero">
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-wrap">
+          <!-- Left side: Copywriting -->
           <div class="hero-copy reveal">
             <span class="eyebrow"><span class="eyebrow-dot"></span> JASA MIGRASI DATABASE</span>
             <h1>Jasa Migrasi Database untuk Memindahkan Data dengan <span>Proses yang Terstruktur</span></h1>
@@ -115,90 +116,180 @@ const icon = (name: string) => {
             </div>
           </div>
 
-          <div class="migration-visual reveal" aria-label="Alur migrasi dari database lama ke database baru">
-            <div class="db-node source-node"><span class="node-kicker">SOURCE</span><strong>OLD DATABASE</strong><small>Legacy environment</small></div>
-            <div class="flow-arrow"><span class="flow-line"></span><b>DATA</b></div>
-            <div class="migration-core"><span class="node-kicker">CONTROLLED FLOW</span><strong>DATABASE<br />MIGRATION</strong><div class="core-tags"><span>Schema</span><span>Mapping</span><span>Validation</span><span>Cutover</span></div></div>
-            <div class="flow-arrow"><span class="flow-line"></span><b>VALIDATED</b></div>
-            <div class="db-node target-node"><span class="node-kicker">TARGET</span><strong>NEW DATABASE</strong><small>Updated environment</small></div>
+          <!-- Right side: Visual Database Migration Flow -->
+          <div class="migration-visual reveal" aria-label="Alur migrasi dari database lama ke database baru" style="transition-delay: 500ms;">
+            <div class="migration-flow">
+              
+              <!-- Source Database Card -->
+              <div class="flow-layer source-layer">
+                <div class="flow-card">
+                  <div class="card-icon red">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                      <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                    </svg>
+                  </div>
+                  <div class="card-text">
+                    <span class="layer-name">Source (Old Database)</span>
+                    <span class="layer-detail">Legacy MySQL / Old Server</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-arrow"><span class="arrow-dot animate-flow"></span></div>
+
+              <!-- Processing / Conversion Core Card -->
+              <div class="flow-layer core-layer">
+                <div class="flow-card highlight">
+                  <div class="card-icon blue">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                      <circle cx="12" cy="12" r="4"/>
+                    </svg>
+                  </div>
+                  <div class="card-text">
+                    <span class="layer-name">Migration Pipeline</span>
+                    <span class="layer-detail">Schema Mapping & Data Conversion</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-arrow"><span class="arrow-dot animate-flow delay-1"></span></div>
+
+              <!-- Split Process Column (Validation & Cutover) -->
+              <div class="flow-split">
+                
+                <!-- Validation Node -->
+                <div class="split-side">
+                  <div class="flow-card mini">
+                    <div class="card-icon gold">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="card-text">
+                      <span class="layer-name small">Data Validation</span>
+                      <span class="layer-detail small">Row & Integrity Check</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cutover Node -->
+                <div class="split-side">
+                  <div class="flow-card mini">
+                    <div class="card-icon cyan">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="card-text">
+                      <span class="layer-name small">Cutover Readiness</span>
+                      <span class="layer-detail small">Live App Replatforming</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="flow-arrow"><span class="arrow-dot animate-flow delay-2"></span></div>
+
+              <!-- Target Database Card -->
+              <div class="flow-layer target-layer">
+                <div class="flow-card target-highlight">
+                  <div class="card-icon emerald">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                      <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path>
+                    </svg>
+                  </div>
+                  <div class="card-text">
+                    <span class="layer-name">Target (New Database)</span>
+                    <span class="layer-detail">PostgreSQL / Cloud Target</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section problem-section" id="risiko-migrasi">
         <div class="container">
-          <header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> RISK AWARENESS</span><h2>Migrasi Database Bukan Sekadar Memindahkan Data</h2><p>Perubahan database dapat memengaruhi struktur data, aplikasi, integrasi, dan operasional. Karena itu migration perlu direncanakan dari awal.</p></header>
+          <header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> RISK AWARENESS</span><h2>Migrasi Database Bukan Sekadar Memindahkan Data</h2><p>Perubahan database dapat memengaruhi struktur data, aplikasi, integrasi, dan operasional. Karena itu migration perlu direncanakan dari awal.</p></header>
           <div class="problem-grid">
-            {problems.map((problem, index) => <article class="risk-card reveal" style={`animation-delay: ${index * 70}ms`}><div class="risk-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={icon(problem.icon)} /></svg></div><span class="card-index">0{index + 1}</span><h3>{problem.title}</h3><p>{problem.description}</p></article>)}
+            {problems.map((problem, index) => <article class="risk-card reveal" style={`transition-delay: ${index * 70}ms`}><div class="risk-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={icon(problem.icon)} /></svg></div><span class="card-index">0{index + 1}</span><h3>{problem.title}</h3><p>{problem.description}</p></article>)}
           </div>
         </div>
       </section>
 
       <section class="section stages-section">
         <div class="container">
-          <header class="section-heading left-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> MIGRATION STORY</span><h2>Dari Database Lama ke Environment Baru dengan Proses yang Terstruktur</h2><p>Setiap fase memiliki tujuan dan checkpoint agar keputusan migration dapat dipahami oleh business owner maupun technical evaluator.</p></header>
+          <header class="section-heading left-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> MIGRATION STORY</span><h2>Dari Database Lama ke Environment Baru dengan Proses yang Terstruktur</h2><p>Setiap fase memiliki tujuan dan checkpoint agar keputusan migration dapat dipahami oleh business owner maupun technical evaluator.</p></header>
           <div class="stages-grid">
-            <article class="stage-card before"><span class="stage-label">BEFORE</span><h3>Legacy Environment</h3><div class="stage-stack"><strong>Legacy Database</strong><span>↓</span><strong>Old Server</strong><span>↓</span><strong>Old Application</strong></div><ul><li>Existing schema</li><li>Existing dependencies</li></ul></article>
-            <article class="stage-card during"><span class="stage-label">MIGRATION</span><h3>Controlled Process</h3><div class="mini-process">{['Assessment', 'Backup', 'Schema Mapping', 'Transformation', 'Migration', 'Validation', 'Testing', 'Cutover'].map((step, index) => <span><b>{String(index + 1).padStart(2, '0')}</b>{step}</span>)}</div></article>
-            <article class="stage-card after"><span class="stage-label">AFTER</span><h3>Updated Environment</h3><div class="stage-stack"><strong>New Database</strong><span>↓</span><strong>Application</strong><span>↓</span><strong>Business Operations</strong></div><ul><li>Validated data</li><li>Monitoring enabled</li></ul></article>
+            <article class="stage-card before reveal" style="transition-delay: 100ms;"><span class="stage-label">BEFORE</span><h3>Legacy Environment</h3><div class="stage-stack"><strong>Legacy Database</strong><span>↓</span><strong>Old Server</strong><span>↓</span><strong>Old Application</strong></div><ul><li>Existing schema</li><li>Existing dependencies</li></ul></article>
+            <article class="stage-card during reveal" style="transition-delay: 200ms;"><span class="stage-label">MIGRATION</span><h3>Controlled Process</h3><div class="mini-process">{['Assessment', 'Backup', 'Schema Mapping', 'Transformation', 'Migration', 'Validation', 'Testing', 'Cutover'].map((step, index) => <span><b>{String(index + 1).padStart(2, '0')}</b>{step}</span>)}</div></article>
+            <article class="stage-card after reveal" style="transition-delay: 300ms;"><span class="stage-label">AFTER</span><h3>Updated Environment</h3><div class="stage-stack"><strong>New Database</strong><span>↓</span><strong>Application</strong><span>↓</span><strong>Business Operations</strong></div><ul><li>Validated data</li><li>Monitoring enabled</li></ul></article>
           </div>
         </div>
       </section>
 
       <section class="section types-section" id="jenis-migrasi">
-        <div class="container"><header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> MIGRATION SCOPE</span><h2>Jenis Migrasi Database yang Dapat Kami Bantu</h2><p>Pendekatan dan scope ditentukan setelah assessment kondisi source dan destination.</p></header><div class="types-grid">{migrationTypes.map((item, index) => <article class="info-card reveal" style={`animation-delay: ${index * 60}ms`}><span class="card-index">0{index + 1}</span><h3>{item.title}</h3><p>{item.detail}</p><div class="tag-row">{item.tags.map(tag => <span>{tag}</span>)}</div></article>)}</div></div>
+        <div class="container"><header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> MIGRATION SCOPE</span><h2>Jenis Migrasi Database yang Dapat Kami Bantu</h2><p>Pendekatan dan scope ditentukan setelah assessment kondisi source dan destination.</p></header><div class="types-grid">{migrationTypes.map((item, index) => <article class="info-card reveal" style={`transition-delay: ${index * 60}ms`}><span class="card-index">0{index + 1}</span><h3>{item.title}</h3><p>{item.detail}</p><div class="tag-row">{item.tags.map(tag => <span>{tag}</span>)}</div></article>)}</div></div>
       </section>
 
       <section class="section mapping-section">
-        <div class="container split-layout"><div><span class="eyebrow"><span class="eyebrow-dot"></span> SCHEMA MAPPING</span><h2>Data Tidak Selalu Bisa Dipindahkan 1:1</h2><p>Struktur data pada source dan destination dapat berbeda. Migration dapat membutuhkan mapping, transformation, cleansing, dan penyesuaian relationship agar data sesuai dengan schema tujuan.</p><div class="mapping-note">Migration memindahkan data dengan konteks, bukan hanya menyalin file.</div></div><div class="mapping-visual"><div class="schema-box"><span>SOURCE</span><code>customer_name<br />phone<br />company<br />created_at</code></div><div class="mapping-bridge"><b>MAP</b><span>TRANSFORM</span><span>VALIDATE</span></div><div class="schema-box target"><span>DESTINATION</span><code>name<br />contact_number<br />organization<br />registered_date</code></div><div class="relation-chain"><span>customers</span><b>↕</b><span>orders</span><b>↕</b><span>payments</span></div></div></div>
+        <div class="container split-layout"><div class="reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> SCHEMA MAPPING</span><h2>Data Tidak Selalu Bisa Dipindahkan 1:1</h2><p>Struktur data pada source dan destination dapat berbeda. Migration dapat membutuhkan mapping, transformation, cleansing, dan penyesuaian relationship agar data sesuai dengan schema tujuan.</p><div class="mapping-note">Migration memindahkan data dengan konteks, bukan hanya menyalin file.</div></div><div class="mapping-visual reveal" style="transition-delay: 200ms;"><div class="schema-box"><span>SOURCE</span><code>customer_name<br />phone<br />company<br />created_at</code></div><div class="mapping-bridge"><b>MAP</b><span>TRANSFORM</span><span>VALIDATE</span></div><div class="schema-box target"><span>DESTINATION</span><code>name<br />contact_number<br />organization<br />registered_date</code></div><div class="relation-chain"><span>customers</span><b>↕</b><span>orders</span><b>↕</b><span>payments</span></div></div></div>
       </section>
 
       <section class="section process-section" id="proses-migrasi">
-        <div class="container"><header class="section-heading left-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> CONTROLLED WORKFLOW</span><h2>Bagaimana Proses Migrasi Database Dilakukan?</h2><p>Assess → Plan → Backup → Map → Migrate → Validate → Cutover → Monitor.</p></header><div class="process-strip">{processData.map(step => <article class="process-card"><span>{step.num}</span><small>{step.label}</small><h3>{step.title}</h3><p>{step.description}</p></article>)}</div></div>
+        <div class="container"><header class="section-heading left-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> CONTROLLED WORKFLOW</span><h2>Bagaimana Proses Migrasi Database Dilakukan?</h2><p>Assess → Plan → Backup → Map → Migrate → Validate → Cutover → Monitor.</p></header><div class="process-strip">{processData.map((step, index) => <article class="process-card reveal" style={`transition-delay: ${index * 50}ms`}><span>{step.num}</span><small>{step.label}</small><h3>{step.title}</h3><p>{step.description}</p></article>)}</div></div>
       </section>
 
       <section class="section validation-section" id="validasi-data">
-        <div class="container split-layout"><div><span class="eyebrow"><span class="eyebrow-dot"></span> DATA INTEGRITY</span><h2>Bagaimana Memastikan Data Hasil Migrasi Tetap Valid?</h2><p>Data divalidasi berdasarkan migration scope dan validation criteria yang disepakati, bukan berdasarkan klaim bahwa semua kondisi selalu identik.</p><div class="validation-stamp">VALIDATION<br /><strong>CHECKPOINT</strong></div></div><div class="check-grid">{validationItems.map((item, index) => <article><span>✓</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>)}</div></div>
+        <div class="container split-layout"><div class="reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> DATA INTEGRITY</span><h2>Bagaimana Memastikan Data Hasil Migrasi Tetap Valid?</h2><p>Data divalidasi berdasarkan migration scope dan validation criteria yang disepakati, bukan berdasarkan klaim bahwa semua kondisi selalu identik.</p><div class="validation-stamp">VALIDATION<br /><strong>CHECKPOINT</strong></div></div><div class="check-grid">{validationItems.map((item, index) => <article class="reveal" style={`transition-delay: ${index * 60}ms`}><span>✓</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>)}</div></div>
       </section>
 
       <section class="section backup-section">
-        <div class="container"><header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> RECOVERY PLANNING</span><h2>Siapkan Backup dan Rollback Plan Sebelum Cutover</h2><p>Strategi backup dan rollback bergantung pada database engine, environment, data size, application architecture, dan toleransi downtime.</p></header><div class="backup-flow"><div><b>BACKUP</b><small>Salinan data</small></div><i>↓</i><div><b>MIGRATION</b><small>Transfer terencana</small></div><i>↓</i><div><b>VALIDATION</b><small>Checkpoint</small></div><i>↓</i><div><b>CUTOVER</b><small>Alih aplikasi</small></div><i>↓</i><div class="rollback"><b>IF ISSUE</b><small>Rollback / Recovery</small></div></div><div class="clarification"><strong>Backup ≠ Migration</strong><span>Backup menyiapkan recovery. Migration membuat data dapat digunakan di environment tujuan.</span></div></div>
+        <div class="container"><header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> RECOVERY PLANNING</span><h2>Siapkan Backup dan Rollback Plan Sebelum Cutover</h2><p>Strategi backup dan rollback bergantung pada database engine, environment, data size, application architecture, dan toleransi downtime.</p></header><div class="backup-flow reveal" style="transition-delay: 200ms;"><div><b>BACKUP</b><small>Salinan data</small></div><i>↓</i><div><b>MIGRATION</b><small>Transfer terencana</small></div><i>↓</i><div><b>VALIDATION</b><small>Checkpoint</small></div><i>↓</i><div><b>CUTOVER</b><small>Alih aplikasi</small></div><i>↓</i><div class="rollback"><b>IF ISSUE</b><small>Rollback / Recovery</small></div></div><div class="clarification reveal" style="transition-delay: 300ms;"><strong>Backup ≠ Migration</strong><span>Backup menyiapkan recovery. Migration membuat data dapat digunakan di environment tujuan.</span></div></div>
       </section>
 
       <section class="section operations-section">
-        <div class="container"><header class="section-heading left-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> OPERATIONAL CONTINUITY</span><h2>Migrasi Disesuaikan dengan Kebutuhan Operasional</h2><p>Metode migration dipilih berdasarkan kondisi sistem dan tolerance terhadap downtime.</p></header><div class="three-grid"><article class="approach-card"><span>01</span><h3>Offline Migration</h3><p>Service dihentikan sementara untuk proses migration. Cocok bila downtime dapat dijadwalkan.</p></article><article class="approach-card featured"><span>02</span><h3>Staged Migration</h3><p>Sebagian data dipindahkan lebih dulu, kemudian dilakukan synchronization dan cutover.</p></article><article class="approach-card"><span>03</span><h3>Low-Downtime Approach</h3><p>Digunakan ketika kebutuhan operasional membutuhkan downtime minimal dan architecture memungkinkan.</p></article></div></div>
+        <div class="container"><header class="section-heading left-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> OPERATIONAL CONTINUITY</span><h2>Migrasi Disesuaikan dengan Kebutuhan Operasional</h2><p>Metode migration dipilih berdasarkan kondisi sistem dan tolerance terhadap downtime.</p></header><div class="three-grid"><article class="approach-card reveal" style="transition-delay: 100ms;"><span>01</span><h3>Offline Migration</h3><p>Service dihentikan sementara untuk proses migration. Cocok bila downtime dapat dijadwalkan.</p></article><article class="approach-card featured reveal" style="transition-delay: 200ms;"><span>02</span><h3>Staged Migration</h3><p>Sebagian data dipindahkan lebih dulu, kemudian dilakukan synchronization dan cutover.</p></article><article class="approach-card reveal" style="transition-delay: 300ms;"><span>03</span><h3>Low-Downtime Approach</h3><p>Digunakan ketika kebutuhan operasional membutuhkan downtime minimal dan architecture memungkinkan.</p></article></div></div>
       </section>
 
       <section class="section compatibility-section">
-        <div class="container split-layout"><div><span class="eyebrow"><span class="eyebrow-dot"></span> APPLICATION AWARE</span><h2>Database Berubah, Aplikasi Tetap Harus Berjalan</h2><p>Database migration perlu mempertimbangkan aplikasi yang menggunakan database tersebut agar perubahan environment tidak memutus operasional.</p></div><div class="compat-visual"><div class="compat-node">APPLICATION</div><span>↓</span><div class="compat-node">CONNECTION</div><span>↓</span><div class="compat-node accent">NEW DATABASE</div><span>↓</span><div class="compat-node">QUERY / TRANSACTION</div></div></div><div class="container compatibility-list">{['Connection string', 'Credentials', 'Schema & datatype', 'SQL compatibility', 'ORM mapping', 'Indexes', 'Stored procedures bila relevan', 'API dependencies'].map(item => <span>✓ {item}</span>)}</div>
+        <div class="container split-layout"><div class="reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> APPLICATION AWARE</span><h2>Database Berubah, Aplikasi Tetap Harus Berjalan</h2><p>Database migration perlu mempertimbangkan aplikasi yang menggunakan database tersebut agar perubahan environment tidak memutus operasional.</p></div><div class="compat-visual reveal" style="transition-delay: 200ms;"><div class="compat-node">APPLICATION</div><span>↓</span><div class="compat-node">CONNECTION</div><span>↓</span><div class="compat-node accent">NEW DATABASE</div><span>↓</span><div class="compat-node">QUERY / TRANSACTION</div></div></div><div class="container compatibility-list reveal" style="transition-delay: 300ms;">{['Connection string', 'Credentials', 'Schema & datatype', 'SQL compatibility', 'ORM mapping', 'Indexes', 'Stored procedures bila relevan', 'API dependencies'].map(item => <span>✓ {item}</span>)}</div>
       </section>
 
       <section class="section architecture-section">
-        <div class="container"><header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> MIGRATION ARCHITECTURE</span><h2>Bangun Jalur Migrasi yang Terstruktur</h2></header><div class="architecture-flow">{['SOURCE DB', 'BACKUP', 'MAPPING / TRANSFORM', 'TARGET DB', 'VALIDATION', 'APPLICATION'].map((item, index) => <div class="architecture-step"><span>{String(index + 1).padStart(2, '0')}</span><strong>{item}</strong>{index < 5 && <i>↓</i>}</div>)}</div></div>
+        <div class="container"><header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> MIGRATION ARCHITECTURE</span><h2>Bangun Jalur Migrasi yang Terstruktur</h2></header><div class="architecture-flow reveal" style="transition-delay: 200ms;">{['SOURCE DB', 'BACKUP', 'MAPPING / TRANSFORM', 'TARGET DB', 'VALIDATION', 'APPLICATION'].map((item, index) => <div class="architecture-step"><span>{String(index + 1).padStart(2, '0')}</span><strong>{item}</strong>{index < 5 && <i>↓</i>}</div>)}</div></div>
       </section>
 
       <section class="section security-section">
-        <div class="container"><header class="section-heading left-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> SECURITY CONSIDERATIONS</span><h2>Data Tetap Menjadi Prioritas Selama Proses Migrasi</h2><p>Kontrol akses dan handling data ditentukan sesuai sensitivitas serta kebutuhan environment project.</p></header><div class="security-grid">{securityItems.map((item, index) => <article><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div>
+        <div class="container"><header class="section-heading left-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> SECURITY CONSIDERATIONS</span><h2>Data Tetap Menjadi Prioritas Selama Proses Migrasi</h2><p>Kontrol akses and handling data ditentukan sesuai sensitivitas serta kebutuhan environment project.</p></header><div class="security-grid">{securityItems.map((item, index) => <article class="reveal" style={`transition-delay: ${index * 80}ms`}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div>
       </section>
 
       <section class="section compare-section" id="migrasi-vs-integrasi">
-        <div class="container"><header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> CLARIFY THE DIFFERENCE</span><h2>Migrasi Database vs Integrasi Sistem: Apa Bedanya?</h2></header><div class="compare-grid"><article><span class="eyebrow">DATABASE MIGRATION</span><h3>Memindahkan data dan database environment dari A ke B.</h3><p>MySQL → PostgreSQL<br />On-Premise → Cloud<br />Old Server → New Server</p></article><article><span class="eyebrow">SYSTEM INTEGRATION</span><h3>Membuat dua sistem tetap terhubung dan bertukar data.</h3><p>CRM ↔ ERP<br />Website ↔ CRM<br />Payment ↔ Order System</p><a href="/jasa-integrasi-sistem/">Pelajari Jasa Integrasi Sistem →</a></article></div><div class="difference-line">Migrasi memindahkan data. Integrasi membuat sistem tetap terhubung.</div></div>
+        <div class="container"><header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> CLARIFY THE DIFFERENCE</span><h2>Migrasi Database vs Integrasi Sistem: Apa Bedanya?</h2></header><div class="compare-grid"><article class="reveal" style="transition-delay: 100ms;"><span class="eyebrow">DATABASE MIGRATION</span><h3>Memindahkan data dan database environment dari A ke B.</h3><p>MySQL → PostgreSQL<br />On-Premise → Cloud<br />Old Server → New Server</p></article><article class="reveal" style="transition-delay: 200ms;"><span class="eyebrow">SYSTEM INTEGRATION</span><h3>Membuat dua sistem tetap terhubung dan bertukar data.</h3><p>CRM ↔ ERP<br />Website ↔ CRM<br />Payment ↔ Order System</p><a href="/jasa-integrasi-sistem/">Pelajari Jasa Integrasi Sistem →</a></article></div><div class="difference-line reveal" style="transition-delay: 300ms;">Migrasi memindahkan data. Integrasi membuat sistem tetap terhubung.</div></div>
       </section>
 
       <section class="section stack-section">
-        <div class="container split-layout"><div><span class="eyebrow"><span class="eyebrow-dot"></span> TECHNOLOGY & METHODS</span><h2>Teknologi Database yang Digunakan Sesuai Kebutuhan</h2><p>Engine dan metode dipilih berdasarkan kondisi database, target environment, data size, compatibility, serta kemampuan maintenance.</p></div><div class="stack-panel"><div><b>DATABASE ENGINES</b><span>MySQL</span><span>PostgreSQL</span><span>MariaDB</span><span>SQL Server</span><span>SQLite</span></div><div><b>MIGRATION METHODS</b><span>SQL & scripts</span><span>ETL</span><span>Dump & restore</span><span>Replication / synchronization</span></div></div></div>
+        <div class="container split-layout"><div class="reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> TECHNOLOGY & METHODS</span><h2>Teknologi Database yang Digunakan Sesuai Kebutuhan</h2><p>Engine dan metode dipilih berdasarkan kondisi database, target environment, data size, compatibility, serta kemampuan maintenance.</p></div><div class="stack-panel reveal" style="transition-delay: 200ms;"><div><b>DATABASE ENGINES</b><span>MySQL</span><span>PostgreSQL</span><span>MariaDB</span><span>SQL Server</span><span>SQLite</span></div><div><b>MIGRATION METHODS</b><span>SQL & scripts</span><span>ETL</span><span>Dump & restore</span><span>Replication / synchronization</span></div></div></div>
       </section>
 
       <section class="section usecase-section">
-        <div class="container"><header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> USE CASES</span><h2>Contoh Kebutuhan Migrasi Database</h2></header><div class="three-grid"><article class="usecase-card"><b>01</b><h3>Legacy Database Upgrade</h3><p>Database lama dipindahkan ke environment yang lebih baru.</p></article><article class="usecase-card"><b>02</b><h3>Server Migration</h3><p>Database dipindahkan dari server lama ke server baru.</p></article><article class="usecase-card"><b>03</b><h3>Cloud Migration</h3><p>Database dipindahkan ke environment cloud sesuai assessment.</p></article><article class="usecase-card"><b>04</b><h3>Database Consolidation</h3><p>Beberapa database digabung ke environment yang lebih terpusat.</p></article><article class="usecase-card"><b>05</b><h3>Application Replatforming</h3><p>Database dipindahkan bersamaan dengan penyesuaian application environment.</p></article></div></div>
+        <div class="container"><header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> USE CASES</span><h2>Contoh Kebutuhan Migrasi Database</h2></header><div class="three-grid">{[ { id: '01', t: 'Legacy Database Upgrade', d: 'Database lama dipindahkan ke environment yang lebih baru.' }, { id: '02', t: 'Server Migration', d: 'Database dipindahkan dari server lama ke server baru.' }, { id: '03', t: 'Cloud Migration', d: 'Database dipindahkan ke environment cloud sesuai assessment.' }, { id: '04', t: 'Database Consolidation', d: 'Beberapa database digabung ke environment yang lebih terpusat.' }, { id: '05', t: 'Application Replatforming', d: 'Database dipindahkan bersamaan dengan penyesuaian application environment.' } ].map((item, index) => <article class="usecase-card reveal" style={`transition-delay: ${index * 70}ms`}><b>{item.id}</b><h3>{item.t}</h3><p>{item.d}</p></article>)}</div></div>
       </section>
 
       <section class="section impact-section">
-        <div class="container"><header class="section-heading left-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> BUSINESS IMPACT</span><h2>Migrasi Database Harus Memberikan Dampak yang Terukur bagi Operasional</h2></header><div class="impact-grid"><article><span>01</span><h3>Reduce Migration Risk</h3><p>Proses disusun berdasarkan kondisi source dan destination.</p></article><article><span>02</span><h3>Protect Data Integrity</h3><p>Data divalidasi setelah migration sesuai criteria.</p></article><article><span>03</span><h3>Minimize Disruption</h3><p>Strategy disesuaikan dengan kebutuhan downtime.</p></article><article><span>04</span><h3>Maintain Compatibility</h3><p>Perubahan database dipertimbangkan bersama aplikasi.</p></article><article><span>05</span><h3>Prepare for Growth</h3><p>Environment baru dapat menjadi fondasi pengembangan berikutnya.</p></article></div></div>
+        <div class="container"><header class="section-heading left-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> BUSINESS IMPACT</span><h2>Migrasi Database Harus Memberikan Dampak yang Terukur bagi Operasional</h2></header><div class="impact-grid"><article class="reveal" style="transition-delay: 50ms;"><span>01</span><h3>Reduce Migration Risk</h3><p>Proses disusun berdasarkan kondisi source dan destination.</p></article><article class="reveal" style="transition-delay: 100ms;"><span>02</span><h3>Protect Data Integrity</h3><p>Data divalidasi setelah migration sesuai criteria.</p></article><article class="reveal" style="transition-delay: 150ms;"><span>03</span><h3>Minimize Disruption</h3><p>Strategy disesuaikan dengan kebutuhan downtime.</p></article><article class="reveal" style="transition-delay: 200ms;"><span>04</span><h3>Maintain Compatibility</h3><p>Perubahan database dipertimbangkan bersama aplikasi.</p></article><article class="reveal" style="transition-delay: 250ms;"><span>05</span><h3>Prepare for Growth</h3><p>Environment baru dapat menjadi fondasi pengembangan berikutnya.</p></article></div></div>
       </section>
 
       <section class="section portfolio-section">
-        <div class="container"><header class="section-heading"><span class="eyebrow"><span class="eyebrow-dot"></span> TECHNICAL EXAMPLE</span><h2>Migration Concept yang Menjelaskan Alur Nyata</h2><p>Visual ini adalah contoh teknis, bukan case study fiktif. Detail project, outcome, dan destination ditentukan berdasarkan kondisi klien.</p></header><div class="concept-flow"><span><small>SOURCE</small>MySQL</span><i>↓</i><span><small>SCHEMA MAPPING</small>Data Transformation</span><i>↓</i><span><small>VALIDATION</small>Integrity Check</span><i>↓</i><span class="target"><small>DESTINATION</small>PostgreSQL</span></div></div>
+        <div class="container"><header class="section-heading reveal"><span class="eyebrow"><span class="eyebrow-dot"></span> TECHNICAL EXAMPLE</span><h2>Migration Concept yang Menjelaskan Alur Nyata</h2><p>Visual ini adalah contoh teknis, bukan case study fiktif. Detail project, outcome, dan destination ditentukan berdasarkan kondisi klien.</p></header><div class="concept-flow reveal" style="transition-delay: 200ms;"><span><small>SOURCE</small>MySQL</span><i>↓</i><span><small>SCHEMA MAPPING</small>Data Transformation</span><i>↓</i><span><small>VALIDATION</small>Integrity Check</span><i>↓</i><span class="target"><small>DESTINATION</small>PostgreSQL</span></div></div>
       </section>
 
       <WhyChoose eyebrow="MENGAPA ENTERCRAFT" titleHtml="Mengapa Memilih Entercraft<br/>untuk Migrasi Database?" intro="Kami menggabungkan perhatian pada data, aplikasi, dan operasional agar migration dapat dijalankan dengan keputusan yang lebih terukur." valueProps={whyChooseData} />
@@ -207,6 +298,21 @@ const icon = (name: string) => {
       <FinalCta eyebrow="MULAI DENGAN ASSESSMENT" titleHtml="Rencanakan Migrasi Database Anda<br/>dengan Lebih Terstruktur" intro="Ceritakan database yang sedang digunakan, target environment, ukuran data, kebutuhan downtime, dan kendala yang Anda hadapi. Kami akan membantu menentukan pendekatan migrasi yang sesuai." />
     </main>
     <Footer />
+
+    <!-- Scroll Observer Script for Premium Entry Animations -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+            }
+          });
+        }, { threshold: 0.05 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      });
+    </script>
   </body>
 </html>
 
@@ -222,32 +328,259 @@ const icon = (name: string) => {
   .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
   h2 { margin: 14px 0 18px; color: #fff; font: 800 clamp(32px, 4vw, 48px)/1.1 'Plus Jakarta Sans', sans-serif; letter-spacing: -1px; }
   .section-heading p, .split-layout > div > p { margin: 0; color: #7f95b8; font: 400 16px/1.75 'Inter', sans-serif; }
-  .migration-hero { position: relative; min-height: 760px; display: flex; align-items: center; padding: 120px 24px 90px; overflow: hidden; background: #05070d; }
-  .hero-grid { position: absolute; inset: 0; opacity: .65; background-image: linear-gradient(rgba(57,132,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(57,132,255,.045) 1px, transparent 1px); background-size: 58px 58px; mask-image: radial-gradient(circle at center, #000 30%, transparent 82%); }
-  .hero-wrap { position: relative; z-index: 1; width: min(1200px, 100%); margin: 0 auto; }
-  .hero-copy { max-width: 850px; margin: 0 auto 70px; text-align: center; }
-  .hero-copy h1 { margin: 22px 0; color: #fff; font: 800 clamp(38px, 5.2vw, 64px)/1.08 'Plus Jakarta Sans', sans-serif; letter-spacing: -1.8px; }
-  .hero-copy h1 span { color: var(--accent-blue); }
-  .hero-copy p { max-width: 760px; margin: 0 auto 34px; color: #8fa5c8; font: 400 17px/1.75 'Inter', sans-serif; }
-  .hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-  .btn-primary, .btn-secondary { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 0 22px; border-radius: 8px; text-decoration: none; font: 700 13px 'Plus Jakarta Sans', sans-serif; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
-  .btn-primary { color: #fff; background: var(--accent-blue); box-shadow: 0 8px 24px rgba(57,132,255,.25); }
-  .btn-secondary { color: #c7d5ea; border: 1px solid #2a3b59; background: rgba(10,22,44,.5); }
-  .btn-primary:hover, .btn-secondary:hover { transform: translateY(-2px); }
-  .btn-secondary:hover { border-color: var(--accent-blue); }
-  .migration-visual { display: flex; align-items: center; justify-content: center; gap: 18px; }
-  .db-node, .migration-core { width: 190px; min-height: 154px; display: flex; flex-direction: column; justify-content: center; padding: 24px; box-sizing: border-box; border: 1px solid #2b4c79; border-radius: 12px; background: linear-gradient(145deg, rgba(13,31,58,.92), rgba(5,12,25,.92)); box-shadow: 0 18px 50px rgba(0,0,0,.3); }
-  .target-node { border-color: rgba(57,213,232,.5); }
-  .migration-core { width: 240px; border-color: rgba(57,132,255,.65); text-align: center; background: linear-gradient(145deg, rgba(20,55,103,.9), rgba(6,18,37,.95)); }
+  
+  /* Hero Section Restructuring */
+  .migration-hero {
+    position: relative;
+    min-height: calc(100vh - 72px);
+    display: flex;
+    align-items: center;
+    padding: 100px 24px 60px;
+    overflow: hidden;
+    background: #05070d;
+    box-sizing: border-box;
+  }
+  
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .65;
+    background-image: linear-gradient(rgba(57,132,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(57,132,255,.045) 1px, transparent 1px);
+    background-size: 58px 58px;
+    mask-image: radial-gradient(circle at center, #000 30%, transparent 82%);
+    z-index: 1;
+  }
+  
+  .hero-wrap {
+    position: relative;
+    z-index: 2;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .hero-copy h1 {
+    margin: 20px 0;
+    color: #fff;
+    font: 800 46px/1.15 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -1.5px;
+  }
+  
+  .hero-copy h1 span {
+    color: var(--accent-blue);
+  }
+  
+  .hero-copy p {
+    max-width: 520px;
+    margin: 0 0 35px 0;
+    color: #8fa5c8;
+    font: 400 16px/1.7 'Inter', sans-serif;
+  }
+  
+  .hero-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font: 700 13px 'Plus Jakarta Sans', sans-serif;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+  }
+  
+  .btn-primary {
+    color: #fff;
+    background: var(--accent-blue);
+    box-shadow: 0 8px 24px rgba(57,132,255,.25);
+  }
+  
+  .btn-secondary {
+    color: #c7d5ea;
+    border: 1px solid #2a3b59;
+    background: rgba(10,22,44,.5);
+  }
+  
+  .btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary:hover {
+    border-color: var(--accent-blue);
+  }
+
+  /* Migration Flow (Right Column Visual) */
+  .migration-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .migration-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 440px;
+    background: rgba(10, 22, 44, 0.4);
+    border: 1px solid rgba(57, 132, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .flow-layer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .flow-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(13, 20, 34, 0.75);
+    border: 1px solid rgba(57, 132, 255, 0.15);
+    border-radius: 12px;
+    padding: 16px 20px;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .flow-card.highlight {
+    border-color: var(--accent-blue);
+    background: rgba(57, 132, 255, 0.05);
+    box-shadow: 0 0 25px rgba(57, 132, 255, 0.15);
+  }
+
+  .flow-card.target-highlight {
+    border-color: var(--migration-green);
+    background: rgba(34, 197, 94, 0.05);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.15);
+  }
+
+  .flow-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card-icon.red { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+  .card-icon.blue { background: rgba(57, 132, 255, 0.1); color: var(--accent-blue); }
+  .card-icon.cyan { background: rgba(57, 213, 232, 0.1); color: #39d5e8; }
+  .card-icon.purple { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
+  .card-icon.emerald { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+  .card-icon.gold { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .layer-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .layer-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #6682B3;
+    margin-top: 2px;
+  }
+
+  .flow-arrow {
+    height: 24px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+    margin: 4px 0;
+  }
+
+  .arrow-dot {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+  }
+
+  .animate-flow {
+    animation: flowDown 1.8s infinite linear;
+  }
+
+  .delay-1 { animation-delay: 0.45s; }
+  .delay-2 { animation-delay: 0.9s; }
+
+  @keyframes flowDown {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* Split Bottom Side */
+  .flow-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .flow-card.mini {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .layer-name.small {
+    font-size: 12px;
+  }
+
+  .layer-detail.small {
+    font-size: 10px;
+  }
+  
   .node-kicker, .stage-label, .card-index { color: var(--accent-blue); font: 700 10px 'Inter', sans-serif; letter-spacing: 1.4px; }
-  .db-node strong, .migration-core strong { margin: 10px 0 8px; color: #fff; font: 800 17px/1.2 'Plus Jakarta Sans', sans-serif; }
-  .db-node small { color: #8298b8; font: 400 12px 'Inter', sans-serif; }
-  .core-tags, .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
-  .core-tags { justify-content: center; }
-  .core-tags span, .tag-row span { padding: 6px 8px; color: #96b8ee; border: 1px solid #2b4c79; border-radius: 4px; font: 600 10px 'Inter', sans-serif; }
-  .flow-arrow { display: flex; width: 80px; flex-direction: column; align-items: center; gap: 8px; color: var(--migration-cyan); font: 700 9px 'Inter', sans-serif; letter-spacing: 1px; }
-  .flow-line { width: 100%; height: 1px; position: relative; background: linear-gradient(90deg, transparent, var(--migration-cyan), transparent); }
-  .flow-line::after { content: ''; position: absolute; top: -3px; right: 20%; border: 4px solid transparent; border-left-color: var(--migration-cyan); }
+  
   .problem-grid, .types-grid, .security-grid, .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .risk-card, .info-card, .security-grid article, .impact-grid article, .approach-card, .usecase-card { position: relative; padding: 28px; border: 1px solid var(--border-color); border-radius: 10px; background: rgba(10,22,44,.42); transition: transform .2s ease, border-color .2s ease; }
   .risk-card:hover, .info-card:hover, .approach-card:hover, .usecase-card:hover { transform: translateY(-4px); border-color: var(--accent-blue); }
@@ -339,8 +672,20 @@ const icon = (name: string) => {
   .concept-flow span.target { border-color: rgba(57,213,232,.45); }
   .concept-flow small { display: block; margin-bottom: 8px; color: var(--accent-blue); font: 700 9px 'Inter', sans-serif; letter-spacing: 1px; }
   .concept-flow i { color: var(--migration-cyan); font-style: normal; }
-  .reveal { animation: reveal-up .65s ease both; }
-  @keyframes reveal-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Premium Scroll-Based Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Light Theme Styles */
   :global(html[data-theme="light"]) h2, :global(html[data-theme="light"]) .risk-card h3, :global(html[data-theme="light"]) .info-card h3, :global(html[data-theme="light"]) .security-grid h3, :global(html[data-theme="light"]) .impact-grid h3, :global(html[data-theme="light"]) .approach-card h3, :global(html[data-theme="light"]) .usecase-card h3, :global(html[data-theme="light"]) .compare-grid h3, :global(html[data-theme="light"]) .process-card h3, :global(html[data-theme="light"]) .check-grid h3 { color: #0f172a; }
   :global(html[data-theme="light"]) .section-heading p, :global(html[data-theme="light"]) .split-layout > div > p, :global(html[data-theme="light"]) .risk-card p, :global(html[data-theme="light"]) .info-card p, :global(html[data-theme="light"]) .security-grid p, :global(html[data-theme="light"]) .impact-grid p, :global(html[data-theme="light"]) .approach-card p, :global(html[data-theme="light"]) .usecase-card p, :global(html[data-theme="light"]) .process-card p { color: #475569; }
   :global(html[data-theme="light"]) .section, :global(html[data-theme="light"]) .section:nth-of-type(even) { background: #f8fafc; }
@@ -365,6 +710,103 @@ const icon = (name: string) => {
   :global(html[data-theme="light"]) .architecture-step i { background: #f8fafc; }
   :global(html[data-theme="light"]) .compare-grid article p { color: #475569; }
   :global(html[data-theme="light"]) .concept-flow span.target { background: #f0fdfa; }
-  @media (max-width: 900px) { .problem-grid, .types-grid, .security-grid, .impact-grid { grid-template-columns: repeat(2, 1fr); } .stages-grid, .split-layout { grid-template-columns: 1fr; gap: 36px; } .process-strip { grid-template-columns: repeat(2, 1fr); } .impact-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 700px) { .container { width: min(100% - 32px, 560px); } .section { padding: 70px 0; } .migration-hero { min-height: auto; padding: 90px 16px 70px; } .hero-copy h1 { font-size: 38px; } .hero-copy p { font-size: 15px; } .migration-visual, .backup-flow, .concept-flow { flex-direction: column; } .db-node, .migration-core { width: min(100%, 280px); } .flow-arrow { width: 120px; transform: rotate(90deg); margin: 10px 0; } .migration-core { transform: rotate(0); } .problem-grid, .types-grid, .security-grid, .impact-grid, .three-grid, .compare-grid, .stack-panel, .process-strip { grid-template-columns: 1fr; } .stage-card { min-height: auto; } .mapping-visual { grid-template-columns: 1fr; } .mapping-bridge { grid-column: auto; writing-mode: horizontal-tb; justify-content: center; } .schema-box { width: 100%; } .relation-chain { grid-column: auto; flex-wrap: wrap; } .backup-flow i { transform: rotate(90deg); } .clarification { flex-direction: column; text-align: center; } .compatibility-list { margin-top: 36px; } .concept-flow i { transform: rotate(90deg); } }
+
+  :global(html[data-theme="light"]) .migration-flow {
+    background: #FFFFFF;
+    border-color: #E2E8F0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  }
+
+  :global(html[data-theme="light"]) .flow-card {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+  }
+
+  :global(html[data-theme="light"]) .flow-card.highlight {
+    background: rgba(57, 132, 255, 0.05);
+    border-color: var(--accent-blue);
+  }
+
+  :global(html[data-theme="light"]) .flow-card.target-highlight {
+    background: rgba(34, 197, 94, 0.05);
+    border-color: var(--migration-green);
+  }
+
+  :global(html[data-theme="light"]) .layer-name {
+    color: #0F172A;
+  }
+
+  :global(html[data-theme="light"]) .layer-detail {
+    color: #64748B;
+  }
+
+  /* Responsive Design breaking points */
+  @media (max-width: 991px) {
+    .hero-wrap {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 50px;
+    }
+
+    .hero-copy {
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-copy h1 {
+      font-size: 40px;
+    }
+
+    .hero-copy p {
+      margin: 0 auto 30px auto;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .problem-grid, .types-grid, .security-grid, .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .stages-grid, .split-layout { grid-template-columns: 1fr; gap: 36px; }
+    .process-strip { grid-template-columns: repeat(2, 1fr); }
+    .impact-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 700px) {
+    .container { width: min(100% - 32px, 560px); }
+    .section { padding: 70px 0; }
+    .migration-hero { min-height: auto; padding: 100px 16px 40px; }
+    .hero-copy h1 { font-size: 34px; }
+    .hero-copy p { font-size: 14px; }
+    
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn-primary, .btn-secondary { width: 100%; box-sizing: border-box; }
+    
+    .backup-flow, .concept-flow { flex-direction: column; }
+    .problem-grid, .types-grid, .security-grid, .impact-grid, .three-grid, .compare-grid, .stack-panel, .process-strip { grid-template-columns: 1fr; }
+    .stage-card { min-height: auto; }
+    .mapping-visual { grid-template-columns: 1fr; }
+    .mapping-bridge { grid-column: auto; writing-mode: horizontal-tb; justify-content: center; }
+    .schema-box { width: 100%; }
+    .relation-chain { grid-column: auto; flex-wrap: wrap; }
+    .backup-flow i { transform: rotate(90deg); }
+    .clarification { flex-direction: column; text-align: center; }
+    .compatibility-list { margin-top: 36px; }
+    .concept-flow i { transform: rotate(90deg); }
+
+    .migration-flow {
+      padding: 20px;
+    }
+
+    .flow-card {
+      padding: 12px 16px;
+      gap: 12px;
+    }
+
+    .flow-split {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
 </style>
