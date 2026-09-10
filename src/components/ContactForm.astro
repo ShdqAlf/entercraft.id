@@ -355,13 +355,10 @@
     });
     updateCount();
 
-const N8N_WEBHOOK_URL =
-  import.meta.env.PUBLIC_N8N_WEBHOOK_URL || 'http://localhost:5678/webhook-test/entercraft-contact';
-
 const submitLead = async (
   payload: Record<string, string | boolean>
 ) => {
-  const response = await fetch(N8N_WEBHOOK_URL, {
+  const response = await fetch('/api/contact', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -370,7 +367,8 @@ const submitLead = async (
   });
 
   if (!response.ok) {
-    throw new Error('Gagal mengirim data ke n8n');
+    const errorData = await response.json().catch(() => null);
+    throw new Error(errorData?.error || 'Gagal mengirim data form');
   }
 
   return response.json().catch(() => null);
